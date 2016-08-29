@@ -1,3 +1,5 @@
-baseurl = "http://replace-this-with-your-hugo-site.com/"
+baseurl = "https://bamboo.slabnet.com/~hslabbert/blog/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Mostly tech stuff...mostly"
+theme = "hyde"
+canonifyurls = true
