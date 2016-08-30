@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exchange 2003 on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/exchange-2003/</link>
+    <description>Recent content in Exchange 2003 on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 13 Aug 2008 05:51:47 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/exchange-2003/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SSL Errors in Exchange 2003 Public Folder Management</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
+      <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
+      <description>&lt;p&gt;On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:&lt;/p&gt;
+
+&lt;p&gt;The SSL certificate server name is incorrect.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to &lt;a href=&#34;http://support.microsoft.com/kb/324345&#34;&gt;this&lt;/a&gt; Microsoft KB. The gist is that whoever set up the Exchange server had set SSL to be required on the \Exadmin virtual directory in the default site on the server. The solution: Clear SSL for the Exadmin vdir and relaunch ESM.&lt;/p&gt;
+
+&lt;p&gt;This one is fairly straightforward and seems to be fairly common, but I thought I would throw it up here all the same as I had not really come across it in recent memory.&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

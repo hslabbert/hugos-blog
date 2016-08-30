@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/google/</link>
+    <description>Recent content in Google on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Tue, 01 Jun 2010 18:21:39 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/google/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>&#34;Gone Google&#34; Marketing Fail...</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</guid>
+      <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
+
+&lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Bandwidth fail:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-bandwidth-fail.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-bandwidth-fail.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hmm&amp;hellip;that&amp;rsquo;s not good. And if we try to click &lt;strong&gt;Download&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-virus-scan.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-virus-scan.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Not so good either&amp;hellip;but wait! There is hope! Let&amp;rsquo;s try to &lt;strong&gt;Download anyway&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-forbidden.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-forbidden.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oh&amp;hellip;damn&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve had a few different people check out the links from different networks and using different Google accounts, and all of them had the same result. With that being said, maybe we all downloaded too much docs content recently (?)&lt;/p&gt;
+
+&lt;p&gt;Now, don&amp;rsquo;t get me wrong: I use a lot of Google products and services (Gmail; Docs; Android (HTC Magic running CyanogenMod 5.0.7DS); Chrome, as can be seen in the screenshots; etc.) and love them. This was just too funny to pass up! So, are you ready to Go Google? :)&lt;/p&gt;
+
+&lt;p&gt;UPDATE1: Google has changed the poster link to point to a dummy document (&lt;a href=&#34;https://docs.google.com/fileview?id=0B2Rsgoiin0I9NjAxYzM3YzAtMjExOC00ZDg1LTkxYWMtYmI1M2RmMzU5ZTYy&amp;amp;hl=en&#34;&gt;link&lt;/a&gt;) for &lt;em&gt;Acme Inc&lt;/em&gt;. Nice one!&lt;/p&gt;
+
+&lt;p&gt;Just in case you were curious, the previous sample poster for Smart Furniture is still available (&lt;a href=&#34;http://docs.google.com/fileview?id=0B2Rsgoiin0I9NmFmNTIwOWEtNjdhMy00YWI2LWJmNmUtNDNlOGRkODcyNDBl&amp;amp;hl=en&#34;&gt;link&lt;/a&gt;). My guess is that, as per the initial warning page, posting the PDF for Smart Furniture resulting in them tripping over a bandwidth limit for non-Google format docs for the Smart Furniture Google Apps account. Google probably reset the counter for Smart Furniture, since the original sample doc from them is now accessible, and then generated the dummy Acme Inc. sample page, hosting it within a Google Docs account that is not under the same bandwidth restrictions (internal account?).&lt;/p&gt;
+
+&lt;p&gt;So, I guess this has become a &amp;ldquo;nothing to see here, move along!&amp;rdquo; post at this point, but the screenshots still tell the tale of a nice &amp;ldquo;oops!&amp;rdquo; on this campaign. If you share out a Google doc publicly, apparently you won&amp;rsquo;t want it to become too popular lest you hit your cap.&lt;/p&gt;
+
+&lt;p&gt;UPDATE2: The links may have been updated to the Acme Inc. dummy company, but the images and text in the post still reference Smart Furniture. I&amp;rsquo;m just nitpicking at this point, though, since the numbers they plugged in for Acme Inc. match those from Smart Furniture; I guess I just like being a little pain in the ass ;)&lt;/p&gt;
+
+&lt;p&gt;UPDATE3: K, so they have it all set now. The docs in the sample paragraph just below the video link to the Acme Inc. docs, but Smart Furniture image does now link to an actual Smart Furniture poster. Interestingly, the initial link for the Smart Furniture poster was HTTP, whereas the new link is to same item but over HTTPS, which may indicate differences in bandwidth restrictions between SSL&amp;rsquo;d and non-SSL traffic for Google Docs, or it could just be fluke. Anyhow: Well done to Google for this wrapped up pretty quickly.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

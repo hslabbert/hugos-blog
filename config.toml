@@ -1,5 +1,76 @@
 baseurl = "https://bamboo.slabnet.com/~hslabbert/blog/"
+#baseurl = "https://bamboo.slabnet.com/"
 languageCode = "en-us"
-title = "Mostly tech stuff...mostly"
+title = "Hugo's Blog"
+copyright = "&copy; 2016 Hugo Slabbert"
+
 theme = "hyde"
 canonifyurls = true
+
+paginate = 10
+paginatePath = "page"
+
+[indexes]
+  category = "categories"
+  tag = "tags"
+  topic = "topics"
+
+[taxonomies]
+    # Optional. Use if you want tags and lists.
+   category = "categories"
+
+[author]
+    name = "Hugo Slabbert"
+    email = "hugo@slabnet.com"
+
+[[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 0
+    identifier = "home"
+    url = "/"
+[[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 1
+    identifier = "post"
+    url = "/post/"
+[[menu.main]]
+    name = "Categories"
+    url = "/categories"
+    weight = 2
+[[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 3
+    identifier = "about"
+    url = "/about/"
+[[menu.main]]
+    name = "Disclaimer"
+    url = "/disclaimer"
+    weight = 4
+
+[params]
+    brand = "Hugo's Blog"
+    description = "Mostly tech...mostly"
+    subtitle = "Mostly tech...mostly"
+
+    # Sidebar position
+    # false, true, "left", "right"
+    sidebar = "left"
+
+    # Select a syntax highight.
+    # Check the static/css/highlight directory for options.
+    highlight = "default"
+
+[social]
+    # Link your social networking accouns to the side menu
+    # by entering your username or ID.
+
+    # SNS microblogging
+    twitter = "hugoslabbert"
+    googleplus = "HugoSlabbert-B178313E"
+
+    linkedin = "hugoslabbert"
+    github = "hslabbert"
+    reddit = "BitterOleNetworkOp"

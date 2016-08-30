@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dns on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/dns/</link>
+    <description>Recent content in Dns on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Sat, 12 Jan 2008 18:37:33 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/dns/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Update on Network Solutions Front-running</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/update-on-network-solutions-frontrunning/</link>
+      <pubDate>Sat, 12 Jan 2008 18:37:33 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/update-on-network-solutions-frontrunning/</guid>
+      <description>&lt;p&gt;If you caught my previous post about Network Solutions&amp;rsquo; practice of domain front-running, here&amp;rsquo;s the latest bit: They are now actually claiming that this practice protects people &lt;strong&gt;&lt;em&gt;against&lt;/em&gt;&lt;/strong&gt; front-running (see &lt;a href=&#34;http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;amp;articleId=9056778&#34;&gt;CW article&lt;/a&gt; for more details). Their logic? Well, if the domain gets reserved when you search for it, they are preventing scammers from registering the domain and selling it back to you&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;uhm&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s try this again:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;I go to NS to search for a domain&amp;rsquo;s availability&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;NS registers that domain so that it&amp;rsquo;s only available through them, but in no way is this reservation tied to me, the person who did the search.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;End results:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If I want the domain, I &lt;em&gt;HAVE&lt;/em&gt; to buy it through Network Solutions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If some scammer wants to snatch up the domain to sell it back to me at a profit, the only catch is that he has to register the domain through Network Solutions. He can do this because, again, NS has in NO WAY tied the search and subsequent reservation to only myself.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wow, even for PR spin that&amp;rsquo;s some pretty crappy logic in their excuse.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Network Solutions Domain Frontrunning</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/network-solutions-domain-frontrunning/</link>
+      <pubDate>Wed, 09 Jan 2008 18:24:17 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/network-solutions-domain-frontrunning/</guid>
+      <description>&lt;p&gt;If you have not heard of the term cybersquatting, here&amp;rsquo;s the gist:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Think of a domain name that someone else is likely to be interested in.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Register/Purchase that domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Wait for that person to try and register the domain for themselves.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Sell the domain to them for a profit.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another spin on this idea is called domain frontrunning, where domain registrars track which domains are checked for availability (e.g. you searched for a domain that you&amp;rsquo;re interested in), and they snatch up that domain. They still show the domain as available through their searches, but other whois lookups or domain registrar searches shows the domain as already registered&amp;hellip;to the first registrar.This might sound confusing, but basically it means that whatever domain you just searched for through the first registrar is now &lt;em&gt;ONLY&lt;/em&gt; available through that registrar, forcing you to buy it through them and no one else. Technically, this is not illegal, but it&amp;rsquo;s a pretty underhanded way to do business. While I personally have never had any problems working with &lt;a href=&#34;http://www.networksolutions.com/&#34;&gt;Network Solutions&lt;/a&gt;, they are currently accused of this practice of front running.&lt;/p&gt;
+
+&lt;p&gt;For more details, check out the full article at &lt;a href=&#34;http://www.domainnamenews.com/featured/domain-registrar-network-solutions-front-running-on-whois-searches/1359&#34;&gt;Domain Name News&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

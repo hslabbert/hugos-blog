@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Howto on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/tags/howto/</link>
+    <description>Recent content in Howto on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 16 Jan 2008 18:41:02 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ultimate Guide to Linux Boot Problems</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</link>
+      <pubDate>Wed, 16 Jan 2008 18:41:02 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</guid>
+      <description>&lt;p&gt;I haven&amp;rsquo;t played around much in Linux lately, but I finally dusted off my &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; CD&amp;rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&amp;hellip;except then I couldn&amp;rsquo;t get into the Linux OS&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!&lt;/p&gt;
+
+&lt;p&gt;Anyway, after searching and searching and booting back and forth multiple times between Vista (slow boot!) and the Xubuntu live CD (which is somehow booting faster, even though it&amp;rsquo;s discovering all of the hardware for the first time), I finally stumbled across an absolute gem for Linux booting troubleshooting.&lt;/p&gt;
+
+&lt;p&gt;I have to say this is by &lt;em&gt;FAR&lt;/em&gt; the most conclusive coverage I have EVER seen for resolving Linux boot issues. Lilo and GRUB issues are covered with tonnes of different scenarios, including dual-booting and the dreaded Vista BCD bootloader. If you have run just about ANY Linux distro, you need this reference. And don&amp;rsquo;t tell me that you&amp;rsquo;ve never had boot loader issues, &amp;lsquo;cuz it will happen to you!&lt;/p&gt;
+
+&lt;p&gt;Check it out &lt;a href=&#34;http://www.justlinux.com/forum/showthread.php?s=7b4f3007a3173da87ba7e5683965a271&amp;amp;t=144294&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

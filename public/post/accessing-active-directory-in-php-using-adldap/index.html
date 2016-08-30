@@ -1,0 +1,116 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Accessing Active Directory in PHP using ADLDAP &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Accessing Active Directory in PHP using ADLDAP</h1>
+			  <span class="post-date">Wed, Aug 13, 2008</span>
+			      <p>Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. <!-- more --></p>
+
+<p>Now, you can obviously use PHP&rsquo;s built-in LDAP support, provided PHP was built &ndash;with-ldap. If you&rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&rsquo;m betting there are other systems out there, but for us, <a href="http://adldap.sourceforge.net/">adldap</a> was the answer.</p>
+
+<p>Adldap provides an easy-to-use interface for both querying and modifying Active Directory. This post is not meant to be a complete setup guide, but rather just an overview, so here&rsquo;s the quick summary:</p>
+
+<ul>
+<li><p>Runs on Apache or IIS (although the documentation is a little thin on using IIS)</p></li>
+
+<li><p>Might require some configuration in your environment to support secure LDAP queries over SSL</p></li>
+
+<li><p>Incorporates into your PHP pages through a class definition file. Configure the settings in the provided adldap.php file to match your environment, include() it in your php page, initialize an instance of the class (<code>$adldap = new adLDAP();</code>), and you&rsquo;re ready to go.</p></li>
+
+<li><p>Allows you to add custom functions by adding to the class definition file.</p></li>
+</ul>
+
+<p>If some of that sounds scary, don&rsquo;t worry: It can sound more intimidating than it really is. If you have some reasonable PHP background, just go and check it out and get your feet wet. Like I said: Both myself and the other project contributor are not full-time developers, but we&rsquo;ve thrown pretty useful AD integration into the portals. Heck, we&rsquo;ve even started incorporating some AJAX on the site (with some help from <a href="http://www.prototypejs.org/">Prototype</a>&hellip;but that&rsquo;s another post&hellip;) to work with adldap and make the thing pretty slick overall!</p>
+
+<p>One thing that was getting at me a little bit was that I couldn&rsquo;t just throw a custom ldap query string into aldap and get the results. Part of the abstraction is that you get a set of functions for querying for specific types of information: user_info(), user_delete(), authenticate(), group_create(), etc, but no raw ldap query function. So I checked out how the thing is put together, and I bastardized some of the existing functions to suit my purposes. If you&rsquo;re familiar with ldap queries, add the following code into your aldap.php class definition file, and you&rsquo;ve got yourself an easy way of performing custom ldap queries:</p>
+
+<p><code>function any_info($filter=NULL,$fields=NULL){
+// Written by Hugo Slabbert (JustAnotherSysadmin - http://bamboo.slabnet.com/~hslabbert/blog) from other functions; defaults to root
+if (!$this-&gt;_bind){ return (false); }
+if ( $filter==NULL ){ $filter=&quot;(&amp;(objectclass=domainDNS)(!(distinguishedname=&quot; . $this-&gt;_base_dn . &quot;)))&quot;; }
+if ($fields==NULL){ $fields=array(&quot;name&quot;,&quot;cn&quot;,&quot;displayname&quot;,&quot;dn&quot;); }
+$sr=ldap_search($this-&gt;_conn,$this-&gt;_base_dn,$filter,$fields);
+$entries = ldap_get_entries($this-&gt;_conn, $sr);</code></p>
+
+<p><code>return ($entries);
+}</code></p>
+
+<p>If you do use the code snippet, I just ask that you keep the comments in tact. I don&rsquo;t mind sharing, but I&rsquo;d like a little bit of the credit!</p>
+
+<p>When you use the <code>any_info()</code> function above, it takes two parameters: your ldap query (<code>$filter</code>), and an array of which attributes you wish to return for the objects that match your query (<code>$fields</code>). If you leave the second parameter blank, the default attributes of name, cn (canonical name), display name, and dn (distinguished name) will be returned.</p>
+
+<p>So, go ahead! Try it out! Let me know if it works for you and what doesn&rsquo;t. I do have two final recommendations, though:</p>
+
+<ol>
+<li><p>If you run into technical difficulties getting adldap running properly, you&rsquo;re probably better off going through their actual support (forums, documentation, etc.) than posting requests here. I&rsquo;ve used the system, but I&rsquo;m betting you will get way better support from the actual devs!</p></li>
+
+<li><p>Remember that the point of this tool is to enable access to your Active Directory through the a web interface. Secure your web app accordingly! Putting powerful tools on the web is great, but realize that you are doing just that: Putting POWERFUL tools on the web! You are the best judge (hopefully!) of what suits your organization.</p></li>
+</ol>
+
+<p>Happy coding!</p>
+
+<p>Bitcoin tip address for this post: 13344S6vTAmrM5De7DermysvN6UE3QDSzb</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

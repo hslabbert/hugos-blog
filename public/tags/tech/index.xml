@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/tags/tech/</link>
+    <description>Recent content in Tech on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Sun, 28 Aug 2016 22:29:33 -0700</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Moving to Hugo</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</link>
+      <pubDate>Sun, 28 Aug 2016 22:29:33 -0700</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</guid>
+      <description>&lt;p&gt;So&amp;hellip;I&amp;rsquo;ve moved my blog to Hugo.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

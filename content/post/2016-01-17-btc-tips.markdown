@@ -1,0 +1,15 @@
+---
+date: 2016-01-17 05:43:46+00:00
+slug: btc-tips
+title: BTC tips
+categories:
+- bitcoin
+---
+
+This blog hasn't been updated in a bit, but I'm experimenting with bitcoin tips.  If you like an article or found it useful, please feel free to send me "thank you" tip via bitcoin through the BTC address at the bottom of the article.  This is also a rudimentary "voting system" to let me know which content has been most beneficial to people.
+
+I'll be adding BTC tip addresses to articles in fits and starts for existing articles as I get to them.
+
+Cheers!
+
+JaS

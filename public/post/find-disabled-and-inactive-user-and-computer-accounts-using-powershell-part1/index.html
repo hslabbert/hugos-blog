@@ -1,0 +1,152 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part I &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</h1>
+			  <span class="post-date">Tue, Mar 25, 2008</span>
+			      <p>We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.</p>
+
+<p>Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip;</p>
+
+<!-- more -->
+
+<p><code>PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot;
+PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot;
+PoSH&gt; $adobjuser
+{CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}</code></p>
+
+<p><code>PoSH&gt; $adobjuser.lastLogonTimetamp</code></p>
+
+<p><code>PoSH&gt;</code></p>
+
+<p>What the &hellip;? Hmm&hellip;I&rsquo;m sure I saw lastLogonTimestamp in the members for that object before:</p>
+
+<p><code>PoSH&gt;$adobjuser | Get-Member</code></p>
+
+<p><code>TypeName: System.DirectoryServices.DirectoryEntry
+...
+lastLogonTimestamp              Property   System.DirectoryServices.PropertyValueCollection lastLogonTimestamp {get;...
+...
+</code>
+<code>PoSH&gt;</code></p>
+
+<p>Right,  like I said! Then why doesn&rsquo;t it give me any information for that property? May it&rsquo;s blank? Highly unlikely, but let&rsquo;s check:</p>
+
+<p><code>PoSH&gt; $adobjuser | Format-List *
+...
+lastLogonTimestamp              : {System.__ComObject}
+...</code></p>
+
+<p><code>PoSH&gt;</code></p>
+
+<p>Great! What do I do with that thing? To be honest, working with ComObjects is not really my thing, but we still can get the information we want. For my purposes, I was searching through AD with a DirectorySearcher anyway, and the answer to my problems came from DirectorySearcher in the end. First, the code (credit to <a href="http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx">Bahram&rsquo;s Blog</a>), and then we&rsquo;ll run through what we&rsquo;re actually doing.</p>
+
+<p><code>$currentDate = [System.DateTime]::Now
+$currentDateUtc = $currentDate.ToUniversalTime()
+</code><code>$lltstamplimit = $currentDateUtc.AddDays(- $NumDays)
+$lltIntLimit = $lltstampLimit.ToFileTime()
+$adobjroot = [adsi]''
+</code><code>$objstalesearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+</code><code>$objstalesearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(lastLogonTimeStamp&lt;=&quot; + $lltIntLimit + &quot;))&quot;
+</code><code>$resultstaleaccn = $objstalesearcher.findall() | sort path</code></p>
+
+<p>Alright, so before we get going, this snippet of code requires that we define an Int32 variable called <code>$numdays</code> before we run it. This will be used as the number of days since the account last logged on. So what exactly is going on here? The easiest way to both get a proper DateTime object and get a relative time for setting the period for inactive accounts is to get the current date and time:</p>
+
+<p><code>$currentDate = [System.DateTime]::Now</code></p>
+
+<p>As far as I can see, you could also use <code>$currentdate = Get-Time</code> , so it&rsquo;s your choice, really.</p>
+
+<p>Active Directory stores times in UTC format, so we can use the ToUniversalTime() method available on the System.DateTime class:</p>
+
+<p><code>$currentDateUtc = $currentDate.ToUniversalTime()</code></p>
+
+<p>This is where the <code>$numdays</code> variable comes in. Let&rsquo;s say your organization has a policy in effect that accounts that have been inactive for 60 must be disabled. If the lastLogonTimeStamp attribute is 60 days less than the current Date/Time, then we know that account has not been logged onto for the last 60 days. So, we will want to search for accounts that have a value 60 days less than today in their lastLogonTimeStamp attribute. To make that reference point, we can do some simple math:</p>
+
+<p><code>$lltstamplimit = $currentDateUtc.AddDays(- $NumDays)</code></p>
+
+<p>This assumes that we have run <code>$NumDays = 60</code> somewhere before this last command, and effectively saves our last logon time stamp limit ($lltstamplimit) as a System.DateTime value 60 days before now.</p>
+
+<p><code>$lltIntLimit = $lltstampLimit.ToFileTime()</code> converts the <code>$lltstamplimit</code> to an Int64 value. Why? You&rsquo;ve got me! Please let me know if you have the goods on this, because I&rsquo;m still blissfully unaware of the purpose/function of Int64 values.</p>
+
+<p>The rest is fairly straight-forward. We set up a directory searcher and define the filter as a user object the lastLogonTimeStamp less than the limit we defined in <code>$lltIntLimit</code>.</p>
+
+<p><code>$adobjroot = [adsi]''
+$objstalesearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+$objstalesearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(lastLogonTimeStamp&lt;=&quot; + $lltIntLimit + &quot;))&quot;
+</code></p>
+
+<p>In the name of tidiness and efficiency, I would recommend restricting the search root to your user containers with something like <code>$objstalesearcher.searchroot = &quot;LDAP://$searchrootdn&quot;</code> where $searchrootdn is a distinguished name as a string.</p>
+
+<p>All that remains at that point is to collect the results:</p>
+
+<p><code>$resultstaleaccn = $objstalesearcher.findall() | sort path</code></p>
+
+<p>For my own purposes I sort the results by their LDAP path, but you obviously don&rsquo;t have to. Remember that your result will be saved as a System.DirectoryServices.SearchResult object, so you will probably have to use <code>$_.Properties.[SomeProperty]</code> to get the information you&rsquo;re looking for.  From there, you can do with the results as you please.</p>
+
+<p>Oh, and if you&rsquo;re looking for inactive computer  accounts instead of user accounts, switch both the objectCategory and objectClass values in your DS searcher filter to <em>computer.</em></p>
+
+<p>To learn how to find <em>disabled</em> accounts rather than inactive ones, head over to Part II.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

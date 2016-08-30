@@ -1,0 +1,137 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Modifying Group Memberships with Powershell, Part I &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Modifying Group Memberships with Powershell, Part I</h1>
+			  <span class="post-date">Sat, Jan 19, 2008</span>
+			      
+
+<p>I recently had to spend <em>hours</em> figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.</p>
+
+<p>The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007. We have a fairly customized, hosted Exchange environment, and so disabling a user is not just a simple matter and right-clicking and disabling the account in Active Directory Users and Computers (ADUC); we have a 2-page doc for the process to catch everything from removing group memberships to setting up email forwarding or restrictions, changing dial-in permissions, changing NTFS permissions on profile directories, etc.</p>
+
+<!-- more -->
+
+<p>Anyway, I had already dabbled in modifying group memberships in our user creation script (still a bit clunky, but it gets the job done) by copying group memberships from a template account. It goes something like this (please note that several of these commands require the Exchange 2007 snap-in for Powershell, and some also the <a href="http://www.codeplex.com/PowerShellCX">Powershell Community Extensions</a>  snap-in):</p>
+
+<p><code>
+$templaccn = Get-Mailbox | Where-Object { $_.name -match [template account name] }
+$newuser = Get-User [new user name]
+$filterid = ( Get-User $templaccn.name ).identity
+$groups = Get-Group -filter { Members -eq $filterid }
+$groups | Foreach-Object {
+$groupdn = $_.DistinguishedName
+</code><code>$fqgroup = [ADSI](&quot;LDAP://$groupdn&quot;)
+</code><code>$membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
+</code><code>if ( $membercheck.length -ge 1)
+</code><code>{
+</code><code>Write-Host &quot;User is already a member of&quot; $_.name &quot;</code>b. No group addition made. <code>n&quot;
+</code><code>}
+</code><code>else
+</code><code>{
+</code><code>$fqgroup.member.add(&quot;$newuserdn&quot;)
+</code><code>$fqgroup.setinfo()
+</code><code>}</code>
+<code>}</code></p>
+
+<p>So here&rsquo;s the run down:</p>
+
+<p>The opening <em>Get-Mailbox</em> line uses one of the Exchange 2007 snap-ins to get the mailbox object for our template account and saves it to the <em>$templaccn</em> variable; substitute <code>[template account name]</code> with the name of your template account. I also set the <em>$newuser</em> variable to the name of the user who&rsquo;s group membership we will be modifying. This is just because the script is used for user creation, so you might want to change the variable name to something like <em>$user</em> or <em>$moduser</em>; just be sure to change the variable throughout your code!</p>
+
+<p>The next two lines are used in conjunction with each other to find all groups of which the template account is a member. You could also replace these two lines with <code>Get-Group | Where-Object { $_.Members -match $templaccn }</code>, but that first collects <em>ALL</em> the groups in your environment and then runs them through a filter of <code>Where-Object</code>. I have found the filterid way to be much quicker.</p>
+
+<p>For each group, we then first save the distinguished name to the _$groupdn _variable, then use the Powershell ADSI wrapper to store its full ADSI object as <em>$fqgroup</em>. I usually prefix <em>fq</em> to variables for full ADSI objecs to denote their type, but you can obviously use something like _adObj** **_whatever convention you like. The <em>member</em> property for the group is a multi-valued property that contains the groups members, so using <em>Where-Object</em> we effectively set a value to <em>$membercheck</em> only if our user is a member of that group. As I was using this to create new users, this was probably not completely necessary, but it was good practice anyway.</p>
+
+<p>The <em>if</em> statement there just throws out that the user is already a member of the group if <em>$membercheck</em> had any value set, otherwise it proceeds to adding the user to the group.</p>
+
+<p>We then use the <em>add()</em>  method of the member property of the ADSI object for our group, supplying our user&rsquo;s distinguished name as an argument, and use <em>setInfo()</em> to apply the changes to the ADSI object.</p>
+
+<p>Now, the reason this was tough to do in the first place, and why I ended up later having so much trouble with removing group memberships and making other modifications, is because the <em>$fqgroup</em> ADSI object does not display any methods! You can read all the properties you want, but for some reason the Powershell design team thought it would be a good idea to hide the methods, even though they are there. If you don&rsquo;t believe me, try this:</p>
+
+<p><code>$domroot = [adsi]''</code>
+`</p>
+
+<h2 id="distinguishedname">distinguishedName</h2>
+
+<p>{DC=i-worx,DC=ca}
+`</p>
+
+<p>Try just typing <em>$domroot</em>. It should return something like:
+<code>
+[PS] C:\&gt;$domroot</code></p>
+
+<h2 id="distinguishedname-1">`distinguishedName</h2>
+
+<p>{DC=test,DC=local}`</p>
+
+<p>Alright, now try using Get-Member to get some info on this ADSI object: <code>$domroot | Get-Member</code></p>
+
+<p>All of those seem to be Properties, right, with no methods? Hmm&hellip; For more info on this, check out <a href="http://blogs.technet.com/benp/archive/2007/03/05/benp-s-basic-guide-to-managing-active-directory-objects-with-powershell.aspx">Benp’s Basic Guide to Managing Active Directory Objects with PowerShell</a> as well as <a href="http://pathologicalscripter.wordpress.com/2006/09/28/invisible-methods-for-adsi/">&ldquo;Invisible&rdquo; methods for ADSI?</a> from the Pathological Scripter.</p>
+
+<p>Anyway, all this to show that it doesn&rsquo;t seem to be as straightforward as we might have hoped.</p>
+
+<p>So, that seems to have covered <em>adding</em> users to groups&hellip;now what if I want to <em>remove</em> a user&rsquo;s group memberships? Part II of this post will cover that&hellip;</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

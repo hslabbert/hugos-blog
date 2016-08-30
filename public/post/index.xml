@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/post/</link>
+    <description>Recent content in Posts on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Sun, 28 Aug 2016 22:29:33 -0700</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Moving to Hugo</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</link>
+      <pubDate>Sun, 28 Aug 2016 22:29:33 -0700</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</guid>
+      <description>&lt;p&gt;So&amp;hellip;I&amp;rsquo;ve moved my blog to Hugo.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>BTC tips</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/btc-tips/</link>
+      <pubDate>Sun, 17 Jan 2016 05:43:46 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/btc-tips/</guid>
+      <description>&lt;p&gt;This blog hasn&amp;rsquo;t been updated in a bit, but I&amp;rsquo;m experimenting with bitcoin tips.  If you like an article or found it useful, please feel free to send me &amp;ldquo;thank you&amp;rdquo; tip via bitcoin through the BTC address at the bottom of the article.  This is also a rudimentary &amp;ldquo;voting system&amp;rdquo; to let me know which content has been most beneficial to people.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be adding BTC tip addresses to articles in fits and starts for existing articles as I get to them.&lt;/p&gt;
+
+&lt;p&gt;Cheers!&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What do you run on XenServer?</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</link>
+      <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/XenServerArmy&#34;&gt;@XenServerArmy&lt;/a&gt; asked in &lt;a href=&#34;http://twitter.com/XenServerArmy/status/18477320394&#34;&gt;this tweet&lt;/a&gt; what applications/services people are running on their XenServer deployments. So, here&amp;rsquo;s a quick list for &lt;a href=&#34;http://www.i-worx.ca/&#34;&gt;i-worx&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Server OS&amp;rsquo;s:
+
+&lt;ol&gt;
+&lt;li&gt;Windows Server 2003 R2 (32- and 64-bit)&lt;/li&gt;
+&lt;li&gt;Windows Server 2008 R2 (64-bit only)&lt;/li&gt;
+&lt;li&gt;Debian (4.0 &amp;amp; 5.0)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Active Directory Domain Controllers&lt;/li&gt;
+&lt;li&gt;MS DNS Servers&lt;/li&gt;
+&lt;li&gt;Server 2003 32-bit Print Server&lt;/li&gt;
+&lt;li&gt;MS SQL Servers, 32- and 64-bit (mostly SQL2005, but one old legacy SQL2000 box)&lt;/li&gt;
+&lt;li&gt;IIS6.0 web servers&lt;/li&gt;
+&lt;li&gt;MS Exchange 2007 (Hub Transport, Mailbox/Public Folder, and Client Access servers)&lt;/li&gt;
+&lt;li&gt;Blackberry Enterprise Servers&lt;/li&gt;
+&lt;li&gt;MS Project 2007&lt;/li&gt;
+&lt;li&gt;MS Sharepoint Services&lt;/li&gt;
+&lt;li&gt;MS CRM&lt;/li&gt;
+&lt;li&gt;Citrix gear
+
+&lt;ol&gt;
+&lt;li&gt;Licensing Server&lt;/li&gt;
+&lt;li&gt;Secure Gateways&lt;/li&gt;
+&lt;li&gt;Web Interfaces&lt;/li&gt;
+&lt;li&gt;Desktop Delivery Controllers for XenDesktop farm&lt;/li&gt;
+&lt;li&gt;Provisioning Servers&lt;/li&gt;
+&lt;li&gt;XP Virtual Desktops&lt;/li&gt;
+&lt;li&gt;Server 2008R2 XenApp servers&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;NetApp Data Fabric Manager&lt;/li&gt;
+&lt;li&gt;Sonicwall Viewpoint reporting server&lt;/li&gt;
+&lt;li&gt;Various ERP, CRM, and document management application servers&lt;/li&gt;
+&lt;li&gt;Custom, SpamAssassin-based email filtering system&lt;/li&gt;
+&lt;li&gt;ldirectord load balancers&lt;/li&gt;
+&lt;li&gt;Vyatta virtual routers&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So, what are you running on XenServer? :)&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post:
+&lt;a href=&#34;bitcoin:1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&#34;&gt;1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>&#34;Gone Google&#34; Marketing Fail...</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</guid>
+      <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
+
+&lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Bandwidth fail:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-bandwidth-fail.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-bandwidth-fail.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hmm&amp;hellip;that&amp;rsquo;s not good. And if we try to click &lt;strong&gt;Download&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-virus-scan.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-virus-scan.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Not so good either&amp;hellip;but wait! There is hope! Let&amp;rsquo;s try to &lt;strong&gt;Download anyway&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-forbidden.png&#34;&gt;&lt;img src=&#34;http://justanothersysadmin.files.wordpress.com/2010/06/docs-fail-forbidden.png&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oh&amp;hellip;damn&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve had a few different people check out the links from different networks and using different Google accounts, and all of them had the same result. With that being said, maybe we all downloaded too much docs content recently (?)&lt;/p&gt;
+
+&lt;p&gt;Now, don&amp;rsquo;t get me wrong: I use a lot of Google products and services (Gmail; Docs; Android (HTC Magic running CyanogenMod 5.0.7DS); Chrome, as can be seen in the screenshots; etc.) and love them. This was just too funny to pass up! So, are you ready to Go Google? :)&lt;/p&gt;
+
+&lt;p&gt;UPDATE1: Google has changed the poster link to point to a dummy document (&lt;a href=&#34;https://docs.google.com/fileview?id=0B2Rsgoiin0I9NjAxYzM3YzAtMjExOC00ZDg1LTkxYWMtYmI1M2RmMzU5ZTYy&amp;amp;hl=en&#34;&gt;link&lt;/a&gt;) for &lt;em&gt;Acme Inc&lt;/em&gt;. Nice one!&lt;/p&gt;
+
+&lt;p&gt;Just in case you were curious, the previous sample poster for Smart Furniture is still available (&lt;a href=&#34;http://docs.google.com/fileview?id=0B2Rsgoiin0I9NmFmNTIwOWEtNjdhMy00YWI2LWJmNmUtNDNlOGRkODcyNDBl&amp;amp;hl=en&#34;&gt;link&lt;/a&gt;). My guess is that, as per the initial warning page, posting the PDF for Smart Furniture resulting in them tripping over a bandwidth limit for non-Google format docs for the Smart Furniture Google Apps account. Google probably reset the counter for Smart Furniture, since the original sample doc from them is now accessible, and then generated the dummy Acme Inc. sample page, hosting it within a Google Docs account that is not under the same bandwidth restrictions (internal account?).&lt;/p&gt;
+
+&lt;p&gt;So, I guess this has become a &amp;ldquo;nothing to see here, move along!&amp;rdquo; post at this point, but the screenshots still tell the tale of a nice &amp;ldquo;oops!&amp;rdquo; on this campaign. If you share out a Google doc publicly, apparently you won&amp;rsquo;t want it to become too popular lest you hit your cap.&lt;/p&gt;
+
+&lt;p&gt;UPDATE2: The links may have been updated to the Acme Inc. dummy company, but the images and text in the post still reference Smart Furniture. I&amp;rsquo;m just nitpicking at this point, though, since the numbers they plugged in for Acme Inc. match those from Smart Furniture; I guess I just like being a little pain in the ass ;)&lt;/p&gt;
+
+&lt;p&gt;UPDATE3: K, so they have it all set now. The docs in the sample paragraph just below the video link to the Acme Inc. docs, but Smart Furniture image does now link to an actual Smart Furniture poster. Interestingly, the initial link for the Smart Furniture poster was HTTP, whereas the new link is to same item but over HTTPS, which may indicate differences in bandwidth restrictions between SSL&amp;rsquo;d and non-SSL traffic for Google Docs, or it could just be fluke. Anyhow: Well done to Google for this wrapped up pretty quickly.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wordpress Theme Updated</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/wordpress-theme-updated/</link>
+      <pubDate>Thu, 15 Apr 2010 05:48:25 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/wordpress-theme-updated/</guid>
+      <description>&lt;p&gt;In case it isn&amp;rsquo;t obvious: I switched up the theme for the site. I was never really too fond of the light-green touch of the previous theme and the code styling especially bugged me, but it was a fairly clean and so I just kind of stuck with it.&lt;/p&gt;
+
+&lt;p&gt;Anyhow; comments &amp;amp; feedback appreciated.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
+      <description>&lt;p&gt;As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.&lt;/p&gt;
+
+&lt;p&gt;Anyway, the download comes as an installation script called &lt;code&gt;esets.i386.deb.bin&lt;/code&gt;. Running that script outputs a license agreement that you have to accept, produces a .deb package called &lt;code&gt;esets.i386.deb&lt;/code&gt;, and outputs instructions on how to install the .deb package by using dpkg and import the license file. The .deb package installed just fine on another Debian test box, but when I attempted to run &lt;code&gt;dpkg –i esets.i386.deb&lt;/code&gt; on the Virtuozzo VPS, tar squawked at me that it could not open &lt;code&gt;/dev/stdin&lt;/code&gt; and the installation bailed:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hostname:/usr/local/src/eset# dpkg -i esets-3.0.11.i386.deb
+Selecting previously deselected package esets.
+(Reading database ... 24639 files and directories currently installed.)
+Unpacking esets (from esets-3.0.11.i386.deb) ...
+Setting up esets (3.0.11) ...
+Unpacking esets modules ...
+tar: /dev/stdin: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+dpkg: error processing esets (--install):
+subprocess post-installation script returned error exit status 2
+Errors were encountered while processing:
+esets
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;To which I replied, “huh?”&lt;/p&gt;
+
+&lt;p&gt;I took a peek around /dev (&lt;code&gt;ls /dev&lt;/code&gt;), and wouldn’t you know it? No stdin, no stdout, and no stderr! Say what? I checked around ESET’s KB’s, but found nothing related to the issue. I poked around Virtuozzo’s and OpenVZ’s wiki’s, but again came up empty. I checked out the /dev directory (&lt;code&gt;ls –l /dev/&lt;/code&gt;) on my test box on which I had successfully installed the package, and, as expected, /dev/stdin, /dev/stdout, and /dev/stderr were there. Looking more closely, we see that those files are links to a set of files at /proc/self/fd.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hostname:~# ls -l /dev/std*
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stderr -&amp;gt; /proc/self/fd/2
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stdin -&amp;gt; /proc/self/fd/0
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stdout -&amp;gt; /proc/self/fd/1
+hostname:~# 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So, on my Debian Virtuozzo VPS, I did the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s /proc/self/fd/0 /dev/stdin
+ln -s /proc/self/fd/1 /dev/stdout
+ln -s /proc/self/fd/2 /dev/stderr 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I re-ran the package installation, and we were set! I don’t know if this issue is particular to some .deb packages or to all, as I had only used &lt;code&gt;apt-get&lt;/code&gt; up to that point for package installation. As of now, though, I have not yet had any issues with the package or with the links I created…at least not as far as I can tell!&lt;/p&gt;
+
+&lt;p&gt;Let me know if you have any other info on this issue.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post:
+&lt;a href=&#34;bitcoin:1PncfTJjuzybqSDcZrP8qJSApHgtZp5B7F&#34;&gt;1PncfTJjuzybqSDcZrP8qJSApHgtZp5B7F&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
+      <description>&lt;p&gt;We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of &lt;code&gt;#550 4.4.7 QUEUE.Expired; message expired ##&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Delivery has failed to these recipients or distribution lists:&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[user display name]
+Microsoft Exchange has been trying to deliver this message without success
+and has stopped trying. Please try sending this message again, or provide
+the following diagnostic text to your system administrator.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wow&amp;hellip;that was helpful&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;After &lt;em&gt;much&lt;/em&gt; digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt;attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute is not directly editable, but you &lt;em&gt;can&lt;/em&gt; edit or remove the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute, which effectively updates the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute (ref &lt;a href=&#34;http://technet.microsoft.com/en-us/library/aa996228.aspx&#34;&gt;Public Folder Routing&lt;/a&gt; - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute on our PF store, and not the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (&lt;code&gt;CN=Configuration,DC=yourdomain,DC=[yourtld]&lt;/code&gt;). The full path is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CN=Public Folders,CN=Folder Hierarchies,CN=[Your Exchange Administrative Group Name],CN=Administrative Groups,CN=[Your Exchange Organization Name],CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=[yourdomain],DC=[yourtld].
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After updating the &lt;strong&gt;msExchOwningPFTree&lt;/strong&gt; attribute appropriately to a public folders server that was in production resolved the issue.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post:
+&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Workaround for mysqldump SSL error 2026 bug #27669</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</link>
+      <pubDate>Mon, 09 Feb 2009 16:36:55 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</guid>
+      <description>&lt;p&gt;I had not previously played aroung much with MySQL replication, but got the chance to do so recently. I&amp;rsquo;m doing some testing with a new mail filter setup composed of &lt;a href=&#34;http://www.ijs.si/software/amavisd/&#34;&gt;amavisd-new&lt;/a&gt;, &lt;a href=&#34;http://spamassassin.apache.org/&#34;&gt;SpamAssassin&lt;/a&gt;, and some other SA modules running through &lt;a href=&#34;http://www.postfix.org/&#34;&gt;Postfix&lt;/a&gt; on &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; Etch. The setup uses &lt;a href=&#34;http://www.maiamailguard.com/&#34;&gt;Maia Mailguard&lt;/a&gt; as a web front-end and management system, including per-user settings and quarantines. We&amp;rsquo;re using MySQL for the database backend for Maia for storing quarantines, per-user settings and the like, but wanted to have a dual-MX setup with a secondary MX sitting in a remote site.&lt;/p&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;So, we needed some way to keep the MySQL data between the two servers in sync. I had looked at &lt;a href=&#34;http://www.drbd.org/&#34;&gt;DRBD&lt;/a&gt; and &lt;a href=&#34;http://www.linux-ha.org/&#34;&gt;linux-ha&lt;/a&gt;, but in the end decided to go with a dual-master &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/replication.html&#34;&gt;MySQL replication&lt;/a&gt; setup (&lt;a href=&#34;http://www.neocodesoftware.com/replication/&#34;&gt;howto1&lt;/a&gt;, &lt;a href=&#34;http://lug.wsu.edu/node/545/print&#34;&gt;howto2&lt;/a&gt;), using the built-in SSL capabilities in MySQL to encrypt the replication traffic over the WAN. After a bit of tweaking, I got that going, but then noticed that I could no longer perform mysqldump commands on the databases when running the command locally. I got the following error message whenever I tried a mysqldump command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Got error: 2026: SSL connection error when trying to connect&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I wasn&amp;rsquo;t specifying any SSL parameters in the mysqldump command, though, and while I did configure the replication users to require SSL in their user setup, the mysqldump user did not have an SSL requirement. I got to the official MySQL bug report for this error(#&lt;a href=&#34;http://bugs.mysql.com/bug.php?id=27669&#34;&gt;27669&lt;/a&gt;) as well as the patch link. But to be honest, that didn&amp;rsquo;t really get me anywhere. The bug report indicates that this behaviour has been corrected in MySQL release 5.0.42, and I was running release 5.0.32.&lt;/p&gt;
+
+&lt;p&gt;I updated the mysql-client package on a test machine to 5.0.75 and tried the mysqldump again; the same error still occurred. I didn&amp;rsquo;t want to upgrade the actual mysql-server package as well, so I looked elsewhere for a fix. It occurred to me that, in order for the MySQL replication to use SSL, I had specified the SSL-related options (ssl-ca and so forth) in the [client] section of the global configuration file at /etc/mysql/my.cnf. As mysqldump starts a MySQL client connection, it would stand to reason that it uses the [client] configuration settings that it would find in the global config file, and hence would try to use SSL.&lt;/p&gt;
+
+&lt;p&gt;I wanted to get mysqldump to &lt;em&gt;not&lt;/em&gt; use SSL connections, but still wanted my replication traffic to use SSL. Since the mysqld daemon runs under the mysql user account, I moved the ssl-related config options out of the [client] section of the global config file of /etc/mysql/my.cnf, created a new .my.cnf config file in the mysql user&amp;rsquo;s $HOME directory (/var/lib/mysql on my system), and entered just the ssl-related options in a [client] section of that .my.cnf file. I reloaded the mysqld daemon and confirmed that the slave connection to the remote server came up properly. It did; the configuration options for the mysql user includes both the global config file of /etc/mysql/my.cnf and the per-user .my.cnf file I had just created, so it is able to pick up the ssl-related options in the [client] section of the per-user settings.&lt;/p&gt;
+
+&lt;p&gt;NOTE: The ssl-related options I am talking about here are only those configured in the [client] section. The ssl-related options in the [mysqld] section of the global config file can stay where they are. It should work to have those present in the local mysql user&amp;rsquo;s .my.cnf config file, but I did not test this.&lt;/p&gt;
+
+&lt;p&gt;Since no ssl-related options were specified in the global [client] configuration anymore, and no per-user settings were present for the user I was using for the mysqldump command, the command connected without SSL, the SSL error 2026 messages went away, and I was again able to successfully perform MySQL backups from the local machine.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 15ZhSjpB8iDRHvzgXphpJ9AhkJUPJw5uE5&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Windows Media Player 11 Breaks Internet Connectivity</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</link>
+      <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</guid>
+      <description>&lt;p&gt;Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&amp;rsquo;m not saying &amp;ldquo;If you install Windows Media Player 11 on your computer, networking will break,&amp;rdquo; I&amp;rsquo;m just saying that if you experience the symptoms outlined below and you&amp;rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.&lt;/p&gt;
+
+&lt;p&gt;So, one of the other techs in the office calls me over: He&amp;rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation. The tech has been on this thing for hours, tried just about everything he can think of shy of a workstation rebuild, and he&amp;rsquo;s looking for some team support. I have him throw the ticket my way; I figure that another set of eyes can only be helpful. With a bit of digging, we isolate the symptoms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Full connectivity to the local server is available&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Name resolution is still solid&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pings are working to both local and remote addresses&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Anything higher up the stack than pings only work locally, and bail as soon as you cross a router. This includes file shares, RDP, FTP, HTTP/s, MAPI, and I&amp;rsquo;m guessing anything else higher than layer 4.&lt;!-- more --&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;About an hour or so later, I&amp;rsquo;m still not much farther than tech #1. I&amp;rsquo;ve reset the stack (&lt;code&gt;netsh winsock reset&lt;/code&gt;) and rebooted, updated/reinstalled the network card drivers&amp;hellip;heck, we even flashed the BIOS on the thing. Nothing&amp;hellip;zip&amp;hellip;nada.&lt;/p&gt;
+
+&lt;p&gt;So, I start thinking that maybe some weird malware/adware that&amp;rsquo;s intercepting traffic and messing things up. I head to Add/Remove Programs and start flipping through the titles. Nothing nasty stands out, but I remove the IE toolbars just to be safe as I&amp;rsquo;ve had some personal experience with Yahoo! toolbars causing crashes and other wonderful things in IE. Still no joy&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I get to the end of the list and see an entry for &lt;strong&gt;Windows Media Player 11 codec&lt;/strong&gt;. Now, fortunate for me, I don&amp;rsquo;t play around with WM much, and so I&amp;rsquo;m not sure if this is a legit piece of software or not. What I do remember is a particularly nasty experience I had with some malware hiding in the Add/Remove Programs list as media players. So, out goes the codec. Just for good measure, I toss Windows Media Player 11 after the reboot and then reboot the box again. Why? To be honest, I really don&amp;rsquo;t know&amp;hellip;I was getting pretty low on bright ideas at that point.&lt;/p&gt;
+
+&lt;p&gt;And then, magically, internet connectivity is restored. I still don&amp;rsquo;t have an explanation for this, but for some reason, Windows Media Player 11 being installed on that machine (and at least two others so far in my experience!) caused Layer 5+ routed networking to bail. If you have a KB or something that explains this, please let me know, &amp;lsquo;cause that&amp;rsquo;s just messed up!&lt;/p&gt;
+
+&lt;p&gt;Anyhow: Happy hunting!&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSL Errors in Exchange 2003 Public Folder Management</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
+      <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
+      <description>&lt;p&gt;On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:&lt;/p&gt;
+
+&lt;p&gt;The SSL certificate server name is incorrect.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to &lt;a href=&#34;http://support.microsoft.com/kb/324345&#34;&gt;this&lt;/a&gt; Microsoft KB. The gist is that whoever set up the Exchange server had set SSL to be required on the \Exadmin virtual directory in the default site on the server. The solution: Clear SSL for the Exadmin vdir and relaunch ESM.&lt;/p&gt;
+
+&lt;p&gt;This one is fairly straightforward and seems to be fairly common, but I thought I would throw it up here all the same as I had not really come across it in recent memory.&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Accessing Active Directory in PHP using ADLDAP</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;
+
+&lt;p&gt;Adldap provides an easy-to-use interface for both querying and modifying Active Directory. This post is not meant to be a complete setup guide, but rather just an overview, so here&amp;rsquo;s the quick summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Runs on Apache or IIS (although the documentation is a little thin on using IIS)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Might require some configuration in your environment to support secure LDAP queries over SSL&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Incorporates into your PHP pages through a class definition file. Configure the settings in the provided adldap.php file to match your environment, include() it in your php page, initialize an instance of the class (&lt;code&gt;$adldap = new adLDAP();&lt;/code&gt;), and you&amp;rsquo;re ready to go.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allows you to add custom functions by adding to the class definition file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If some of that sounds scary, don&amp;rsquo;t worry: It can sound more intimidating than it really is. If you have some reasonable PHP background, just go and check it out and get your feet wet. Like I said: Both myself and the other project contributor are not full-time developers, but we&amp;rsquo;ve thrown pretty useful AD integration into the portals. Heck, we&amp;rsquo;ve even started incorporating some AJAX on the site (with some help from &lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;Prototype&lt;/a&gt;&amp;hellip;but that&amp;rsquo;s another post&amp;hellip;) to work with adldap and make the thing pretty slick overall!&lt;/p&gt;
+
+&lt;p&gt;One thing that was getting at me a little bit was that I couldn&amp;rsquo;t just throw a custom ldap query string into aldap and get the results. Part of the abstraction is that you get a set of functions for querying for specific types of information: user_info(), user_delete(), authenticate(), group_create(), etc, but no raw ldap query function. So I checked out how the thing is put together, and I bastardized some of the existing functions to suit my purposes. If you&amp;rsquo;re familiar with ldap queries, add the following code into your aldap.php class definition file, and you&amp;rsquo;ve got yourself an easy way of performing custom ldap queries:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;function any_info($filter=NULL,$fields=NULL){
+// Written by Hugo Slabbert (JustAnotherSysadmin - http://bamboo.slabnet.com/~hslabbert/blog) from other functions; defaults to root
+if (!$this-&amp;gt;_bind){ return (false); }
+if ( $filter==NULL ){ $filter=&amp;quot;(&amp;amp;(objectclass=domainDNS)(!(distinguishedname=&amp;quot; . $this-&amp;gt;_base_dn . &amp;quot;)))&amp;quot;; }
+if ($fields==NULL){ $fields=array(&amp;quot;name&amp;quot;,&amp;quot;cn&amp;quot;,&amp;quot;displayname&amp;quot;,&amp;quot;dn&amp;quot;); }
+$sr=ldap_search($this-&amp;gt;_conn,$this-&amp;gt;_base_dn,$filter,$fields);
+$entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;return ($entries);
+}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you do use the code snippet, I just ask that you keep the comments in tact. I don&amp;rsquo;t mind sharing, but I&amp;rsquo;d like a little bit of the credit!&lt;/p&gt;
+
+&lt;p&gt;When you use the &lt;code&gt;any_info()&lt;/code&gt; function above, it takes two parameters: your ldap query (&lt;code&gt;$filter&lt;/code&gt;), and an array of which attributes you wish to return for the objects that match your query (&lt;code&gt;$fields&lt;/code&gt;). If you leave the second parameter blank, the default attributes of name, cn (canonical name), display name, and dn (distinguished name) will be returned.&lt;/p&gt;
+
+&lt;p&gt;So, go ahead! Try it out! Let me know if it works for you and what doesn&amp;rsquo;t. I do have two final recommendations, though:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;If you run into technical difficulties getting adldap running properly, you&amp;rsquo;re probably better off going through their actual support (forums, documentation, etc.) than posting requests here. I&amp;rsquo;ve used the system, but I&amp;rsquo;m betting you will get way better support from the actual devs!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Remember that the point of this tool is to enable access to your Active Directory through the a web interface. Secure your web app accordingly! Putting powerful tools on the web is great, but realize that you are doing just that: Putting POWERFUL tools on the web! You are the best judge (hopefully!) of what suits your organization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Happy coding!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 13344S6vTAmrM5De7DermysvN6UE3QDSzb&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2007: Messages stuck in Submission Queue</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</link>
+      <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
+      <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
+
+&lt;blockquote&gt;The execution time of agent &#39;ScanMail Routing Agent&#39; exceeded 300000 (milliseconds) while handling event &#39;OnSubmittedMessage&#39;. This is an unusual amount of time for an agent to process a single event. However, Transport will continue processing this message.&lt;/blockquote&gt;
+
+&lt;p&gt;From the event, you can tell we&amp;rsquo;re using TrendMicro ScanMail as part of our edge protection. It looked like the ScanMail scanning agent was stuck on a message and couldn&amp;rsquo;t proceed. So, off to the services console I go. ScanMail has three services installed on the server, including its Master Service. The other services seemed happy, but the Master service timed out when I attempted to stop it. I checked the service properties and found its related executable file and killed it through Task Manager. The service was then recorded in the Services Console as being stopped, and after starting the service, mail started flowing again on that Hub Transport server. I repeated those steps on the second Hub Transport server, and messages came flooding out from there as well.&lt;/p&gt;
+
+&lt;p&gt;I checked that ScanMail was up to date on both servers, and they appeared to be. I checked through Trend Micro&amp;rsquo;s site nonetheless, and found that there appeared to be a related update. The links:&lt;/p&gt;
+
+&lt;p&gt;List of updates for ScanMail 8:  &lt;a href=&#34;http://www.trendmicro.com/download/product.asp?productid=8&#34;&gt;http://www.trendmicro.com/download/product.asp?productid=8&lt;/a&gt;
+Direct link to the relevant update:  &lt;a href=&#34;http://www.trendmicro.com/ftp/products/patches/smex_80_win_en_patch3.exe&#34;&gt;ScanMail 8.0 for Microsoft Exchange Patch 3&lt;/a&gt;
+The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&#34;&gt;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The relevant portion of the changelog:&lt;/p&gt;
+
+&lt;blockquote&gt;21. While ScanMail for Microsoft Exchange 8.0 is running, after a few hours, email messages will start to queue. If user re-starts the ScanMail for Microsoft Exchange services, the application will hang at &#34;Stopping&#34;.&lt;/blockquote&gt;
+
+&lt;p&gt;I was technically on vacation while this all went down, so I had to hand of the update to someone else to apply, but no one was available for that weekend. The patch was not manually applied on the servers that weekend, but the issue did not return. We&amp;rsquo;ve now been running smoothly for about two weeks.&lt;/p&gt;
+
+&lt;p&gt;Hopefully you don&amp;rsquo;t run across the issue, and hopefully this post will be of some help if you do!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 1HC44rd1NUZUiWDsHNf9Y1KPSxbtW7b5Sw&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gmail Filesystem for Windows</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</link>
+      <pubDate>Thu, 01 May 2008 03:49:34 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the &lt;a href=&#34;http://www.viksoe.dk/code/gmail.htm&#34;&gt;Gmail Drive&lt;/a&gt; by  &lt;a href=&#34;http://www.viksoe.dk/code/index.htm&#34;&gt;bjarke&lt;/a&gt;. It&amp;rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;File access seems to work similar to how Windows Explorer interacts with FTP folders. A right-click context menu allows you to create a new folder, but not new files as with a regular Windows disk or share. Files and folders you save in the gmail drive show up as messages with the file/folder as an attachment. The author recommends adding a filter to your gmail account that will automatically archive new Gmail Drive messages (they all start with a subject of &amp;ldquo;&lt;em&gt;GMAILFS&lt;/em&gt;&amp;rdquo;. I also added set the filter to add a label of &lt;strong&gt;GMAILDRIVE&lt;/strong&gt; for easy searching.&lt;/p&gt;
+
+&lt;p&gt;6 gigs of free, easy-access online storage? Bring it on!&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vista Offline Files and SMB Opportunistic Locks</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</link>
+      <pubDate>Sun, 30 Mar 2008 19:12:52 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
+      <description>&lt;p&gt;One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&amp;rsquo;d. The error message read something to the extent of &amp;ldquo;&lt;em&gt;The process cannot access the file because it is being used by another process&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;We tried the usual: checking permissions on the folders being offline&amp;rsquo;d (I know that&amp;rsquo;s probably not a word, but you get what I mean); deleting his local cache of Offline Files; disabling and then re-enabling Offline Files. But we just kept on banging our heads against the same error. At first, just about any web search for the error resulted in either something about Windows Home Server or databases or something of the like.  Eventually, though, we struck gold:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://support.microsoft.com/kb/296264/en-us&#34;&gt;http://support.microsoft.com/kb/296264/en-us&lt;/a&gt;: Configuring opportunistic locking in Windows&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;According to MS, opportunistic locking &amp;ldquo;&lt;em&gt;lets clients lock        files and locally cache information without the risk of another user changing           the file&lt;/em&gt;&amp;rdquo;. Opportunistic Locking is a feature of SMB. It is enabled by default, and is configurable from the client side (i.e. request opportunistic locking or not) and on the server side (i.e. allow opportunistic locking on local files or not).&lt;/p&gt;
+
+&lt;p&gt;Also note: &amp;ldquo;&lt;em&gt;If you disable opportunistic locking, the offline files feature in Windows           Vista fails&lt;/em&gt;&amp;ldquo;&lt;/p&gt;
+
+&lt;p&gt;So, apparently, &amp;ldquo;_The process cannot access the file because it is being used by another process&amp;rdquo; &lt;em&gt;actually means&lt;/em&gt; &amp;ldquo;Opportunistic locking is not enabled on the file server_&amp;ldquo;. Nice&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Be aware that this setting is changed through the registry, so the regular warnings about messing about in REGEDIT apply (read &lt;a href=&#34;http://bamboo.slabnet.com/~hslabbert/blog/disclaimer/&#34;&gt;Disclaimer&lt;/a&gt;). That stuff is already listed in the KB, so I won&amp;rsquo;t bother to repeat it.&lt;/p&gt;
+
+&lt;p&gt;To enable opportunistic locking on the file server, open REGEDIT to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters, and change the value of the REG_DWORD
+&lt;strong&gt;EnableOplocks&lt;/strong&gt; from 0 to 1.&lt;/p&gt;
+
+&lt;p&gt;The server does need to be rebooted in order for the registry change to take effect. After rebooting, retry your offline files synchronization. If the opportunistic locking was your problem, you should be good to go!&lt;/p&gt;
+
+&lt;p&gt;UPDATE:&lt;/p&gt;
+
+&lt;p&gt;I must also thank Rainier Day for &lt;a href=&#34;http://blog.rainiernetworks.com/2008/06/25/vista-synchronization-errors/&#34;&gt;his post&lt;/a&gt; on his struggles with Opportunistic Locking. He was hit from the other side: The server-side opslock settings were good, but his Vista clients were configured to &lt;em&gt;not&lt;/em&gt; request opportunistic locks, and this caused the clients to also experience offline files synchronization errors. Thanks Ranier: I noticed that component in the MS KB, but had never actually come across a Vista workstation that was configured out-of-the-box to have OpsLocks disabled!&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
+      <description>&lt;p&gt;Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.&lt;/p&gt;
+
+&lt;p&gt;Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&amp;rsquo;s status directly from a hidden attribute on the ADSI object. Let&amp;rsquo;s start with the Directory Searcher method. This entry also draws from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram’s Blog&lt;/a&gt;. The code:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjroot = [adsi]&#39;&#39;
+$objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+$objdisabsearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&amp;quot;
+$resultdisabaccn = $objdisabsearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;That was a lot easier! The &lt;code&gt;$adobjroot&lt;/code&gt; line gives us an ADSI object for the root of our domain. The second line creates a new Directory Services searcher, and then we add our filter.&lt;/p&gt;
+
+&lt;p&gt;As with Part I, setting objectCategory to &lt;code&gt;person&lt;/code&gt; and objectClass to &lt;code&gt;user&lt;/code&gt; sets up our filter to search for user accounts; switch both of those to &lt;code&gt;computer&lt;/code&gt; to search for computer accounts instead.&lt;/p&gt;
+
+&lt;p&gt;The userAccountControl portion is a bit of weird number, though, isn&amp;rsquo;t it?! After some digging, I was able to determine that the &lt;code&gt;:1.2.840.113556.1.4.803:&lt;/code&gt; is the attribute ID for the Last-Logon-Timestamp Attribute (found on an &lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms676824.aspx&#34;&gt;MSDN article&lt;/a&gt; linked from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram&amp;rsquo;s Blog&lt;/a&gt;). Specifying that value in the directory searcher filter queries for the value of that specific attribute stored in the userAccountControl property, rather than userAccountControl as a whole. Stephen Looney actually corrected this for me, as I was somewhat off the mark in my deduction. The string is not a selection filter, as I had supposed, but more akin to a bitwise OR operator. See his comment below for clarification.&lt;/p&gt;
+
+&lt;p&gt;The last line of the code simply collects our searcher results in System.DirectoryServices.SearchResult collection&lt;/p&gt;
+
+&lt;p&gt;The alternative method to determine an account&amp;rsquo;s status is to check a hidden attribute on the ADSI object itself. For this you will need the Distinguished Name of a user or computer account:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$struserdn = &amp;quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=com&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Set up an ADSI object for that account:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjuser = [ADSI]&amp;quot;LDAP://$struserdn&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And access the hidden method:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjuser.PsBase.InvokeGet(&amp;quot;AccountDisabled&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will return $true if the account is disabled, and $false if the account is not disabled (i.e. it is enabled). It&amp;rsquo;s not as glamorous as the directory searcher method, but I think both have their place.&lt;/p&gt;
+
+&lt;p&gt;Also, feel free to play around with the lastLogonTimeStamp and UserAccountControl attributes in the directory searcher. For instance, to find only disabled accounts that have been inactive for a certain number of days, you could use an LDAP string like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Or switch it up for only enabled accounts inactive for a certain period by flipping the userAccountControl portion around be negative:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;)(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope this has been helpful. As always, comments, corrections, additions, or questions are appreciated.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 192yT6362K6BgLpm8B2xhcCVZtrnwQkjek&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

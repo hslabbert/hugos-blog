@@ -1,0 +1,106 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Take ownership of files and folders through script &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Take ownership of files and folders through script</h1>
+			  <span class="post-date">Sun, Mar 23, 2008</span>
+			      <p>As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files.</p>
+
+<p>With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes. One of the sticking points in getting the disable script wrapped up was seizing control of the user&rsquo;s directories. Now, Powershell does have the ability to modify ACL&rsquo;s through the New-Acl and Set-Acl cmdlets (links below), but the users have exclusive access to their server-side directories. It is easy enough to take ownership of a directory through the Windows Explorer Security dialog, but the Powershell methods all presented some form of error when trying to set permissions or change ownership on a file system object to which you do not already have access to.</p>
+
+<!-- more -->
+
+<p>I struggled for some time off and on to try to work around this with a native Powershell way of seizing control of a directory, but I simply could not find what I was looking for. Eventually, I fell back to a simple tool built into Server 2003 already: Takeown.exe. Through a simple line, takeown got me the results I wanted. I built an array of strings for the directories I wanted to take ownership of, generally in a UNC path such as \servername\users$[sAMAccountName], then wrapped the takeown line in a Foreach loop:</p>
+
+<p><code>Foreach ( $directory in $directories )
+{
+takeown.exe /A /R /D Y /F $directory
+}</code></p>
+
+<p>To learn more about the options for Takeown, simply type Takeown /? at the command line. For reference:</p>
+
+<ul>
+<li><p>/A - Grants ownership to the Administrators group rather than a particular user.</p></li>
+
+<li><p>/R - Recurses</p></li>
+
+<li><p>/D Y - Sets the default to prompts to <em>Yes</em></p></li>
+
+<li><p>/F - The file name of the file system object to take ownership of</p></li>
+</ul>
+
+<p>After taking ownership, the regular Powershell native cmdlets can be used to set up permissions as are required. For more information on Powershell ACL tools, check out the following links:</p>
+
+<ul>
+<li><p><a href="http://mshforfun.blogspot.com/2005/12/play-with-acl-in-msh.html">Play with ACL in MSH</a></p></li>
+
+<li><p><a href="http://blog.netnerds.net/2007/07/powershell-set-acl-does-not-appear-to-work/">PowerShell: Set-Acl Does Not Appear to Work</a></p></li>
+
+<li><p><a href="http://richardsiddaway.spaces.live.com/Blog/cns!43CFA46A74CF3E96!1069.entry">File system: Allow inheritable permissions from parent to propagate</a></p></li>
+</ul>
+
+<p>Bitcoin tip address for this post: 1MBiHN2jptsRRxYMvjypHH94JhQTv2QGyA</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

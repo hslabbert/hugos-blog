@@ -1,0 +1,131 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Dell, Broadcom, Server 2003 SP2 SNP and TOE &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Dell, Broadcom, Server 2003 SP2 SNP and TOE</h1>
+			  <span class="post-date">Sun, Mar 23, 2008</span>
+			      <p>Dell, Broadcom, and Microsoft have decided to partner up with the release of a technology called TCP/IP Offloading, or TOE for <em>TCP/IP Offload Engine</em>. It was bundled together in the Scalable Network Pack (SNP), included and enabled by default with Service Pack 2 (SP2) for Windows Server 2003. The gist of this technology is to enable high-load enterprise applications to be easily scalable. For those of you familiar with the OSI model, TOE moves layer 3 and 4 processing out of the OS and CPU into the NIC. The idea is to better utilize advances in network card performance and free up CPU cycles for other purposes, such as application-side processing.</p>
+
+<p>This all seems well and good, if they saw fit to properly test the stuff out against their own applications!</p>
+
+<!-- more -->
+
+<p>It started with a few calls: users would get a <em><strong>Waiting to Update this Folder</strong></em> message in their Outlook client that did not go away even after several hours, but Outlook still showed as <em><strong>Connected to Microsoft Exchange</strong></em>. Except this was not just for a few users; every single user on a particular Exchange 2007 mailbox server would be affected&hellip;not cool when more than 300 mailboxes from multiple different clients are affected!</p>
+
+<p>Restart system attendant on mailbox server? No joy. Restart  WWW and SSL services on Client Access Server? Wrong again. Restart every freakin&rsquo; Exchange service on the mailbox and Client Access Server? Still no positive change. Fine! Get the go-ahead and restart the mailbox server? Bingo.</p>
+
+<p>That,  however, is not what we call a <em>resolution</em>. At best that&rsquo;s a workaround, but a workaround that comes with guaranteed downtime, and no explanation as to the cause. So we checked the event viewers on the mailbox server and the client access servers, and found&hellip;nothing&hellip;damn&hellip; Run the Best Practice Analyzer for Exchange&hellip;nothing useful&hellip;damn again&hellip; Whatever, chalk it up to freaky coincidences and keep going. That was fine, until it happened again, and again, and again, all with no trace.</p>
+
+<p>Alright, so a call to MS Support it is. Four hours on the phone later, and no real answers. The tech suggests that we <a href="http://support.microsoft.com/kb/912222">disable TCP/IP Chimney</a>, one of the features of the TCP/IP Offloading technology, and we comply. As is to be expected, the support guys wanted to try and pin it on an Outlook issue, as that is where the problem was most visible. But that just doesn&rsquo;t fly when every single client on a particular mailbox server is affected at the exact same time. Anyway, they tell us that they will keep checking on it, but that we will have to call them back when the problem is occurring and <em>before</em> we reboot the affected mailbox server. Okay&hellip;well&hellip;tell that to the 300+ users screaming for email access they are paying for!</p>
+
+<p>The next time the problem rolls around, I try to get the okay to call MS, but the clients have already had too many email headaches from this problem, and we&rsquo;re forced to reboot the box again to keep people happy. Fortunately, MS gets a higher-up tech in touch with us, and the guy drills us with some useful questions for relevant information. He starts to run through the BPA stuff again and gets us to export the event logs and upload them for further examination. He requests that we download a specific Exchange troubleshooting tool, and upload the logs for that as well. Now we&rsquo;re getting somewhere! Or so I thought.</p>
+
+<p>The mailbox servers that were affected get through the majority of the tests and information gathering of the tool they had us download, but it bails on some RPC-related diagnostics. I report this to the tech, so he directs us to use a different tool that skips around that part. After some scheduled reboots, the original tool completes its diagnostics, and we can upload the results. At this point, we can&rsquo;t afford more problems, so we&rsquo;re actually running _nightly _reboots on the Exchange mailbox and CAS servers. This seems to stave off the problem, but, again, this is just a workaround.</p>
+
+<p>The tech finds nothing in the event viewer to indicate any problems, but he suggests the TCP/IP Chimney disable thing again. This time, however, we also are told to disable any offloading features in the network card device configuration as well. I find the settings and switch them off. We had consolidated mailboxes so that one of the mailbox servers remains with only a few test mailboxes and the mailboxes of some of our support team members on it. It&rsquo;s a gamble, but we remove nightly reboots from that server and switch back to the regular reboot schedule. Weeks pass, and we don&rsquo;t run into any problems. We load some more mailboxes on there, and still no problems.</p>
+
+<p>So, after weeks and weeks of reliability problems, the sneaky culprit was a set of technologies teamed together as the Scalable Network Pack (SNP), introduced without much notice with SP2 for Server 2003. I ended up writing a VB script that determines if a server is running with Broadcom network cards and disables the TOE settings in the TCP/IP stack directly as well as the TOE and SNP settings on the network cards themselves through some registry edits.</p>
+
+<p>I later found that the MSExchange team had posted a <a href="http://msexchangeteam.com/archive/2007/07/18/446400.aspx">blog entry</a> about potential problems with TOE and Exchange 2007, but had for some reason never come across this post in my searches on the symptoms we were experiencing. I have also since run into posts from other sysadmins reporting that the TOE features cause Internet Security and Acceleration (ISA) Server to lock up completely.</p>
+
+<p>I would post the VB script I created for dealing with this problem, but Microsoft also just released a <a href="http://support.microsoft.com/kb/948496">hotfix</a> that specifically disables the SNP features. Here is a list of some of the problems the hotfix is meant to address:</p>
+
+<ul>
+<li><p>When you try to connect to the server by using a VPN connection, you receive the following error message: Error 800: Unable to establish connection.</p></li>
+
+<li><p>You cannot create a Remote Desktop Protocol (RDP) connection to the server.</p></li>
+
+<li><p>You cannot connect to shares on the server from a computer on the local area network.</p></li>
+
+<li><p>You cannot join a client computer to the domain.</p></li>
+
+<li><p>You cannot connect to the Exchange server from a computer that is running Microsoft Outlook.</p></li>
+
+<li><p>Inactive Outlook connections to the Exchange server may not be cleaned up.</p></li>
+
+<li><p>You experience slow network performance.</p></li>
+
+<li><p>You may experience slow network performance when you communicate with a Windows Vista-based computer.</p></li>
+
+<li><p>You cannot create an outgoing FTP connection from the server.</p></li>
+
+<li><p>The Dynamic Host Configuration Protocol (DHCP) server service crashes.</p></li>
+
+<li><p>You experience slow performance when you log on to the domain.</p></li>
+
+<li><p>Network Address Translation (NAT) clients that are located behind Windows Small Business Server 2003 or Internet Security and Acceleration (ISA) Server experience intermittent connection failures.</p></li>
+
+<li><p>You experience intermittent RPC communications failures.</p></li>
+
+<li><p>The server stops responding.</p></li>
+
+<li><p>The server runs low on nonpaged pool memory</p></li>
+</ul>
+
+<p>&hellip;wow&hellip;so pretty much, this <em>Microsoft</em> technology that is turned on <em>by default</em> breaks several <em>Microsoft</em> server products and messes networking almost entirely. Nice&hellip;</p>
+
+<p>I hope that this spares somebody some of the pain we had to go through with this.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/php/</link>
+    <description>Recent content in Php on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 13 Aug 2008 05:35:37 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Accessing Active Directory in PHP using ADLDAP</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;
+
+&lt;p&gt;Adldap provides an easy-to-use interface for both querying and modifying Active Directory. This post is not meant to be a complete setup guide, but rather just an overview, so here&amp;rsquo;s the quick summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Runs on Apache or IIS (although the documentation is a little thin on using IIS)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Might require some configuration in your environment to support secure LDAP queries over SSL&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Incorporates into your PHP pages through a class definition file. Configure the settings in the provided adldap.php file to match your environment, include() it in your php page, initialize an instance of the class (&lt;code&gt;$adldap = new adLDAP();&lt;/code&gt;), and you&amp;rsquo;re ready to go.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allows you to add custom functions by adding to the class definition file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If some of that sounds scary, don&amp;rsquo;t worry: It can sound more intimidating than it really is. If you have some reasonable PHP background, just go and check it out and get your feet wet. Like I said: Both myself and the other project contributor are not full-time developers, but we&amp;rsquo;ve thrown pretty useful AD integration into the portals. Heck, we&amp;rsquo;ve even started incorporating some AJAX on the site (with some help from &lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;Prototype&lt;/a&gt;&amp;hellip;but that&amp;rsquo;s another post&amp;hellip;) to work with adldap and make the thing pretty slick overall!&lt;/p&gt;
+
+&lt;p&gt;One thing that was getting at me a little bit was that I couldn&amp;rsquo;t just throw a custom ldap query string into aldap and get the results. Part of the abstraction is that you get a set of functions for querying for specific types of information: user_info(), user_delete(), authenticate(), group_create(), etc, but no raw ldap query function. So I checked out how the thing is put together, and I bastardized some of the existing functions to suit my purposes. If you&amp;rsquo;re familiar with ldap queries, add the following code into your aldap.php class definition file, and you&amp;rsquo;ve got yourself an easy way of performing custom ldap queries:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;function any_info($filter=NULL,$fields=NULL){
+// Written by Hugo Slabbert (JustAnotherSysadmin - http://bamboo.slabnet.com/~hslabbert/blog) from other functions; defaults to root
+if (!$this-&amp;gt;_bind){ return (false); }
+if ( $filter==NULL ){ $filter=&amp;quot;(&amp;amp;(objectclass=domainDNS)(!(distinguishedname=&amp;quot; . $this-&amp;gt;_base_dn . &amp;quot;)))&amp;quot;; }
+if ($fields==NULL){ $fields=array(&amp;quot;name&amp;quot;,&amp;quot;cn&amp;quot;,&amp;quot;displayname&amp;quot;,&amp;quot;dn&amp;quot;); }
+$sr=ldap_search($this-&amp;gt;_conn,$this-&amp;gt;_base_dn,$filter,$fields);
+$entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;return ($entries);
+}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you do use the code snippet, I just ask that you keep the comments in tact. I don&amp;rsquo;t mind sharing, but I&amp;rsquo;d like a little bit of the credit!&lt;/p&gt;
+
+&lt;p&gt;When you use the &lt;code&gt;any_info()&lt;/code&gt; function above, it takes two parameters: your ldap query (&lt;code&gt;$filter&lt;/code&gt;), and an array of which attributes you wish to return for the objects that match your query (&lt;code&gt;$fields&lt;/code&gt;). If you leave the second parameter blank, the default attributes of name, cn (canonical name), display name, and dn (distinguished name) will be returned.&lt;/p&gt;
+
+&lt;p&gt;So, go ahead! Try it out! Let me know if it works for you and what doesn&amp;rsquo;t. I do have two final recommendations, though:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;If you run into technical difficulties getting adldap running properly, you&amp;rsquo;re probably better off going through their actual support (forums, documentation, etc.) than posting requests here. I&amp;rsquo;ve used the system, but I&amp;rsquo;m betting you will get way better support from the actual devs!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Remember that the point of this tool is to enable access to your Active Directory through the a web interface. Secure your web app accordingly! Putting powerful tools on the web is great, but realize that you are doing just that: Putting POWERFUL tools on the web! You are the best judge (hopefully!) of what suits your organization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Happy coding!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 13344S6vTAmrM5De7DermysvN6UE3QDSzb&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

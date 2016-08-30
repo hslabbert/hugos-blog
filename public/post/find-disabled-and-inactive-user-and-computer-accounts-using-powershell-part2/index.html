@@ -1,0 +1,114 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</h1>
+			  <span class="post-date">Tue, Mar 25, 2008</span>
+			      <p>Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.</p>
+
+<p>Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from <a href="http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx">Bahram’s Blog</a>. The code:</p>
+
+<p><code>$adobjroot = [adsi]''
+$objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+$objdisabsearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&quot;
+$resultdisabaccn = $objdisabsearcher.findall() | sort path</code></p>
+
+<!-- more -->
+
+<p>That was a lot easier! The <code>$adobjroot</code> line gives us an ADSI object for the root of our domain. The second line creates a new Directory Services searcher, and then we add our filter.</p>
+
+<p>As with Part I, setting objectCategory to <code>person</code> and objectClass to <code>user</code> sets up our filter to search for user accounts; switch both of those to <code>computer</code> to search for computer accounts instead.</p>
+
+<p>The userAccountControl portion is a bit of weird number, though, isn&rsquo;t it?! After some digging, I was able to determine that the <code>:1.2.840.113556.1.4.803:</code> is the attribute ID for the Last-Logon-Timestamp Attribute (found on an <a href="http://msdn2.microsoft.com/en-us/library/ms676824.aspx">MSDN article</a> linked from <a href="http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx">Bahram&rsquo;s Blog</a>). Specifying that value in the directory searcher filter queries for the value of that specific attribute stored in the userAccountControl property, rather than userAccountControl as a whole. Stephen Looney actually corrected this for me, as I was somewhat off the mark in my deduction. The string is not a selection filter, as I had supposed, but more akin to a bitwise OR operator. See his comment below for clarification.</p>
+
+<p>The last line of the code simply collects our searcher results in System.DirectoryServices.SearchResult collection</p>
+
+<p>The alternative method to determine an account&rsquo;s status is to check a hidden attribute on the ADSI object itself. For this you will need the Distinguished Name of a user or computer account:</p>
+
+<p><code>$struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=com&quot;</code></p>
+
+<p>Set up an ADSI object for that account:</p>
+
+<p><code>$adobjuser = [ADSI]&quot;LDAP://$struserdn&quot;</code></p>
+
+<p>And access the hidden method:</p>
+
+<p><code>$adobjuser.PsBase.InvokeGet(&quot;AccountDisabled&quot;)</code></p>
+
+<p>This will return $true if the account is disabled, and $false if the account is not disabled (i.e. it is enabled). It&rsquo;s not as glamorous as the directory searcher method, but I think both have their place.</p>
+
+<p>Also, feel free to play around with the lastLogonTimeStamp and UserAccountControl attributes in the directory searcher. For instance, to find only disabled accounts that have been inactive for a certain number of days, you could use an LDAP string like:</p>
+
+<p><code>$objsearcher.filter =</code><code>(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2)</code><code>(lastLogonTimeStamp&lt;=&quot; + $lltIntLimit + &quot;)</code><code>)&quot;</code></p>
+
+<p>Or switch it up for only enabled accounts inactive for a certain period by flipping the userAccountControl portion around be negative:</p>
+
+<p><code>$objsearcher.filter =</code><code>(&amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)</code><code>)(lastLogonTimeStamp&lt;=&quot; + $lltIntLimit + &quot;)</code><code>)&quot;</code></p>
+
+<p>I hope this has been helpful. As always, comments, corrections, additions, or questions are appreciated.</p>
+
+<p>Bitcoin tip address for this post: 192yT6362K6BgLpm8B2xhcCVZtrnwQkjek</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

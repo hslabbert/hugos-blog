@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows Server on Hugo&#39;s Blog</title>
+    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/windows-server/</link>
+    <description>Recent content in Windows Server on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 11 Feb 2009 16:24:25 +0000</lastBuildDate>
+    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/windows-server/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
+      <description>&lt;p&gt;We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of &lt;code&gt;#550 4.4.7 QUEUE.Expired; message expired ##&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Delivery has failed to these recipients or distribution lists:&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[user display name]
+Microsoft Exchange has been trying to deliver this message without success
+and has stopped trying. Please try sending this message again, or provide
+the following diagnostic text to your system administrator.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wow&amp;hellip;that was helpful&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;After &lt;em&gt;much&lt;/em&gt; digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt;attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute is not directly editable, but you &lt;em&gt;can&lt;/em&gt; edit or remove the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute, which effectively updates the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute (ref &lt;a href=&#34;http://technet.microsoft.com/en-us/library/aa996228.aspx&#34;&gt;Public Folder Routing&lt;/a&gt; - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute on our PF store, and not the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (&lt;code&gt;CN=Configuration,DC=yourdomain,DC=[yourtld]&lt;/code&gt;). The full path is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CN=Public Folders,CN=Folder Hierarchies,CN=[Your Exchange Administrative Group Name],CN=Administrative Groups,CN=[Your Exchange Organization Name],CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=[yourdomain],DC=[yourtld].
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After updating the &lt;strong&gt;msExchOwningPFTree&lt;/strong&gt; attribute appropriately to a public folders server that was in production resolved the issue.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post:
+&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SSL Errors in Exchange 2003 Public Folder Management</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
+      <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
+      <description>&lt;p&gt;On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:&lt;/p&gt;
+
+&lt;p&gt;The SSL certificate server name is incorrect.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to &lt;a href=&#34;http://support.microsoft.com/kb/324345&#34;&gt;this&lt;/a&gt; Microsoft KB. The gist is that whoever set up the Exchange server had set SSL to be required on the \Exadmin virtual directory in the default site on the server. The solution: Clear SSL for the Exadmin vdir and relaunch ESM.&lt;/p&gt;
+
+&lt;p&gt;This one is fairly straightforward and seems to be fairly common, but I thought I would throw it up here all the same as I had not really come across it in recent memory.&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Accessing Active Directory in PHP using ADLDAP</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;
+
+&lt;p&gt;Adldap provides an easy-to-use interface for both querying and modifying Active Directory. This post is not meant to be a complete setup guide, but rather just an overview, so here&amp;rsquo;s the quick summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Runs on Apache or IIS (although the documentation is a little thin on using IIS)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Might require some configuration in your environment to support secure LDAP queries over SSL&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Incorporates into your PHP pages through a class definition file. Configure the settings in the provided adldap.php file to match your environment, include() it in your php page, initialize an instance of the class (&lt;code&gt;$adldap = new adLDAP();&lt;/code&gt;), and you&amp;rsquo;re ready to go.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allows you to add custom functions by adding to the class definition file.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If some of that sounds scary, don&amp;rsquo;t worry: It can sound more intimidating than it really is. If you have some reasonable PHP background, just go and check it out and get your feet wet. Like I said: Both myself and the other project contributor are not full-time developers, but we&amp;rsquo;ve thrown pretty useful AD integration into the portals. Heck, we&amp;rsquo;ve even started incorporating some AJAX on the site (with some help from &lt;a href=&#34;http://www.prototypejs.org/&#34;&gt;Prototype&lt;/a&gt;&amp;hellip;but that&amp;rsquo;s another post&amp;hellip;) to work with adldap and make the thing pretty slick overall!&lt;/p&gt;
+
+&lt;p&gt;One thing that was getting at me a little bit was that I couldn&amp;rsquo;t just throw a custom ldap query string into aldap and get the results. Part of the abstraction is that you get a set of functions for querying for specific types of information: user_info(), user_delete(), authenticate(), group_create(), etc, but no raw ldap query function. So I checked out how the thing is put together, and I bastardized some of the existing functions to suit my purposes. If you&amp;rsquo;re familiar with ldap queries, add the following code into your aldap.php class definition file, and you&amp;rsquo;ve got yourself an easy way of performing custom ldap queries:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;function any_info($filter=NULL,$fields=NULL){
+// Written by Hugo Slabbert (JustAnotherSysadmin - http://bamboo.slabnet.com/~hslabbert/blog) from other functions; defaults to root
+if (!$this-&amp;gt;_bind){ return (false); }
+if ( $filter==NULL ){ $filter=&amp;quot;(&amp;amp;(objectclass=domainDNS)(!(distinguishedname=&amp;quot; . $this-&amp;gt;_base_dn . &amp;quot;)))&amp;quot;; }
+if ($fields==NULL){ $fields=array(&amp;quot;name&amp;quot;,&amp;quot;cn&amp;quot;,&amp;quot;displayname&amp;quot;,&amp;quot;dn&amp;quot;); }
+$sr=ldap_search($this-&amp;gt;_conn,$this-&amp;gt;_base_dn,$filter,$fields);
+$entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;return ($entries);
+}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you do use the code snippet, I just ask that you keep the comments in tact. I don&amp;rsquo;t mind sharing, but I&amp;rsquo;d like a little bit of the credit!&lt;/p&gt;
+
+&lt;p&gt;When you use the &lt;code&gt;any_info()&lt;/code&gt; function above, it takes two parameters: your ldap query (&lt;code&gt;$filter&lt;/code&gt;), and an array of which attributes you wish to return for the objects that match your query (&lt;code&gt;$fields&lt;/code&gt;). If you leave the second parameter blank, the default attributes of name, cn (canonical name), display name, and dn (distinguished name) will be returned.&lt;/p&gt;
+
+&lt;p&gt;So, go ahead! Try it out! Let me know if it works for you and what doesn&amp;rsquo;t. I do have two final recommendations, though:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;If you run into technical difficulties getting adldap running properly, you&amp;rsquo;re probably better off going through their actual support (forums, documentation, etc.) than posting requests here. I&amp;rsquo;ve used the system, but I&amp;rsquo;m betting you will get way better support from the actual devs!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Remember that the point of this tool is to enable access to your Active Directory through the a web interface. Secure your web app accordingly! Putting powerful tools on the web is great, but realize that you are doing just that: Putting POWERFUL tools on the web! You are the best judge (hopefully!) of what suits your organization.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Happy coding!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 13344S6vTAmrM5De7DermysvN6UE3QDSzb&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2007: Messages stuck in Submission Queue</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</link>
+      <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
+      <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
+
+&lt;blockquote&gt;The execution time of agent &#39;ScanMail Routing Agent&#39; exceeded 300000 (milliseconds) while handling event &#39;OnSubmittedMessage&#39;. This is an unusual amount of time for an agent to process a single event. However, Transport will continue processing this message.&lt;/blockquote&gt;
+
+&lt;p&gt;From the event, you can tell we&amp;rsquo;re using TrendMicro ScanMail as part of our edge protection. It looked like the ScanMail scanning agent was stuck on a message and couldn&amp;rsquo;t proceed. So, off to the services console I go. ScanMail has three services installed on the server, including its Master Service. The other services seemed happy, but the Master service timed out when I attempted to stop it. I checked the service properties and found its related executable file and killed it through Task Manager. The service was then recorded in the Services Console as being stopped, and after starting the service, mail started flowing again on that Hub Transport server. I repeated those steps on the second Hub Transport server, and messages came flooding out from there as well.&lt;/p&gt;
+
+&lt;p&gt;I checked that ScanMail was up to date on both servers, and they appeared to be. I checked through Trend Micro&amp;rsquo;s site nonetheless, and found that there appeared to be a related update. The links:&lt;/p&gt;
+
+&lt;p&gt;List of updates for ScanMail 8:  &lt;a href=&#34;http://www.trendmicro.com/download/product.asp?productid=8&#34;&gt;http://www.trendmicro.com/download/product.asp?productid=8&lt;/a&gt;
+Direct link to the relevant update:  &lt;a href=&#34;http://www.trendmicro.com/ftp/products/patches/smex_80_win_en_patch3.exe&#34;&gt;ScanMail 8.0 for Microsoft Exchange Patch 3&lt;/a&gt;
+The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&#34;&gt;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The relevant portion of the changelog:&lt;/p&gt;
+
+&lt;blockquote&gt;21. While ScanMail for Microsoft Exchange 8.0 is running, after a few hours, email messages will start to queue. If user re-starts the ScanMail for Microsoft Exchange services, the application will hang at &#34;Stopping&#34;.&lt;/blockquote&gt;
+
+&lt;p&gt;I was technically on vacation while this all went down, so I had to hand of the update to someone else to apply, but no one was available for that weekend. The patch was not manually applied on the servers that weekend, but the issue did not return. We&amp;rsquo;ve now been running smoothly for about two weeks.&lt;/p&gt;
+
+&lt;p&gt;Hopefully you don&amp;rsquo;t run across the issue, and hopefully this post will be of some help if you do!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 1HC44rd1NUZUiWDsHNf9Y1KPSxbtW7b5Sw&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
+      <description>&lt;p&gt;Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.&lt;/p&gt;
+
+&lt;p&gt;Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&amp;rsquo;s status directly from a hidden attribute on the ADSI object. Let&amp;rsquo;s start with the Directory Searcher method. This entry also draws from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram’s Blog&lt;/a&gt;. The code:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjroot = [adsi]&#39;&#39;
+$objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+$objdisabsearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&amp;quot;
+$resultdisabaccn = $objdisabsearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;That was a lot easier! The &lt;code&gt;$adobjroot&lt;/code&gt; line gives us an ADSI object for the root of our domain. The second line creates a new Directory Services searcher, and then we add our filter.&lt;/p&gt;
+
+&lt;p&gt;As with Part I, setting objectCategory to &lt;code&gt;person&lt;/code&gt; and objectClass to &lt;code&gt;user&lt;/code&gt; sets up our filter to search for user accounts; switch both of those to &lt;code&gt;computer&lt;/code&gt; to search for computer accounts instead.&lt;/p&gt;
+
+&lt;p&gt;The userAccountControl portion is a bit of weird number, though, isn&amp;rsquo;t it?! After some digging, I was able to determine that the &lt;code&gt;:1.2.840.113556.1.4.803:&lt;/code&gt; is the attribute ID for the Last-Logon-Timestamp Attribute (found on an &lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms676824.aspx&#34;&gt;MSDN article&lt;/a&gt; linked from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram&amp;rsquo;s Blog&lt;/a&gt;). Specifying that value in the directory searcher filter queries for the value of that specific attribute stored in the userAccountControl property, rather than userAccountControl as a whole. Stephen Looney actually corrected this for me, as I was somewhat off the mark in my deduction. The string is not a selection filter, as I had supposed, but more akin to a bitwise OR operator. See his comment below for clarification.&lt;/p&gt;
+
+&lt;p&gt;The last line of the code simply collects our searcher results in System.DirectoryServices.SearchResult collection&lt;/p&gt;
+
+&lt;p&gt;The alternative method to determine an account&amp;rsquo;s status is to check a hidden attribute on the ADSI object itself. For this you will need the Distinguished Name of a user or computer account:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$struserdn = &amp;quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=com&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Set up an ADSI object for that account:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjuser = [ADSI]&amp;quot;LDAP://$struserdn&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And access the hidden method:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjuser.PsBase.InvokeGet(&amp;quot;AccountDisabled&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will return $true if the account is disabled, and $false if the account is not disabled (i.e. it is enabled). It&amp;rsquo;s not as glamorous as the directory searcher method, but I think both have their place.&lt;/p&gt;
+
+&lt;p&gt;Also, feel free to play around with the lastLogonTimeStamp and UserAccountControl attributes in the directory searcher. For instance, to find only disabled accounts that have been inactive for a certain number of days, you could use an LDAP string like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Or switch it up for only enabled accounts inactive for a certain period by flipping the userAccountControl portion around be negative:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;)(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I hope this has been helpful. As always, comments, corrections, additions, or questions are appreciated.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 192yT6362K6BgLpm8B2xhcCVZtrnwQkjek&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:15 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.&lt;/p&gt;
+
+&lt;p&gt;Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&amp;hellip;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt; $struserdn = &amp;quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&amp;quot;
+PoSH&amp;gt; $adobjuser = [ADSI]&amp;quot;LDAP://$struserdn&amp;quot;
+PoSH&amp;gt; $adobjuser
+{CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt; $adobjuser.lastLogonTimetamp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;What the &amp;hellip;? Hmm&amp;hellip;I&amp;rsquo;m sure I saw lastLogonTimestamp in the members for that object before:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt;$adobjuser | Get-Member&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;TypeName: System.DirectoryServices.DirectoryEntry
+...
+lastLogonTimestamp              Property   System.DirectoryServices.PropertyValueCollection lastLogonTimestamp {get;...
+...
+&lt;/code&gt;
+&lt;code&gt;PoSH&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Right,  like I said! Then why doesn&amp;rsquo;t it give me any information for that property? May it&amp;rsquo;s blank? Highly unlikely, but let&amp;rsquo;s check:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt; $adobjuser | Format-List *
+...
+lastLogonTimestamp              : {System.__ComObject}
+...&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;PoSH&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Great! What do I do with that thing? To be honest, working with ComObjects is not really my thing, but we still can get the information we want. For my purposes, I was searching through AD with a DirectorySearcher anyway, and the answer to my problems came from DirectorySearcher in the end. First, the code (credit to &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram&amp;rsquo;s Blog&lt;/a&gt;), and then we&amp;rsquo;ll run through what we&amp;rsquo;re actually doing.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$currentDate = [System.DateTime]::Now
+$currentDateUtc = $currentDate.ToUniversalTime()
+&lt;/code&gt;&lt;code&gt;$lltstamplimit = $currentDateUtc.AddDays(- $NumDays)
+$lltIntLimit = $lltstampLimit.ToFileTime()
+$adobjroot = [adsi]&#39;&#39;
+&lt;/code&gt;&lt;code&gt;$objstalesearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+&lt;/code&gt;&lt;code&gt;$objstalesearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectClass=user)(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;))&amp;quot;
+&lt;/code&gt;&lt;code&gt;$resultstaleaccn = $objstalesearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Alright, so before we get going, this snippet of code requires that we define an Int32 variable called &lt;code&gt;$numdays&lt;/code&gt; before we run it. This will be used as the number of days since the account last logged on. So what exactly is going on here? The easiest way to both get a proper DateTime object and get a relative time for setting the period for inactive accounts is to get the current date and time:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$currentDate = [System.DateTime]::Now&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;As far as I can see, you could also use &lt;code&gt;$currentdate = Get-Time&lt;/code&gt; , so it&amp;rsquo;s your choice, really.&lt;/p&gt;
+
+&lt;p&gt;Active Directory stores times in UTC format, so we can use the ToUniversalTime() method available on the System.DateTime class:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$currentDateUtc = $currentDate.ToUniversalTime()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is where the &lt;code&gt;$numdays&lt;/code&gt; variable comes in. Let&amp;rsquo;s say your organization has a policy in effect that accounts that have been inactive for 60 must be disabled. If the lastLogonTimeStamp attribute is 60 days less than the current Date/Time, then we know that account has not been logged onto for the last 60 days. So, we will want to search for accounts that have a value 60 days less than today in their lastLogonTimeStamp attribute. To make that reference point, we can do some simple math:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$lltstamplimit = $currentDateUtc.AddDays(- $NumDays)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This assumes that we have run &lt;code&gt;$NumDays = 60&lt;/code&gt; somewhere before this last command, and effectively saves our last logon time stamp limit ($lltstamplimit) as a System.DateTime value 60 days before now.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$lltIntLimit = $lltstampLimit.ToFileTime()&lt;/code&gt; converts the &lt;code&gt;$lltstamplimit&lt;/code&gt; to an Int64 value. Why? You&amp;rsquo;ve got me! Please let me know if you have the goods on this, because I&amp;rsquo;m still blissfully unaware of the purpose/function of Int64 values.&lt;/p&gt;
+
+&lt;p&gt;The rest is fairly straight-forward. We set up a directory searcher and define the filter as a user object the lastLogonTimeStamp less than the limit we defined in &lt;code&gt;$lltIntLimit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$adobjroot = [adsi]&#39;&#39;
+$objstalesearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
+$objstalesearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectClass=user)(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;))&amp;quot;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In the name of tidiness and efficiency, I would recommend restricting the search root to your user containers with something like &lt;code&gt;$objstalesearcher.searchroot = &amp;quot;LDAP://$searchrootdn&amp;quot;&lt;/code&gt; where $searchrootdn is a distinguished name as a string.&lt;/p&gt;
+
+&lt;p&gt;All that remains at that point is to collect the results:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$resultstaleaccn = $objstalesearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For my own purposes I sort the results by their LDAP path, but you obviously don&amp;rsquo;t have to. Remember that your result will be saved as a System.DirectoryServices.SearchResult object, so you will probably have to use &lt;code&gt;$_.Properties.[SomeProperty]&lt;/code&gt; to get the information you&amp;rsquo;re looking for.  From there, you can do with the results as you please.&lt;/p&gt;
+
+&lt;p&gt;Oh, and if you&amp;rsquo;re looking for inactive computer  accounts instead of user accounts, switch both the objectCategory and objectClass values in your DS searcher filter to &lt;em&gt;computer.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;To learn how to find &lt;em&gt;disabled&lt;/em&gt; accounts rather than inactive ones, head over to Part II.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Take ownership of files and folders through script</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/take-ownership-of-files-and-folders-through-script/</link>
+      <pubDate>Sun, 23 Mar 2008 04:41:48 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/take-ownership-of-files-and-folders-through-script/</guid>
+      <description>&lt;p&gt;As part of our process to disable user accounts, we take ownership of the user&amp;rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&amp;rsquo;s files.&lt;/p&gt;
+
+&lt;p&gt;With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes. One of the sticking points in getting the disable script wrapped up was seizing control of the user&amp;rsquo;s directories. Now, Powershell does have the ability to modify ACL&amp;rsquo;s through the New-Acl and Set-Acl cmdlets (links below), but the users have exclusive access to their server-side directories. It is easy enough to take ownership of a directory through the Windows Explorer Security dialog, but the Powershell methods all presented some form of error when trying to set permissions or change ownership on a file system object to which you do not already have access to.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;I struggled for some time off and on to try to work around this with a native Powershell way of seizing control of a directory, but I simply could not find what I was looking for. Eventually, I fell back to a simple tool built into Server 2003 already: Takeown.exe. Through a simple line, takeown got me the results I wanted. I built an array of strings for the directories I wanted to take ownership of, generally in a UNC path such as \servername\users$[sAMAccountName], then wrapped the takeown line in a Foreach loop:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Foreach ( $directory in $directories )
+{
+takeown.exe /A /R /D Y /F $directory
+}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To learn more about the options for Takeown, simply type Takeown /? at the command line. For reference:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;/A - Grants ownership to the Administrators group rather than a particular user.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/R - Recurses&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/D Y - Sets the default to prompts to &lt;em&gt;Yes&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;/F - The file name of the file system object to take ownership of&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After taking ownership, the regular Powershell native cmdlets can be used to set up permissions as are required. For more information on Powershell ACL tools, check out the following links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://mshforfun.blogspot.com/2005/12/play-with-acl-in-msh.html&#34;&gt;Play with ACL in MSH&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://blog.netnerds.net/2007/07/powershell-set-acl-does-not-appear-to-work/&#34;&gt;PowerShell: Set-Acl Does Not Appear to Work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://richardsiddaway.spaces.live.com/Blog/cns!43CFA46A74CF3E96!1069.entry&#34;&gt;File system: Allow inheritable permissions from parent to propagate&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 1MBiHN2jptsRRxYMvjypHH94JhQTv2QGyA&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dell, Broadcom, Server 2003 SP2 SNP and TOE</title>
+      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/dell-broadcom-server-2003-sp2-snp-and-toe/</link>
+      <pubDate>Sun, 23 Mar 2008 04:03:02 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/dell-broadcom-server-2003-sp2-snp-and-toe/</guid>
+      <description>&lt;p&gt;Dell, Broadcom, and Microsoft have decided to partner up with the release of a technology called TCP/IP Offloading, or TOE for &lt;em&gt;TCP/IP Offload Engine&lt;/em&gt;. It was bundled together in the Scalable Network Pack (SNP), included and enabled by default with Service Pack 2 (SP2) for Windows Server 2003. The gist of this technology is to enable high-load enterprise applications to be easily scalable. For those of you familiar with the OSI model, TOE moves layer 3 and 4 processing out of the OS and CPU into the NIC. The idea is to better utilize advances in network card performance and free up CPU cycles for other purposes, such as application-side processing.&lt;/p&gt;
+
+&lt;p&gt;This all seems well and good, if they saw fit to properly test the stuff out against their own applications!&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;It started with a few calls: users would get a &lt;em&gt;&lt;strong&gt;Waiting to Update this Folder&lt;/strong&gt;&lt;/em&gt; message in their Outlook client that did not go away even after several hours, but Outlook still showed as &lt;em&gt;&lt;strong&gt;Connected to Microsoft Exchange&lt;/strong&gt;&lt;/em&gt;. Except this was not just for a few users; every single user on a particular Exchange 2007 mailbox server would be affected&amp;hellip;not cool when more than 300 mailboxes from multiple different clients are affected!&lt;/p&gt;
+
+&lt;p&gt;Restart system attendant on mailbox server? No joy. Restart  WWW and SSL services on Client Access Server? Wrong again. Restart every freakin&amp;rsquo; Exchange service on the mailbox and Client Access Server? Still no positive change. Fine! Get the go-ahead and restart the mailbox server? Bingo.&lt;/p&gt;
+
+&lt;p&gt;That,  however, is not what we call a &lt;em&gt;resolution&lt;/em&gt;. At best that&amp;rsquo;s a workaround, but a workaround that comes with guaranteed downtime, and no explanation as to the cause. So we checked the event viewers on the mailbox server and the client access servers, and found&amp;hellip;nothing&amp;hellip;damn&amp;hellip; Run the Best Practice Analyzer for Exchange&amp;hellip;nothing useful&amp;hellip;damn again&amp;hellip; Whatever, chalk it up to freaky coincidences and keep going. That was fine, until it happened again, and again, and again, all with no trace.&lt;/p&gt;
+
+&lt;p&gt;Alright, so a call to MS Support it is. Four hours on the phone later, and no real answers. The tech suggests that we &lt;a href=&#34;http://support.microsoft.com/kb/912222&#34;&gt;disable TCP/IP Chimney&lt;/a&gt;, one of the features of the TCP/IP Offloading technology, and we comply. As is to be expected, the support guys wanted to try and pin it on an Outlook issue, as that is where the problem was most visible. But that just doesn&amp;rsquo;t fly when every single client on a particular mailbox server is affected at the exact same time. Anyway, they tell us that they will keep checking on it, but that we will have to call them back when the problem is occurring and &lt;em&gt;before&lt;/em&gt; we reboot the affected mailbox server. Okay&amp;hellip;well&amp;hellip;tell that to the 300+ users screaming for email access they are paying for!&lt;/p&gt;
+
+&lt;p&gt;The next time the problem rolls around, I try to get the okay to call MS, but the clients have already had too many email headaches from this problem, and we&amp;rsquo;re forced to reboot the box again to keep people happy. Fortunately, MS gets a higher-up tech in touch with us, and the guy drills us with some useful questions for relevant information. He starts to run through the BPA stuff again and gets us to export the event logs and upload them for further examination. He requests that we download a specific Exchange troubleshooting tool, and upload the logs for that as well. Now we&amp;rsquo;re getting somewhere! Or so I thought.&lt;/p&gt;
+
+&lt;p&gt;The mailbox servers that were affected get through the majority of the tests and information gathering of the tool they had us download, but it bails on some RPC-related diagnostics. I report this to the tech, so he directs us to use a different tool that skips around that part. After some scheduled reboots, the original tool completes its diagnostics, and we can upload the results. At this point, we can&amp;rsquo;t afford more problems, so we&amp;rsquo;re actually running _nightly _reboots on the Exchange mailbox and CAS servers. This seems to stave off the problem, but, again, this is just a workaround.&lt;/p&gt;
+
+&lt;p&gt;The tech finds nothing in the event viewer to indicate any problems, but he suggests the TCP/IP Chimney disable thing again. This time, however, we also are told to disable any offloading features in the network card device configuration as well. I find the settings and switch them off. We had consolidated mailboxes so that one of the mailbox servers remains with only a few test mailboxes and the mailboxes of some of our support team members on it. It&amp;rsquo;s a gamble, but we remove nightly reboots from that server and switch back to the regular reboot schedule. Weeks pass, and we don&amp;rsquo;t run into any problems. We load some more mailboxes on there, and still no problems.&lt;/p&gt;
+
+&lt;p&gt;So, after weeks and weeks of reliability problems, the sneaky culprit was a set of technologies teamed together as the Scalable Network Pack (SNP), introduced without much notice with SP2 for Server 2003. I ended up writing a VB script that determines if a server is running with Broadcom network cards and disables the TOE settings in the TCP/IP stack directly as well as the TOE and SNP settings on the network cards themselves through some registry edits.&lt;/p&gt;
+
+&lt;p&gt;I later found that the MSExchange team had posted a &lt;a href=&#34;http://msexchangeteam.com/archive/2007/07/18/446400.aspx&#34;&gt;blog entry&lt;/a&gt; about potential problems with TOE and Exchange 2007, but had for some reason never come across this post in my searches on the symptoms we were experiencing. I have also since run into posts from other sysadmins reporting that the TOE features cause Internet Security and Acceleration (ISA) Server to lock up completely.&lt;/p&gt;
+
+&lt;p&gt;I would post the VB script I created for dealing with this problem, but Microsoft also just released a &lt;a href=&#34;http://support.microsoft.com/kb/948496&#34;&gt;hotfix&lt;/a&gt; that specifically disables the SNP features. Here is a list of some of the problems the hotfix is meant to address:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;When you try to connect to the server by using a VPN connection, you receive the following error message: Error 800: Unable to establish connection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot create a Remote Desktop Protocol (RDP) connection to the server.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot connect to shares on the server from a computer on the local area network.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot join a client computer to the domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot connect to the Exchange server from a computer that is running Microsoft Outlook.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inactive Outlook connections to the Exchange server may not be cleaned up.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience slow network performance.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You may experience slow network performance when you communicate with a Windows Vista-based computer.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot create an outgoing FTP connection from the server.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The Dynamic Host Configuration Protocol (DHCP) server service crashes.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience slow performance when you log on to the domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Network Address Translation (NAT) clients that are located behind Windows Small Business Server 2003 or Internet Security and Acceleration (ISA) Server experience intermittent connection failures.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience intermittent RPC communications failures.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The server stops responding.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The server runs low on nonpaged pool memory&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;hellip;wow&amp;hellip;so pretty much, this &lt;em&gt;Microsoft&lt;/em&gt; technology that is turned on &lt;em&gt;by default&lt;/em&gt; breaks several &lt;em&gt;Microsoft&lt;/em&gt; server products and messes networking almost entirely. Nice&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I hope that this spares somebody some of the pain we had to go through with this.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

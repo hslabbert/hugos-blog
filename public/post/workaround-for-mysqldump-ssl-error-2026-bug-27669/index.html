@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Workaround for mysqldump SSL error 2026 bug #27669 &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Workaround for mysqldump SSL error 2026 bug #27669</h1>
+			  <span class="post-date">Mon, Feb 9, 2009</span>
+			      <p>I had not previously played aroung much with MySQL replication, but got the chance to do so recently. I&rsquo;m doing some testing with a new mail filter setup composed of <a href="http://www.ijs.si/software/amavisd/">amavisd-new</a>, <a href="http://spamassassin.apache.org/">SpamAssassin</a>, and some other SA modules running through <a href="http://www.postfix.org/">Postfix</a> on <a href="http://www.debian.org/">Debian</a> Etch. The setup uses <a href="http://www.maiamailguard.com/">Maia Mailguard</a> as a web front-end and management system, including per-user settings and quarantines. We&rsquo;re using MySQL for the database backend for Maia for storing quarantines, per-user settings and the like, but wanted to have a dual-MX setup with a secondary MX sitting in a remote site.</p>
+
+<p><!-- more -->So, we needed some way to keep the MySQL data between the two servers in sync. I had looked at <a href="http://www.drbd.org/">DRBD</a> and <a href="http://www.linux-ha.org/">linux-ha</a>, but in the end decided to go with a dual-master <a href="http://dev.mysql.com/doc/refman/5.0/en/replication.html">MySQL replication</a> setup (<a href="http://www.neocodesoftware.com/replication/">howto1</a>, <a href="http://lug.wsu.edu/node/545/print">howto2</a>), using the built-in SSL capabilities in MySQL to encrypt the replication traffic over the WAN. After a bit of tweaking, I got that going, but then noticed that I could no longer perform mysqldump commands on the databases when running the command locally. I got the following error message whenever I tried a mysqldump command:</p>
+
+<p><code>Got error: 2026: SSL connection error when trying to connect</code></p>
+
+<p>I wasn&rsquo;t specifying any SSL parameters in the mysqldump command, though, and while I did configure the replication users to require SSL in their user setup, the mysqldump user did not have an SSL requirement. I got to the official MySQL bug report for this error(#<a href="http://bugs.mysql.com/bug.php?id=27669">27669</a>) as well as the patch link. But to be honest, that didn&rsquo;t really get me anywhere. The bug report indicates that this behaviour has been corrected in MySQL release 5.0.42, and I was running release 5.0.32.</p>
+
+<p>I updated the mysql-client package on a test machine to 5.0.75 and tried the mysqldump again; the same error still occurred. I didn&rsquo;t want to upgrade the actual mysql-server package as well, so I looked elsewhere for a fix. It occurred to me that, in order for the MySQL replication to use SSL, I had specified the SSL-related options (ssl-ca and so forth) in the [client] section of the global configuration file at /etc/mysql/my.cnf. As mysqldump starts a MySQL client connection, it would stand to reason that it uses the [client] configuration settings that it would find in the global config file, and hence would try to use SSL.</p>
+
+<p>I wanted to get mysqldump to <em>not</em> use SSL connections, but still wanted my replication traffic to use SSL. Since the mysqld daemon runs under the mysql user account, I moved the ssl-related config options out of the [client] section of the global config file of /etc/mysql/my.cnf, created a new .my.cnf config file in the mysql user&rsquo;s $HOME directory (/var/lib/mysql on my system), and entered just the ssl-related options in a [client] section of that .my.cnf file. I reloaded the mysqld daemon and confirmed that the slave connection to the remote server came up properly. It did; the configuration options for the mysql user includes both the global config file of /etc/mysql/my.cnf and the per-user .my.cnf file I had just created, so it is able to pick up the ssl-related options in the [client] section of the per-user settings.</p>
+
+<p>NOTE: The ssl-related options I am talking about here are only those configured in the [client] section. The ssl-related options in the [mysqld] section of the global config file can stay where they are. It should work to have those present in the local mysql user&rsquo;s .my.cnf config file, but I did not test this.</p>
+
+<p>Since no ssl-related options were specified in the global [client] configuration anymore, and no per-user settings were present for the user I was using for the mysqldump command, the command connected without SSL, the SSL error 2026 messages went away, and I was again able to successfully perform MySQL backups from the local machine.</p>
+
+<p>Bitcoin tip address for this post: 15ZhSjpB8iDRHvzgXphpJ9AhkJUPJw5uE5</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

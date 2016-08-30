@@ -1,0 +1,98 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Exchange 2007 Mailbox GUID  &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Exchange 2007 Mailbox GUID </h1>
+			  <span class="post-date">Wed, Jan 23, 2008</span>
+			      <p>On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely:</p>
+
+<ul>
+<li><p>legacyExchangeDN</p></li>
+
+<li><p>msExchALObjectVersion</p></li>
+
+<li><p>msExchMailboxGuid</p></li>
+
+<li><p>msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here)</p></li>
+
+<li><p>msExchUserAccountControl</p></li>
+</ul>
+
+<p><!-- more -->Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor. Without msExchMailboxGuid set, the user account effectively does not have a mailbox. We were desperate enough at one point to create a random mailbox GUID (ensuring first that it is not present anywhere else in the Exchange organization), but the msExchMailboxSecurityDescriptor not being set still ensured that the mailbox was inaccessible.</p>
+
+<p>After a few hours on the phone with MS support, and apparently some contact with a member of the Exchange 2007 development team, we were informed that this was due to a problem with the Exchange System Attendant and something to do with logs&hellip;to be honest I was not able to completely understand the guy at this point.</p>
+
+<p>Anyhow, the temporary solution was to restart the System Attendant service on the mailbox server that is experiencing the problem. This is easy enough with Powershell (Restart-Service MSExchangeSA), but we ended up making use of the PsTools suite&rsquo;s psservice because we had multiple mailbox servers going and we needed to sometimes restart the service on a remote mailbox server. Fortunately, restarting the System Attendant service in Exchange 2007 does not restart the Information Store, as was the case with Exchange 2003. After this, the proper attributes will again be stamped and user mailbox provisioning should be successful.</p>
+
+<p>The bug was apparently set to be resolved in SP1 for Exchange 2007 (released late last year), but I have not confirmed this.</p>
+
+<p>Check out these links for more info:</p>
+
+<p><a href="http://episteme.arstechnica.com/eve/forums?a=tpc&amp;s=50009562&amp;f=12009443&amp;m=362006418831&amp;r=606003038831#606003038831">Arstechnica Forum Thread</a>
+<a href="http://forums.msexchange.org/m_1800455217/mpage_1/key_/tm.htm#1800455222">MSExchange Forums Thread
+</a><a href="http://forums.microsoft.com/TechNet/ShowPost.aspx?PostID=2020465&amp;SiteID=17&amp;pageid=0">Microsoft Forums (I)</a>
+<a href="http://forums.microsoft.com/technet/ShowPost.aspx?postid=2343802&amp;siteid=17">Microsoft Forums (II)</a></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

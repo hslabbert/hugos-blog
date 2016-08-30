@@ -1,0 +1,98 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Vista Offline Files and SMB Opportunistic Locks &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Vista Offline Files and SMB Opportunistic Locks</h1>
+			  <span class="post-date">Sun, Mar 30, 2008</span>
+			      <p>One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&rsquo;d. The error message read something to the extent of &ldquo;<em>The process cannot access the file because it is being used by another process</em>&rdquo;.</p>
+
+<p>We tried the usual: checking permissions on the folders being offline&rsquo;d (I know that&rsquo;s probably not a word, but you get what I mean); deleting his local cache of Offline Files; disabling and then re-enabling Offline Files. But we just kept on banging our heads against the same error. At first, just about any web search for the error resulted in either something about Windows Home Server or databases or something of the like.  Eventually, though, we struck gold:</p>
+
+<p><a href="http://support.microsoft.com/kb/296264/en-us">http://support.microsoft.com/kb/296264/en-us</a>: Configuring opportunistic locking in Windows</p>
+
+<!-- more -->
+
+<p>According to MS, opportunistic locking &ldquo;<em>lets clients lock        files and locally cache information without the risk of another user changing           the file</em>&rdquo;. Opportunistic Locking is a feature of SMB. It is enabled by default, and is configurable from the client side (i.e. request opportunistic locking or not) and on the server side (i.e. allow opportunistic locking on local files or not).</p>
+
+<p>Also note: &ldquo;<em>If you disable opportunistic locking, the offline files feature in Windows           Vista fails</em>&ldquo;</p>
+
+<p>So, apparently, &ldquo;_The process cannot access the file because it is being used by another process&rdquo; <em>actually means</em> &ldquo;Opportunistic locking is not enabled on the file server_&ldquo;. Nice&hellip;</p>
+
+<p>Be aware that this setting is changed through the registry, so the regular warnings about messing about in REGEDIT apply (read <a href="http://bamboo.slabnet.com/~hslabbert/blog/disclaimer/">Disclaimer</a>). That stuff is already listed in the KB, so I won&rsquo;t bother to repeat it.</p>
+
+<p>To enable opportunistic locking on the file server, open REGEDIT to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters, and change the value of the REG_DWORD
+<strong>EnableOplocks</strong> from 0 to 1.</p>
+
+<p>The server does need to be rebooted in order for the registry change to take effect. After rebooting, retry your offline files synchronization. If the opportunistic locking was your problem, you should be good to go!</p>
+
+<p>UPDATE:</p>
+
+<p>I must also thank Rainier Day for <a href="http://blog.rainiernetworks.com/2008/06/25/vista-synchronization-errors/">his post</a> on his struggles with Opportunistic Locking. He was hit from the other side: The server-side opslock settings were good, but his Vista clients were configured to <em>not</em> request opportunistic locks, and this caused the clients to also experience offline files synchronization errors. Thanks Ranier: I noticed that component in the MS KB, but had never actually come across a Vista workstation that was configured out-of-the-box to have OpsLocks disabled!</p>
+
+<p>Cheers,</p>
+
+<p>JaS</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

@@ -1,0 +1,146 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Bulk Rename Files with Sequential Index &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Bulk Rename Files with Sequential Index</h1>
+			  <span class="post-date">Sun, Mar 23, 2008</span>
+			      <p>I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named <em>[common name].JPG</em>, then the subsequent files are named <em><a href="2">common name</a>.JPG</em> and so on and so forth.</p>
+
+<p>I had a few requirements for how I wanted to go about this:</p>
+
+<ol>
+<li><p>Get rid of the parentheses. If I will be posting those pics online anywhere, I wanted to keep the names as free of special characters as I can.</p></li>
+
+<li><p>Number the first file. The Windows Explorer route does not number the first file when doing bulk renames. This is easy enough to do manually, but I just don&rsquo;t want to bother.</p></li>
+
+<li><p>Keep a constant number of digits in the index number. I want the renaming process to take into account how many pictures there are and adjust the number of index digits accordingly. If there are fewer than 10 files/images, then only 1 digit is required (e.g. 1, 2, 3, 4&hellip;9). If there are between 10 and 99 files (inclusive), then two digits are required (01, 02, 03&hellip;10, 11, 12&hellip;99). I think you get the idea. Windows definitely doesn&rsquo;t do that.</p></li>
+</ol>
+
+<p><!-- more -->I thought that Powershell would be the best tool for the job, but I still struggled a bit. I eventually found the following would do the trick:</p>
+
+<p><code>$prefix = &quot;[SomePrefix]&quot;
+$files = Get-ChildItem
+$id = 1
+$files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><code>( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }</code></p>
+
+<p>Note that everything after the <code>$files |</code>is all on one line of code, but it might appear in the post as being spread across multiple lines.</p>
+
+<p>The Explanation:</p>
+
+<p>The first line saves the contents of the current directory into an array. <code>$id = 1</code> just resets our index counter so that the first file will be numbered 1. Now the fun stuff begins!</p>
+
+<p>We pipe the <code>$files</code> array into a foreach loop to process through each of the files in the directory. The foreach loop just contains the Rename-Item cmdlet. We select the full path of the item passed through the pipeline, <code>$_.fullname</code>, as the original item to rename. The -NewName item gets a bit complicated.</p>
+
+<p>As we will be including a whole bunch of items, we first open with parentheses, &ldquo;(&rdquo;. The new name will start with a string we have to define earlier, <code>$prefix</code>. If, for instance, your collection of pictures in the working directory is from the slick cabling job you just did on one of your racks, you can set <code>$prefix = &quot;SlickCablingJob&quot;</code>. This will result in files named something like <code>SlickCablingJob01.jpg</code>, etc.</p>
+
+<p>The next portion has a few opening parentheses, and this is because we will be performing a bunch of operations on our <code>$id</code> variable, which is our index number. We use <code>$id++</code> because we want to <code>$id</code> variable to increment each time we pass through the foreach loop and use the variable.</p>
+
+<p>To set the number of digits, I used the PadLeft() method. The PadLeft() method basically adds spaces to the left side of whatever string you are processing so that the resultant string is of a length that you specify. If, for instance, I have a string of &ldquo;four&rdquo; saved to the variable <code>$string</code> and used the command $string.PadLeft(10), the resultant string would be &ldquo;four&rdquo; with 6 spaces to its left, for a total of 10 characters in our string.</p>
+
+<p>Unfortunately, PadLeft() is not a method of the Int32 class, of which our <code>$id</code> variable is an instance, but it is a method of the String class. So, we first have to convert the <code>$id</code> variable to a string using <code>$id.ToString()</code>. I like to keep things clean, so I used <code>($id.ToString()).PadLeft()</code> to first wrap up the result of <code>$id.ToString()</code> and then apply the PadLeft() method.</p>
+
+<p>Now, PadLeft() requires an Int32 parameter to tell it how many places to pad to the left of the string. This is where some of the magic comes in. Remember how we saved the list of files in the directory to the array <code>$files</code>? Well, that array has a property <code>Count</code>, which is a count of the number of items in the array, in our case the number of files in the array.</p>
+
+<p>We count the number of items in our directory listing array using <code>$files.Count</code>. Since we want to see how many characters are in the highest number in our file list (which is equal to the number of files in the <code>$files</code> array), we can use the <code>Length</code> property. The <code>Length</code> property, when used on Strings, will return the number of characters in the string as an Int32 value. Using our <code>$string</code> of &ldquo;four&rdquo; from earlier, <code>$string.Length</code> will be equal to and Int32 value of 4, since there are four characters in the string &ldquo;four&rdquo;. If <code>$string</code> were &ldquo;one&rdquo;, <code>$string.Length</code> would be 3, since there are three characters in the string &ldquo;one&rdquo;. This can get confusing, so you might want to try it out with a few different values to get the hang of it.</p>
+
+<p>Let&rsquo;s say that we have 45 files in our directory. <code>$files.Count</code>would be an Int32 value of 45. The length property cannot be applied to Int32 values, so we have to convert our value to a string using <code>$files.Count.ToString()</code>. In our example of 45 files in our directory, <code>$files.Count.ToString()</code> would return a string value of &ldquo;45&rdquo;. The length property of that value would be the Int32 value 2. This is because the string &ldquo;45&rdquo; has two characters in it. If we had between 1 and 9 files (inclusive), the <code>$files.Count.ToString()</code> value would be 1 because there is only one character in the numbers 1, 2, 3, 4, 5, 6, 7, 8, and 9 since they are single-digit numbers. If we had between 10 and 99 files in our list, we would have a double-digit number, and hence <code>$files.Count.ToString()</code> would have a value of 2. Again, you might want to play around with this if you are unfamiliar with the concept.</p>
+
+<p>So far, then, we have <em>(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length</em>, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let&rsquo;s say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.</p>
+
+<p>The <code>$id</code> variable is set to the Int32 value of 1. This is converted to a string that reads &ldquo;1&rdquo;. Since we have 100 files in our list, <code>$files.Count</code> will have an Int32 value of 100. In order to count the number of characters in that value, we convert it to a string using <code>$files.Count.ToString()</code>, then count the number of characters using <code>$files.Count.ToString().Length</code>. This gives us an Int32 value of 3, since there are three characters in the number 100. PadLeft() then pads our <code>$id</code> of 1 so that it has three characters in total, as a one with 2 spaces to its left. We&rsquo;re almost there!</p>
+
+<p>The last part of the indexing replaces the spaces from PadLeft() to zeroes, so that the files will show up chronologically in a directory listing. This is done through the <code>-replace ' ','0'</code> part of the line, which replaces spaces with zeroes. For our example, we would no longer have &ldquo; 1&rdquo; but rather &ldquo;001&rdquo; (insert 007 joke here). Finally, my third requirement is met!</p>
+
+<p>All that is left to then append the original file extension to the filename. Since we have the original file in the pipeline, we can access its extension using <code>$_.Extension</code>. And voila! We have our bulk rename tool!</p>
+
+<p>Now, as the code stands, we have to first define our <code>$prefix</code> variable before using it, and it only acts on files in the current working directory. I threw this into a function with a parameter of <code>$prefix</code>, so that I can easily define the prefix and call the function conveniently from within the directory that contains the files I want to rename. You could also specify an additional parameter of <code>$directory</code> to the function to be able to work on directories other than your current working directory, as long as you change <code>$files = Get-ChildItem $directory</code>.</p>
+
+<p>Here is the function as it sits in my current Powershell profile:</p>
+
+<p><code>function Rename-Bulk($prefix)
+{
+$files = Get-ChildItem
+$id = 1
+$files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><code>( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}</code></p>
+
+<p>To define the function in your Powershell session, either paste the code above at the Powershell prompt, or paste it into your Powershell profile to have it available each time you start Powershell (be sure to remove any line breaks; remember that everything after <code>$files |</code> is one one line)!</p>
+
+<p>To add the extension I had mentioned to specify a directory other than your current working directory, use the following instead:</p>
+
+<p><code>function Rename-Bulk($prefix,$directory=$pwd)
+{
+$files = Get-ChildItem $directory
+$id = 1
+$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}</code></p>
+
+<p>That will select the current working directory by default if the second parameter is not specified, while still giving you the option to specify an alternate directory.</p>
+
+<p>As always, if there is something I&rsquo;ve missed (it&rsquo;s getting late!) or if you have something to add, please let me know.</p>
+
+<p>Bitcoin tip address for this post: 1M4ydWcEPsUXWrQYN254UrfkAbVGBbpZB8</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

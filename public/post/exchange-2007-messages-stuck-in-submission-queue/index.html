@@ -1,0 +1,93 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Exchange 2007: Messages stuck in Submission Queue &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Exchange 2007: Messages stuck in Submission Queue</h1>
+			  <span class="post-date">Wed, Aug 13, 2008</span>
+			      <p>We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the <strong>Submission</strong> queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.<!-- more --></p>
+
+<p>I noticed some errors coming from the source <strong>MSExchange Extensibility</strong>, with an event ID of 1050. They read as follows:</p>
+
+<blockquote>The execution time of agent 'ScanMail Routing Agent' exceeded 300000 (milliseconds) while handling event 'OnSubmittedMessage'. This is an unusual amount of time for an agent to process a single event. However, Transport will continue processing this message.</blockquote>
+
+<p>From the event, you can tell we&rsquo;re using TrendMicro ScanMail as part of our edge protection. It looked like the ScanMail scanning agent was stuck on a message and couldn&rsquo;t proceed. So, off to the services console I go. ScanMail has three services installed on the server, including its Master Service. The other services seemed happy, but the Master service timed out when I attempted to stop it. I checked the service properties and found its related executable file and killed it through Task Manager. The service was then recorded in the Services Console as being stopped, and after starting the service, mail started flowing again on that Hub Transport server. I repeated those steps on the second Hub Transport server, and messages came flooding out from there as well.</p>
+
+<p>I checked that ScanMail was up to date on both servers, and they appeared to be. I checked through Trend Micro&rsquo;s site nonetheless, and found that there appeared to be a related update. The links:</p>
+
+<p>List of updates for ScanMail 8:  <a href="http://www.trendmicro.com/download/product.asp?productid=8">http://www.trendmicro.com/download/product.asp?productid=8</a>
+Direct link to the relevant update:  <a href="http://www.trendmicro.com/ftp/products/patches/smex_80_win_en_patch3.exe">ScanMail 8.0 for Microsoft Exchange Patch 3</a>
+The README file:  <a href="http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT">http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT</a></p>
+
+<p>The relevant portion of the changelog:</p>
+
+<blockquote>21. While ScanMail for Microsoft Exchange 8.0 is running, after a few hours, email messages will start to queue. If user re-starts the ScanMail for Microsoft Exchange services, the application will hang at "Stopping".</blockquote>
+
+<p>I was technically on vacation while this all went down, so I had to hand of the update to someone else to apply, but no one was available for that weekend. The patch was not manually applied on the servers that weekend, but the issue did not return. We&rsquo;ve now been running smoothly for about two weeks.</p>
+
+<p>Hopefully you don&rsquo;t run across the issue, and hopefully this post will be of some help if you do!</p>
+
+<p>Bitcoin tip address for this post: 1HC44rd1NUZUiWDsHNf9Y1KPSxbtW7b5Sw</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

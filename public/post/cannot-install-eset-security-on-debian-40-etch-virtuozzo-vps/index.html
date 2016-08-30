@@ -1,0 +1,114 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</h1>
+			  <span class="post-date">Wed, Feb 11, 2009</span>
+			      <p>As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.</p>
+
+<p>Anyway, the download comes as an installation script called <code>esets.i386.deb.bin</code>. Running that script outputs a license agreement that you have to accept, produces a .deb package called <code>esets.i386.deb</code>, and outputs instructions on how to install the .deb package by using dpkg and import the license file. The .deb package installed just fine on another Debian test box, but when I attempted to run <code>dpkg –i esets.i386.deb</code> on the Virtuozzo VPS, tar squawked at me that it could not open <code>/dev/stdin</code> and the installation bailed:</p>
+
+<pre><code>hostname:/usr/local/src/eset# dpkg -i esets-3.0.11.i386.deb
+Selecting previously deselected package esets.
+(Reading database ... 24639 files and directories currently installed.)
+Unpacking esets (from esets-3.0.11.i386.deb) ...
+Setting up esets (3.0.11) ...
+Unpacking esets modules ...
+tar: /dev/stdin: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+dpkg: error processing esets (--install):
+subprocess post-installation script returned error exit status 2
+Errors were encountered while processing:
+esets
+</code></pre>
+
+<!-- more -->
+
+<p>To which I replied, “huh?”</p>
+
+<p>I took a peek around /dev (<code>ls /dev</code>), and wouldn’t you know it? No stdin, no stdout, and no stderr! Say what? I checked around ESET’s KB’s, but found nothing related to the issue. I poked around Virtuozzo’s and OpenVZ’s wiki’s, but again came up empty. I checked out the /dev directory (<code>ls –l /dev/</code>) on my test box on which I had successfully installed the package, and, as expected, /dev/stdin, /dev/stdout, and /dev/stderr were there. Looking more closely, we see that those files are links to a set of files at /proc/self/fd.</p>
+
+<pre><code>hostname:~# ls -l /dev/std*
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stderr -&gt; /proc/self/fd/2
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stdin -&gt; /proc/self/fd/0
+lrwxrwxrwx 1 root root 15 2009-01-28 02:35 /dev/stdout -&gt; /proc/self/fd/1
+hostname:~# 
+</code></pre>
+
+<p>So, on my Debian Virtuozzo VPS, I did the following:</p>
+
+<pre><code>ln -s /proc/self/fd/0 /dev/stdin
+ln -s /proc/self/fd/1 /dev/stdout
+ln -s /proc/self/fd/2 /dev/stderr 
+</code></pre>
+
+<p>I re-ran the package installation, and we were set! I don’t know if this issue is particular to some .deb packages or to all, as I had only used <code>apt-get</code> up to that point for package installation. As of now, though, I have not yet had any issues with the package or with the links I created…at least not as far as I can tell!</p>
+
+<p>Let me know if you have any other info on this issue.</p>
+
+<p>Bitcoin tip address for this post:
+<a href="bitcoin:1PncfTJjuzybqSDcZrP8qJSApHgtZp5B7F">1PncfTJjuzybqSDcZrP8qJSApHgtZp5B7F</a></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

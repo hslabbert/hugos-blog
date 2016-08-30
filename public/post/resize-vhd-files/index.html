@@ -1,0 +1,91 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.16" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Resize VHD Files &middot; Hugo&#39;s Blog</title>
+  
+
+  
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/poole.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://bamboo.slabnet.com/~hslabbert/blog/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://bamboo.slabnet.com/~hslabbert/blog/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="https://bamboo.slabnet.com/~hslabbert/blog/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://bamboo.slabnet.com/~hslabbert/blog/"><h1>Hugo&#39;s Blog</h1></a>
+      <p class="lead">
+       Mostly tech...mostly 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/">Home</a> </li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/"> Home </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/post/"> Posts </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/categories"> Categories </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/about/"> About </a></li>
+      
+        <li><a href="https://bamboo.slabnet.com/~hslabbert/blog/disclaimer"> Disclaimer </a></li>
+      
+    </ul>
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Resize VHD Files</h1>
+			  <span class="post-date">Wed, Jan 23, 2008</span>
+			      <p>This topic has been covered a bit (<a href="http://blogs.msdn.com/chrisfie/archive/2007/04/19/vhdresizer-a-great-tool-for-resizing-vhd-files.aspx">here</a>, <a href="http://blogs.msdn.com/virtual_pc_guy/archive/2007/03/12/vhd-resizer-resize-and-convert-your-virtual-hard-disks.aspx">here</a>, and <a href="http://autosponge.spaces.live.com/blog/cns!D7F85948C20F0293!247.entry">here</a>, for instance) but I have been working on a project that utilizes Virtual Server for testing, and it came up again. A consultant that was working on the VM&rsquo;s in question apparently struggled for quite some time before he asked for help on it. So, I thought I would see if another post on this might help someone out.</p>
+
+<p>If you run into a situation where you have existing Microsoft Virtual Server/PC VHD files, but the sizes you created them with initially simply don&rsquo;t cut it anymore, there is hope!</p>
+
+<p>What you will need:</p>
+
+<ul>
+<li><p>Original VHD file (obviously)</p></li>
+
+<li><p><a href="http://vmtoolkit.com/files/folders/converters/entry87.aspx">VhdResize</a> from <a href="http://www.vmtoolkit.com">vmtoolkit</a></p></li>
+
+<li><p>Spare disk space</p></li>
+
+<li><p>.Net 2.0 installed on the machine you will be using for the process</p></li>
+</ul>
+
+<p>The beauty of the tool is that it can be without having to be installed (self-contained). Just extract the zip, double-click the VhdResize.exe executable, select your source file and destination VHD, and away you go! The VhdResize also allows you to convert from fixed-size VHD&rsquo;s to dynamically-expanding VHD&rsquo;s as well, and it is non-destructive on your source VHD.</p>
+
+<p>Note that this only increases the size of the VHD, so that, effectively, your VM will see a larger physical hard disk present; it does not resize partitions on that drive. For that, you can either use Disk Management or diskpart in your guest VM, or mount the VHD using the <em>vhdmount</em> utility included in Virtual Server and use those disk utilities from your host OS (quick walkthrough <a href="http://autosponge.spaces.live.com/blog/cns!D7F85948C20F0293!247.entry">here</a>).</p>
+
+<p>Let me know if that&rsquo;s of use!</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
