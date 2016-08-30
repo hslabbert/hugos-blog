@@ -8,5 +8,6 @@ title = "Moving to Hugo"
 
 +++
 
-So...I've moved my blog to Hugo.
+So...I've moved my blog to [Hugo](http://gohugo.io).  More info to follow, but
+bear with me as I clean up some bits and pieces.
 
