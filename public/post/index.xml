@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/post/</link>
+    <link>http://blog.slabnet.com/post/</link>
     <description>Recent content in Posts on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Sun, 28 Aug 2016 22:29:33 -0700</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Moving to Hugo</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</link>
+      <link>http://blog.slabnet.com/post/moving-to-hugo/</link>
       <pubDate>Sun, 28 Aug 2016 22:29:33 -0700</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/moving-to-hugo/</guid>
+      <guid>http://blog.slabnet.com/post/moving-to-hugo/</guid>
       <description>&lt;p&gt;So&amp;hellip;I&amp;rsquo;ve moved my blog to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;.  More info to follow, but
 bear with me as I clean up some bits and pieces.&lt;/p&gt;
 </description>
@@ -25,10 +25,10 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
     
     <item>
       <title>BTC tips</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/btc-tips/</link>
+      <link>http://blog.slabnet.com/post/btc-tips/</link>
       <pubDate>Sun, 17 Jan 2016 05:43:46 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/btc-tips/</guid>
+      <guid>http://blog.slabnet.com/post/btc-tips/</guid>
       <description>&lt;p&gt;This blog hasn&amp;rsquo;t been updated in a bit, but I&amp;rsquo;m experimenting with bitcoin tips.  If you like an article or found it useful, please feel free to send me &amp;ldquo;thank you&amp;rdquo; tip via bitcoin through the BTC address at the bottom of the article.  This is also a rudimentary &amp;ldquo;voting system&amp;rdquo; to let me know which content has been most beneficial to people.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ll be adding BTC tip addresses to articles in fits and starts for existing articles as I get to them.&lt;/p&gt;
@@ -41,10 +41,10 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
     
     <item>
       <title>What do you run on XenServer?</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</link>
+      <link>http://blog.slabnet.com/post/what-do-you-run-on-xenserver/</link>
       <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</guid>
+      <guid>http://blog.slabnet.com/post/what-do-you-run-on-xenserver/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/XenServerArmy&#34;&gt;@XenServerArmy&lt;/a&gt; asked in &lt;a href=&#34;http://twitter.com/XenServerArmy/status/18477320394&#34;&gt;this tweet&lt;/a&gt; what applications/services people are running on their XenServer deployments. So, here&amp;rsquo;s a quick list for &lt;a href=&#34;http://www.i-worx.ca/&#34;&gt;i-worx&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -93,10 +93,10 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
     
     <item>
       <title>&#34;Gone Google&#34; Marketing Fail...</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</link>
+      <link>http://blog.slabnet.com/post/gone-google-marketing-fail/</link>
       <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gone-google-marketing-fail/</guid>
+      <guid>http://blog.slabnet.com/post/gone-google-marketing-fail/</guid>
       <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
 
 &lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
@@ -137,10 +137,10 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
     
     <item>
       <title>Wordpress Theme Updated</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/wordpress-theme-updated/</link>
+      <link>http://blog.slabnet.com/post/wordpress-theme-updated/</link>
       <pubDate>Thu, 15 Apr 2010 05:48:25 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/wordpress-theme-updated/</guid>
+      <guid>http://blog.slabnet.com/post/wordpress-theme-updated/</guid>
       <description>&lt;p&gt;In case it isn&amp;rsquo;t obvious: I switched up the theme for the site. I was never really too fond of the light-green touch of the previous theme and the code styling especially bugged me, but it was a fairly clean and so I just kind of stuck with it.&lt;/p&gt;
 
 &lt;p&gt;Anyhow; comments &amp;amp; feedback appreciated.&lt;/p&gt;
@@ -149,10 +149,10 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
     
     <item>
       <title>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
+      <link>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
       <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
+      <guid>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
       <description>&lt;p&gt;As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.&lt;/p&gt;
 
 &lt;p&gt;Anyway, the download comes as an installation script called &lt;code&gt;esets.i386.deb.bin&lt;/code&gt;. Running that script outputs a license agreement that you have to accept, produces a .deb package called &lt;code&gt;esets.i386.deb&lt;/code&gt;, and outputs instructions on how to install the .deb package by using dpkg and import the license file. The .deb package installed just fine on another Debian test box, but when I attempted to run &lt;code&gt;dpkg –i esets.i386.deb&lt;/code&gt; on the Virtuozzo VPS, tar squawked at me that it could not open &lt;code&gt;/dev/stdin&lt;/code&gt; and the installation bailed:&lt;/p&gt;
@@ -202,10 +202,10 @@ ln -s /proc/self/fd/2 /dev/stderr
     
     <item>
       <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
+      <link>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
       <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
+      <guid>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
       <description>&lt;p&gt;We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of &lt;code&gt;#550 4.4.7 QUEUE.Expired; message expired ##&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&amp;hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:&lt;/p&gt;
@@ -236,10 +236,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>Workaround for mysqldump SSL error 2026 bug #27669</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</link>
+      <link>http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</link>
       <pubDate>Mon, 09 Feb 2009 16:36:55 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</guid>
+      <guid>http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/</guid>
       <description>&lt;p&gt;I had not previously played aroung much with MySQL replication, but got the chance to do so recently. I&amp;rsquo;m doing some testing with a new mail filter setup composed of &lt;a href=&#34;http://www.ijs.si/software/amavisd/&#34;&gt;amavisd-new&lt;/a&gt;, &lt;a href=&#34;http://spamassassin.apache.org/&#34;&gt;SpamAssassin&lt;/a&gt;, and some other SA modules running through &lt;a href=&#34;http://www.postfix.org/&#34;&gt;Postfix&lt;/a&gt; on &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; Etch. The setup uses &lt;a href=&#34;http://www.maiamailguard.com/&#34;&gt;Maia Mailguard&lt;/a&gt; as a web front-end and management system, including per-user settings and quarantines. We&amp;rsquo;re using MySQL for the database backend for Maia for storing quarantines, per-user settings and the like, but wanted to have a dual-MX setup with a secondary MX sitting in a remote site.&lt;/p&gt;
 
 &lt;p&gt;&lt;!-- more --&gt;So, we needed some way to keep the MySQL data between the two servers in sync. I had looked at &lt;a href=&#34;http://www.drbd.org/&#34;&gt;DRBD&lt;/a&gt; and &lt;a href=&#34;http://www.linux-ha.org/&#34;&gt;linux-ha&lt;/a&gt;, but in the end decided to go with a dual-master &lt;a href=&#34;http://dev.mysql.com/doc/refman/5.0/en/replication.html&#34;&gt;MySQL replication&lt;/a&gt; setup (&lt;a href=&#34;http://www.neocodesoftware.com/replication/&#34;&gt;howto1&lt;/a&gt;, &lt;a href=&#34;http://lug.wsu.edu/node/545/print&#34;&gt;howto2&lt;/a&gt;), using the built-in SSL capabilities in MySQL to encrypt the replication traffic over the WAN. After a bit of tweaking, I got that going, but then noticed that I could no longer perform mysqldump commands on the databases when running the command locally. I got the following error message whenever I tried a mysqldump command:&lt;/p&gt;
@@ -262,10 +262,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>Windows Media Player 11 Breaks Internet Connectivity</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</link>
+      <link>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</link>
       <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</guid>
+      <guid>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</guid>
       <description>&lt;p&gt;Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&amp;rsquo;m not saying &amp;ldquo;If you install Windows Media Player 11 on your computer, networking will break,&amp;rdquo; I&amp;rsquo;m just saying that if you experience the symptoms outlined below and you&amp;rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.&lt;/p&gt;
 
 &lt;p&gt;So, one of the other techs in the office calls me over: He&amp;rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation. The tech has been on this thing for hours, tried just about everything he can think of shy of a workstation rebuild, and he&amp;rsquo;s looking for some team support. I have him throw the ticket my way; I figure that another set of eyes can only be helpful. With a bit of digging, we isolate the symptoms:&lt;/p&gt;
@@ -296,10 +296,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>SSL Errors in Exchange 2003 Public Folder Management</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
+      <link>http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
       <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
+      <guid>http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
       <description>&lt;p&gt;On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:&lt;/p&gt;
 
 &lt;p&gt;The SSL certificate server name is incorrect.&lt;!-- more --&gt;&lt;/p&gt;
@@ -316,10 +316,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>Accessing Active Directory in PHP using ADLDAP</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <link>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</link>
       <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <guid>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</guid>
       <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;
@@ -371,10 +371,10 @@ $entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Exchange 2007: Messages stuck in Submission Queue</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</link>
+      <link>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</link>
       <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
+      <guid>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
       <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
@@ -403,10 +403,10 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
     
     <item>
       <title>Gmail Filesystem for Windows</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</link>
+      <link>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</link>
       <pubDate>Thu, 01 May 2008 03:49:34 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</guid>
+      <guid>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the &lt;a href=&#34;http://www.viksoe.dk/code/gmail.htm&#34;&gt;Gmail Drive&lt;/a&gt; by  &lt;a href=&#34;http://www.viksoe.dk/code/index.htm&#34;&gt;bjarke&lt;/a&gt;. It&amp;rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -421,10 +421,10 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
     
     <item>
       <title>Vista Offline Files and SMB Opportunistic Locks</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</link>
+      <link>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</link>
       <pubDate>Sun, 30 Mar 2008 19:12:52 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
+      <guid>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
       <description>&lt;p&gt;One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&amp;rsquo;d. The error message read something to the extent of &amp;ldquo;&lt;em&gt;The process cannot access the file because it is being used by another process&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
 
 &lt;p&gt;We tried the usual: checking permissions on the folders being offline&amp;rsquo;d (I know that&amp;rsquo;s probably not a word, but you get what I mean); deleting his local cache of Offline Files; disabling and then re-enabling Offline Files. But we just kept on banging our heads against the same error. At first, just about any web search for the error resulted in either something about Windows Home Server or databases or something of the like.  Eventually, though, we struck gold:&lt;/p&gt;
@@ -458,10 +458,10 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
     
     <item>
       <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
+      <link>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
       <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
+      <guid>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
       <description>&lt;p&gt;Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.&lt;/p&gt;
 
 &lt;p&gt;Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&amp;rsquo;s status directly from a hidden attribute on the ADSI object. Let&amp;rsquo;s start with the Directory Searcher method. This entry also draws from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram’s Blog&lt;/a&gt;. The code:&lt;/p&gt;

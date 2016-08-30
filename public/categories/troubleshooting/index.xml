@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Troubleshooting on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/troubleshooting/</link>
+    <link>http://blog.slabnet.com/categories/troubleshooting/</link>
     <description>Recent content in Troubleshooting on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Wed, 11 Feb 2009 16:24:50 +0000</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/categories/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
+      <link>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
       <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
+      <guid>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
       <description>&lt;p&gt;As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.&lt;/p&gt;
 
 &lt;p&gt;Anyway, the download comes as an installation script called &lt;code&gt;esets.i386.deb.bin&lt;/code&gt;. Running that script outputs a license agreement that you have to accept, produces a .deb package called &lt;code&gt;esets.i386.deb&lt;/code&gt;, and outputs instructions on how to install the .deb package by using dpkg and import the license file. The .deb package installed just fine on another Debian test box, but when I attempted to run &lt;code&gt;dpkg –i esets.i386.deb&lt;/code&gt; on the Virtuozzo VPS, tar squawked at me that it could not open &lt;code&gt;/dev/stdin&lt;/code&gt; and the installation bailed:&lt;/p&gt;
@@ -67,10 +67,10 @@ ln -s /proc/self/fd/2 /dev/stderr
     
     <item>
       <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
+      <link>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
       <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
+      <guid>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
       <description>&lt;p&gt;We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of &lt;code&gt;#550 4.4.7 QUEUE.Expired; message expired ##&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&amp;hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:&lt;/p&gt;
@@ -101,10 +101,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>Windows Media Player 11 Breaks Internet Connectivity</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</link>
+      <link>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</link>
       <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</guid>
+      <guid>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</guid>
       <description>&lt;p&gt;Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&amp;rsquo;m not saying &amp;ldquo;If you install Windows Media Player 11 on your computer, networking will break,&amp;rdquo; I&amp;rsquo;m just saying that if you experience the symptoms outlined below and you&amp;rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.&lt;/p&gt;
 
 &lt;p&gt;So, one of the other techs in the office calls me over: He&amp;rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation. The tech has been on this thing for hours, tried just about everything he can think of shy of a workstation rebuild, and he&amp;rsquo;s looking for some team support. I have him throw the ticket my way; I figure that another set of eyes can only be helpful. With a bit of digging, we isolate the symptoms:&lt;/p&gt;
@@ -135,10 +135,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>SSL Errors in Exchange 2003 Public Folder Management</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
+      <link>http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/</link>
       <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
+      <guid>http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/</guid>
       <description>&lt;p&gt;On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:&lt;/p&gt;
 
 &lt;p&gt;The SSL certificate server name is incorrect.&lt;!-- more --&gt;&lt;/p&gt;
@@ -155,10 +155,10 @@ the following diagnostic text to your system administrator.
     
     <item>
       <title>Exchange 2007: Messages stuck in Submission Queue</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</link>
+      <link>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</link>
       <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
+      <guid>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
       <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
@@ -187,10 +187,10 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
     
     <item>
       <title>Vista Offline Files and SMB Opportunistic Locks</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</link>
+      <link>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</link>
       <pubDate>Sun, 30 Mar 2008 19:12:52 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
+      <guid>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
       <description>&lt;p&gt;One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&amp;rsquo;d. The error message read something to the extent of &amp;ldquo;&lt;em&gt;The process cannot access the file because it is being used by another process&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
 
 &lt;p&gt;We tried the usual: checking permissions on the folders being offline&amp;rsquo;d (I know that&amp;rsquo;s probably not a word, but you get what I mean); deleting his local cache of Offline Files; disabling and then re-enabling Offline Files. But we just kept on banging our heads against the same error. At first, just about any web search for the error resulted in either something about Windows Home Server or databases or something of the like.  Eventually, though, we struck gold:&lt;/p&gt;
@@ -224,10 +224,10 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
     
     <item>
       <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</link>
+      <link>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</link>
       <pubDate>Tue, 25 Mar 2008 05:28:15 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</guid>
+      <guid>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</guid>
       <description>&lt;p&gt;We&amp;rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.&lt;/p&gt;
 
 &lt;p&gt;Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&amp;hellip;&lt;/p&gt;
@@ -315,10 +315,10 @@ $objstalesearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectCla
     
     <item>
       <title>Dell, Broadcom, Server 2003 SP2 SNP and TOE</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/dell-broadcom-server-2003-sp2-snp-and-toe/</link>
+      <link>http://blog.slabnet.com/post/dell-broadcom-server-2003-sp2-snp-and-toe/</link>
       <pubDate>Sun, 23 Mar 2008 04:03:02 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/dell-broadcom-server-2003-sp2-snp-and-toe/</guid>
+      <guid>http://blog.slabnet.com/post/dell-broadcom-server-2003-sp2-snp-and-toe/</guid>
       <description>&lt;p&gt;Dell, Broadcom, and Microsoft have decided to partner up with the release of a technology called TCP/IP Offloading, or TOE for &lt;em&gt;TCP/IP Offload Engine&lt;/em&gt;. It was bundled together in the Scalable Network Pack (SNP), included and enabled by default with Service Pack 2 (SP2) for Windows Server 2003. The gist of this technology is to enable high-load enterprise applications to be easily scalable. For those of you familiar with the OSI model, TOE moves layer 3 and 4 processing out of the OS and CPU into the NIC. The idea is to better utilize advances in network card performance and free up CPU cycles for other purposes, such as application-side processing.&lt;/p&gt;
 
 &lt;p&gt;This all seems well and good, if they saw fit to properly test the stuff out against their own applications!&lt;/p&gt;
@@ -385,10 +385,10 @@ $objstalesearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectCla
     
     <item>
       <title>Ultimate Guide to Linux Boot Problems</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</link>
+      <link>http://blog.slabnet.com/post/ultimate-guide-to-linux-boot-problems/</link>
       <pubDate>Wed, 16 Jan 2008 18:41:02 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</guid>
+      <guid>http://blog.slabnet.com/post/ultimate-guide-to-linux-boot-problems/</guid>
       <description>&lt;p&gt;I haven&amp;rsquo;t played around much in Linux lately, but I finally dusted off my &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; CD&amp;rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&amp;hellip;except then I couldn&amp;rsquo;t get into the Linux OS&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!&lt;/p&gt;
