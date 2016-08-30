@@ -4,7 +4,7 @@ languageCode = "en-us"
 title = "Hugo's Blog"
 copyright = "&copy; 2016 Hugo Slabbert"
 
-theme = "hyde"
+theme = "blackburn"
 canonifyurls = true
 
 paginate = 10
