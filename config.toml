@@ -34,10 +34,6 @@ paginatePath = "page"
     identifier = "post"
     url = "/post/"
 [[menu.main]]
-    name = "Categories"
-    url = "/categories"
-    weight = 2
-[[menu.main]]
     name = "About"
     pre = "<i class='fa fa-user fa-fw'></i>"
     weight = 3
