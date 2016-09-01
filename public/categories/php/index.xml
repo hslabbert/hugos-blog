@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Php on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/php/</link>
+    <link>http://blog.slabnet.com/categories/php/</link>
     <description>Recent content in Php on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Wed, 13 Aug 2008 05:35:37 +0000</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Accessing Active Directory in PHP using ADLDAP</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <link>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</link>
       <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <guid>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</guid>
       <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;

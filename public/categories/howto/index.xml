@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Howto on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/howto/</link>
+    <link>http://blog.slabnet.com/categories/howto/</link>
     <description>Recent content in Howto on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Wed, 11 Feb 2009 16:24:50 +0000</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/howto/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/categories/howto/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
+      <link>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</link>
       <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
+      <guid>http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/</guid>
       <description>&lt;p&gt;As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.&lt;/p&gt;
 
 &lt;p&gt;Anyway, the download comes as an installation script called &lt;code&gt;esets.i386.deb.bin&lt;/code&gt;. Running that script outputs a license agreement that you have to accept, produces a .deb package called &lt;code&gt;esets.i386.deb&lt;/code&gt;, and outputs instructions on how to install the .deb package by using dpkg and import the license file. The .deb package installed just fine on another Debian test box, but when I attempted to run &lt;code&gt;dpkg –i esets.i386.deb&lt;/code&gt; on the Virtuozzo VPS, tar squawked at me that it could not open &lt;code&gt;/dev/stdin&lt;/code&gt; and the installation bailed:&lt;/p&gt;
@@ -67,10 +67,10 @@ ln -s /proc/self/fd/2 /dev/stderr
     
     <item>
       <title>Accessing Active Directory in PHP using ADLDAP</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</link>
+      <link>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</link>
       <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/accessing-active-directory-in-php-using-adldap/</guid>
+      <guid>http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/</guid>
       <description>&lt;p&gt;Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &amp;hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons. Myself and the other admin tasked with setting up this portal are most familiar with PHP, and so we went of looking for the best means of interfacing with Active Directory through PHP. &lt;!-- more --&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, you can obviously use PHP&amp;rsquo;s built-in LDAP support, provided PHP was built &amp;ndash;with-ldap. If you&amp;rsquo;re doing a lot of calls back and forth though, this can get pretty tedious pretty fast. It can also be quite intimidating to someone who is more of a sysadmin that a full-time developer (myself included!). So, abstracting away some of the complexity would be handy. I&amp;rsquo;m betting there are other systems out there, but for us, &lt;a href=&#34;http://adldap.sourceforge.net/&#34;&gt;adldap&lt;/a&gt; was the answer.&lt;/p&gt;
@@ -122,10 +122,10 @@ $entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Gmail Filesystem for Windows</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</link>
+      <link>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</link>
       <pubDate>Thu, 01 May 2008 03:49:34 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/gmail-filesystem-for-windows/</guid>
+      <guid>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</guid>
       <description>&lt;p&gt;If you&amp;rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the &lt;a href=&#34;http://www.viksoe.dk/code/gmail.htm&#34;&gt;Gmail Drive&lt;/a&gt; by  &lt;a href=&#34;http://www.viksoe.dk/code/index.htm&#34;&gt;bjarke&lt;/a&gt;. It&amp;rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -140,10 +140,10 @@ $entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
+      <link>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
       <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
+      <guid>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
       <description>&lt;p&gt;Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.&lt;/p&gt;
 
 &lt;p&gt;Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&amp;rsquo;s status directly from a hidden attribute on the ADSI object. Let&amp;rsquo;s start with the Directory Searcher method. This entry also draws from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram’s Blog&lt;/a&gt;. The code:&lt;/p&gt;
@@ -193,10 +193,10 @@ $resultdisabaccn = $objdisabsearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt
     
     <item>
       <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</link>
+      <link>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</link>
       <pubDate>Tue, 25 Mar 2008 05:28:15 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</guid>
+      <guid>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/</guid>
       <description>&lt;p&gt;We&amp;rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.&lt;/p&gt;
 
 &lt;p&gt;Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&amp;hellip;&lt;/p&gt;
@@ -284,10 +284,10 @@ $objstalesearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectCla
     
     <item>
       <title>Take ownership of files and folders through script</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/take-ownership-of-files-and-folders-through-script/</link>
+      <link>http://blog.slabnet.com/post/take-ownership-of-files-and-folders-through-script/</link>
       <pubDate>Sun, 23 Mar 2008 04:41:48 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/take-ownership-of-files-and-folders-through-script/</guid>
+      <guid>http://blog.slabnet.com/post/take-ownership-of-files-and-folders-through-script/</guid>
       <description>&lt;p&gt;As part of our process to disable user accounts, we take ownership of the user&amp;rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&amp;rsquo;s files.&lt;/p&gt;
 
 &lt;p&gt;With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes. One of the sticking points in getting the disable script wrapped up was seizing control of the user&amp;rsquo;s directories. Now, Powershell does have the ability to modify ACL&amp;rsquo;s through the New-Acl and Set-Acl cmdlets (links below), but the users have exclusive access to their server-side directories. It is easy enough to take ownership of a directory through the Windows Explorer Security dialog, but the Powershell methods all presented some form of error when trying to set permissions or change ownership on a file system object to which you do not already have access to.&lt;/p&gt;
@@ -329,10 +329,10 @@ takeown.exe /A /R /D Y /F $directory
     
     <item>
       <title>Modifying Group Memberships with Powershell, Part II</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/modifying-group-memberships-with-powershell-part-2/</link>
+      <link>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/</link>
       <pubDate>Sat, 19 Jan 2008 23:30:35 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/modifying-group-memberships-with-powershell-part-2/</guid>
+      <guid>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/</guid>
       <description>&lt;p&gt;I had hoped to put this all in one post, but the thing would have gone on forever! Part I covered some basics in copying group memberships to an Active Directory user from another user, such as a template account, using Powershell. Part II will delve into my misadventures in gaining more control of user group memberships, including removing users from a group either by editing the group&amp;rsquo;s attributes or editing the user&amp;rsquo;s attributes. I was also looking for a way to change dial-in permissions on user accounts, and that will be covered by a similar strategy.&lt;/p&gt;
 
 &lt;p&gt;While these examples should be less dependent on the MS Exchange 2007 snap-in for Powershell and &lt;a href=&#34;http://www.codeplex.com/PowerShellCX&#34;&gt;Powershell Community Extensions&lt;/a&gt;, please note that I have not checked through the code samples to confirm what is purely Powershell and what requires those snap-ins.&lt;/p&gt;
@@ -451,10 +451,10 @@ Accessing AD with PowerShell&lt;/a&gt;&lt;/p&gt;
     
     <item>
       <title>Modifying Group Memberships with Powershell, Part I</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/modifying-group-memberships-with-powershell-part-1/</link>
+      <link>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/</link>
       <pubDate>Sat, 19 Jan 2008 19:03:40 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/modifying-group-memberships-with-powershell-part-1/</guid>
+      <guid>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/</guid>
       <description>
 
 &lt;p&gt;I recently had to spend &lt;em&gt;hours&lt;/em&gt; figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.&lt;/p&gt;
@@ -527,10 +527,10 @@ $groupdn = $_.DistinguishedName
     
     <item>
       <title>Ultimate Guide to Linux Boot Problems</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</link>
+      <link>http://blog.slabnet.com/post/ultimate-guide-to-linux-boot-problems/</link>
       <pubDate>Wed, 16 Jan 2008 18:41:02 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/ultimate-guide-to-linux-boot-problems/</guid>
+      <guid>http://blog.slabnet.com/post/ultimate-guide-to-linux-boot-problems/</guid>
       <description>&lt;p&gt;I haven&amp;rsquo;t played around much in Linux lately, but I finally dusted off my &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; CD&amp;rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&amp;hellip;except then I couldn&amp;rsquo;t get into the Linux OS&amp;hellip;&lt;/p&gt;
 
 &lt;p&gt;So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!&lt;/p&gt;

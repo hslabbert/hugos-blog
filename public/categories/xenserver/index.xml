@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xenserver on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/xenserver/</link>
+    <link>http://blog.slabnet.com/categories/xenserver/</link>
     <description>Recent content in Xenserver on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Wed, 14 Jul 2010 18:35:57 +0000</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/xenserver/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/categories/xenserver/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>What do you run on XenServer?</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</link>
+      <link>http://blog.slabnet.com/post/what-do-you-run-on-xenserver/</link>
       <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/what-do-you-run-on-xenserver/</guid>
+      <guid>http://blog.slabnet.com/post/what-do-you-run-on-xenserver/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/XenServerArmy&#34;&gt;@XenServerArmy&lt;/a&gt; asked in &lt;a href=&#34;http://twitter.com/XenServerArmy/status/18477320394&#34;&gt;this tweet&lt;/a&gt; what applications/services people are running on their XenServer deployments. So, here&amp;rsquo;s a quick list for &lt;a href=&#34;http://www.i-worx.ca/&#34;&gt;i-worx&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ol&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networking on Hugo&#39;s Blog</title>
-    <link>https://bamboo.slabnet.com/~hslabbert/blog/categories/networking/</link>
+    <link>http://blog.slabnet.com/categories/networking/</link>
     <description>Recent content in Networking on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -10,14 +10,14 @@
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Wed, 13 Aug 2008 06:18:52 +0000</lastBuildDate>
-    <atom:link href="https://bamboo.slabnet.com/~hslabbert/blog/categories/networking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/categories/networking/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Windows Media Player 11 Breaks Internet Connectivity</title>
-      <link>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</link>
+      <link>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</link>
       <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>https://bamboo.slabnet.com/~hslabbert/blog/post/windows-media-player-11-breaks-internet-connectivity/</guid>
+      <guid>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</guid>
       <description>&lt;p&gt;Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&amp;rsquo;m not saying &amp;ldquo;If you install Windows Media Player 11 on your computer, networking will break,&amp;rdquo; I&amp;rsquo;m just saying that if you experience the symptoms outlined below and you&amp;rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.&lt;/p&gt;
 
 &lt;p&gt;So, one of the other techs in the office calls me over: He&amp;rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation. The tech has been on this thing for hours, tried just about everything he can think of shy of a workstation rebuild, and he&amp;rsquo;s looking for some team support. I have him throw the ticket my way; I figure that another set of eyes can only be helpful. With a bit of digging, we isolate the symptoms:&lt;/p&gt;
