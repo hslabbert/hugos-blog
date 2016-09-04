@@ -8,14 +8,16 @@ theme = "blackburn"
 paginate = 10
 paginatePath = "page"
 
-[indexes]
-  category = "categories"
-  tag = "tags"
-  topic = "topics"
+#[indexes]
+#  category = "categories"
+#  tag = "tags"
+#  topic = "topics"
 
 [taxonomies]
     # Optional. Use if you want tags and lists.
-   category = "categories"
+    category = "categories"
+    tag = "tags"
+    topic = "topics"
 
 [author]
     name = "Hugo Slabbert"
@@ -56,6 +58,8 @@ paginatePath = "page"
     # Select a syntax highight.
     # Check the static/css/highlight directory for options.
     highlight = "default"
+
+    disqus = "blog-slabnet-com"
 
 [social]
     # Link your social networking accouns to the side menu
