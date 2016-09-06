@@ -2,7 +2,7 @@
 date: 2008-03-23 06:31:17+00:00
 slug: bulk-rename-files-with-sequential-index
 title: Bulk Rename Files with Sequential Index
-categories:
+tags:
 - .net
 - file management
 - powershell

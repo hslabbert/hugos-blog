@@ -2,7 +2,7 @@
 date: 2008-01-19 23:30:35+00:00
 slug: modifying-group-memberships-with-powershell-part-2
 title: Modifying Group Memberships with Powershell, Part II
-categories:
+tags:
 - .net
 - active directory
 - adsi

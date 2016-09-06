@@ -2,7 +2,7 @@
 date: 2008-03-30 19:12:52+00:00
 slug: vista-offline-files-and-smb-opportunistic-locks
 title: Vista Offline Files and SMB Opportunistic Locks
-categories:
+tags:
 - file management
 - troubleshooting
 - vista

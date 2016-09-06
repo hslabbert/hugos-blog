@@ -2,7 +2,7 @@
 date: 2010-07-14 18:35:57+00:00
 slug: what-do-you-run-on-xenserver
 title: What do you run on XenServer?
-categories:
+tags:
 - citrix
 - virtualization
 - xenserver

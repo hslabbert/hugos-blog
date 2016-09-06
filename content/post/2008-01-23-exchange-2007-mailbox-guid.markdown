@@ -2,7 +2,7 @@
 date: 2008-01-23 05:46:35+00:00
 slug: exchange-2007-mailbox-guid
 title: 'Exchange 2007 Mailbox GUID '
-categories:
+tags:
 - active directory
 - exchange 2007
 - powershell

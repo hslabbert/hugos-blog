@@ -2,7 +2,7 @@
 date: 2010-04-15 05:48:25+00:00
 slug: wordpress-theme-updated
 title: Wordpress Theme Updated
-categories:
+tags:
 - news
 - web
 ---

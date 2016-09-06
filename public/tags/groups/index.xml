@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Groups on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/groups/</link>
+    <description>Recent content in Groups on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Sat, 19 Jan 2008 23:30:35 +0000</lastBuildDate>
+    <atom:link href="http://blog.slabnet.com/tags/groups/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Modifying Group Memberships with Powershell, Part II</title>
+      <link>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/</link>
+      <pubDate>Sat, 19 Jan 2008 23:30:35 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/</guid>
+      <description>&lt;p&gt;I had hoped to put this all in one post, but the thing would have gone on forever! Part I covered some basics in copying group memberships to an Active Directory user from another user, such as a template account, using Powershell. Part II will delve into my misadventures in gaining more control of user group memberships, including removing users from a group either by editing the group&amp;rsquo;s attributes or editing the user&amp;rsquo;s attributes. I was also looking for a way to change dial-in permissions on user accounts, and that will be covered by a similar strategy.&lt;/p&gt;
+
+&lt;p&gt;While these examples should be less dependent on the MS Exchange 2007 snap-in for Powershell and &lt;a href=&#34;http://www.codeplex.com/PowerShellCX&#34;&gt;Powershell Community Extensions&lt;/a&gt;, please note that I have not checked through the code samples to confirm what is purely Powershell and what requires those snap-ins.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;So in Part I we did the following to add a user to a group:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Connected to the ADSI object for our group using &lt;code&gt;[adsi]&amp;quot;LDAP://[group&#39;s distinguished name]&amp;quot;&lt;/code&gt; and stored as &lt;em&gt;$fqgroup&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Added the user to the group using &lt;code&gt;$fqgroup.member.add(&amp;quot;[user&#39;s distinguished name]&amp;quot;)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Applied the changes user &lt;code&gt;$fqgroup.setinfo()&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The problem for me came when I tried to remove group memberships. I don&amp;rsquo;t have a huge scripting background; I mostly dabble in batches, and PHP, and have avoided VBS whenever I can. Powershell is my first real foray into extensive automation, and I try to keep things simple where I can and use provided cmdlets, snap-ins, and wrappers. So, when I wanted to remove group memberships, I checked out what the Exchange 2007 snap-in for Powershell had to offer.&lt;/p&gt;
+
+&lt;p&gt;Wouldn&amp;rsquo;t you know it? Exchange has some membership-manipulating options available for us:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Get-Group &#39;Test Group&#39; | Get-Member | Where-Object { $_.name -match &#39;members&#39; } | Format-List Name,Membertype,Definition&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;returns:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Name : get_Members
+MemberType : Method
+Definition : Microsoft.Exchange.Data.MultiValuedProperty&lt;/code&gt;1[[Microsoft.Exchange.
+Data.Directory.ADObjectId, Microsoft.Exchange.Data.Directory, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] get_Members()
+&lt;code&gt;
+Name : set_Members
+MemberType : Method
+Definition : System.Void set_Members(MultiValuedProperty`1 value)
+&lt;/code&gt;
+Name : Members
+MemberType : Property
+Definition : Microsoft.Exchange.Data.MultiValuedProperty&lt;code&gt;1[[Microsoft.Exchange.
+Data.Directory.ADObjectId, Microsoft.Exchange.Data.Directory, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Members {get;set;}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The only reasons I threw in the &lt;em&gt;Where-Object&lt;/em&gt; and &lt;em&gt;Format-List&lt;/em&gt; cmdlets were because I didn&amp;rsquo;t want to show every single member, and Powershell will by default output &lt;em&gt;Get-Member&lt;/em&gt; to a table and cut off the &lt;em&gt;Definition&lt;/em&gt; column that I&amp;rsquo;m interested in here.&lt;/p&gt;
+
+&lt;p&gt;Now, notice that the property &lt;em&gt;Members** **&lt;/em&gt;(the last one in our list) specifically states {get;set;} at the end of its definition. This tells us that we should be able to both retrieve the members property (get) and make changes to it (set). Conveniently, we also have two methods for those tasks: _get&lt;em&gt;Members&lt;/em&gt; for retrieving the &lt;em&gt;Members&lt;/em&gt; property and _set&lt;em&gt;Members&lt;/em&gt; for making changes to it. It&amp;rsquo;s weird, though, that the definition for _get&lt;em&gt;Members&lt;/em&gt; has a whole bunch of .Net information about Exchange going on in there, while _set&lt;em&gt;Members&lt;/em&gt; simply references &lt;em&gt;System.Void&lt;/em&gt;, isn&amp;rsquo;t it? It&amp;rsquo;s also a little weird that the &lt;em&gt;Set-Group&lt;/em&gt; cmdlet doesn&amp;rsquo;t seem to have any options that reference membership (check &lt;code&gt;Get-Help Get-Group -detailed&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s try it, though:&lt;/p&gt;
+
+&lt;p&gt;Using Active Directory Users and Computers (ADUC), create a new security group called &lt;em&gt;Powershell TestGroup&lt;/em&gt;, and add some users to it. I will use the example of User1 and User2. Then try the following code:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$group = Get-Group &#39;Powershell TestGroup&#39;
+$group.Members&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This should display a list of your group members showing their Rdn, Parent, Depth, DistinguishedName, DomainId, ObjectGuid, and Name properties. Good so far; let&amp;rsquo;s try the get_Members method:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$group.get_Members()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Still good right? You get the same list. Alright, now let&amp;rsquo;s save a new list of users that doesn&amp;rsquo;t include User1, and then to our _set&lt;em&gt;Members&lt;/em&gt; method:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$newgroupmembers = $group.get_Members() | Where-Object { $_.name -notmatch &amp;quot;User1&amp;quot; }&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;$newmembers will now include all of the group members except for User1. You can verify this by just typing &lt;code&gt;$newgroupmembers | Sort | Format-Table Name&lt;/code&gt; at the console. Alright, so we have our new list of users. Remember that we didn&amp;rsquo;t make the array $newmembers up ourselves but got the list using the get_Members() method, so we&amp;rsquo;re free of syntax errors here. Let&amp;rsquo;s try _set&lt;em&gt;Members&lt;/em&gt; then:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$group.set_Members($newgroupmembers)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Hmm&amp;hellip;that didn&amp;rsquo;t go so well. All of sudden Powershell gives us a bunch of error output:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Cannot convert argument &amp;quot;0&amp;quot;, with value: &amp;quot;System.Object[]&amp;quot;, for &amp;quot;set_Members&amp;quot; to type &amp;quot;Microsoft.Exchange.Data.MultiValuedProperty&lt;/code&gt;1[Microsoft.Exchange.Data.Directory.ADObjectId]&amp;rdquo;: &amp;ldquo;Cannot convert value &amp;ldquo;System.Object[]&amp;rdquo; to type &amp;ldquo;Microsoft.Exchange.Data.MultiValuedProperty&lt;code&gt;1[Microsoft.Exchange.Data.Directory.ADObjectId]&amp;quot;. Error: &amp;quot;Conversion from System.Management.Automation.PSObject to Microsoft.Exchange.Data.Directory.ADObjectId has not been implemented.&amp;quot;&amp;quot;t line:1 char:19
++ $group.set_members( &amp;lt;&amp;lt;&amp;lt;&amp;lt; $newgroupmembers)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Take note of the second to last line:&lt;/p&gt;
+
+&lt;blockquote&gt;Conversion from System.Management.Automation.PSObject to Microsoft.Exchange.Data.Directory.ADObjectId has not been implemented.&lt;/blockquote&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m not a .Net developer and I don&amp;rsquo;t claim to be _nearly _as intimately familiar with Powershell as some of the other guys out there (&lt;a href=&#34;http://thepowershellguy.com/blogs/posh/&#34;&gt;The Powershell Guy&lt;/a&gt; for instance), but this seems to be one of those little things that the Exchange team just didn&amp;rsquo;t get around to implementing. Maybe I&amp;rsquo;m wrong, I don&amp;rsquo;t know. But I do know that I needed a way around this road block.&lt;/p&gt;
+
+&lt;p&gt;So, off I went through the wild, wild web, looking for people much smarter than myself who might be able to get this thing up and running. I have to give credit to these folks, and you might be able to get more useful information from them, so I will include links to other useful articles/blogs below. Keeping right on though, here&amp;rsquo;s what we need to do:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$group = Get-Group &amp;quot;Powershell TestGroup&amp;quot;
+$username = &amp;quot;User1&amp;quot;
+$user = get-user $username
+$userdn = $user.distinguishedName
+$newgroupmembers = $group.members | Where-Object { $_.name -notmatch &amp;quot;$username&amp;quot; }
+$groupdn = $group.distinguishedName
+$fqgroup = [adsi]&amp;quot;LDAP://$groupdn&amp;quot;
+$fqgroup.Member.Remove($userdn)
+$fqgroup.setInfo()
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After all that searching and tests, it was actually pretty simple! Here&amp;rsquo;s what we did:&lt;/p&gt;
+
+&lt;p&gt;I did cheat a bit (like I said, I like to keep things simple when I can) and used the Exchange &lt;em&gt;Get-Group&lt;/em&gt; cmdlet for our $group variable, and I also used the Exchange &lt;em&gt;Get-User&lt;/em&gt; cmdlet for our $user variable, but you could use DirectoryServices.DirectorySearcher instead as in &lt;a href=&#34;http://janssenjones.typepad.com/janssenjonescom/2007/01/powershell_and_.html&#34;&gt;this post&lt;/a&gt;. I borrowed some of my info from that post as well, so credit is owed there. But I digress.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;$newgroupmembers&lt;/em&gt; line is similar to the one we used earlier with our _set&lt;em&gt;Members&lt;/em&gt; example that failed. You can use either $group.members or $group.get_Members() interchangeably. All we&amp;rsquo;re doing is creating an array of group members that does not contain the user that we want to remove from the group.&lt;/p&gt;
+
+&lt;p&gt;With &lt;em&gt;$fqgroup&lt;/em&gt; we are again just connecting to the group using the Powershell ADSI wrapper. In the end, all that needs to be done here is to use the &lt;em&gt;remove()&lt;/em&gt; method of the Member property of our &lt;em&gt;$fqgroup&lt;/em&gt;. The change is then applied using &lt;em&gt;setinfo().&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, remember how we found that methods weren&amp;rsquo;t displayed through Get-Member for ADSI objects? Try this one out for size:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$fqgroup.member | Get-Member&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we see methods available! But for &lt;code&gt;$fqgroup.member | Get-Member&lt;/code&gt;? Nope, nothing! Weird&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;You should also theoretically be able to modify the user account directly and change the &lt;em&gt;memberOf&lt;/em&gt; attribute, but I have had some difficulty with this. I will update the post if I figure out what the problem was there.&lt;/p&gt;
+
+&lt;p&gt;Anyway, there you have it. I owe a tremendous amount of thanks to several other IT bloggers for being able to post this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blogs.technet.com/benp/archive/2007/03/05/benp-s-basic-guide-to-managing-active-directory-objects-with-powershell.aspx&#34;&gt;Benp’s Basic Guide to Managing Active Directory Objects with PowerShell&lt;/a&gt;
+&lt;a href=&#34;http://www.viveksharma.com/techlog/2006/10/22/how-to-get-dl-membership-in-exchange-2007/&#34;&gt;How to get DL membership in Exchange 2007
+&lt;/a&gt;&lt;a href=&#34;http://www.leadfollowmove.com/archives/powershell/managing-group-membership-in-active-directory-with-powershell-part-1&#34;&gt;Managing group membership in Active Directory with PowerShell (Part 1)
+&lt;/a&gt;&lt;a href=&#34;http://www.leadfollowmove.com/archives/powershell/managing-group-membership-in-active-directory-with-powershell-part-2&#34;&gt;Managing group membership in Active Directory with PowerShell (Part 2)&lt;/a&gt;
+&lt;a href=&#34;http://janssenjones.typepad.com/janssenjonescom/2007/01/powershell_and_.html&#34;&gt;Powershell and ActiveDirectory - Modify-Group-Membership
+&lt;/a&gt;&lt;a href=&#34;http://richardsiddaway.spaces.live.com/blog/cns!43CFA46A74CF3E96!241.entry&#34;&gt;PowerShell script to list user group membership in Active Directory
+Accessing AD with PowerShell&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 1DMybxZn2eUfKndJsn56Xq7BUoZSFvFfeb&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Modifying Group Memberships with Powershell, Part I</title>
+      <link>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/</link>
+      <pubDate>Sat, 19 Jan 2008 19:03:40 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/</guid>
+      <description>
+
+&lt;p&gt;I recently had to spend &lt;em&gt;hours&lt;/em&gt; figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.&lt;/p&gt;
+
+&lt;p&gt;The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007. We have a fairly customized, hosted Exchange environment, and so disabling a user is not just a simple matter and right-clicking and disabling the account in Active Directory Users and Computers (ADUC); we have a 2-page doc for the process to catch everything from removing group memberships to setting up email forwarding or restrictions, changing dial-in permissions, changing NTFS permissions on profile directories, etc.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Anyway, I had already dabbled in modifying group memberships in our user creation script (still a bit clunky, but it gets the job done) by copying group memberships from a template account. It goes something like this (please note that several of these commands require the Exchange 2007 snap-in for Powershell, and some also the &lt;a href=&#34;http://www.codeplex.com/PowerShellCX&#34;&gt;Powershell Community Extensions&lt;/a&gt;  snap-in):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$templaccn = Get-Mailbox | Where-Object { $_.name -match [template account name] }
+$newuser = Get-User [new user name]
+$filterid = ( Get-User $templaccn.name ).identity
+$groups = Get-Group -filter { Members -eq $filterid }
+$groups | Foreach-Object {
+$groupdn = $_.DistinguishedName
+&lt;/code&gt;&lt;code&gt;$fqgroup = [ADSI](&amp;quot;LDAP://$groupdn&amp;quot;)
+&lt;/code&gt;&lt;code&gt;$membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
+&lt;/code&gt;&lt;code&gt;if ( $membercheck.length -ge 1)
+&lt;/code&gt;&lt;code&gt;{
+&lt;/code&gt;&lt;code&gt;Write-Host &amp;quot;User is already a member of&amp;quot; $_.name &amp;quot;&lt;/code&gt;b. No group addition made. &lt;code&gt;n&amp;quot;
+&lt;/code&gt;&lt;code&gt;}
+&lt;/code&gt;&lt;code&gt;else
+&lt;/code&gt;&lt;code&gt;{
+&lt;/code&gt;&lt;code&gt;$fqgroup.member.add(&amp;quot;$newuserdn&amp;quot;)
+&lt;/code&gt;&lt;code&gt;$fqgroup.setinfo()
+&lt;/code&gt;&lt;code&gt;}&lt;/code&gt;
+&lt;code&gt;}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So here&amp;rsquo;s the run down:&lt;/p&gt;
+
+&lt;p&gt;The opening &lt;em&gt;Get-Mailbox&lt;/em&gt; line uses one of the Exchange 2007 snap-ins to get the mailbox object for our template account and saves it to the &lt;em&gt;$templaccn&lt;/em&gt; variable; substitute &lt;code&gt;[template account name]&lt;/code&gt; with the name of your template account. I also set the &lt;em&gt;$newuser&lt;/em&gt; variable to the name of the user who&amp;rsquo;s group membership we will be modifying. This is just because the script is used for user creation, so you might want to change the variable name to something like &lt;em&gt;$user&lt;/em&gt; or &lt;em&gt;$moduser&lt;/em&gt;; just be sure to change the variable throughout your code!&lt;/p&gt;
+
+&lt;p&gt;The next two lines are used in conjunction with each other to find all groups of which the template account is a member. You could also replace these two lines with &lt;code&gt;Get-Group | Where-Object { $_.Members -match $templaccn }&lt;/code&gt;, but that first collects &lt;em&gt;ALL&lt;/em&gt; the groups in your environment and then runs them through a filter of &lt;code&gt;Where-Object&lt;/code&gt;. I have found the filterid way to be much quicker.&lt;/p&gt;
+
+&lt;p&gt;For each group, we then first save the distinguished name to the _$groupdn _variable, then use the Powershell ADSI wrapper to store its full ADSI object as &lt;em&gt;$fqgroup&lt;/em&gt;. I usually prefix &lt;em&gt;fq&lt;/em&gt; to variables for full ADSI objecs to denote their type, but you can obviously use something like _adObj** **_whatever convention you like. The &lt;em&gt;member&lt;/em&gt; property for the group is a multi-valued property that contains the groups members, so using &lt;em&gt;Where-Object&lt;/em&gt; we effectively set a value to &lt;em&gt;$membercheck&lt;/em&gt; only if our user is a member of that group. As I was using this to create new users, this was probably not completely necessary, but it was good practice anyway.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;if&lt;/em&gt; statement there just throws out that the user is already a member of the group if &lt;em&gt;$membercheck&lt;/em&gt; had any value set, otherwise it proceeds to adding the user to the group.&lt;/p&gt;
+
+&lt;p&gt;We then use the &lt;em&gt;add()&lt;/em&gt;  method of the member property of the ADSI object for our group, supplying our user&amp;rsquo;s distinguished name as an argument, and use &lt;em&gt;setInfo()&lt;/em&gt; to apply the changes to the ADSI object.&lt;/p&gt;
+
+&lt;p&gt;Now, the reason this was tough to do in the first place, and why I ended up later having so much trouble with removing group memberships and making other modifications, is because the &lt;em&gt;$fqgroup&lt;/em&gt; ADSI object does not display any methods! You can read all the properties you want, but for some reason the Powershell design team thought it would be a good idea to hide the methods, even though they are there. If you don&amp;rsquo;t believe me, try this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$domroot = [adsi]&#39;&#39;&lt;/code&gt;
+`&lt;/p&gt;
+
+&lt;h2 id=&#34;distinguishedname&#34;&gt;distinguishedName&lt;/h2&gt;
+
+&lt;p&gt;{DC=i-worx,DC=ca}
+`&lt;/p&gt;
+
+&lt;p&gt;Try just typing &lt;em&gt;$domroot&lt;/em&gt;. It should return something like:
+&lt;code&gt;
+[PS] C:\&amp;gt;$domroot&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;distinguishedname-1&#34;&gt;`distinguishedName&lt;/h2&gt;
+
+&lt;p&gt;{DC=test,DC=local}`&lt;/p&gt;
+
+&lt;p&gt;Alright, now try using Get-Member to get some info on this ADSI object: &lt;code&gt;$domroot | Get-Member&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;All of those seem to be Properties, right, with no methods? Hmm&amp;hellip; For more info on this, check out &lt;a href=&#34;http://blogs.technet.com/benp/archive/2007/03/05/benp-s-basic-guide-to-managing-active-directory-objects-with-powershell.aspx&#34;&gt;Benp’s Basic Guide to Managing Active Directory Objects with PowerShell&lt;/a&gt; as well as &lt;a href=&#34;http://pathologicalscripter.wordpress.com/2006/09/28/invisible-methods-for-adsi/&#34;&gt;&amp;ldquo;Invisible&amp;rdquo; methods for ADSI?&lt;/a&gt; from the Pathological Scripter.&lt;/p&gt;
+
+&lt;p&gt;Anyway, all this to show that it doesn&amp;rsquo;t seem to be as straightforward as we might have hoped.&lt;/p&gt;
+
+&lt;p&gt;So, that seems to have covered &lt;em&gt;adding&lt;/em&gt; users to groups&amp;hellip;now what if I want to &lt;em&gt;remove&lt;/em&gt; a user&amp;rsquo;s group memberships? Part II of this post will cover that&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

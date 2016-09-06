@@ -2,7 +2,7 @@
 date: 2008-08-13 05:51:47+00:00
 slug: ssl-errors-in-exchange-2003-public-folder-management
 title: SSL Errors in Exchange 2003 Public Folder Management
-categories:
+tags:
 - Exchange 2003
 - server 2003
 - troubleshooting

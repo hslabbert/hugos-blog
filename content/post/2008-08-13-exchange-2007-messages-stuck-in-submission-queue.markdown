@@ -2,7 +2,7 @@
 date: 2008-08-13 04:32:24+00:00
 slug: exchange-2007-messages-stuck-in-submission-queue
 title: 'Exchange 2007: Messages stuck in Submission Queue'
-categories:
+tags:
 - exchange 2007
 - network management
 - server 2003

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vmware on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/vmware/</link>
+    <description>Recent content in Vmware on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Mon, 21 Jan 2008 05:48:35 +0000</lastBuildDate>
+    <atom:link href="http://blog.slabnet.com/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Reliable, Free P2V Solution</title>
+      <link>http://blog.slabnet.com/post/reliable-free-p2v-solution/</link>
+      <pubDate>Mon, 21 Jan 2008 05:48:35 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/reliable-free-p2v-solution/</guid>
+      <description>&lt;p&gt;If you have ever had to take on a Physical-to-Virtual (P2V) migration of a server or other machine, you know that you generally have a fine balance of the following triangle of factors: cost, complexity, and reliability. It seems like the only way to get an easy and reliable solution is to throw gobs of money at either a &lt;a href=&#34;http://www.vmware.com&#34;&gt;VMWare&lt;/a&gt; infrastructure or something like &lt;a href=&#34;http://www.platespin.com/&#34;&gt;Platespin&lt;/a&gt;. Don&amp;rsquo;t get me wrong: from what I&amp;rsquo;ve heard they both offer excellent solutions in that field, but it simply isn&amp;rsquo;t cheap. I had to find out the hard way, but there is another way.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;The problem I was facing was that within my first month at a new job (still working there; awesome shop), I was tasked with a P2V conversion on a server, with no virtualization infrastructure in place in the organization. Since we were new to virtualization at the time and were just dabbling to start, keeping costs low (or non-existent) would also be a plus. I had to research and present a solution, figure out how it works, and get it done. We are very much a Microsoft shop, and the preference was for a Microsoft solution; so, Virtual Server it is. No problem there, as VS is free and so helped on the cost side. Now that we had the virtualization platform figured out, we just needed some way to get it from the physical box into virtual hard drives (VHD&amp;rsquo;s) with the whole thing still operational at the end. Here&amp;rsquo;s where the problems began.&lt;/p&gt;
+
+&lt;p&gt;Now, this was late 2006, and even in the last year virtualization has come a long way. Doing a little digging, however, I found out that Microsoft had actually released a free P2V too called the Virtual Server Migration Toolkit (VSMT). Naive as I was, I was excited that I had found an all-Microsoft solution that was still free and so fit the bill for the project. So&amp;hellip;remember that triangle of cost/complexity/reliability that I was talking about? While VSMT is low on the cost, it cranks the complexity factor WAY up! I also discovered that the reliability portion was not really all there. If any of you have had the traumatic experience of working with VSMT, you&amp;rsquo;ll know what I&amp;rsquo;m talking about. For those fortunate souls unacquainted with it, here&amp;rsquo;s a brief glimpse into VSMT:&lt;/p&gt;
+
+&lt;p&gt;It requires Microsoft Automated Deployment Services (ADS), which is basically an MS solution for deploying Server 2003 to bare metal servers over the wire; fair enough. ADS in turn requires Windows Server 2003 Enterprise Edition and DHCP with a PXE environment. The gist is that the source machine (the machine you are trying to perform the P2V on) boots with a PXE image sent out by the ADS server. This puts the machine into a state where the ADS server controls it. At this point VSMT enters the picture. You then have to design what is best described as a workflow of various VBS and XML-based scripts that prepare the machine for cloning to an image, capture data from the machines hard disks to an image on the ADS server, again run some scripts against the image to take care of things like making the HAL and kernel generic, and then create a Virtual Server configuration file (.vmc) for the whole setup. Granted I was new to this game at that point, but I spent the better part 2 weeks on this project, with various failures ranging from the initial capture phase, blue screens on my ADS server, having to manually find/replace variables in scripts because they weren&amp;rsquo;t expanding properly, among other things, and all with virtually zero support available either from MS sites or from the community at large (as no one was apparently crazy enough to try to use the thing). I later attended a Technet conference on Microsoft&amp;rsquo;s virtualization solutions in Vancouver. When I mentioned to one of the presenters in a Q&amp;amp;A section that I had successfully completed a P2V using VSMT, he expressed actual surprise at the fact that someone got the whole thing to work! A few months later, the VM started logging disk errors and failed to back up successfully, and we ended up scrapping the VM and building a new one from scratch. Like I said, low cost but high complexity and low reliability.&lt;/p&gt;
+
+&lt;p&gt;So, when I heard that Microsoft was releasing a Beta of Systems Center Virtual Machine Manager (SCVMM, although it was just VMM at that point), I jumped at the chance to try this thing out. Point and click P2V? Sign me up! I later discovered that Beta1 did _not _yet include P2V functionality, so my hopes at a simple P2V solution faded again. These days, of course, you can get yourself a copy of the full version &lt;a href=&#34;http://www.microsoft.com/systemcenter/scvmm/default.mspx&#34;&gt;System Center Virtual Machine Manager&lt;/a&gt; for around $500 US, but unfortunately that still does not completely satisfy my &amp;ldquo;cheap-to-free&amp;rdquo; preference.&lt;/p&gt;
+
+&lt;p&gt;When the next P2V project rolled around, I was desperate to find something, &lt;em&gt;anything&lt;/em&gt; that would avoid the VSMT debacle. I even started looking outside of the Microsoft camp to anything that could get our physical box running as a VM, and lo, I was rewarded! Enter &lt;a href=&#34;http://www.vmware.com/products/converter/&#34;&gt;VMWare Converter&lt;/a&gt;.  VMWare had been kind enough to release a simple, free P2V utility that can run on pretty much any version of Windows, including client OS&amp;rsquo;s like XP, and was a simple wizard-driven point-and-click process without all the infrastructure requirements. Beautiful! Unfortunately this did not get us to a Virtual Server machine. But, wait! There&amp;rsquo;s hope! A simple, self-contained utility called &lt;a href=&#34;http://vmtoolkit.com/files/folders/converters/entry8.aspx&#34;&gt;VMDK2VHD&lt;/a&gt; was released by &lt;a href=&#34;http://vmtoolkit.com/&#34;&gt;vmToolkit&lt;/a&gt;. This beauty of a tool allows you to convert your VMWare VMDK-format virtual hard drives into MS Virtual Server/PC VHD files. I was set!&lt;/p&gt;
+
+&lt;p&gt;The overall process was even pretty painless. Of course it can take a few hours for the whole process if you&amp;rsquo;re converting machines with a whole bunch of data, but trust me, it&amp;rsquo;s a breeze compared to some of the other options out there.&lt;/p&gt;
+
+&lt;p&gt;So, here&amp;rsquo;s what you need:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Source physical machine&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I recommend having a conversion tools machine to install all the required software onto and to do all the grunt work of the actual conversions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;VMWare Converter installed (probably on your conversion tools machine)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Access to enough disk to store both the VMWare VMDK hard disk files and the Virtual Server/PC VHD hard disk files&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;VMWare Server installed (probably on your conversion tools machine).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;PrepVM.vbs script (more on that later)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generic hal.dll or ntoskrnl.exe, either from your Windows setup CD or from %windir%\system32\servicepackfiles if you have applied a service pack at any time.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;VMDK2VHD extracted somewhere (probably on your conversion tools machine). Note that this utility is self-contained and does not need to be installed, just run.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Virtual Server or Virtual PC installed somewhere to test the final product.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have all that, you are ready to go:&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Ensure that the source physical machine is running, and that you have network connectivity to it from your conversion tools machine.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Launch the VMWare Converter application on your conversion tools machine.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click &lt;strong&gt;Import Machine&lt;/strong&gt; and follow the wizard to set the options for your conversion. A few notes: (1) VMWare Converter will install an agent on the source physical machine, and will ask you for administrative credentials to connect to the machine. (2) When selecting the partitions to convert, be sure to un-check utility partitions as are found on many servers. VMWare Converter will not understand these partitions, and the conversion will fail. (3) It is best to output your data to a single VMDK file and not to use the VMWare option of splitting the hard disk into multiple 2 GB files. Virtual Server does not use a similar technique, and the VMDK2VHD tool will not understand it as far as I recall. (4) Be sure to select the correct output format for your file. If you are running a different version of VMWare from the version that VMWare Converter is creating, you will &lt;em&gt;not&lt;/em&gt; be able to start your VMWare virtual machine and complete the conversion process.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start the conversion, and then go for lunch&amp;hellip;this process can take a while, as it is reading all of your source data, converting it into a VMDK format, and writing it to the destination VMDK file&lt;strong&gt;.&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;When the conversion completes, I recommend making a backup copy of the VMDK files and working with those from now on. If things blow up, you can roll back to the VMDK files rather than having to re-do the whole capture process.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Configure a new virtual machine in VMWare Server to use the VMDK file created and start it up. I recommend leaving the network cards disconnected and logging on locally, as this will avoid problems such as IP address and naming conflicts that come with having both the physical machine and its virtual counterpart on the same LAN.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Log on to the VMWare virtual machine. NOTE: Cancel all of the &amp;ldquo;New Hardware Found&amp;rdquo; wizards that pop up. These are all for VMWare virtual devices, and we will be getting rid of these anyway. Installing them is just a waste of time and might mess with the whole process.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;CAUTION BEFORE PROCEEDING: You will be replacing the hal.dll and ntoskrnl.exe files in %windir%\system32. I recommend making backup copies of the hal.dll and ntoskrnl.exe files at %windir%\system32. You don&amp;rsquo;t have to do this, but I prefer to err on the side of caution. ALSO: The replacement files MUST be of the same service pack level as your current machine. If the SP levels don&amp;rsquo;t match, your machine is &lt;em&gt;very&lt;/em&gt; likely to give you hassles and might not even start. That being said&amp;hellip;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make the VM generic by copying the generic hal.dll and ntoskrnl.exe files from either your Windows setup disk or from the %windir%\system32\servicepackfiles directory. If you are using the service pack files, you can simply copy the files into the VM&amp;rsquo;s %windir%\system32 folder. If you are using the Windows setup disk, you will need to run the following commands on the server (assuming that your CD drive on the machine is D:): &lt;code&gt;expand d:\i386\hal.dl_ %windir%\system32\\hal.dll&lt;/code&gt; and &lt;code&gt;expand d:\i386\\ntoskrnl.ex_ %windir%\system32\ntoskrnl.exe&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Uninstall VMWare Tools if it has been installed.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the Prepvm.vbs script included at the end of this page. The script disables the VMWare devices in the machine so that they are not present when the machine starts up in Virtual Server/PC. It will also shut down the VM for the final conversion process when it&amp;rsquo;s done running.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;At this point, you could make more backup copies of the VMDK files, but, to be honest, the &amp;ldquo;make the machine generic&amp;rdquo; steps are fairly quick, and will take much less time to re-do than to copy gigs and gigs of VMDK files as backups.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Launch the VMDK2VHD utility on your conversion tools machine. The interface is very simple, and basically just asks you for the source VMDK file and the destination VHD file that you want to output it to. It also does ask you if you want a fixed or dynamically-expanding VHD file. This is totally up to you. Basically, think of it this way: If your VHD represents an 80 GB hard disk, but you only have 10 GB of data on it, a fixed-size disk will be 80 GB in size, whereas a dynamically-expanding VHD will be 10 GB in size and will grow as the size of the data on your VHD grows.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Let the utility run, and go and grab a coffee/dinner/breakfast/whatever, because this will again take a fair bit of time, depending on the amount of data you&amp;rsquo;re working with.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;When the conversion is done, configure a new VM in Virtual Server/PC that uses the VHD file produced by VMDK2VHD as your virtual hard disk.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start up the Virtual Server/PC VM, again probably with NIC&amp;rsquo;s disconnected to avoid IP/Naming conflicts.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Logon to the machine and install all of the hardware that Windows finds.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If everything seems in order, celebrate! Shut down your source physical machine, connect the VM to the network, and away you go!&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+
+&gt; 
+&gt; 
+&lt;/blockquote&gt;
+
+&lt;p&gt;Again, this post would not be possible without other smarter people having gone before me. Some resources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://searchservervirtualization.techtarget.com/tip/0,289483,sid94_gci1225164,00.html?asrc=SS_CLA_303373&amp;amp;psrc=CLT_94&#34;&gt;How to convert VMware virtual disk images to Virtual Server&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.i-worx.ca/download/public/prepvm.vbs&#34;&gt;Prepvm.vbs&lt;/a&gt; script&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

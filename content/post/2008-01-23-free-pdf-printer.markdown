@@ -2,7 +2,7 @@
 date: 2008-01-23 05:56:23+00:00
 slug: free-pdf-printer
 title: Free PDF Printer
-categories:
+tags:
 - pdf
 ---
 

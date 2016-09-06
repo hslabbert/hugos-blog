@@ -2,7 +2,7 @@
 date: 2008-01-09 18:24:17+00:00
 slug: network-solutions-domain-frontrunning
 title: Network Solutions Domain Frontrunning
-categories:
+tags:
 - dns
 - network solutions
 - news

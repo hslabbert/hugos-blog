@@ -3,7 +3,7 @@ date: 2008-03-25 05:28:15+00:00
 slug: find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1
 title: Find Disabled and Inactive User and Computer Accounts using Powershell - Part
   I
-categories:
+tags:
 - .net
 - active directory
 - adsi

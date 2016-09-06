@@ -2,7 +2,7 @@
 date: 2008-03-23 04:41:48+00:00
 slug: take-ownership-of-files-and-folders-through-script
 title: Take ownership of files and folders through script
-categories:
+tags:
 - .net
 - howto
 - powershell

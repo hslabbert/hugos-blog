@@ -2,7 +2,7 @@
 date: 2008-05-01 03:49:34+00:00
 slug: gmail-filesystem-for-windows
 title: Gmail Filesystem for Windows
-categories:
+tags:
 - file management
 - howto
 - web

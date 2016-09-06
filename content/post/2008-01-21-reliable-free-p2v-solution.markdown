@@ -2,7 +2,7 @@
 date: 2008-01-21 05:48:35+00:00
 slug: reliable-free-p2v-solution
 title: Reliable, Free P2V Solution
-categories:
+tags:
 - vhd
 - virtual server
 - virtualization

@@ -2,7 +2,7 @@
 date: 2008-08-13 05:35:37+00:00
 slug: accessing-active-directory-in-php-using-adldap
 title: Accessing Active Directory in PHP using ADLDAP
-categories:
+tags:
 - active directory
 - howto
 - network management

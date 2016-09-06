@@ -2,7 +2,7 @@
 date: 2008-01-23 05:13:27+00:00
 slug: resize-vhd-files
 title: Resize VHD Files
-categories:
+tags:
 - .net
 - vhd
 - virtual server

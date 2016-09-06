@@ -2,7 +2,7 @@
 date: 2008-03-23 04:03:02+00:00
 slug: dell-broadcom-server-2003-sp2-snp-and-toe
 title: Dell, Broadcom, Server 2003 SP2 SNP and TOE
-categories:
+tags:
 - exchange 2007
 - server 2003
 - troubleshooting

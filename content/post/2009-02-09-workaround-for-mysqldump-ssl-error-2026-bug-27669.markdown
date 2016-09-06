@@ -2,7 +2,7 @@
 date: 2009-02-09 16:36:55+00:00
 slug: workaround-for-mysqldump-ssl-error-2026-bug-27669
 title: 'Workaround for mysqldump SSL error 2026 bug #27669'
-categories:
+tags:
 - linux
 - mysql
 - ssl

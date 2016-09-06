@@ -2,7 +2,7 @@
 date: 2010-06-01 18:21:39+00:00
 slug: gone-google-marketing-fail
 title: '"Gone Google" Marketing Fail...'
-categories:
+tags:
 - cloud
 - fail
 - google

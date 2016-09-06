@@ -3,7 +3,7 @@ date: 2009-02-11 16:24:25+00:00
 slug: 550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder
 title: “550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public
   folder
-categories:
+tags:
 - active directory
 - adsi
 - exchange 2007

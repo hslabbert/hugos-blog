@@ -2,7 +2,7 @@
 date: 2008-01-12 18:37:33+00:00
 slug: update-on-network-solutions-frontrunning
 title: Update on Network Solutions Front-running
-categories:
+tags:
 - dns
 - network solutions
 - news

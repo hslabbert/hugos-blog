@@ -2,7 +2,7 @@
 date: 2009-02-11 16:24:50+00:00
 slug: cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps
 title: Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS
-categories:
+tags:
 - howto
 - linux
 - nod32

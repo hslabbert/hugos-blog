@@ -2,7 +2,7 @@
 date: 2008-01-16 18:41:02+00:00
 slug: ultimate-guide-to-linux-boot-problems
 title: Ultimate Guide to Linux Boot Problems
-categories:
+tags:
 - dual-boot
 - howto
 - linux

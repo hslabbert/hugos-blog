@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exchange 2007 on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/exchange-2007/</link>
+    <description>Recent content in Exchange 2007 on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 11 Feb 2009 16:24:25 +0000</lastBuildDate>
+    <atom:link href="http://blog.slabnet.com/tags/exchange-2007/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</title>
+      <link>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/</guid>
+      <description>&lt;p&gt;We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of &lt;code&gt;#550 4.4.7 QUEUE.Expired; message expired ##&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Delivery has failed to these recipients or distribution lists:&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[user display name]
+Microsoft Exchange has been trying to deliver this message without success
+and has stopped trying. Please try sending this message again, or provide
+the following diagnostic text to your system administrator.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wow&amp;hellip;that was helpful&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;After &lt;em&gt;much&lt;/em&gt; digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt;attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute is not directly editable, but you &lt;em&gt;can&lt;/em&gt; edit or remove the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute, which effectively updates the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute (ref &lt;a href=&#34;http://technet.microsoft.com/en-us/library/aa996228.aspx&#34;&gt;Public Folder Routing&lt;/a&gt; - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute on our PF store, and not the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;p&gt;For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (&lt;code&gt;CN=Configuration,DC=yourdomain,DC=[yourtld]&lt;/code&gt;). The full path is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CN=Public Folders,CN=Folder Hierarchies,CN=[Your Exchange Administrative Group Name],CN=Administrative Groups,CN=[Your Exchange Organization Name],CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=[yourdomain],DC=[yourtld].
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After updating the &lt;strong&gt;msExchOwningPFTree&lt;/strong&gt; attribute appropriately to a public folders server that was in production resolved the issue.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post:
+&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2007: Messages stuck in Submission Queue</title>
+      <link>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</link>
+      <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
+      <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
+
+&lt;blockquote&gt;The execution time of agent &#39;ScanMail Routing Agent&#39; exceeded 300000 (milliseconds) while handling event &#39;OnSubmittedMessage&#39;. This is an unusual amount of time for an agent to process a single event. However, Transport will continue processing this message.&lt;/blockquote&gt;
+
+&lt;p&gt;From the event, you can tell we&amp;rsquo;re using TrendMicro ScanMail as part of our edge protection. It looked like the ScanMail scanning agent was stuck on a message and couldn&amp;rsquo;t proceed. So, off to the services console I go. ScanMail has three services installed on the server, including its Master Service. The other services seemed happy, but the Master service timed out when I attempted to stop it. I checked the service properties and found its related executable file and killed it through Task Manager. The service was then recorded in the Services Console as being stopped, and after starting the service, mail started flowing again on that Hub Transport server. I repeated those steps on the second Hub Transport server, and messages came flooding out from there as well.&lt;/p&gt;
+
+&lt;p&gt;I checked that ScanMail was up to date on both servers, and they appeared to be. I checked through Trend Micro&amp;rsquo;s site nonetheless, and found that there appeared to be a related update. The links:&lt;/p&gt;
+
+&lt;p&gt;List of updates for ScanMail 8:  &lt;a href=&#34;http://www.trendmicro.com/download/product.asp?productid=8&#34;&gt;http://www.trendmicro.com/download/product.asp?productid=8&lt;/a&gt;
+Direct link to the relevant update:  &lt;a href=&#34;http://www.trendmicro.com/ftp/products/patches/smex_80_win_en_patch3.exe&#34;&gt;ScanMail 8.0 for Microsoft Exchange Patch 3&lt;/a&gt;
+The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&#34;&gt;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The relevant portion of the changelog:&lt;/p&gt;
+
+&lt;blockquote&gt;21. While ScanMail for Microsoft Exchange 8.0 is running, after a few hours, email messages will start to queue. If user re-starts the ScanMail for Microsoft Exchange services, the application will hang at &#34;Stopping&#34;.&lt;/blockquote&gt;
+
+&lt;p&gt;I was technically on vacation while this all went down, so I had to hand of the update to someone else to apply, but no one was available for that weekend. The patch was not manually applied on the servers that weekend, but the issue did not return. We&amp;rsquo;ve now been running smoothly for about two weeks.&lt;/p&gt;
+
+&lt;p&gt;Hopefully you don&amp;rsquo;t run across the issue, and hopefully this post will be of some help if you do!&lt;/p&gt;
+
+&lt;p&gt;Bitcoin tip address for this post: 1HC44rd1NUZUiWDsHNf9Y1KPSxbtW7b5Sw&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dell, Broadcom, Server 2003 SP2 SNP and TOE</title>
+      <link>http://blog.slabnet.com/post/dell-broadcom-server-2003-sp2-snp-and-toe/</link>
+      <pubDate>Sun, 23 Mar 2008 04:03:02 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/dell-broadcom-server-2003-sp2-snp-and-toe/</guid>
+      <description>&lt;p&gt;Dell, Broadcom, and Microsoft have decided to partner up with the release of a technology called TCP/IP Offloading, or TOE for &lt;em&gt;TCP/IP Offload Engine&lt;/em&gt;. It was bundled together in the Scalable Network Pack (SNP), included and enabled by default with Service Pack 2 (SP2) for Windows Server 2003. The gist of this technology is to enable high-load enterprise applications to be easily scalable. For those of you familiar with the OSI model, TOE moves layer 3 and 4 processing out of the OS and CPU into the NIC. The idea is to better utilize advances in network card performance and free up CPU cycles for other purposes, such as application-side processing.&lt;/p&gt;
+
+&lt;p&gt;This all seems well and good, if they saw fit to properly test the stuff out against their own applications!&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;It started with a few calls: users would get a &lt;em&gt;&lt;strong&gt;Waiting to Update this Folder&lt;/strong&gt;&lt;/em&gt; message in their Outlook client that did not go away even after several hours, but Outlook still showed as &lt;em&gt;&lt;strong&gt;Connected to Microsoft Exchange&lt;/strong&gt;&lt;/em&gt;. Except this was not just for a few users; every single user on a particular Exchange 2007 mailbox server would be affected&amp;hellip;not cool when more than 300 mailboxes from multiple different clients are affected!&lt;/p&gt;
+
+&lt;p&gt;Restart system attendant on mailbox server? No joy. Restart  WWW and SSL services on Client Access Server? Wrong again. Restart every freakin&amp;rsquo; Exchange service on the mailbox and Client Access Server? Still no positive change. Fine! Get the go-ahead and restart the mailbox server? Bingo.&lt;/p&gt;
+
+&lt;p&gt;That,  however, is not what we call a &lt;em&gt;resolution&lt;/em&gt;. At best that&amp;rsquo;s a workaround, but a workaround that comes with guaranteed downtime, and no explanation as to the cause. So we checked the event viewers on the mailbox server and the client access servers, and found&amp;hellip;nothing&amp;hellip;damn&amp;hellip; Run the Best Practice Analyzer for Exchange&amp;hellip;nothing useful&amp;hellip;damn again&amp;hellip; Whatever, chalk it up to freaky coincidences and keep going. That was fine, until it happened again, and again, and again, all with no trace.&lt;/p&gt;
+
+&lt;p&gt;Alright, so a call to MS Support it is. Four hours on the phone later, and no real answers. The tech suggests that we &lt;a href=&#34;http://support.microsoft.com/kb/912222&#34;&gt;disable TCP/IP Chimney&lt;/a&gt;, one of the features of the TCP/IP Offloading technology, and we comply. As is to be expected, the support guys wanted to try and pin it on an Outlook issue, as that is where the problem was most visible. But that just doesn&amp;rsquo;t fly when every single client on a particular mailbox server is affected at the exact same time. Anyway, they tell us that they will keep checking on it, but that we will have to call them back when the problem is occurring and &lt;em&gt;before&lt;/em&gt; we reboot the affected mailbox server. Okay&amp;hellip;well&amp;hellip;tell that to the 300+ users screaming for email access they are paying for!&lt;/p&gt;
+
+&lt;p&gt;The next time the problem rolls around, I try to get the okay to call MS, but the clients have already had too many email headaches from this problem, and we&amp;rsquo;re forced to reboot the box again to keep people happy. Fortunately, MS gets a higher-up tech in touch with us, and the guy drills us with some useful questions for relevant information. He starts to run through the BPA stuff again and gets us to export the event logs and upload them for further examination. He requests that we download a specific Exchange troubleshooting tool, and upload the logs for that as well. Now we&amp;rsquo;re getting somewhere! Or so I thought.&lt;/p&gt;
+
+&lt;p&gt;The mailbox servers that were affected get through the majority of the tests and information gathering of the tool they had us download, but it bails on some RPC-related diagnostics. I report this to the tech, so he directs us to use a different tool that skips around that part. After some scheduled reboots, the original tool completes its diagnostics, and we can upload the results. At this point, we can&amp;rsquo;t afford more problems, so we&amp;rsquo;re actually running _nightly _reboots on the Exchange mailbox and CAS servers. This seems to stave off the problem, but, again, this is just a workaround.&lt;/p&gt;
+
+&lt;p&gt;The tech finds nothing in the event viewer to indicate any problems, but he suggests the TCP/IP Chimney disable thing again. This time, however, we also are told to disable any offloading features in the network card device configuration as well. I find the settings and switch them off. We had consolidated mailboxes so that one of the mailbox servers remains with only a few test mailboxes and the mailboxes of some of our support team members on it. It&amp;rsquo;s a gamble, but we remove nightly reboots from that server and switch back to the regular reboot schedule. Weeks pass, and we don&amp;rsquo;t run into any problems. We load some more mailboxes on there, and still no problems.&lt;/p&gt;
+
+&lt;p&gt;So, after weeks and weeks of reliability problems, the sneaky culprit was a set of technologies teamed together as the Scalable Network Pack (SNP), introduced without much notice with SP2 for Server 2003. I ended up writing a VB script that determines if a server is running with Broadcom network cards and disables the TOE settings in the TCP/IP stack directly as well as the TOE and SNP settings on the network cards themselves through some registry edits.&lt;/p&gt;
+
+&lt;p&gt;I later found that the MSExchange team had posted a &lt;a href=&#34;http://msexchangeteam.com/archive/2007/07/18/446400.aspx&#34;&gt;blog entry&lt;/a&gt; about potential problems with TOE and Exchange 2007, but had for some reason never come across this post in my searches on the symptoms we were experiencing. I have also since run into posts from other sysadmins reporting that the TOE features cause Internet Security and Acceleration (ISA) Server to lock up completely.&lt;/p&gt;
+
+&lt;p&gt;I would post the VB script I created for dealing with this problem, but Microsoft also just released a &lt;a href=&#34;http://support.microsoft.com/kb/948496&#34;&gt;hotfix&lt;/a&gt; that specifically disables the SNP features. Here is a list of some of the problems the hotfix is meant to address:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;When you try to connect to the server by using a VPN connection, you receive the following error message: Error 800: Unable to establish connection.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot create a Remote Desktop Protocol (RDP) connection to the server.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot connect to shares on the server from a computer on the local area network.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot join a client computer to the domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot connect to the Exchange server from a computer that is running Microsoft Outlook.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inactive Outlook connections to the Exchange server may not be cleaned up.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience slow network performance.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You may experience slow network performance when you communicate with a Windows Vista-based computer.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You cannot create an outgoing FTP connection from the server.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The Dynamic Host Configuration Protocol (DHCP) server service crashes.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience slow performance when you log on to the domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Network Address Translation (NAT) clients that are located behind Windows Small Business Server 2003 or Internet Security and Acceleration (ISA) Server experience intermittent connection failures.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You experience intermittent RPC communications failures.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The server stops responding.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The server runs low on nonpaged pool memory&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;hellip;wow&amp;hellip;so pretty much, this &lt;em&gt;Microsoft&lt;/em&gt; technology that is turned on &lt;em&gt;by default&lt;/em&gt; breaks several &lt;em&gt;Microsoft&lt;/em&gt; server products and messes networking almost entirely. Nice&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I hope that this spares somebody some of the pain we had to go through with this.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exchange 2007 Mailbox GUID </title>
+      <link>http://blog.slabnet.com/post/exchange-2007-mailbox-guid/</link>
+      <pubDate>Wed, 23 Jan 2008 05:46:35 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/exchange-2007-mailbox-guid/</guid>
+      <description>&lt;p&gt;On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;legacyExchangeDN&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;msExchALObjectVersion&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;msExchMailboxGuid&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;msExchMailboxSecurityDescriptor (set to &amp;ldquo;not set&amp;rdquo;, all other accounts have a blank value here)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;msExchUserAccountControl&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;!-- more --&gt;Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor. Without msExchMailboxGuid set, the user account effectively does not have a mailbox. We were desperate enough at one point to create a random mailbox GUID (ensuring first that it is not present anywhere else in the Exchange organization), but the msExchMailboxSecurityDescriptor not being set still ensured that the mailbox was inaccessible.&lt;/p&gt;
+
+&lt;p&gt;After a few hours on the phone with MS support, and apparently some contact with a member of the Exchange 2007 development team, we were informed that this was due to a problem with the Exchange System Attendant and something to do with logs&amp;hellip;to be honest I was not able to completely understand the guy at this point.&lt;/p&gt;
+
+&lt;p&gt;Anyhow, the temporary solution was to restart the System Attendant service on the mailbox server that is experiencing the problem. This is easy enough with Powershell (Restart-Service MSExchangeSA), but we ended up making use of the PsTools suite&amp;rsquo;s psservice because we had multiple mailbox servers going and we needed to sometimes restart the service on a remote mailbox server. Fortunately, restarting the System Attendant service in Exchange 2007 does not restart the Information Store, as was the case with Exchange 2003. After this, the proper attributes will again be stamped and user mailbox provisioning should be successful.&lt;/p&gt;
+
+&lt;p&gt;The bug was apparently set to be resolved in SP1 for Exchange 2007 (released late last year), but I have not confirmed this.&lt;/p&gt;
+
+&lt;p&gt;Check out these links for more info:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://episteme.arstechnica.com/eve/forums?a=tpc&amp;amp;s=50009562&amp;amp;f=12009443&amp;amp;m=362006418831&amp;amp;r=606003038831#606003038831&#34;&gt;Arstechnica Forum Thread&lt;/a&gt;
+&lt;a href=&#34;http://forums.msexchange.org/m_1800455217/mpage_1/key_/tm.htm#1800455222&#34;&gt;MSExchange Forums Thread
+&lt;/a&gt;&lt;a href=&#34;http://forums.microsoft.com/TechNet/ShowPost.aspx?PostID=2020465&amp;amp;SiteID=17&amp;amp;pageid=0&#34;&gt;Microsoft Forums (I)&lt;/a&gt;
+&lt;a href=&#34;http://forums.microsoft.com/technet/ShowPost.aspx?postid=2343802&amp;amp;siteid=17&#34;&gt;Microsoft Forums (II)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

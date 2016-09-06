@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mostly tech...mostly">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Active Directory &middot; Hugo&#39;s Blog</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/tags/active-directory/index.xml" />
+  
+
+  
+
+  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="http://blog.slabnet.com/tags/active-directory/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+    </li>
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016 Hugo Slabbert</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Active Directory</h1>
+</div>
+
+<div class="content">
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>11 Feb 2009, 16:24</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/exchange-2007">exchange 2007</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/troubleshooting">troubleshooting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  <p>We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of <code>#550 4.4.7 QUEUE.Expired; message expired ##</code>.</p>
+
+<p>&hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:</p>
+
+<p><strong><code>Delivery has failed to these recipients or distribution lists:</code></strong></p>
+
+<pre><code>[user display name]
+Microsoft Exchange has been trying to deliver this message without success
+and has stopped trying. Please try sending this message again, or provide
+the following diagnostic text to your system administrator.
+</code></pre>
+
+<p>Wow&hellip;that was helpful&hellip;</p>
+
+  </p>
+
+  
+  <footer>
+    <a href="/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/">Accessing Active Directory in PHP using ADLDAP</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>13 Aug 2008, 05:35</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/howto">howto</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/network-management">network management</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/php">php</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/server-2003">server 2003</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/web">web</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons.
+  </p>
+
+  
+  <footer>
+    <a href="/post/accessing-active-directory-in-php-using-adldap/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>25 Mar 2008, 05:28</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/howto">howto</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/server-2003">server 2003</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/user-management">user management</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts. Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code: $adobjroot = [adsi]'' $objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot) $objdisabsearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&quot; $resultdisabaccn = $objdisabsearcher.findall() | sort path That was a lot easier!
+  </p>
+
+  
+  <footer>
+    <a href="/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>25 Mar 2008, 05:28</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/howto">howto</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/troubleshooting">troubleshooting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/user-management">user management</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that. Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip; PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local} PoSH&gt; $adobjuser.lastLogonTimetamp PoSH&gt; What the &hellip;?
+  </p>
+
+  
+  <footer>
+    <a href="/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/exchange-2007-mailbox-guid/">Exchange 2007 Mailbox GUID </a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>23 Jan 2008, 05:46</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/exchange-2007">exchange 2007</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely: legacyExchangeDN msExchALObjectVersion msExchMailboxGuid msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here) msExchUserAccountControl Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor.
+  </p>
+
+  
+  <footer>
+    <a href="/post/exchange-2007-mailbox-guid/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/">Modifying Group Memberships with Powershell, Part II</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>19 Jan 2008, 23:30</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/groups">groups</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/howto">howto</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/network-management">network management</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  I had hoped to put this all in one post, but the thing would have gone on forever! Part I covered some basics in copying group memberships to an Active Directory user from another user, such as a template account, using Powershell. Part II will delve into my misadventures in gaining more control of user group memberships, including removing users from a group either by editing the group&rsquo;s attributes or editing the user&rsquo;s attributes.
+  </p>
+
+  
+  <footer>
+    <a href="/post/modifying-group-memberships-with-powershell-part-2/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/">Modifying Group Memberships with Powershell, Part I</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>19 Jan 2008, 19:03</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/groups">groups</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/howto">howto</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/network-management">network management</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others. The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
+  </p>
+
+  
+  <footer>
+    <a href="/post/modifying-group-memberships-with-powershell-part-1/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+</div>
+
+</div>
+</div>
+<script src="http://blog.slabnet.com/js/ui.js"></script>
+
+
+
+
+</body>
+</html>

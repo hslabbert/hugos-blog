@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Client Apps on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/client-apps/</link>
+    <description>Recent content in Client Apps on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
+    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
+    <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
+    <lastBuildDate>Wed, 13 Aug 2008 06:18:52 +0000</lastBuildDate>
+    <atom:link href="http://blog.slabnet.com/tags/client-apps/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows Media Player 11 Breaks Internet Connectivity</title>
+      <link>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</link>
+      <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/</guid>
+      <description>&lt;p&gt;Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&amp;rsquo;m not saying &amp;ldquo;If you install Windows Media Player 11 on your computer, networking will break,&amp;rdquo; I&amp;rsquo;m just saying that if you experience the symptoms outlined below and you&amp;rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.&lt;/p&gt;
+
+&lt;p&gt;So, one of the other techs in the office calls me over: He&amp;rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation. The tech has been on this thing for hours, tried just about everything he can think of shy of a workstation rebuild, and he&amp;rsquo;s looking for some team support. I have him throw the ticket my way; I figure that another set of eyes can only be helpful. With a bit of digging, we isolate the symptoms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Full connectivity to the local server is available&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Name resolution is still solid&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pings are working to both local and remote addresses&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Anything higher up the stack than pings only work locally, and bail as soon as you cross a router. This includes file shares, RDP, FTP, HTTP/s, MAPI, and I&amp;rsquo;m guessing anything else higher than layer 4.&lt;!-- more --&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;About an hour or so later, I&amp;rsquo;m still not much farther than tech #1. I&amp;rsquo;ve reset the stack (&lt;code&gt;netsh winsock reset&lt;/code&gt;) and rebooted, updated/reinstalled the network card drivers&amp;hellip;heck, we even flashed the BIOS on the thing. Nothing&amp;hellip;zip&amp;hellip;nada.&lt;/p&gt;
+
+&lt;p&gt;So, I start thinking that maybe some weird malware/adware that&amp;rsquo;s intercepting traffic and messing things up. I head to Add/Remove Programs and start flipping through the titles. Nothing nasty stands out, but I remove the IE toolbars just to be safe as I&amp;rsquo;ve had some personal experience with Yahoo! toolbars causing crashes and other wonderful things in IE. Still no joy&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I get to the end of the list and see an entry for &lt;strong&gt;Windows Media Player 11 codec&lt;/strong&gt;. Now, fortunate for me, I don&amp;rsquo;t play around with WM much, and so I&amp;rsquo;m not sure if this is a legit piece of software or not. What I do remember is a particularly nasty experience I had with some malware hiding in the Add/Remove Programs list as media players. So, out goes the codec. Just for good measure, I toss Windows Media Player 11 after the reboot and then reboot the box again. Why? To be honest, I really don&amp;rsquo;t know&amp;hellip;I was getting pretty low on bright ideas at that point.&lt;/p&gt;
+
+&lt;p&gt;And then, magically, internet connectivity is restored. I still don&amp;rsquo;t have an explanation for this, but for some reason, Windows Media Player 11 being installed on that machine (and at least two others so far in my experience!) caused Layer 5+ routed networking to bail. If you have a KB or something that explains this, please let me know, &amp;lsquo;cause that&amp;rsquo;s just messed up!&lt;/p&gt;
+
+&lt;p&gt;Anyhow: Happy hunting!&lt;/p&gt;
+
+&lt;p&gt;JaS&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

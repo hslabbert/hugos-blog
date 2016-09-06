@@ -2,7 +2,7 @@
 date: 2008-08-13 06:18:52+00:00
 slug: windows-media-player-11-breaks-internet-connectivity
 title: Windows Media Player 11 Breaks Internet Connectivity
-categories:
+tags:
 - client apps
 - networking
 - troubleshooting
