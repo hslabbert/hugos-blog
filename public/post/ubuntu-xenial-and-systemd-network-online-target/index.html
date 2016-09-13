@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="systemd and Ubuntu 16.04 Xenial conspire to bite me in the ass">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>Ubuntu Xenial and systemd network online target &middot; Hugo&#39;s Blog</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016 Hugo Slabbert</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Ubuntu Xenial and systemd network online target</h1>
+  <h2>systemd and Ubuntu 16.04 Xenial conspire to bite me in the ass</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>12 Sep 2016, 21:42</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/linux">linux</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ubuntu">ubuntu</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <p>So, I&rsquo;m bringing a little Chromebox back into use on our home network to do
+some basic network services: dhcp, dns, and probably actually using it as a
+router (long story; tl;dr TekSavvy says they&rsquo;ll give you a /56 but then the
+VDSL modem they sell you can&rsquo;t do DHCPv6-PD properly).</p>
+
+<p>Anyway&hellip;</p>
+
+<p>I slapped Ubuntu 16.04 Xenial server on it and started plugging away at a
+couple of things.  I opted to use ISC&rsquo;s newer <a href="https://www.isc.org/kea/">Kea DHCP
+server</a> rather than <code>isc-dhcp-server</code>.  Little did I
+know that Ubuntu and systemd had other ideas&hellip;</p>
+
+<p>After getting Kea set up, I reboot the box at some point, only to have my wife
+ask me if I&rsquo;m screwing around on the network&hellip;because her laptop didn&rsquo;t get an
+IP after coming back from sleep.</p>
+
+<p>Here I find this gem:</p>
+
+<pre><code>Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.548 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_STARTING Kea DHCPv4 server version 1.0.0 starting
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_ADD_IFACE listening on interface enp1s0
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_SOCKET_TYPE_DEFAULT &quot;dhcp-socket-type&quot; not specified , using default socket type raw
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.554 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_NEW_SUBNET a new subnet has been added to configuration: 10.128.1.0/24 with params: valid-lifetime=4000
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.555 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_DB opening memory file lease database: type=memfile universe=4
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.557 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /var/lib/kea/kea-leases4.csv
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.599 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_COMPLETE DHCPv4 server has completed configuration: added IPv4 subnets: 1; DDNS: disabled
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface enp1s0 is down or has no usable IPv4 addresses config
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_NO_SOCKETS_OPEN no interface configured to listen to DHCP traffic
+</code></pre>
+
+<p>Google (and Ubuntu&rsquo;s Launchpad) to the rescue!
+<a href="https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784">Apparently</a>,
+<code>kea-dhcp4-server.service</code> doesn&rsquo;t include any references to <code>network.target</code>
+or <code>network-online.target</code> for some reason.  K; add those&hellip;no joy.</p>
+
+<p>Try <a href="https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784/comments/3">post
+#3</a>
+by <a href="https://launchpad.net/~halvors">halvors</a> in that thread?  No dice&hellip;</p>
+
+<p>Trusty ol&rsquo; <a href="http://unix.stackexchange.com/questions/210604/how-to-write-a-systemd-service-unit-file-so-it-waits-until-a-specific-interface">StackExchange
+post</a>
+in an attempt to wait for a specific interface rather than just networking in
+general?  Yea no:</p>
+
+<pre><code>Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Control process exited, code=exited status=203
+Sep 12 21:37:07 cherry systemd[1]: Failed to start ISC KEA IPv4 DHCP daemon.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Unit entered failed state.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Failed with result 'exit-code'.
+</code></pre>
+
+<p>The fix?  <a href="http://unix.stackexchange.com/a/217768">This beauty</a> of a wrapper
+around an <code>ifquery</code> shell script with some sleep` thrown in there for good measure:</p>
+
+<pre><code>[Unit]
+Description=Wait for all &quot;auto&quot; /etc/network/interfaces to be up for network-online.target
+Documentation=man:interfaces(5) man:ifup(8)
+DefaultDependencies=no
+After=local-fs.target
+Before=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=2min
+ExecStart=/bin/sh -ec '\
+  for i in $(ifquery --list --exclude lo --allow auto); do INTERFACES=&quot;$INTERFACES$i &quot;; done; \
+  [ -n &quot;$INTERFACES&quot; ] || exit 0; \
+  while ! ifquery --state $INTERFACES &gt;/dev/null; do sleep 1; done; \
+  for i in $INTERFACES; do while [ -e /run/network/ifup-$i.pid ]; do sleep 0.2; done; done'
+
+[Install]
+WantedBy=network-online.target
+</code></pre>
+
+<p>Throw that beauty in <code>/etc/systemd/system/ifup-wait-all-auto.service</code>,
+install it with <code>sudo systemctl enable ifup-wait-all-auto.service</code>, and then
+actually have the <code>network-online.target</code> references in your <code>systemd</code> unit
+definitions work properly.</p>
+
+<p>Ain&rsquo;t progress grand?</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://blog.slabnet.com/post/moving-to-hugo/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'blog-slabnet-com';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://blog.slabnet.com/js/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

@@ -9,8 +9,96 @@
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
-    <lastBuildDate>Sun, 28 Aug 2016 22:29:33 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2016 21:42:27 -0700</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu Xenial and systemd network online target</title>
+      <link>http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/</link>
+      <pubDate>Mon, 12 Sep 2016 21:42:27 -0700</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/</guid>
+      <description>&lt;p&gt;So, I&amp;rsquo;m bringing a little Chromebox back into use on our home network to do
+some basic network services: dhcp, dns, and probably actually using it as a
+router (long story; tl;dr TekSavvy says they&amp;rsquo;ll give you a /56 but then the
+VDSL modem they sell you can&amp;rsquo;t do DHCPv6-PD properly).&lt;/p&gt;
+
+&lt;p&gt;Anyway&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I slapped Ubuntu 16.04 Xenial server on it and started plugging away at a
+couple of things.  I opted to use ISC&amp;rsquo;s newer &lt;a href=&#34;https://www.isc.org/kea/&#34;&gt;Kea DHCP
+server&lt;/a&gt; rather than &lt;code&gt;isc-dhcp-server&lt;/code&gt;.  Little did I
+know that Ubuntu and systemd had other ideas&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;After getting Kea set up, I reboot the box at some point, only to have my wife
+ask me if I&amp;rsquo;m screwing around on the network&amp;hellip;because her laptop didn&amp;rsquo;t get an
+IP after coming back from sleep.&lt;/p&gt;
+
+&lt;p&gt;Here I find this gem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.548 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_STARTING Kea DHCPv4 server version 1.0.0 starting
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_ADD_IFACE listening on interface enp1s0
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_SOCKET_TYPE_DEFAULT &amp;quot;dhcp-socket-type&amp;quot; not specified , using default socket type raw
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.554 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_NEW_SUBNET a new subnet has been added to configuration: 10.128.1.0/24 with params: valid-lifetime=4000
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.555 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_DB opening memory file lease database: type=memfile universe=4
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.557 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /var/lib/kea/kea-leases4.csv
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.599 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_COMPLETE DHCPv4 server has completed configuration: added IPv4 subnets: 1; DDNS: disabled
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface enp1s0 is down or has no usable IPv4 addresses config
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_NO_SOCKETS_OPEN no interface configured to listen to DHCP traffic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Google (and Ubuntu&amp;rsquo;s Launchpad) to the rescue!
+&lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784&#34;&gt;Apparently&lt;/a&gt;,
+&lt;code&gt;kea-dhcp4-server.service&lt;/code&gt; doesn&amp;rsquo;t include any references to &lt;code&gt;network.target&lt;/code&gt;
+or &lt;code&gt;network-online.target&lt;/code&gt; for some reason.  K; add those&amp;hellip;no joy.&lt;/p&gt;
+
+&lt;p&gt;Try &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784/comments/3&#34;&gt;post
+#3&lt;/a&gt;
+by &lt;a href=&#34;https://launchpad.net/~halvors&#34;&gt;halvors&lt;/a&gt; in that thread?  No dice&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Trusty ol&amp;rsquo; &lt;a href=&#34;http://unix.stackexchange.com/questions/210604/how-to-write-a-systemd-service-unit-file-so-it-waits-until-a-specific-interface&#34;&gt;StackExchange
+post&lt;/a&gt;
+in an attempt to wait for a specific interface rather than just networking in
+general?  Yea no:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Control process exited, code=exited status=203
+Sep 12 21:37:07 cherry systemd[1]: Failed to start ISC KEA IPv4 DHCP daemon.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Unit entered failed state.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Failed with result &#39;exit-code&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The fix?  &lt;a href=&#34;http://unix.stackexchange.com/a/217768&#34;&gt;This beauty&lt;/a&gt; of a wrapper
+around an &lt;code&gt;ifquery&lt;/code&gt; shell script with some sleep` thrown in there for good measure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Wait for all &amp;quot;auto&amp;quot; /etc/network/interfaces to be up for network-online.target
+Documentation=man:interfaces(5) man:ifup(8)
+DefaultDependencies=no
+After=local-fs.target
+Before=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=2min
+ExecStart=/bin/sh -ec &#39;\
+  for i in $(ifquery --list --exclude lo --allow auto); do INTERFACES=&amp;quot;$INTERFACES$i &amp;quot;; done; \
+  [ -n &amp;quot;$INTERFACES&amp;quot; ] || exit 0; \
+  while ! ifquery --state $INTERFACES &amp;gt;/dev/null; do sleep 1; done; \
+  for i in $INTERFACES; do while [ -e /run/network/ifup-$i.pid ]; do sleep 0.2; done; done&#39;
+
+[Install]
+WantedBy=network-online.target
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Throw that beauty in &lt;code&gt;/etc/systemd/system/ifup-wait-all-auto.service&lt;/code&gt;,
+install it with &lt;code&gt;sudo systemctl enable ifup-wait-all-auto.service&lt;/code&gt;, and then
+actually have the &lt;code&gt;network-online.target&lt;/code&gt; references in your &lt;code&gt;systemd&lt;/code&gt; unit
+definitions work properly.&lt;/p&gt;
+
+&lt;p&gt;Ain&amp;rsquo;t progress grand?&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Moving to Hugo</title>
@@ -100,8 +188,6 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
       <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
 
 &lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
-
-&lt;!-- more --&gt;
 
 &lt;p&gt;Bandwidth fail:&lt;/p&gt;
 
@@ -453,59 +539,6 @@ The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/re
 &lt;p&gt;Cheers,&lt;/p&gt;
 
 &lt;p&gt;JaS&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</title>
-      <link>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</link>
-      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/</guid>
-      <description>&lt;p&gt;Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.&lt;/p&gt;
-
-&lt;p&gt;Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&amp;rsquo;s status directly from a hidden attribute on the ADSI object. Let&amp;rsquo;s start with the Directory Searcher method. This entry also draws from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram’s Blog&lt;/a&gt;. The code:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$adobjroot = [adsi]&#39;&#39;
-$objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot)
-$objdisabsearcher.filter = &amp;quot;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&amp;quot;
-$resultdisabaccn = $objdisabsearcher.findall() | sort path&lt;/code&gt;&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;That was a lot easier! The &lt;code&gt;$adobjroot&lt;/code&gt; line gives us an ADSI object for the root of our domain. The second line creates a new Directory Services searcher, and then we add our filter.&lt;/p&gt;
-
-&lt;p&gt;As with Part I, setting objectCategory to &lt;code&gt;person&lt;/code&gt; and objectClass to &lt;code&gt;user&lt;/code&gt; sets up our filter to search for user accounts; switch both of those to &lt;code&gt;computer&lt;/code&gt; to search for computer accounts instead.&lt;/p&gt;
-
-&lt;p&gt;The userAccountControl portion is a bit of weird number, though, isn&amp;rsquo;t it?! After some digging, I was able to determine that the &lt;code&gt;:1.2.840.113556.1.4.803:&lt;/code&gt; is the attribute ID for the Last-Logon-Timestamp Attribute (found on an &lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/ms676824.aspx&#34;&gt;MSDN article&lt;/a&gt; linked from &lt;a href=&#34;http://blogs.technet.com/bahramr/archive/2008/01/25/powershell-script-to-disable-inactive-accounts-in-active-directory.aspx&#34;&gt;Bahram&amp;rsquo;s Blog&lt;/a&gt;). Specifying that value in the directory searcher filter queries for the value of that specific attribute stored in the userAccountControl property, rather than userAccountControl as a whole. Stephen Looney actually corrected this for me, as I was somewhat off the mark in my deduction. The string is not a selection filter, as I had supposed, but more akin to a bitwise OR operator. See his comment below for clarification.&lt;/p&gt;
-
-&lt;p&gt;The last line of the code simply collects our searcher results in System.DirectoryServices.SearchResult collection&lt;/p&gt;
-
-&lt;p&gt;The alternative method to determine an account&amp;rsquo;s status is to check a hidden attribute on the ADSI object itself. For this you will need the Distinguished Name of a user or computer account:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$struserdn = &amp;quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=com&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Set up an ADSI object for that account:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$adobjuser = [ADSI]&amp;quot;LDAP://$struserdn&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And access the hidden method:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$adobjuser.PsBase.InvokeGet(&amp;quot;AccountDisabled&amp;quot;)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This will return $true if the account is disabled, and $false if the account is not disabled (i.e. it is enabled). It&amp;rsquo;s not as glamorous as the directory searcher method, but I think both have their place.&lt;/p&gt;
-
-&lt;p&gt;Also, feel free to play around with the lastLogonTimeStamp and UserAccountControl attributes in the directory searcher. For instance, to find only disabled accounts that have been inactive for a certain number of days, you could use an LDAP string like:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Or switch it up for only enabled accounts inactive for a certain period by flipping the userAccountControl portion around be negative:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$objsearcher.filter =&lt;/code&gt;&lt;code&gt;(&amp;amp;(objectCategory=person)(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2)&lt;/code&gt;&lt;code&gt;)(lastLogonTimeStamp&amp;lt;=&amp;quot; + $lltIntLimit + &amp;quot;)&lt;/code&gt;&lt;code&gt;)&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;I hope this has been helpful. As always, comments, corrections, additions, or questions are appreciated.&lt;/p&gt;
-
-&lt;p&gt;Bitcoin tip address for this post: 192yT6362K6BgLpm8B2xhcCVZtrnwQkjek&lt;/p&gt;
 </description>
     </item>
     

@@ -217,6 +217,64 @@
   
     <article>
   <header>
+    <h2><a href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/">Ubuntu Xenial and systemd network online target</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>12 Sep 2016, 21:42</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/linux">linux</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ubuntu">ubuntu</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  <p>So, I&rsquo;m bringing a little Chromebox back into use on our home network to do
+some basic network services: dhcp, dns, and probably actually using it as a
+router (long story; tl;dr TekSavvy says they&rsquo;ll give you a /56 but then the
+VDSL modem they sell you can&rsquo;t do DHCPv6-PD properly).</p>
+
+<p>Anyway&hellip;</p>
+
+<p>I slapped Ubuntu 16.04 Xenial server on it and started plugging away at a
+couple of things.  I opted to use ISC&rsquo;s newer <a href="https://www.isc.org/kea/">Kea DHCP
+server</a> rather than <code>isc-dhcp-server</code>.  Little did I
+know that Ubuntu and systemd had other ideas&hellip;</p>
+
+  </p>
+
+  
+  <footer>
+    <a href="/post/ubuntu-xenial-and-systemd-network-online-target/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
     <h2><a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a></h2>
 
     <div class="post-meta">
@@ -387,7 +445,10 @@
   </header>
 
   <p>
-  Google is touting their Google Apps offering for business with a new post on the official Google Blog (link). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &ldquo;Going Google&rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end.
+  <p>Google is touting their Google Apps offering for business with a new post on the official Google Blog (<a href="http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html">link</a>). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &ldquo;Going Google&rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.</p>
+
+<p>A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.</p>
+
   </p>
 
   
@@ -647,57 +708,6 @@ the following diagnostic text to your system administrator.
   
   <footer>
     <a href="/post/windows-media-player-11-breaks-internet-connectivity/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/">SSL Errors in Exchange 2003 Public Folder Management</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>13 Aug 2008, 05:51</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/exchange-2003">Exchange 2003</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/server-2003">server 2003</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/troubleshooting">troubleshooting</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error: The SSL certificate server name is incorrect. I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to this Microsoft KB.
-  </p>
-
-  
-  <footer>
-    <a href="/post/ssl-errors-in-exchange-2003-public-folder-management/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>

@@ -9,8 +9,96 @@
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
-    <lastBuildDate>Wed, 16 Jan 2008 18:41:02 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2016 21:42:27 -0700</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu Xenial and systemd network online target</title>
+      <link>http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/</link>
+      <pubDate>Mon, 12 Sep 2016 21:42:27 -0700</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/</guid>
+      <description>&lt;p&gt;So, I&amp;rsquo;m bringing a little Chromebox back into use on our home network to do
+some basic network services: dhcp, dns, and probably actually using it as a
+router (long story; tl;dr TekSavvy says they&amp;rsquo;ll give you a /56 but then the
+VDSL modem they sell you can&amp;rsquo;t do DHCPv6-PD properly).&lt;/p&gt;
+
+&lt;p&gt;Anyway&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I slapped Ubuntu 16.04 Xenial server on it and started plugging away at a
+couple of things.  I opted to use ISC&amp;rsquo;s newer &lt;a href=&#34;https://www.isc.org/kea/&#34;&gt;Kea DHCP
+server&lt;/a&gt; rather than &lt;code&gt;isc-dhcp-server&lt;/code&gt;.  Little did I
+know that Ubuntu and systemd had other ideas&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;After getting Kea set up, I reboot the box at some point, only to have my wife
+ask me if I&amp;rsquo;m screwing around on the network&amp;hellip;because her laptop didn&amp;rsquo;t get an
+IP after coming back from sleep.&lt;/p&gt;
+
+&lt;p&gt;Here I find this gem:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.548 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_STARTING Kea DHCPv4 server version 1.0.0 starting
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_ADD_IFACE listening on interface enp1s0
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.550 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_CFGMGR_SOCKET_TYPE_DEFAULT &amp;quot;dhcp-socket-type&amp;quot; not specified , using default socket type raw
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.554 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_NEW_SUBNET a new subnet has been added to configuration: 10.128.1.0/24 with params: valid-lifetime=4000
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.555 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_DB opening memory file lease database: type=memfile universe=4
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.557 INFO  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_MEMFILE_LEASE_FILE_LOAD loading leases from file /var/lib/kea/kea-leases4.csv
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.599 INFO  [kea-dhcp4.dhcp4/2384] DHCP4_CONFIG_COMPLETE DHCPv4 server has completed configuration: added IPv4 subnets: 1; DDNS: disabled
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_OPEN_SOCKET_FAIL failed to open socket: the interface enp1s0 is down or has no usable IPv4 addresses config
+Sep 12 19:20:00 cherry kea-dhcp4[2384]: 2016-09-12 19:20:00.600 WARN  [kea-dhcp4.dhcpsrv/2384] DHCPSRV_NO_SOCKETS_OPEN no interface configured to listen to DHCP traffic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Google (and Ubuntu&amp;rsquo;s Launchpad) to the rescue!
+&lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784&#34;&gt;Apparently&lt;/a&gt;,
+&lt;code&gt;kea-dhcp4-server.service&lt;/code&gt; doesn&amp;rsquo;t include any references to &lt;code&gt;network.target&lt;/code&gt;
+or &lt;code&gt;network-online.target&lt;/code&gt; for some reason.  K; add those&amp;hellip;no joy.&lt;/p&gt;
+
+&lt;p&gt;Try &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/isc-kea/+bug/1550784/comments/3&#34;&gt;post
+#3&lt;/a&gt;
+by &lt;a href=&#34;https://launchpad.net/~halvors&#34;&gt;halvors&lt;/a&gt; in that thread?  No dice&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Trusty ol&amp;rsquo; &lt;a href=&#34;http://unix.stackexchange.com/questions/210604/how-to-write-a-systemd-service-unit-file-so-it-waits-until-a-specific-interface&#34;&gt;StackExchange
+post&lt;/a&gt;
+in an attempt to wait for a specific interface rather than just networking in
+general?  Yea no:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Control process exited, code=exited status=203
+Sep 12 21:37:07 cherry systemd[1]: Failed to start ISC KEA IPv4 DHCP daemon.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Unit entered failed state.
+Sep 12 21:37:07 cherry systemd[1]: kea-dhcp4-server.service: Failed with result &#39;exit-code&#39;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The fix?  &lt;a href=&#34;http://unix.stackexchange.com/a/217768&#34;&gt;This beauty&lt;/a&gt; of a wrapper
+around an &lt;code&gt;ifquery&lt;/code&gt; shell script with some sleep` thrown in there for good measure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Wait for all &amp;quot;auto&amp;quot; /etc/network/interfaces to be up for network-online.target
+Documentation=man:interfaces(5) man:ifup(8)
+DefaultDependencies=no
+After=local-fs.target
+Before=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=2min
+ExecStart=/bin/sh -ec &#39;\
+  for i in $(ifquery --list --exclude lo --allow auto); do INTERFACES=&amp;quot;$INTERFACES$i &amp;quot;; done; \
+  [ -n &amp;quot;$INTERFACES&amp;quot; ] || exit 0; \
+  while ! ifquery --state $INTERFACES &amp;gt;/dev/null; do sleep 1; done; \
+  for i in $INTERFACES; do while [ -e /run/network/ifup-$i.pid ]; do sleep 0.2; done; done&#39;
+
+[Install]
+WantedBy=network-online.target
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Throw that beauty in &lt;code&gt;/etc/systemd/system/ifup-wait-all-auto.service&lt;/code&gt;,
+install it with &lt;code&gt;sudo systemctl enable ifup-wait-all-auto.service&lt;/code&gt;, and then
+actually have the &lt;code&gt;network-online.target&lt;/code&gt; references in your &lt;code&gt;systemd&lt;/code&gt; unit
+definitions work properly.&lt;/p&gt;
+
+&lt;p&gt;Ain&amp;rsquo;t progress grand?&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Ultimate Guide to Linux Boot Problems</title>
