@@ -14,7 +14,7 @@ Google is touting their Google Apps offering for business with a new post on the
 
 A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.
 
-<!-- more -->
+<!--more-->
 
 Bandwidth fail:
 
