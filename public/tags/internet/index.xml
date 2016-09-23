@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/tech/</link>
-    <description>Recent content in Tech on Hugo&#39;s Blog</description>
+    <title>Internet on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/internet/</link>
+    <description>Recent content in Internet on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert</copyright>
     <lastBuildDate>Thu, 22 Sep 2016 20:23:52 -0700</lastBuildDate>
-    <atom:link href="http://blog.slabnet.com/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/tags/internet/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>GRE Reflection?</title>
@@ -138,17 +138,6 @@
 &lt;p&gt;On the plus side, While DDoS targets/victims with complex networks or applications may not be able to drop GRE entirely, simpler targets (e.g. websites) should be able to simply drop any IP protocol 47 (GRE) traffic destined for the site without impact.  Given the traffic volumes we&amp;rsquo;re seeing, that&amp;rsquo;s pretty much completely contingent on having a large scale DDoS scrubbing service in place, but at least the rulesets should be fairly simple provided there aren&amp;rsquo;t actual production GRE tunnels or e.g. PPTP VPNs (&lt;a href=&#34;https://www.schneier.com/academic/pptp/faq.html&#34;&gt;for shame&lt;/a&gt;!) hiding behind the scrubbing service.  If needed, static GRE tunnels should be easier to pin down in rulesets with specific source and destinations IPs than PPTP VPNs that use GRE and have varied source IPs.&lt;/p&gt;
 
 &lt;p&gt;P.S. If this hyptothetical flaw in processing of GRE&amp;rsquo;d traffic &lt;em&gt;does&lt;/em&gt; end up being a thing, I call dibs on the &amp;ldquo;pick a trendy and somewhat obnoxious name for software flaws&amp;rdquo; rights and dub this &lt;strong&gt;GREflector&lt;/strong&gt;!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Moving to Hugo</title>
-      <link>http://blog.slabnet.com/post/moving-to-hugo/</link>
-      <pubDate>Sun, 28 Aug 2016 22:29:33 -0700</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>http://blog.slabnet.com/post/moving-to-hugo/</guid>
-      <description>&lt;p&gt;So&amp;hellip;I&amp;rsquo;ve moved my blog to &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;.  More info to follow, but
-bear with me as I clean up some bits and pieces.&lt;/p&gt;
 </description>
     </item>
     

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Considering how GRE traffic might be reflected or redirected for DDoS source obfuscation.">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>GRE Reflection? &middot; Hugo&#39;s Blog</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016 Hugo Slabbert</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>GRE Reflection?</h1>
+  <h2>Considering how GRE traffic might be reflected or redirected for DDoS source obfuscation.</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>22 Sep 2016, 20:23</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ddos">DDoS</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/gre">GRE</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/reflection">reflection</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/internet">Internet</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/tech">tech</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on <a href="krebsonsecurity.com">krebsonsecurity.com</a>.  (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference <a href="http://archive.org">The Internet Archive</a> instead.)</p>
+
+<p>An initial tweet from <a href="https://twitter.com/briankrebs">@briankrebs</a> listed GRE in the attack traffic mix:</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">per the last tweet, they threw it all at my site; SYN Flood, GET Flood, ACK Flood, POST Flood, GRE Protocol Flood]; 665.00 Gbps;143.50 Mpps</p>&mdash; briankrebs (@briankrebs) <a href="https://twitter.com/briankrebs/status/778402188267778048">September 21, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>&hellip;and Krebs later confirmed more details in KrebsOnSecurity&rsquo;s <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">own article</a> reporting on the attack:</p>
+
+<blockquote>
+<p>Preliminary analysis of the attack traffic suggests that perhaps the biggest chunk of the attack came in the form of traffic designed to look like it was generic routing encapsulation (GRE) data packets, a communication protocol used to establish a direct, point-to-point connection between network nodes.</p>
+</blockquote>
+
+<p>Now, volumetric DDoS attacks will generally use amplification vectors like open DNS resolvers, misconfigured or vulnerable NTP or SNMP servers, SSDP, etc. in order to boost the attack volume.  Those amplifiers are also often vulnerable to reflection attacks, where the attacker spoofs the source address in the initial amplification trigger packets so that the amplified replies hit the target rather than the attacker.  This can be pulled off because these exploited amplification vectors are stateless and UDP-based, and so a single spoofed packet from the attacker will trigger the amplified reply destined for the target.  A TCP-based attack could yield a larger amplification factor (e.g. just think of pulling off an HTTP GET of a GB+ file!), but a TCP 3-way handshake would never complete successfully with a spoofed source address, and even if somehow it could, the attacker would have to keep ACK-ing somehow in order to keep the transfer going.  GRE we are told, however, could not have a spoofed source address (also from <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">the same Krebs article</a>):</p>
+
+<blockquote>
+<p>McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.</p>
+</blockquote>
+
+<p>GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  <em>Note that this is an untested theory and still needs to be validated.</em></p>
+
+<p>We need to dig a bit into what GRE actually is in order to test that out.  The tl;dr is <a href="#so-how-would-this-be-reflected">below</a>.</p>
+
+<h3 id="intro-to-gre-skip-if-you-know-how-gre-and-keepalives-work">Intro to GRE; skip if you know how GRE and keepalives work</h3>
+
+<p>Generic Routing Encapsulation, or GRE, is basically a way to wrap up or &ldquo;encapsulate&rdquo; a packet inside another packet.  Why would you want to do that?  Most commonly, GRE is used to tunnel traffic across a set of intermediate routers that would not the traffic being tunneled because they don&rsquo;t have a route for its destination.  If you&rsquo;ve ever connected to a corporate VPN or used a site-to-site IPSEC VPN, it&rsquo;s pretty much the same idea except GRE does not provide encryption.</p>
+
+<p>Now, GRE tunnels are completely stateless.  This means no agreement needs to made between two routers passing each other GRE traffic about e.g. whether a tunnel is up or down, how many packets have traversed it, anything to do with sequence numbers, etc.  The sending router slaps a GRE header on the packet to be encapsulated, fires it in the direction of the destination router, and calls it a day.  The receiving router similarly just strips off the GRE header and forwards the inner packet if it can.  Now, I&rsquo;ll qualify this by stating that the receiving router can have multiple different GRE tunnels configured, so it should look at the source and destination IP in the GRE header (and possibly a GRE key) in order to figure out which GRE tunnel the packet belongs to, but again this is a stateless operation.</p>
+
+<p>Why would we use GRE rather than something like an IPSEC tunnel?  Well, not all traffic needs network layer privacy.  If we need to somehow tunnel traffic that would be crossing the public Internet in the clear <em>anyway</em>, there&rsquo;s no point in encrypting it just because we need to tunnel it.  Ditto if we have traffic for an encrypted protocol (HTTPS, SSH), where we just need to tunnel it to pull routing tricks but don&rsquo;t need to bother encrypting something at the network layer when it has <em>already</em> been encrypted.  By skipping encryption and state, GRE is computationally &ldquo;cheap&rdquo;, so it can be leveraged in places with constrained resources (low end routers forwarding a decent chunk of traffic) or high scale requirements (big fat routers that need to forward a <strong>lot</strong> of traffic in hardware at line rate).</p>
+
+<p>That&rsquo;s all nice, but what does this have to do with traffic reflection?  How can we make some endpoint forward on traffic to our target?</p>
+
+<p>I&rsquo;ll preface this <em>again</em> by saying this is thus far just theoretical, and still needs to be labbed up to test it out.  This is very much a hypothesis of &ldquo;If GRE could be reflected, could this be a possible way?&rdquo; rather than a statement that &ldquo;GRE can be reflected, and this is how&rdquo;.</p>
+
+<p>Now, we may sometimes still want to figure out if the other end of a GRE tunnel is alive and that the tunnel is &ldquo;up&rdquo;, but there is no keepalive mechanism in the GRE spec.  So, how do we do that?  Well, Cisco, $deity bless &lsquo;em, never could pass up an opportunity to invent protocols where there is a dirth of RFC coverage, and so GRE keepalives are born.</p>
+
+<p>GRE keepalives effectively trick the remote router into forwarding the keepalive packet <em>back</em> to the sender, all without having to know anything about keepalives itself.  Let&rsquo;s say <code>RouterA</code> is the one sending keepalives, and <code>RouterB</code> is the other end of the GRE tunnel.</p>
+
+<p>When <code>RouterA</code> usually sends traffic through the GRE tunnel, it will take the original packet of user or transit traffic and stuff an additional IP and GRE header onto it.  There are some additional fields available in the GRE header, but effectively it&rsquo;s damn near nothing and just says &lsquo;the actual inner packet is <em>this</em> protocol&rsquo;.  That will generally by IPv4 (0x0800) or IPv6 (0x86dd), but really can be any EtherType.  The new IP header has a source IP set to <code>RouterA</code>&rsquo;s own IP address and a destination IP set to <code>RouterB</code>&rsquo;s IP address.  The original user traffic would have looked like this:</p>
+
+<pre><code> -----------------------------------------------------
+| IP | SRC IP          | DST             | IP PAYLOAD |
+|    | 2001:db8:5::100 | 2001:db8:6::200 |            |
+ -----------------------------------------------------
+</code></pre>
+
+<p>With the additional GRE and IP header added, the encapsulated packet looks like this:</p>
+
+<pre><code> ----------------------------------------------------------------------------------------------------------------
+| IP | SRC IP        | DST IP        | GRE | GRE           | IP | SRC IP          | DST             | IP PAYLOAD |
+|    | 2001:db8:1::1 | 2001:db8:2::2 |     | PROTOCOL=08dd |    | 2001:db8:5::100 | 2001:db8:6::200 |            |
+ ----------------------------------------------------------------------------------------------------------------
+</code></pre>
+
+<p>Great!  So the GRE packet gets over to <code>RouterB</code>, it sees its own IP address as the destination and realizes that it has to do something with this packet rather than forward it on.  The L4 protocol is 47 (GRE), so if it can handle GRE then it realizes it has to check what protocol is next in the stack (e.g. IPv4 as 0x0800 or IPv6 as 0x08dd as described above), strip the GRE header, and then forward the inner packet on its merry way (provided it has a route for the destination, the TTL isn&rsquo;t expired, etc. etc.).</p>
+
+<p>So how does <code>RouterA</code> get <code>RouterB</code> to forward keepalives back to <code>RouterA</code>, especially as we said that <code>RouterB</code> doesn&rsquo;t know anything about dem dere fancy GRE keepalives?</p>
+
+<p><code>RouterA</code> actually encapsulates its keepalive packet in GRE <strong>twice</strong>.  The outer headers are what we&rsquo;ve discussed here already:  source = <code>RouterA</code> IP, destination = <code>RouterB</code> IP, and then a GRE header.  The inner packet in this case is not some user traffic that&rsquo;s going to the networks at <code>RouterB</code>, but rather <strong>another GRE packet</strong>.  <code>RouterA</code> crafts the packet so that the source IP on this <em>inner</em> GRE packet is actually <em><code>RouterB</code></em>&rsquo;s IP address, with the destination set to <em>its own</em> IP address (that is, <code>RouterA</code>&rsquo;s IP).  That header stack looks like this:</p>
+
+<pre><code> --------------------------------------------------------------------------------------------------------------------
+| IP | SRC IP        | DST IP        | GRE | GRE             | IP | SRC IP        | DST IP        | GRE | GRE        |
+|    | 2001:db8:1::1 | 2001:db8:2::2 |     | PROTOCOL=0x08dd |    | 2001:db8:2::2 | 2001:db8:1::1 |     | PROTOCOL=0 |
+ --------------------------------------------------------------------------------------------------------------------
+</code></pre>
+
+<p>For this double-encapsulated packet, things at <code>RouterB</code> start off just as described above for regular user traffic.  <code>RouterB</code> receives the GRE packet, sees the destination IP is its own, checks the GRE header for the protocol number value and then strips it, and then starts to look at what it should do with the inner payload.  Except now, that inner payload is <em>another</em> GRE packet, with a source IP address set to <code>RouterB</code>&rsquo;s own IP and a destination IP set to <code>RouterA</code>&rsquo;s IP.</p>
+
+<p>So what does <code>RouterB</code> do?  Well, like a good router, it looks up its route for <code>RouterA</code> and dutifully forwards the packet (with the outer IP and GRE header stripped) back over to thattaway.  <code>RouterA</code> receives the packet, sees its own IP address as the destination, sees a GRE header, and evaluates that.  GRE keepalives use a special protocol number of 0 (as opposed to 0x0800 or x08dd for IPv4 and IPv6 as mentioned above).  On seeing the protocol field set to 0, <code>RouterA</code> realizes this is a GRE keepalive packet, and it resets the GRE tunnel keepalive counter to zero and considers the GRE tunnel to be up.</p>
+
+<h3 id="so-how-would-this-be-reflected">So how would this be reflected?</h3>
+
+<p>Who says the attacker has to set the destination IP address in the inner GRE packet to their own address?</p>
+
+<p>The very <em>design</em> of this is such that <code>RouterB</code> in our example does not need to know anything about keepalives or the double encapsulation setup.  It does no correlation or checks between the source and destination IP addresses on the outer IP header and the inner ones.  There is nothing stopping me from setting the destination address to whatever the hell I want.  If I want to hit someone at 2001:db8:ffff::a, I just do:</p>
+
+<pre><code> -----------------------------------------------------------------------------------------------------------------------
+| IP | SRC IP        | DST IP        | GRE | GRE             | IP | SRC IP        | DST IP           | GRE | GRE        |
+|    | 2001:db8:1::1 | 2001:db8:2::2 |     | PROTOCOL=0x08dd |    | 2001:db8:2::2 | 2001:db8:ffff::a |     | PROTOCOL=0 |
+ -----------------------------------------------------------------------------------------------------------------------
+</code></pre>
+
+<p>To think of it: What&rsquo;s stopping me from stuffing a whole IP packet in there rather than just a minimal-payload GRE keepalive?</p>
+
+<pre><code> --------------------------------------------------------------------------------------------------------------------------------------
+| IP | SRC IP        | DST IP        | GRE | GRE             | IP | SRC IP        | DST IP           | GRE | GRE             | IPv6    |
+|    | 2001:db8:1::1 | 2001:db8:2::2 |     | PROTOCOL=0x08dd |    | 2001:db8:2::2 | 2001:db8:ffff::a |     | PROTOCOL=0x08dd | PAYLOAD |
+ --------------------------------------------------------------------------------------------------------------------------------------
+</code></pre>
+
+<p>I see two possible permutations of this, with varying levels of difficulty and probability of execution:</p>
+
+<p><code>1.</code> Targeted to configured GRE tunnels, with source address spoofing</p>
+
+<p>Routers processing GRE traffic <em>should</em> generally first check if they have a tunnel configured with matching source and destination IPs.  If I&rsquo;m <code>RouterB</code>, I should first check that I have a GRE tunnel configured towards <code>RouterA</code>&rsquo;s IP before I process GRE packets with source IPs of <code>RouterA</code> destined for me.  Provided routers are doing that correctly, this means an attack would have to (a) know about (or guess / scan for) configured GRE tunnels on potential reflectors in order to pull this off and (b) successfully spoof <code>RouterA</code>&rsquo;s source IP.</p>
+
+<p>A search could theoretically be possible by sending a GRE-encapsulated packet towards <code>RouterB</code> with an IP payload destined for an IP that the attacker controls, with the source IP on the outer IP header being varied as the IPs being tested.  The attacker could then listen for that payload packet, and if received, confirm that the tested source IP does in fact have a GRE tunnel configured with <code>RouterB</code>.  This is a massive search space, though, as each potential reflector would need to be tested against each other potential source IP on the public Internet.  Even in the IPv4 Internet, this is huge, as you&rsquo;re dealing with <code>(2**32) * (2**32 - 1)</code> combinations (minus RFC1918, multicast, documentation, and other reserved ranges).  That&rsquo;s 18,446,744,069,414,584,320 combinations, for those keeping score at home.  Unless the attackers have prior knowledge about potential reflectors and configured GRE tunnels, this possibility is somewhat remote.</p>
+
+<p>Second to that, this requires that the attacker be able to spoof <code>RouterA</code>&rsquo;s IP address.  This is less of a problem given that networks that fail to <a href="http://www.bcp38.info/index.php/Main_Page">implement</a> <a href="https://tools.ietf.org/html/bcp38">BCP38</a> seem to be plentiful, as we see from the prevalance of reflected traffic we have because of spoofed sources.</p>
+
+<p><code>2.</code>  To any GRE-capable router, but dependent on GRE-processing flaw</p>
+
+<p>GRE has not yet been subjected to the same scrutiny as e.g. DNS and NTP following those becoming heavily abused in reflected and amplified DDoS attacks (how I do not miss the <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack/">Christmas of 2013</a>&hellip;).  A hypothetical laxity in the processing of GRE traffic could potentially make this a <em>much</em> easier vector to exploit for reflection while simultaneously being <em>very</em> difficult for origin and reflector networks to combat.</p>
+
+<p>If <code>RouterB</code> does <em>not</em> validate that it has a GRE tunnel configured with the source IP of the GRE packet, the attacker could send a GRE packet to <code>RouterB</code> <em>simply from his own IP address or any other IP they want</em> and still have <code>RouterB</code> process the GRE packet, strip the header, and pass on the inner packet to the target.  This <em>drastically</em> reduces the search space on the IPv4 Internet from 18,446,744,069,414,584,320 down to <code>2**32</code> or roughly 4 billion.  It also means the attacker <em>does not even need to spoof the target&rsquo;s IP address</em> in order to pull of the reflection attack, as the target IP is contained <em>within</em> the encapsulated packet.  They can opt to spoof their source IP if they have access to a network that does not implement BCP38, but this would be an optional step that provides additional obfuscation and shielding from attribution and traceback.</p>
+
+<p>What would make this difficult to combat on the service provider side is that, should such a GRE processing flaw exist, this could be pulled of without any address spoofing, so even networks that properly implement BCP38 would let it pass.  GRE also has perfectly legitimate uses on business and residential networks and so any transiting or hosting networks for the attacker and reflector likely would not be able to simply drop the offending traffic.  Fixes would be dependent on either ACLs or firmware updates on the reflectors.</p>
+
+<p>The chances of this second reflection option are somewhat remote, as having a flaw of this nature could potentially result in a serious NAT traversal flaw as well.  If I can send <code>RouterB</code> a GRE-encapsulated packet from any source and have it forward the inner packet along provided it has <em>any</em> GRE configured it on, that could smash through NAT.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This post was largely the result of spitballing how reflection might be possible with GRE traffic in light of the recent spike of GRE in large, volumetric DDoS attacks.  There is no amplification in this, and if anything the attacker needs to send <em>more</em> data than reaches the target as they send the payload with 2x GRE/IP header stacks whereas the reflector strips the outer IP &amp; GRE headers and just sends the one, but should it prove possible it could still be useful for obfuscation.</p>
+
+<p>On the plus side, While DDoS targets/victims with complex networks or applications may not be able to drop GRE entirely, simpler targets (e.g. websites) should be able to simply drop any IP protocol 47 (GRE) traffic destined for the site without impact.  Given the traffic volumes we&rsquo;re seeing, that&rsquo;s pretty much completely contingent on having a large scale DDoS scrubbing service in place, but at least the rulesets should be fairly simple provided there aren&rsquo;t actual production GRE tunnels or e.g. PPTP VPNs (<a href="https://www.schneier.com/academic/pptp/faq.html">for shame</a>!) hiding behind the scrubbing service.  If needed, static GRE tunnels should be easier to pin down in rulesets with specific source and destinations IPs than PPTP VPNs that use GRE and have varied source IPs.</p>
+
+<p>P.S. If this hyptothetical flaw in processing of GRE&rsquo;d traffic <em>does</em> end up being a thing, I call dibs on the &ldquo;pick a trendy and somewhat obnoxious name for software flaws&rdquo; rights and dub this <strong>GREflector</strong>!</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/">Ubuntu Xenial and systemd network online target</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'blog-slabnet-com';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://blog.slabnet.com/js/ui.js"></script>
+
+
+
+
+</body>
+</html>
+
