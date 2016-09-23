@@ -1,7 +1,7 @@
 +++
 date = "2016-09-22T20:23:52-07:00"
 slug = "gre-reflection"
-description = "Considering how GRE traffic might be reflected or redirected for DDoS source obfuscation."
+description = "Considering how GRE traffic might be reflected or redirected for DDoS source obfuscation"
 tags = ['DDoS', 'GRE', 'reflection', 'Internet', 'networking', 'tech' ]
 title = "GRE Reflection?"
 +++
