@@ -6,7 +6,7 @@ tags = ['DDoS', 'GRE', 'reflection', 'Internet', 'networking', 'tech' ]
 title = "GRE Reflection?"
 +++
 
-Recently, we're seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on [krebsonsecurity.com](krebsonsecurity.com).  (Note that the site is currently offline as it's finding a new home, so any links to krebsonsecurity.com will reference [The Internet Archive](http://archive.org) instead.)
+Recently, we're seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on [krebsonsecurity.com](http://krebsonsecurity.com).  (Note that the site is currently offline as it's finding a new home, so any links to krebsonsecurity.com will reference [The Internet Archive](http://archive.org) instead.)
 
 An initial tweet from [@briankrebs](https://twitter.com/briankrebs) listed GRE in the attack traffic mix:
 
