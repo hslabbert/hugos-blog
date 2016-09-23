@@ -20,7 +20,7 @@
       <guid>http://blog.slabnet.com/post/gre-reflection/</guid>
       <description>
 
-&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
+&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;http://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
 
 &lt;p&gt;An initial tweet from &lt;a href=&#34;https://twitter.com/briankrebs&#34;&gt;@briankrebs&lt;/a&gt; listed GRE in the attack traffic mix:&lt;/p&gt;
 
