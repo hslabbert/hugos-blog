@@ -1,7 +1,7 @@
 baseurl = "http://blog.slabnet.com/"
 languageCode = "en-us"
 title = "Hugo's Blog"
-copyright = "&copy; 2016 Hugo Slabbert"
+copyright = "&copy; 2016 Hugo Slabbert. <a href=\"http://creativecommons.org/licenses/by/4.0/\">Some rights reserved</a>. Please attribute properly and link back."
 
 theme = "blackburn"
 
