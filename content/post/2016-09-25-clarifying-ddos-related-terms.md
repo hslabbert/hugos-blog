@@ -1,47 +1,59 @@
 +++
 date = "2016-09-25T20:47:02-07:00"
 description = "Spoofing, reflection, amplification, BCP38, uRPF, etc."
-draft = true
 slug = "clarifying-ddos-related-terms"
 tags = ['DDoS', 'reflection', 'Internet', 'amplification', 'bcp38', 'urpf' ]
 title = "Clarifying DDoS-related terms"
 
 +++
 
-I'll be writing a bit more about DDoS attacks and security, and so I thought it would be handy to jot down some commonly used terms in one place.  I'll also look at how some of those terms are interrelated.<!--more-->
+I'll be writing a bit more about DDoS attacks and security, and so I thought it would be handy to jot down some commonly used terms in one place.  I'll also look at how some of those terms are interrelated.
 
-#### Spoofing
+## The terms
 
-As relates to TCP/IP, "spoofing" really just refers to forging some part of IP communications.  You could, for example, spoof a source port to have response data thrown at a listening application that wasn't expecting, but generally we're talking about forging the source IP address in an IP packet.  
+### Spoofing
 
-IP spoofing can be used to simply hide your identity in attacks where replies back from the target are not necessary in order to complete the attack.
+As relates to TCP/IP, "spoofing" really just refers to forging some part of IP communications.  You could, for example, spoof a source port to have response data thrown at a listening application that wasn't expecting it, but generally we're talking about forging the source IP address in an IP packet.  
 
-For example, TCP SYN floods cause resource exhaustion on target by making it set up many half-open TCP connections.  The attacker does not need to actually ACK replies back from the server in order to exhaust server resources, so spoofing the source IP in the SYN flood packets means (a) the attacker's true IP remains hidden from the target and (b) any replies the target generates to the attack traffic will not reach the attacker, so the attacker can expend relatively fewer resources while requiring more resources utilized on the target.
+IP spoofing can be used to simply hide your identity in cases where replies back from the target are not necessary in order to complete an attack.
 
-Similarly, any connectionless attack where garbage, volumetric data is thrown at a target could also use any random source IP address.  For example, a compromised host could be instructed to send random data at a target using a spoofed source IP address in order to not reveal the true IP of the compromised host, so that it can be used again in future attacks.
+For example, TCP SYN floods cause resource exhaustion on the target by making it set up many half-open TCP connections.  The attacker does not need to actually ACK replies back from the server in order to exhaust server resources, so spoofing the source IP in the SYN flood packets means (a) the attacker's true IP remains hidden from the target and (b) any replies the target generates to the attack traffic will not reach the attacker, so the attacker can expend relatively fewer resources while making the target expend both more processing and bandwidth resources.
+
+Similarly, any connectionless attack where garbage, volumetric data is thrown at a target could also use any random source IP address.  For example, a compromised host could be instructed to send random data at a target using a spoofed source IP address in order to not reveal the true IP of the compromised host.  This reduces the risk of the zombied attack host being exposed, and increases the chances that the attacker can use the bot again in future attacks.
 
 Spoofing can also be used in reflection attacks.
 
-#### Reflection
+### Reflection
 
-A reflection attack uses spoofing in order to have the attack bounce of off a "reflector" of some sort and on to the attack target.  The attacker uses spoofing to forge the source IP address of its traffic to be that of their target.  Traffic is then sent  to the reflector, soliticing a reply.  The reply traffic, though, is sent not back to the attacker but rather on to the attack target.  This is because the reflector has no way of knowing the source of the traffic aside from the source IP address in the packets it receives, so all it can do is send replies to that IP address.
+A reflection attack uses source address spoofing in order to have the attack bounce of off a "reflector" of some sort and on to the attack target.  The attacker uses spoofing to forge the source IP address of its traffic to be that of their target.  A request is then sent to the reflector, soliticing a response.  The response traffic, though, is sent not back to the attacker but rather on to the attack target.  This is because the reflector has no way of knowing the source of the traffic aside from the source IP address in the packets it receives, so all it can do is send responses to that IP address.
 
-The most basic example of this would be sending an ICMP echo request (ping) to some host on the Internet and setting the source IP address to that of the attack target.  This isn't really a very efficient method on the attacker's part, though, as they have to use the same amount of resources and bandwidth as the target, if not more.  A 1500-byte echo request sent from the attacker results in a 1500-byte echo reply generated by the reflector and that 1500-byte echo reply being received by the target.  So the attacker uses 1500 bytes of upload bandwidth and has to generate that 1500 byte echo request; the reflector uses 1500 bytes of download bandwith, has to generate a 1500 byte ICMP echo reply, and then uses 1500 bytes of upload bandwidth; and the target just has to receive a 1500-byte echo reply and do some very basic processing to realize it has to discard it.
+The most basic example of this would be sending an ICMP echo request (ping) to some host on the Internet and setting the source IP address to that of the attack target.  The pinged host will then send an ICMP echo reply to the source IP of the packet, which is the attack target.  This isn't really a very efficient method on the attacker's part, though, as they have to use the same amount of resources and bandwidth as the target, if not more.  A 1500-byte echo request sent from the attacker results in a 1500-byte echo reply generated by the reflector and that 1500-byte echo reply being received by the target.  So:
+
+* The attacker:
+ * uses 1500 bytes of upload bandwidth
+ * has to generate that 1500 byte echo request
+* The reflector:
+ * uses 1500 bytes of download bandwith
+ * has to generate a 1500 byte ICMP echo reply
+ * uses 1500 bytes of upload bandwidth
+* The target just has to:
+ * receive a 1500-byte echo reply
+ * do some very basic processing to realize it has to discard it
 
 To pack a bigger punch, reflection needs to be paired with amplification.
 
-#### Amplification
+### Amplification
 
-This is where things start to get interesting on the volumetric DDoS front.  We've spoofed a source IP and sent some request to a server somewhere on the Internet so that the reply gets sent to our target instead of back to us.  No how do we tip the scales to get a bigger attack?  
+This is where things start to get interesting on the volumetric DDoS front.  We've spoofed a source IP and sent a request to a server somewhere on the Internet so that the response gets sent to our target instead of back to us.  No how do we tip the scales to get a bigger attack?  
 
 We need two things to pull this off:
 
 1.   We need to be able to send a single packet to the reflector and have it reply with our attack traffic.
-2.  We need hit on some type of traffic that will make the reflector generate a larger packet to send to the attacker than we sent to the reflector in the first place.
+2.  We need to hit on some protocol or service that will make the reflector generate a larger amount of traffic to send to the attacker than we sent to the reflector in the first place.
 
-For #1, the idea here is that since we are spoofing our source address, something like TCP won't work.  TCP requires a 3-step handshake between before the connection is open and data can go between client and server.  If we hit step 1 (SYN), but step 2 from the server back to the client (SYN-ACK) doesn't come back to us but rather goes to the target, we can't complete the TCP connection setup and so we can't trigger a big bunch of data.  This is actually good design: it's BAD for a single, small request from the client to be able to trigger a BIG response from the server.  Connectionless protocols like UDP could work, though, as UDP-based protocols are more likely send the actual reply to a client request right from the word "go!".
+For #1, the idea here is that since we are spoofing our source address, something like TCP won't work.  TCP requires a 3-step handshake between before the connection is open and data can go between client and server.  If we hit step 1 (SYN), but step 2 from the server back to the client (SYN-ACK) doesn't come back to us but rather goes to the target, we can't complete the TCP connection setup and so we can't trigger a big bunch of data.  This is actually good design: it's BAD for a single, small request from the client to be able to trigger a BIG response from the server, and the TCP 3-way handshake sidesteps that issue.  Connectionless protocols like UDP could work, though, as UDP-based protocols are more likely send the actual reply to a client request right from the word "go!".
 
-Requirement #2 is pretty obvious, but how do we pull that off?  Well, common targets have been identified that violate the best practice suggestion of not returning more than is received on the first request/packet.  A list of some of those:
+Requirement #2 is pretty obvious, but how do we pull that off?  Well, common targets have been identified that by design violate the best practice suggestion of not returning more than is received on the first request/packet.  A list of some of those:
 
 * NTP
 * CHARGEN
@@ -49,8 +61,84 @@ Requirement #2 is pretty obvious, but how do we pull that off?  Well, common tar
 * SSDP
 * SNMP
 
-Now we can single a *single* packet to reflector with a spoofed source IP and have that reflector send up to almost **600 times** that amount of traffic to our target.
+Now we can single a _single_ packet to reflector with a spoofed source IP and have that reflector send up to almost **600 times** that amount of traffic to our target.
 
-### How do these all go together?
+### BCP38
 
+_BC-whatnow?_
 
+_BCP_ stands for Best Current Practice, which are documents put forth by the Internet Engineering Task Force (IETF) to, well, describe best current practices ;)
+
+Basically, rather than documenting how protocols themselves should function, BCPs provide guidelines on recommended configurations and operation of those protocols in real-world scenarios.  For example, [BCP46](https://tools.ietf.org/html/bcp46), _Recommended Internet Service Provider Security Services and Procedures_,  describes common security practices that ISPs should implement.  This isn't about which protocols to use, but _how_ to implement and configure the _use_ of those protocols.  BCPs also have a regular RFC number, with BCP38 being RFC2827.
+
+[BCP38](https://tools.ietf.org/html/bcp38) is titled _Network Ingress Filtering: Defeating Denial of Service Attacks which employ IP Source Address Spoofing_.  Recognizing that source address spoofing can facilitate denial of service attacks, the IETF drafted BCP38 to cut source address spoofing off at the knees.
+
+In a network that has implemented BCP38, when a packet with a spoofed source IP address reaches the ISP's router, the router checks the source IP address of the packet.  If the source address has been legitimately assigned to the customer, then the packet is permitted.  If the source address is not in an address range that has been assigned to the customer, it is discarded/dropped.  The spoofed packet will never get to a DoS target or a reflector, because it is dropped as soon as it enters the ISP's network.
+
+### Unicast Reverse Path Forwarding (uRPF)
+
+Usually, configuring a router to accept or drop traffic, especially based on source address rather than destination, is accomplished through access control lists (ACLs), aka firewall filters.  In implementing BCP38, an ACL would be applied on the customer-facing interface of the ISP's router, and would match source addresses of packets received on that interface.  That...starts to become a pain to manage. Aside from addressing an interface, you also now need to configure and apply an ACL for each customer-facing interface on every single access router in your network.  Sure, you can probably work this into your customer turn-up process and service provisioning, but it's an extra step that either needs to be done manually or have some development and QA time thrown at it.  Couldn't we just have an "enable source address spoof filtering" checkbox or something?
+
+_uRPF to the rescue!_
+
+Unicast Reverse Path Forwarding checks the source address of packet received on a router interface and then does a route lookup for that source address.  If a route for the source address is found **and** points _out_ the interface on which the packet was received, the packet is forwarded.  If _not_, the packet is discarded.  We'll get into more details [below]({{< relref "#and-bcp38-and-urpf" >}}).
+
+## How do these all go together?
+
+Each of the first three terms we covered - spoofing, reflection, and amplification -  builds on the ones before it.  I can _spoof_ a packet without doing any reflection or amplification.  In order to _reflect_ traffic, I need to spoof the source IP address in the traffic I send out.  But, I can still _reflect_ traffic without that using _amplification_, as we saw in the original ping example.
+
+Now: I _can_ technically use amplification without spoofing and reflection, but that would really just be normal user traffic rather than attack traffic.  We mentioned DNS as a potential reflection vector.  Well, if I send a small DNS request to my DNS server and get a larger response back, technically that's amplification (small request sent; large response triggered).  But, that's not DoS traffic.
+
+In order to use amplification in a DoS scenario, then, I need a _reflector_ to amplify the attack traffic for me, and I need to use _spoofing_ to direct the reflected response to the target rather than having it come back to me.
+
+### Where would one technique be used over another?
+
+If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is lauched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).
+
+If the attacker has access to services that are vulnerable to amplification, it generally doesn't make too much sense to just use bare spoofing and reflection rather than just tossing more resources at the vector that provides amplification.  That said, an ICMP flood could be an example of a reflected attack that does not leverage amplification.
+
+Finally, as mentioned above, an amplified attack requires both spoofing (to direct requests at the target rather than the attacker) and reflection (to provide the amplification) as well, and is the staple of large-scale volumetric DDoS attacks.
+
+### And BCP38 and uRPF?
+
+BCP38 can't prevent all denial of service attacks from happening, but it does prevent spoofing.  If attackers do not have access to networks that let them spoof source addresses, they are unable to cover their tracks.  If a host in a botnet assumes it can send out spoofed traffic, its attack traffic will not reach the target, and the attack is mitigated.  If the zombied host is able to detect that its spoofed traffic cannot get through, an attack operator _may_ choose to simply send attack traffic directly to the target without spoofing.  This exposes the zombie host, though, so that abuse from the host can be reported and it can be cleaned up or neutralized so that it cannot be used in future attacks.  Since spoofing is also required for an amplified attack, a network that implements BCP38 cannot be used to launch an amplified reflected attack, which is where the big guns in volumetric DDoS come from.
+
+Some examples might also help illustrate this.
+
+Users X and Y are connected to `RouterA` on two different networks:
+
+```
+ -------------------------
+| UserX                   |______________
+| 2001:db8:a:1111::100/64 |               \  -----------------------
+ -------------------------      ge-1/0/0.0 \| 2001:db8:a:1111::1/64 |
+                                            |-----------------------|
+                                            |        RouterA        |
+                                            |-----------------------|
+ -------------------------      ge-2/0/0.0 /| 2001:db8:a:ffff::1/64 |
+| UserY                   |______________ /  -----------------------
+| 2001:db8:a:ffff::100/64 |
+ -------------------------
+```
+For our example, let's assume this is a _very_ simple router and just has these two connected networks and then a default route out another interface, `ge-0/0/0.0`, so its routing table looks like this:
+
+```
+Network                 Type        Next-Hop            Via Interface
+::/0                    static      2001:db8:aaaa::a    ge-0/0/0.0
+2001:db8:a:1111::1/128  Local       -                   ge-1/0/0.0
+2001:db8:a:1111::/64    Direct      -                   ge-1/0/0.0
+2001:db8:a:ffff::1/128  Local       -                   ge-2/0/0.0
+2001:db8:a:ffff::/64    Direct      -                   ge-2/0/0.0
+```
+
+UserX thinks he's super 1337 and wants to launch a TCP SYN flood attack against UserY without having his source IP being revealed.  This is simple spoofing without reflection or amplification.  He spoofs the source IP address in his attack packets and sets it to some other random IP; let's say `2001:db8:bad:d00d::1337`.
+
+UserX sends the traffic with the spoofed source IP to his ISP gateway address of `2001:db8:a:1111::1`, which is on `RouterA`.  Now, `RouterA` does have uRPF configured on the interface to which UserX is connected, so it does a route lookup on the source address.  For the spoofed attack packets, that would be `2001:db8:bad:d00d::1337`.  `RouterA` finds that it does _not_ have a route for that address going out that interface; it doesn't even have a route for that destination _at all_ aside from its default route.
+
+Note that this also works in cases where a route for the source address _is_ found, but on a different interface.  Suppose UserX takes a different tack and decides to use an amplified [NTP reflection attack](https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/) against UserY, so he picks _UserY's_ address as his spoofed source IP.  UserX crafts an NTP monlist query to a vulnerable NTP server that will serve as his reflector and amplify the attack traffic, and sends the packet on its way via his gateway on `RouterA`.
+
+In this case when `RouterA` does a route lookup during its uRPF check it _will_ find a route for the source IP in the packet, `2001:db8:a:ffff::100`, because that address lives in UserY's network of `2001:db8:a:ffff::/64` that is directly connected on its ge-2/0/0.0 interface.  But, UserX's spoofed packet came in on ge-1/0/0.0, *not* on ge-2/0/0.0.  Since the route for the source address in the packet does _not_ go via the input interface of the packet, `RouterA` discards the packet and the attack is neutralized.
+
+## Wrapping Up
+
+DDoS attacks are a _very_ broad subject and there are lots of nuances to deal with.  This post aimed to just start scratching the surface and to provide an introductory reference for some of these terms, and I will be digging into this topic in more detail in future posts.

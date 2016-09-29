@@ -7,7 +7,7 @@
   <meta name="description" content="Mostly tech...mostly">
   <meta name="generator" content="Hugo 0.16" />
 
-  <title>Reflection &middot; Hugo&#39;s Blog</title>
+  <title>Amplification &middot; Hugo&#39;s Blog</title>
 
   
   
@@ -37,7 +37,7 @@
 
   
   
-  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/tags/reflection/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/tags/amplification/index.xml" />
   
 
   
@@ -102,7 +102,7 @@
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://blog.slabnet.com/tags/reflection/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href="http://blog.slabnet.com/tags/amplification/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -209,7 +209,7 @@
 
 
 <div class="header">
-  <h1>Reflection</h1>
+  <h1>Amplification</h1>
 </div>
 
 <div class="content">
@@ -262,79 +262,6 @@
   
   <footer>
     <a href="/post/clarifying-ddos-related-terms/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/gre-reflection/">GRE Reflection?</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>22 Sep 2016, 20:23</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ddos">DDoS</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/gre">GRE</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/reflection">reflection</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/internet">Internet</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/tech">tech</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  <p>Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on <a href="http://krebsonsecurity.com">krebsonsecurity.com</a>.  (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference <a href="http://archive.org">The Internet Archive</a> instead.)</p>
-
-<p>An initial tweet from <a href="https://twitter.com/briankrebs">@briankrebs</a> listed GRE in the attack traffic mix:</p>
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">per the last tweet, they threw it all at my site; SYN Flood, GET Flood, ACK Flood, POST Flood, GRE Protocol Flood]; 665.00 Gbps;143.50 Mpps</p>&mdash; briankrebs (@briankrebs) <a href="https://twitter.com/briankrebs/status/778402188267778048">September 21, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>&hellip;and Krebs later confirmed more details in KrebsOnSecurity&rsquo;s <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">own article</a> reporting on the attack:</p>
-
-<blockquote>
-<p>Preliminary analysis of the attack traffic suggests that perhaps the biggest chunk of the attack came in the form of traffic designed to look like it was generic routing encapsulation (GRE) data packets, a communication protocol used to establish a direct, point-to-point connection between network nodes.</p>
-</blockquote>
-
-<p>Now, volumetric DDoS attacks will generally use amplification vectors like open DNS resolvers, misconfigured or vulnerable NTP or SNMP servers, SSDP, etc. in order to boost the attack volume.  Those amplifiers are also often vulnerable to reflection attacks, where the attacker spoofs the source address in the initial amplification trigger packets so that the amplified replies hit the target rather than the attacker.  This can be pulled off because these exploited amplification vectors are stateless and UDP-based, and so a single spoofed packet from the attacker will trigger the amplified reply destined for the target.  A TCP-based attack could yield a larger amplification factor (e.g. just think of pulling off an HTTP GET of a GB+ file!), but a TCP 3-way handshake would never complete successfully with a spoofed source address, and even if somehow it could, the attacker would have to keep ACK-ing somehow in order to keep the transfer going.  GRE we are told, however, could not have a spoofed source address (also from <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">the same Krebs article</a>):</p>
-
-<blockquote>
-<p>McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.</p>
-</blockquote>
-
-<p>GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  <em>Note that this is an untested theory and still needs to be validated.</em></p>
-
-  </p>
-
-  
-  <footer>
-    <a href="/post/gre-reflection/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
