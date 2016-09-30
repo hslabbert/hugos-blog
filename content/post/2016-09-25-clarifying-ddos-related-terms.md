@@ -2,7 +2,7 @@
 date = "2016-09-25T20:47:02-07:00"
 description = "Spoofing, reflection, amplification, BCP38, uRPF, etc."
 slug = "clarifying-ddos-related-terms"
-tags = ['DDoS', 'reflection', 'Internet', 'amplification', 'bcp38', 'urpf' ]
+tags = ['DDoS', 'reflection', 'Internet', 'amplification', 'bcp38', 'urpf', 'networking', 'security', 'infosec' ]
 title = "Clarifying DDoS-related terms"
 
 +++
@@ -93,7 +93,7 @@ In order to use amplification in a DoS scenario, then, I need a _reflector_ to a
 
 ### Where would one technique be used over another?
 
-If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is lauched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).
+If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is launched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).
 
 If the attacker has access to services that are vulnerable to amplification, it generally doesn't make too much sense to just use bare spoofing and reflection rather than just tossing more resources at the vector that provides amplification.  That said, an ICMP flood could be an example of a reflected attack that does not leverage amplification.
 

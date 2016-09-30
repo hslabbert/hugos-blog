@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Urpf on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/urpf/</link>
-    <description>Recent content in Urpf on Hugo&#39;s Blog</description>
+    <title>Infosec on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/infosec/</link>
+    <description>Recent content in Infosec on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
     <lastBuildDate>Sun, 25 Sep 2016 20:47:02 -0700</lastBuildDate>
-    <atom:link href="http://blog.slabnet.com/tags/urpf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.slabnet.com/tags/infosec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Clarifying DDoS-related terms</title>

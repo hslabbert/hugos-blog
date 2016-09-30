@@ -121,7 +121,7 @@
 
 &lt;h3 id=&#34;where-would-one-technique-be-used-over-another&#34;&gt;Where would one technique be used over another?&lt;/h3&gt;
 
-&lt;p&gt;If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is lauched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).&lt;/p&gt;
+&lt;p&gt;If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is launched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).&lt;/p&gt;
 
 &lt;p&gt;If the attacker has access to services that are vulnerable to amplification, it generally doesn&amp;rsquo;t make too much sense to just use bare spoofing and reflection rather than just tossing more resources at the vector that provides amplification.  That said, an ICMP flood could be an example of a reflected attack that does not leverage amplification.&lt;/p&gt;
 
