@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A look at BCP38 as a countermeasure to DDoS attacks following the KrebsOnSecurity attacks">
+  <meta name="generator" content="Hugo 0.16" />
+
+  <title>What BCP38 Can and Cannot Do &middot; Hugo&#39;s Blog</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+
+  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
+    </li>
+    
+
+    
+
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>What BCP38 Can and Cannot Do</h1>
+  <h2>A look at BCP38 as a countermeasure to DDoS attacks following the KrebsOnSecurity attacks</h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>28 Sep 2016, 07:17</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/infosec">infosec</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/internet">Internet</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ddos">DDoS</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/bcp38">BCP38</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/reflection">reflection</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/security">security</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  
+
+<p>We&rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet.  Rather than targeting a company or online gaming, one of the largest DDoS attacks ever <a href="http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">targeted an individual</a>, Brian Krebs, most likely for <a href="https://krebsonsecurity.com/2016/09/israeli-online-attack-service-vdos-earned-600000-in-two-years/">his work exposing a so-called &ldquo;booter service&rdquo;</a>, a DDoS-for-hire outfit called vDOS, which ultimately led to <a href="https://krebsonsecurity.com/2016/09/alleged-vdos-proprietors-arrested-in-israel/">the alleged proprietors being arrested</a>.</p>
+
+<h2 id="a-brief-history-of-dos-volumes">A brief history of DoS volumes</h2>
+
+<p>Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.  Attacks weighing in at 600 Gbps are said to have been reported in private, but generally haven&rsquo;t hit public knowledge. In the space of a week, we&rsquo;ve seen attacks reach those levels and <em>way</em> beyond.  There are reports of <em>much</em> more frequent attacks against common targets, with volumes far above average.  OVH, an international Internet service and hosting provider, reported attacks of over 1 Tbps just the night before the attack on KrebsOnSecurity:</p>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/Dominik28111">@Dominik28111</a> we got 2 huge multi DDoS: 1156Gbps then 901Gbps <a href="https://t.co/NyFTr6KLCC">pic.twitter.com/NyFTr6KLCC</a></p>&mdash; Octave Klaba / Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/778019962036314112">September 19, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>This is an unprecedented escalation in attack volumes and frequency, and this state of affairs cannot go on.  The Internet is <em>the</em> platform for discussion in our era, and it is simply unacceptable, whether you are a security researcher, a political activist, someone with an unpopular opinion, or simply someone running a blog for fun, that your voice on the Internet could be silenced by goons with digital cannons because they don&rsquo;t like what you have to say, or simply for the lulz.</p>
+
+<p>After getting <a href="https://krebsonsecurity.com">krebsonsecurity.com</a> back online on 2016-09-24, Krebs responded to the recent events with a report and call to action in <a href="https://krebsonsecurity.com/2016/09/the-democratization-of-censorship/">The Democritizaton of Censorship</a>.  In it, he calls for a renewed effort on implementing <a href="/post/clarifying-ddos-related-terms/#bcp38">BCP38</a>:</p>
+
+<blockquote>
+<p>Known as BCP38, its use prevents insecure resources on an ISPs network (hacked servers, computers, routers, DVRs, etc.) from being leveraged in such powerful denial-of-service attacks.</p>
+
+<p>&hellip;</p>
+
+<p>BCP38 is designed to filter such spoofed traffic, so that it never even traverses the network of an ISP that’s adopted the anti-spoofing measures. However, there are non-trivial economic reasons that many ISPs fail to adopt this best practice. <a href="http://www.internetsociety.org/deploy360/blog/2014/07/anti-spoofing-bcp-38-and-the-tragedy-of-the-commons/">This blog post</a> from the Internet Society does a good job of explaining why many ISPs ultimately decide not to implement BCP38.</p>
+</blockquote>
+
+<p>As we face denial of service attacks, it is important for us to be clear on what tools we have in our arsenal to defend against DDoS attacks.</p>
+
+<h2 id="no-spoofing-no-benefit-to-bcp38">No spoofing?  No benefit to BCP38</h2>
+
+<p>I will be very clear that I am a strong proponent of BCP38.  There are objections from some members the network operator community that need to be addressed and solutions to some valid network use cases that need to be developed, but on the whole we should be working to push spoof-detection and mitigation as a default state rather than throwing our hands up in the air and saying it&rsquo;s too hard or a futile effort.</p>
+
+<p>That said: BCP38 does <strong>NOT</strong> defend against direct network attacks that do not use source address spoofing.  Period.</p>
+
+<p>BCP38&rsquo;s sole function is to drop traffic from invalid (spoofed) source addresses.  Now, spoofing <em>can</em> be used in direct attacks in order to provide source address obfuscation, but those attacks need to be &ldquo;one and done&rdquo; vectors, e.g. SYN flood attacks or UDP-based attacks that hinge simply on a single packet making its way from the traffic originator (the host we&rsquo;re talking about that&rsquo;s using spoofing) to the target.</p>
+
+<p>A direct, TCP-based attack that requires a TCP 3-way handshake to complete <em>cannot</em> use source address spoofing, as the SYN-ACK back from the target will go to a spoofed address and never reach the attacker to complete the TCP session setup.  As the TCP session setup never completes, any direct attack that requires a valid TCP session will not be able to function.  If source address spoofing is not being used, BCP38 has absolutely <strong>zero</strong> impact on that traffic; it&rsquo;s not spoofed, so BCP38 let&rsquo;s it pass (as it should).</p>
+
+<p>But, the <a href="http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">post-mortem breakdown</a> from Krebs indicates that these attacks did not use reflection &amp; amplification:</p>
+
+<blockquote>
+<p>But according to Akamai, none of the attack methods employed in Tuesday night’s assault on KrebsOnSecurity relied on amplification or reflection. Rather, many were garbage Web attack methods that require a legitimate connection between the attacking host and the target, including SYN, GET and POST floods.</p>
+</blockquote>
+
+<p>Note the &ldquo;legitimate connection&rdquo; part there, which I am reading as a valid TCP session.</p>
+
+<p>Akamai&rsquo;s Martin McKeay also goes on to say that this traffic cannot be spoofed:</p>
+
+<blockquote>
+<p>McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic. Nor can junk Web-based DDoS attacks like those mentioned above.</p>
+</blockquote>
+
+<p>Now, I <a href="/post/gre-reflection/">took some exception</a> to the statement that GRE traffic cannot be spoofed, and to be fair you can fake a GET or POST as long as you don&rsquo;t care if the TCP session is invalid and the web server at the other end will reject it, but the point here is that the analysis of the attack describes it as consisting of direct attacks including legitimate, completed TCP sessions, <em>without</em> spoofing taking place.</p>
+
+<p>Krebs touches on this again later in the Democritization piece when talking about the IoT devices likely participating in the attack:</p>
+
+<blockquote>
+<p>Some readers on Twitter have asked why the attackers would have “burned” so many compromised systems with such an overwhelming force against my little site. After all, they reasoned, the attackers showed their hand in this assault, exposing the Internet addresses of a huge number of compromised devices that might otherwise be used for actual money-making cybercriminal activities&hellip;</p>
+</blockquote>
+
+<p>Again: if they&rsquo;re exposing their IP addresses, that means we&rsquo;re talking about abuse traffic that does <em>not</em> have a spoofed source, which means whether or not BCP38 is implemented on the networks housing the attack sources has <strong>zero</strong> bearing on the effectiveness of the attack.</p>
+
+<p>Krebs does later touch on the possibility of initiatives to require secure-by-default deployments for IoT devices, but that basically amounts to two sentences at the end of the <em>Shaming the Spoofers</em> section.  In light of these attacks being claimed as direct and unspoofed, efforts to secure end hosts would really be the only effective countermeasure, as source address spoofing mitigation has zero effect on traffic that doesn&rsquo;t spoof its source address.</p>
+
+<p>I aim to more about BCP38 in the near future, but I want to state again for emphasis that this post is <em>not</em> a criticism of BCP38 or any kind of statement that BCP38 adoption is pointless or futile.  On the contrary: I wholeheartedly support any efforts to further BCP38 adoption, push for BCP38 adoption on any networks under my control, and believe it is critical to enabling attribution of abuse traffic and mitigation of reflected (and amplified) DDoS attacks.  But, we should not imagine that even getting full BCP38 coverage of the entire Internet will in any way impact network abuse and DDoS attacks that do not use source address spoofing.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/">Clarifying DDoS-related terms</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'blog-slabnet-com';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="http://blog.slabnet.com/js/ui.js"></script>
+
+
+
+
+</body>
+</html>
+

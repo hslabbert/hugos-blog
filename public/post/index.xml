@@ -9,8 +9,79 @@
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Sun, 25 Sep 2016 20:47:02 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 28 Sep 2016 07:17:17 -0700</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>What BCP38 Can and Cannot Do</title>
+      <link>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      <guid>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</guid>
+      <description>
+
+&lt;p&gt;We&amp;rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet.  Rather than targeting a company or online gaming, one of the largest DDoS attacks ever &lt;a href=&#34;http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/&#34;&gt;targeted an individual&lt;/a&gt;, Brian Krebs, most likely for &lt;a href=&#34;https://krebsonsecurity.com/2016/09/israeli-online-attack-service-vdos-earned-600000-in-two-years/&#34;&gt;his work exposing a so-called &amp;ldquo;booter service&amp;rdquo;&lt;/a&gt;, a DDoS-for-hire outfit called vDOS, which ultimately led to &lt;a href=&#34;https://krebsonsecurity.com/2016/09/alleged-vdos-proprietors-arrested-in-israel/&#34;&gt;the alleged proprietors being arrested&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-brief-history-of-dos-volumes&#34;&gt;A brief history of DoS volumes&lt;/h2&gt;
+
+&lt;p&gt;Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.  Attacks weighing in at 600 Gbps are said to have been reported in private, but generally haven&amp;rsquo;t hit public knowledge. In the space of a week, we&amp;rsquo;ve seen attacks reach those levels and &lt;em&gt;way&lt;/em&gt; beyond.  There are reports of &lt;em&gt;much&lt;/em&gt; more frequent attacks against common targets, with volumes far above average.  OVH, an international Internet service and hosting provider, reported attacks of over 1 Tbps just the night before the attack on KrebsOnSecurity:&lt;/p&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/Dominik28111&#34;&gt;@Dominik28111&lt;/a&gt; we got 2 huge multi DDoS: 1156Gbps then 901Gbps &lt;a href=&#34;https://t.co/NyFTr6KLCC&#34;&gt;pic.twitter.com/NyFTr6KLCC&lt;/a&gt;&lt;/p&gt;&amp;mdash; Octave Klaba / Oles (@olesovhcom) &lt;a href=&#34;https://twitter.com/olesovhcom/status/778019962036314112&#34;&gt;September 19, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;This is an unprecedented escalation in attack volumes and frequency, and this state of affairs cannot go on.  The Internet is &lt;em&gt;the&lt;/em&gt; platform for discussion in our era, and it is simply unacceptable, whether you are a security researcher, a political activist, someone with an unpopular opinion, or simply someone running a blog for fun, that your voice on the Internet could be silenced by goons with digital cannons because they don&amp;rsquo;t like what you have to say, or simply for the lulz.&lt;/p&gt;
+
+&lt;p&gt;After getting &lt;a href=&#34;https://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt; back online on 2016-09-24, Krebs responded to the recent events with a report and call to action in &lt;a href=&#34;https://krebsonsecurity.com/2016/09/the-democratization-of-censorship/&#34;&gt;The Democritizaton of Censorship&lt;/a&gt;.  In it, he calls for a renewed effort on implementing &lt;a href=&#34;http://blog.slabnet.com/post/clarifying-ddos-related-terms/#bcp38&#34;&gt;BCP38&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Known as BCP38, its use prevents insecure resources on an ISPs network (hacked servers, computers, routers, DVRs, etc.) from being leveraged in such powerful denial-of-service attacks.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;BCP38 is designed to filter such spoofed traffic, so that it never even traverses the network of an ISP that’s adopted the anti-spoofing measures. However, there are non-trivial economic reasons that many ISPs fail to adopt this best practice. &lt;a href=&#34;http://www.internetsociety.org/deploy360/blog/2014/07/anti-spoofing-bcp-38-and-the-tragedy-of-the-commons/&#34;&gt;This blog post&lt;/a&gt; from the Internet Society does a good job of explaining why many ISPs ultimately decide not to implement BCP38.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As we face denial of service attacks, it is important for us to be clear on what tools we have in our arsenal to defend against DDoS attacks.&lt;/p&gt;
+
+&lt;h2 id=&#34;no-spoofing-no-benefit-to-bcp38&#34;&gt;No spoofing?  No benefit to BCP38&lt;/h2&gt;
+
+&lt;p&gt;I will be very clear that I am a strong proponent of BCP38.  There are objections from some members the network operator community that need to be addressed and solutions to some valid network use cases that need to be developed, but on the whole we should be working to push spoof-detection and mitigation as a default state rather than throwing our hands up in the air and saying it&amp;rsquo;s too hard or a futile effort.&lt;/p&gt;
+
+&lt;p&gt;That said: BCP38 does &lt;strong&gt;NOT&lt;/strong&gt; defend against direct network attacks that do not use source address spoofing.  Period.&lt;/p&gt;
+
+&lt;p&gt;BCP38&amp;rsquo;s sole function is to drop traffic from invalid (spoofed) source addresses.  Now, spoofing &lt;em&gt;can&lt;/em&gt; be used in direct attacks in order to provide source address obfuscation, but those attacks need to be &amp;ldquo;one and done&amp;rdquo; vectors, e.g. SYN flood attacks or UDP-based attacks that hinge simply on a single packet making its way from the traffic originator (the host we&amp;rsquo;re talking about that&amp;rsquo;s using spoofing) to the target.&lt;/p&gt;
+
+&lt;p&gt;A direct, TCP-based attack that requires a TCP 3-way handshake to complete &lt;em&gt;cannot&lt;/em&gt; use source address spoofing, as the SYN-ACK back from the target will go to a spoofed address and never reach the attacker to complete the TCP session setup.  As the TCP session setup never completes, any direct attack that requires a valid TCP session will not be able to function.  If source address spoofing is not being used, BCP38 has absolutely &lt;strong&gt;zero&lt;/strong&gt; impact on that traffic; it&amp;rsquo;s not spoofed, so BCP38 let&amp;rsquo;s it pass (as it should).&lt;/p&gt;
+
+&lt;p&gt;But, the &lt;a href=&#34;http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/&#34;&gt;post-mortem breakdown&lt;/a&gt; from Krebs indicates that these attacks did not use reflection &amp;amp; amplification:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;But according to Akamai, none of the attack methods employed in Tuesday night’s assault on KrebsOnSecurity relied on amplification or reflection. Rather, many were garbage Web attack methods that require a legitimate connection between the attacking host and the target, including SYN, GET and POST floods.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note the &amp;ldquo;legitimate connection&amp;rdquo; part there, which I am reading as a valid TCP session.&lt;/p&gt;
+
+&lt;p&gt;Akamai&amp;rsquo;s Martin McKeay also goes on to say that this traffic cannot be spoofed:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic. Nor can junk Web-based DDoS attacks like those mentioned above.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now, I &lt;a href=&#34;http://blog.slabnet.com/post/gre-reflection/&#34;&gt;took some exception&lt;/a&gt; to the statement that GRE traffic cannot be spoofed, and to be fair you can fake a GET or POST as long as you don&amp;rsquo;t care if the TCP session is invalid and the web server at the other end will reject it, but the point here is that the analysis of the attack describes it as consisting of direct attacks including legitimate, completed TCP sessions, &lt;em&gt;without&lt;/em&gt; spoofing taking place.&lt;/p&gt;
+
+&lt;p&gt;Krebs touches on this again later in the Democritization piece when talking about the IoT devices likely participating in the attack:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Some readers on Twitter have asked why the attackers would have “burned” so many compromised systems with such an overwhelming force against my little site. After all, they reasoned, the attackers showed their hand in this assault, exposing the Internet addresses of a huge number of compromised devices that might otherwise be used for actual money-making cybercriminal activities&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Again: if they&amp;rsquo;re exposing their IP addresses, that means we&amp;rsquo;re talking about abuse traffic that does &lt;em&gt;not&lt;/em&gt; have a spoofed source, which means whether or not BCP38 is implemented on the networks housing the attack sources has &lt;strong&gt;zero&lt;/strong&gt; bearing on the effectiveness of the attack.&lt;/p&gt;
+
+&lt;p&gt;Krebs does later touch on the possibility of initiatives to require secure-by-default deployments for IoT devices, but that basically amounts to two sentences at the end of the &lt;em&gt;Shaming the Spoofers&lt;/em&gt; section.  In light of these attacks being claimed as direct and unspoofed, efforts to secure end hosts would really be the only effective countermeasure, as source address spoofing mitigation has zero effect on traffic that doesn&amp;rsquo;t spoof its source address.&lt;/p&gt;
+
+&lt;p&gt;I aim to more about BCP38 in the near future, but I want to state again for emphasis that this post is &lt;em&gt;not&lt;/em&gt; a criticism of BCP38 or any kind of statement that BCP38 adoption is pointless or futile.  On the contrary: I wholeheartedly support any efforts to further BCP38 adoption, push for BCP38 adoption on any networks under my control, and believe it is critical to enabling attribution of abuse traffic and mitigation of reflected (and amplified) DDoS attacks.  But, we should not imagine that even getting full BCP38 coverage of the entire Internet will in any way impact network abuse and DDoS attacks that do not use source address spoofing.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Clarifying DDoS-related terms</title>
@@ -741,38 +812,6 @@ $entries = ldap_get_entries($this-&amp;gt;_conn, $sr);&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Happy coding!&lt;/p&gt;
 
 &lt;p&gt;Bitcoin tip address for this post: 13344S6vTAmrM5De7DermysvN6UE3QDSzb&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Exchange 2007: Messages stuck in Submission Queue</title>
-      <link>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</link>
-      <pubDate>Wed, 13 Aug 2008 04:32:24 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
-      <guid>http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/</guid>
-      <description>&lt;p&gt;We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the &lt;strong&gt;Submission&lt;/strong&gt; queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&amp;rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.&lt;!-- more --&gt;&lt;/p&gt;
-
-&lt;p&gt;I noticed some errors coming from the source &lt;strong&gt;MSExchange Extensibility&lt;/strong&gt;, with an event ID of 1050. They read as follows:&lt;/p&gt;
-
-&lt;blockquote&gt;The execution time of agent &#39;ScanMail Routing Agent&#39; exceeded 300000 (milliseconds) while handling event &#39;OnSubmittedMessage&#39;. This is an unusual amount of time for an agent to process a single event. However, Transport will continue processing this message.&lt;/blockquote&gt;
-
-&lt;p&gt;From the event, you can tell we&amp;rsquo;re using TrendMicro ScanMail as part of our edge protection. It looked like the ScanMail scanning agent was stuck on a message and couldn&amp;rsquo;t proceed. So, off to the services console I go. ScanMail has three services installed on the server, including its Master Service. The other services seemed happy, but the Master service timed out when I attempted to stop it. I checked the service properties and found its related executable file and killed it through Task Manager. The service was then recorded in the Services Console as being stopped, and after starting the service, mail started flowing again on that Hub Transport server. I repeated those steps on the second Hub Transport server, and messages came flooding out from there as well.&lt;/p&gt;
-
-&lt;p&gt;I checked that ScanMail was up to date on both servers, and they appeared to be. I checked through Trend Micro&amp;rsquo;s site nonetheless, and found that there appeared to be a related update. The links:&lt;/p&gt;
-
-&lt;p&gt;List of updates for ScanMail 8:  &lt;a href=&#34;http://www.trendmicro.com/download/product.asp?productid=8&#34;&gt;http://www.trendmicro.com/download/product.asp?productid=8&lt;/a&gt;
-Direct link to the relevant update:  &lt;a href=&#34;http://www.trendmicro.com/ftp/products/patches/smex_80_win_en_patch3.exe&#34;&gt;ScanMail 8.0 for Microsoft Exchange Patch 3&lt;/a&gt;
-The README file:  &lt;a href=&#34;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&#34;&gt;http://www.trendmicro.com/ftp/documentation/readme/smex_80_win_en_patch3_Readme.TXT&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The relevant portion of the changelog:&lt;/p&gt;
-
-&lt;blockquote&gt;21. While ScanMail for Microsoft Exchange 8.0 is running, after a few hours, email messages will start to queue. If user re-starts the ScanMail for Microsoft Exchange services, the application will hang at &#34;Stopping&#34;.&lt;/blockquote&gt;
-
-&lt;p&gt;I was technically on vacation while this all went down, so I had to hand of the update to someone else to apply, but no one was available for that weekend. The patch was not manually applied on the servers that weekend, but the issue did not return. We&amp;rsquo;ve now been running smoothly for about two weeks.&lt;/p&gt;
-
-&lt;p&gt;Hopefully you don&amp;rsquo;t run across the issue, and hopefully this post will be of some help if you do!&lt;/p&gt;
-
-&lt;p&gt;Bitcoin tip address for this post: 1HC44rd1NUZUiWDsHNf9Y1KPSxbtW7b5Sw&lt;/p&gt;
 </description>
     </item>
     

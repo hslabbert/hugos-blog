@@ -217,6 +217,72 @@
   
     <article>
   <header>
+    <h2><a href="http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>11 Feb 2009, 16:24</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/active-directory">active directory</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/adsi">adsi</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/exchange-2007">exchange 2007</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/troubleshooting">troubleshooting</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows-server">windows server</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  <p>We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of <code>#550 4.4.7 QUEUE.Expired; message expired ##</code>.</p>
+
+<p>&hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:</p>
+
+<p><strong><code>Delivery has failed to these recipients or distribution lists:</code></strong></p>
+
+<pre><code>[user display name]
+Microsoft Exchange has been trying to deliver this message without success
+and has stopped trying. Please try sending this message again, or provide
+the following diagnostic text to your system administrator.
+</code></pre>
+
+<p>Wow&hellip;that was helpful&hellip;</p>
+
+  </p>
+
+  
+  <footer>
+    <a href="/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
     <h2><a href="http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/">Workaround for mysqldump SSL error 2026 bug #27669</a></h2>
 
     <div class="post-meta">
@@ -691,57 +757,6 @@
   
   <footer>
     <a href="/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/bulk-rename-files-with-sequential-index/">Bulk Rename Files with Sequential Index</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>23 Mar 2008, 06:31</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/file-management">file management</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth. I had a few requirements for how I wanted to go about this: Get rid of the parentheses.
-  </p>
-
-  
-  <footer>
-    <a href="/post/bulk-rename-files-with-sequential-index/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
