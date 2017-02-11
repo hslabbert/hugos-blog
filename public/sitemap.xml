@@ -2,11 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.slabnet.com/</loc>
-    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</loc>
     <lastmod>2016-09-28T07:17:17-07:00</lastmod>
   </url>
@@ -174,6 +169,358 @@
   <url>
     <loc>http://blog.slabnet.com/post/network-solutions-domain-frontrunning/</loc>
     <lastmod>2008-01-09T18:24:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/index.net/</loc>
+    <lastmod>2008-03-25T05:28:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/active-directory/</loc>
+    <lastmod>2009-02-11T16:24:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/adsi/</loc>
+    <lastmod>2009-02-11T16:24:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/amplification/</loc>
+    <lastmod>2016-09-25T20:47:02-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/bcp38/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/bitcoin/</loc>
+    <lastmod>2016-01-17T05:43:46+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/citrix/</loc>
+    <lastmod>2010-07-14T18:35:57+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/client-apps/</loc>
+    <lastmod>2008-08-13T06:18:52+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/cloud/</loc>
+    <lastmod>2010-06-01T18:21:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/ddos/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/dns/</loc>
+    <lastmod>2008-01-12T18:37:33+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/dual-boot/</loc>
+    <lastmod>2008-01-16T18:41:02+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/exchange-2003/</loc>
+    <lastmod>2008-08-13T05:51:47+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/exchange-2007/</loc>
+    <lastmod>2009-02-11T16:24:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/fail/</loc>
+    <lastmod>2010-06-01T18:21:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/file-management/</loc>
+    <lastmod>2008-05-01T03:49:34+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/golang/</loc>
+    <lastmod>2016-08-28T22:29:33-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/google/</loc>
+    <lastmod>2010-06-01T18:21:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/gre/</loc>
+    <lastmod>2016-09-22T20:23:52-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/groups/</loc>
+    <lastmod>2008-01-19T23:30:35+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/grub/</loc>
+    <lastmod>2008-01-16T18:41:02+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/howto/</loc>
+    <lastmod>2009-02-11T16:24:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/infosec/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/internet/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/linux/</loc>
+    <lastmod>2016-09-12T21:42:27-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/mysql/</loc>
+    <lastmod>2009-02-09T16:36:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/network-management/</loc>
+    <lastmod>2008-08-13T05:35:37+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/network-solutions/</loc>
+    <lastmod>2008-01-12T18:37:33+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/networking/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/categories/news/</loc>
+    <lastmod>2016-08-28T22:29:33-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/news/</loc>
+    <lastmod>2010-06-01T18:21:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/nod32/</loc>
+    <lastmod>2009-02-11T16:24:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/pdf/</loc>
+    <lastmod>2008-01-23T05:56:23+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/php/</loc>
+    <lastmod>2008-08-13T05:35:37+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/post/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/powershell/</loc>
+    <lastmod>2008-03-25T05:28:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/reflection/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/scripting/</loc>
+    <lastmod>2008-08-13T05:35:37+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/security/</loc>
+    <lastmod>2016-09-28T07:17:17-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/server-2003/</loc>
+    <lastmod>2008-08-13T05:51:47+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/ssl/</loc>
+    <lastmod>2009-02-09T16:36:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/tech/</loc>
+    <lastmod>2016-09-22T20:23:52-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/troubleshooting/</loc>
+    <lastmod>2009-02-11T16:24:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/ubuntu/</loc>
+    <lastmod>2016-09-12T21:42:27-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/urpf/</loc>
+    <lastmod>2016-09-25T20:47:02-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/user-management/</loc>
+    <lastmod>2008-03-25T05:28:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/vhd/</loc>
+    <lastmod>2008-01-23T05:13:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/virtual-server/</loc>
+    <lastmod>2008-01-23T05:13:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/virtualization/</loc>
+    <lastmod>2010-07-14T18:35:57+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/vista/</loc>
+    <lastmod>2008-03-30T19:12:52+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/vmware/</loc>
+    <lastmod>2008-01-21T05:48:35+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/web/</loc>
+    <lastmod>2010-06-01T18:21:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/whois/</loc>
+    <lastmod>2008-01-12T18:37:33+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/windows/</loc>
+    <lastmod>2009-02-11T16:24:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/windows-server/</loc>
+    <lastmod>2009-02-11T16:24:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.slabnet.com/tags/xenserver/</loc>
+    <lastmod>2010-07-14T18:35:57+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

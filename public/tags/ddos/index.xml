@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ddos on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/ddos/</link>
+    <link>http://blog.slabnet.com/tags/ddos/index.xml</link>
     <description>Recent content in Ddos on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Wed, 28 Sep 2016 07:17:17 -0700</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/ddos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -249,9 +248,7 @@
       <pubDate>Thu, 22 Sep 2016 20:23:52 -0700</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
       <guid>http://blog.slabnet.com/post/gre-reflection/</guid>
-      <description>
-
-&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;http://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
+      <description>&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;http://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
 
 &lt;p&gt;An initial tweet from &lt;a href=&#34;https://twitter.com/briankrebs&#34;&gt;@briankrebs&lt;/a&gt; listed GRE in the attack traffic mix:&lt;/p&gt;
 
@@ -270,7 +267,7 @@
 &lt;p&gt;McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;GRE is not known to have an amplification vector, and I haven&amp;rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  &lt;em&gt;Note that this is an untested theory and still needs to be validated.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;GRE is not known to have an amplification vector, and I haven&amp;rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  *Note that this is an untested theory and still needs to be validated.*&lt;/p&gt;
 
 &lt;p&gt;We need to dig a bit into what GRE actually is in order to test that out.  The tl;dr is &lt;a href=&#34;#so-how-would-this-be-reflected&#34;&gt;below&lt;/a&gt;.&lt;/p&gt;
 
@@ -368,8 +365,7 @@
 
 &lt;p&gt;On the plus side, While DDoS targets/victims with complex networks or applications may not be able to drop GRE entirely, simpler targets (e.g. websites) should be able to simply drop any IP protocol 47 (GRE) traffic destined for the site without impact.  Given the traffic volumes we&amp;rsquo;re seeing, that&amp;rsquo;s pretty much completely contingent on having a large scale DDoS scrubbing service in place, but at least the rulesets should be fairly simple provided there aren&amp;rsquo;t actual production GRE tunnels or e.g. PPTP VPNs (&lt;a href=&#34;https://www.schneier.com/academic/pptp/faq.html&#34;&gt;for shame&lt;/a&gt;!) hiding behind the scrubbing service.  If needed, static GRE tunnels should be easier to pin down in rulesets with specific source and destinations IPs than PPTP VPNs that use GRE and have varied source IPs.&lt;/p&gt;
 
-&lt;p&gt;P.S. If this hyptothetical flaw in processing of GRE&amp;rsquo;d traffic &lt;em&gt;does&lt;/em&gt; end up being a thing, I call dibs on the &amp;ldquo;pick a trendy and somewhat obnoxious name for software flaws&amp;rdquo; rights and dub this &lt;strong&gt;GREflector&lt;/strong&gt;!&lt;/p&gt;
-</description>
+&lt;p&gt;P.S. If this hyptothetical flaw in processing of GRE&amp;rsquo;d traffic &lt;em&gt;does&lt;/em&gt; end up being a thing, I call dibs on the &amp;ldquo;pick a trendy and somewhat obnoxious name for software flaws&amp;rdquo; rights and dub this &lt;strong&gt;GREflector&lt;/strong&gt;!&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -21,25 +21,26 @@ The scenario was that I needed to disable user accounts in a Windows Server 2003
 
 Anyway, I had already dabbled in modifying group memberships in our user creation script (still a bit clunky, but it gets the job done) by copying group memberships from a template account. It goes something like this (please note that several of these commands require the Exchange 2007 snap-in for Powershell, and some also the [Powershell Community Extensions](http://www.codeplex.com/PowerShellCX)  snap-in):
 
-`
+```
 $templaccn = Get-Mailbox | Where-Object { $_.name -match [template account name] }
 $newuser = Get-User [new user name]
 $filterid = ( Get-User $templaccn.name ).identity
 $groups = Get-Group -filter { Members -eq $filterid }
 $groups | Foreach-Object {
-$groupdn = $_.DistinguishedName
-``     ``    `` $fqgroup = [ADSI]("LDAP://$groupdn")
-``     ``    `` $membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
-``    ``if ( $membercheck.length -ge 1)
-``     ``    ``{
-``     ``    ``Write-Host "User is already a member of" $_.name "`b. No group addition made. `n"
-``     ``    `` }
-``     ``    `` else
-``     ``    `` {
-``     ``    `` $fqgroup.member.add("$newuserdn")
-``     ``    ``$fqgroup.setinfo()
-``     ``    ``}``    `
-` }`
+    $groupdn = $_.DistinguishedName
+    $fqgroup = [ADSI]("LDAP://$groupdn")
+    $membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
+    if ( $membercheck.length -ge 1)
+    {
+        Write-Host "User is already a member of" $_.name "`b. No group addition made. `n"
+    }
+    else
+    {
+        $fqgroup.member.add("$newuserdn")
+        $fqgroup.setinfo()
+    }
+}
+```
 
 So here's the run down:
 
@@ -55,20 +56,23 @@ We then use the _add()_  method of the member property of the ADSI object for ou
 
 Now, the reason this was tough to do in the first place, and why I ended up later having so much trouble with removing group memberships and making other modifications, is because the _$fqgroup_ ADSI object does not display any methods! You can read all the properties you want, but for some reason the Powershell design team thought it would be a good idea to hide the methods, even though they are there. If you don't believe me, try this:
 
-`$domroot = [adsi]''`
-`
+```
+$domroot = [adsi]''
+
 distinguishedName
 -----------------
 {DC=i-worx,DC=ca}
-`
+```
 
 Try just typing _$domroot_. It should return something like:
-`
-[PS] C:\>$domroot`
 
-`distinguishedName
+```
+[PS] C:\>$domroot
+
+distinguishedName
 -----------------
-{DC=test,DC=local}`
+{DC=test,DC=local}
+```
 
 Alright, now try using Get-Member to get some info on this ADSI object: `$domroot | Get-Member`
 

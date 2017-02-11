@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/web/</link>
+    <link>http://blog.slabnet.com/tags/web/index.xml</link>
     <description>Recent content in Web on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Tue, 01 Jun 2010 18:21:39 +0000</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,6 +20,8 @@
       <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
 
 &lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Bandwidth fail:&lt;/p&gt;
 
@@ -50,8 +51,7 @@
 
 &lt;p&gt;UPDATE3: K, so they have it all set now. The docs in the sample paragraph just below the video link to the Acme Inc. docs, but Smart Furniture image does now link to an actual Smart Furniture poster. Interestingly, the initial link for the Smart Furniture poster was HTTP, whereas the new link is to same item but over HTTPS, which may indicate differences in bandwidth restrictions between SSL&amp;rsquo;d and non-SSL traffic for Google Docs, or it could just be fluke. Anyhow: Well done to Google for this wrapped up pretty quickly.&lt;/p&gt;
 
-&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;
-</description>
+&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;</description>
     </item>
     
     <item>

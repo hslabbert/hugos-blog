@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>.Net &middot; Hugo&#39;s Blog</title>
 
@@ -264,7 +264,8 @@
   </header>
 
   <p>
-  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts. Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code: $adobjroot = [adsi]'' $objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot) $objdisabsearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&quot; $resultdisabaccn = $objdisabsearcher.findall() | sort path That was a lot easier!
+  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.
+Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code:
   </p>
 
   
@@ -325,7 +326,10 @@
   </header>
 
   <p>
-  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that. Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip; PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local} PoSH&gt; $adobjuser.lastLogonTimetamp PoSH&gt; What the &hellip;?
+  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.
+Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip;
+PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}
+PoSH&gt; $adobjuser.
   </p>
 
   
@@ -376,7 +380,8 @@
   </header>
 
   <p>
-  I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth. I had a few requirements for how I wanted to go about this: Get rid of the parentheses.
+  I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth.
+I had a few requirements for how I wanted to go about this:
   </p>
 
   
@@ -431,7 +436,8 @@
   </header>
 
   <p>
-  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files. With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
+  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files.
+With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
   </p>
 
   
@@ -482,7 +488,7 @@
   </header>
 
   <p>
-  This topic has been covered a bit (here, here, and here, for instance) but I have been working on a project that utilizes Virtual Server for testing, and it came up again. A consultant that was working on the VM&rsquo;s in question apparently struggled for quite some time before he asked for help on it. So, I thought I would see if another post on this might help someone out. If you run into a situation where you have existing Microsoft Virtual Server/PC VHD files, but the sizes you created them with initially simply don&rsquo;t cut it anymore, there is hope!
+  This topic has been covered a bit (here, here, and here, for instance) but I have been working on a project that utilizes Virtual Server for testing, and it came up again. A consultant that was working on the VM&rsquo;s in question apparently struggled for quite some time before he asked for help on it. So, I thought I would see if another post on this might help someone out.
   </p>
 
   
@@ -596,7 +602,8 @@
   </header>
 
   <p>
-  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others. The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
+  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.
+The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
   </p>
 
   

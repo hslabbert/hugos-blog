@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>Howto &middot; Hugo&#39;s Blog</title>
 
@@ -252,7 +252,8 @@
   </header>
 
   <p>
-  As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component. Anyway, the download comes as an installation script called esets.i386.deb.bin.
+  As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.
+Anyway, the download comes as an installation script called esets.
   </p>
 
   
@@ -421,7 +422,8 @@
   </header>
 
   <p>
-  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts. Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code: $adobjroot = [adsi]'' $objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot) $objdisabsearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&quot; $resultdisabaccn = $objdisabsearcher.findall() | sort path That was a lot easier!
+  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.
+Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code:
   </p>
 
   
@@ -482,7 +484,10 @@
   </header>
 
   <p>
-  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that. Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip; PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local} PoSH&gt; $adobjuser.lastLogonTimetamp PoSH&gt; What the &hellip;?
+  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.
+Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip;
+PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}
+PoSH&gt; $adobjuser.
   </p>
 
   
@@ -537,7 +542,8 @@
   </header>
 
   <p>
-  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files. With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
+  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files.
+With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
   </p>
 
   
@@ -651,7 +657,8 @@
   </header>
 
   <p>
-  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others. The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
+  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.
+The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
   </p>
 
   
@@ -704,7 +711,8 @@
   </header>
 
   <p>
-  I haven&rsquo;t played around much in Linux lately, but I finally dusted off my Ubuntu CD&rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&hellip;except then I couldn&rsquo;t get into the Linux OS&hellip; So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!
+  I haven&rsquo;t played around much in Linux lately, but I finally dusted off my Ubuntu CD&rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&hellip;except then I couldn&rsquo;t get into the Linux OS&hellip;
+So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!
   </p>
 
   

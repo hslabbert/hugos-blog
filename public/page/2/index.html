@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>Hugo&#39;s Blog</title>
 
@@ -271,6 +271,7 @@ the following diagnostic text to your system administrator.
 
 <p>Wow&hellip;that was helpful&hellip;</p>
 
+<p></p>
   </p>
 
   
@@ -368,7 +369,8 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&rsquo;m not saying &ldquo;If you install Windows Media Player 11 on your computer, networking will break,&rdquo; I&rsquo;m just saying that if you experience the symptoms outlined below and you&rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky. So, one of the other techs in the office calls me over: He&rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation.
+  Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&rsquo;m not saying &ldquo;If you install Windows Media Player 11 on your computer, networking will break,&rdquo; I&rsquo;m just saying that if you experience the symptoms outlined below and you&rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.
+So, one of the other techs in the office calls me over: He&rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation.
   </p>
 
   
@@ -419,7 +421,8 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error: The SSL certificate server name is incorrect. I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to this Microsoft KB.
+  On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:
+The SSL certificate server name is incorrect.I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to this Microsoft KB.
   </p>
 
   
@@ -531,7 +534,7 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the Submission queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on. I noticed some errors coming from the source MSExchange Extensibility, with an event ID of 1050.
+  We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the Submission queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.I noticed some errors coming from the source MSExchange Extensibility, with an event ID of 1050.
   </p>
 
   
@@ -690,7 +693,8 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts. Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code: $adobjroot = [adsi]'' $objdisabsearcher = New-Object System.DirectoryServices.DirectorySearcher($adobjroot) $objdisabsearcher.filter = &quot;(&amp;(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=2))&quot; $resultdisabaccn = $objdisabsearcher.findall() | sort path That was a lot easier!
+  Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.
+Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code:
   </p>
 
   
@@ -751,7 +755,10 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that. Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip; PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local} PoSH&gt; $adobjuser.lastLogonTimetamp PoSH&gt; What the &hellip;?
+  We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.
+Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip;
+PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}
+PoSH&gt; $adobjuser.
   </p>
 
   

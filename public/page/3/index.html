@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>Hugo&#39;s Blog</title>
 
@@ -255,7 +255,8 @@
   </header>
 
   <p>
-  I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth. I had a few requirements for how I wanted to go about this: Get rid of the parentheses.
+  I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth.
+I had a few requirements for how I wanted to go about this:
   </p>
 
   
@@ -310,7 +311,8 @@
   </header>
 
   <p>
-  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files. With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
+  As part of our process to disable user accounts, we take ownership of the user&rsquo;s server-stored documents such as roaming profiles and redirected My Documents directories. We then either keep access restricted to the domain admins group or grant access to a replacement user who should receive access to the departed user&rsquo;s files.
+With an upgrade to Exchange 2007, we have taken advantage of the Powershell access to Exchange objects, and have scripted the mailbox provisioning and account disable processes.
   </p>
 
   
@@ -404,7 +406,9 @@
   </header>
 
   <p>
-  Every now and then somebody asks me if there is some way around paying Adobe hundreds and hundreds of dollars if they just want to create some PDF&rsquo;s. Answer? Absolutely! Two free PDF printers you can use are CutePDF and PDFCreator. I have not used the latter, but I use CutePDF myself, have recommended CutePDF to several people, and have not had any problems with it. If you are looking for a bit more functionality, such as creating a single PDF from multiple PDF&rsquo;s, rearranging pages or adding/removing pages, converting PDF&rsquo;s to MS Office documents, etc, be sure to check out PDF Converter Pro from Nuance Software.
+  Every now and then somebody asks me if there is some way around paying Adobe hundreds and hundreds of dollars if they just want to create some PDF&rsquo;s. Answer? Absolutely!
+Two free PDF printers you can use are CutePDF and PDFCreator. I have not used the latter, but I use CutePDF myself, have recommended CutePDF to several people, and have not had any problems with it.
+If you are looking for a bit more functionality, such as creating a single PDF from multiple PDF&rsquo;s, rearranging pages or adding/removing pages, converting PDF&rsquo;s to MS Office documents, etc, be sure to check out PDF Converter Pro from Nuance Software.
   </p>
 
   
@@ -453,7 +457,13 @@
   </header>
 
   <p>
-  On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely: legacyExchangeDN msExchALObjectVersion msExchMailboxGuid msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here) msExchUserAccountControl Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor.
+  On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely:
+ legacyExchangeDN
+ msExchALObjectVersion
+ msExchMailboxGuid
+ msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here)
+ msExchUserAccountControl
+  Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor.
   </p>
 
   
@@ -504,7 +514,7 @@
   </header>
 
   <p>
-  This topic has been covered a bit (here, here, and here, for instance) but I have been working on a project that utilizes Virtual Server for testing, and it came up again. A consultant that was working on the VM&rsquo;s in question apparently struggled for quite some time before he asked for help on it. So, I thought I would see if another post on this might help someone out. If you run into a situation where you have existing Microsoft Virtual Server/PC VHD files, but the sizes you created them with initially simply don&rsquo;t cut it anymore, there is hope!
+  This topic has been covered a bit (here, here, and here, for instance) but I have been working on a project that utilizes Virtual Server for testing, and it came up again. A consultant that was working on the VM&rsquo;s in question apparently struggled for quite some time before he asked for help on it. So, I thought I would see if another post on this might help someone out.
   </p>
 
   
@@ -669,7 +679,8 @@
   </header>
 
   <p>
-  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others. The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
+  I recently had to spend hours figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.
+The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007.
   </p>
 
   
@@ -722,7 +733,8 @@
   </header>
 
   <p>
-  I haven&rsquo;t played around much in Linux lately, but I finally dusted off my Ubuntu CD&rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&hellip;except then I couldn&rsquo;t get into the Linux OS&hellip; So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!
+  I haven&rsquo;t played around much in Linux lately, but I finally dusted off my Ubuntu CD&rsquo;s and started tooling around again. I already had Vista installation on my work laptop, and did not want to blow that away, so I erred on the side of caution by not letting the Xubuntu setup program install its own GRUB bootloader&hellip;except then I couldn&rsquo;t get into the Linux OS&hellip;
+So, off I go in search of GRUB install guides, and just about every how-to out there is using the basic scenario that GRUB was installed in the first place, and that it just needs to reinstall itself, which was totally not the case this time around!
   </p>
 
   

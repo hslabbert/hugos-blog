@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vhd on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/vhd/</link>
+    <link>http://blog.slabnet.com/tags/vhd/index.xml</link>
     <description>Recent content in Vhd on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Wed, 23 Jan 2008 05:13:27 +0000</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/vhd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

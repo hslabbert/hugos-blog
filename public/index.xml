@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/</link>
+    <link>http://blog.slabnet.com/index.xml</link>
     <description>Recent content on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -249,9 +249,7 @@
       <pubDate>Thu, 22 Sep 2016 20:23:52 -0700</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
       <guid>http://blog.slabnet.com/post/gre-reflection/</guid>
-      <description>
-
-&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;http://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
+      <description>&lt;p&gt;Recently, we&amp;rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on &lt;a href=&#34;http://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt;.  (Note that the site is currently offline as it&amp;rsquo;s finding a new home, so any links to krebsonsecurity.com will reference &lt;a href=&#34;http://archive.org&#34;&gt;The Internet Archive&lt;/a&gt; instead.)&lt;/p&gt;
 
 &lt;p&gt;An initial tweet from &lt;a href=&#34;https://twitter.com/briankrebs&#34;&gt;@briankrebs&lt;/a&gt; listed GRE in the attack traffic mix:&lt;/p&gt;
 
@@ -270,7 +268,7 @@
 &lt;p&gt;McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;GRE is not known to have an amplification vector, and I haven&amp;rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  &lt;em&gt;Note that this is an untested theory and still needs to be validated.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;GRE is not known to have an amplification vector, and I haven&amp;rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  *Note that this is an untested theory and still needs to be validated.*&lt;/p&gt;
 
 &lt;p&gt;We need to dig a bit into what GRE actually is in order to test that out.  The tl;dr is &lt;a href=&#34;#so-how-would-this-be-reflected&#34;&gt;below&lt;/a&gt;.&lt;/p&gt;
 
@@ -368,8 +366,7 @@
 
 &lt;p&gt;On the plus side, While DDoS targets/victims with complex networks or applications may not be able to drop GRE entirely, simpler targets (e.g. websites) should be able to simply drop any IP protocol 47 (GRE) traffic destined for the site without impact.  Given the traffic volumes we&amp;rsquo;re seeing, that&amp;rsquo;s pretty much completely contingent on having a large scale DDoS scrubbing service in place, but at least the rulesets should be fairly simple provided there aren&amp;rsquo;t actual production GRE tunnels or e.g. PPTP VPNs (&lt;a href=&#34;https://www.schneier.com/academic/pptp/faq.html&#34;&gt;for shame&lt;/a&gt;!) hiding behind the scrubbing service.  If needed, static GRE tunnels should be easier to pin down in rulesets with specific source and destinations IPs than PPTP VPNs that use GRE and have varied source IPs.&lt;/p&gt;
 
-&lt;p&gt;P.S. If this hyptothetical flaw in processing of GRE&amp;rsquo;d traffic &lt;em&gt;does&lt;/em&gt; end up being a thing, I call dibs on the &amp;ldquo;pick a trendy and somewhat obnoxious name for software flaws&amp;rdquo; rights and dub this &lt;strong&gt;GREflector&lt;/strong&gt;!&lt;/p&gt;
-</description>
+&lt;p&gt;P.S. If this hyptothetical flaw in processing of GRE&amp;rsquo;d traffic &lt;em&gt;does&lt;/em&gt; end up being a thing, I call dibs on the &amp;ldquo;pick a trendy and somewhat obnoxious name for software flaws&amp;rdquo; rights and dub this &lt;strong&gt;GREflector&lt;/strong&gt;!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -389,6 +386,8 @@ VDSL modem they sell you can&amp;rsquo;t do DHCPv6-PD properly).&lt;/p&gt;
 couple of things.  I opted to use ISC&amp;rsquo;s newer &lt;a href=&#34;https://www.isc.org/kea/&#34;&gt;Kea DHCP
 server&lt;/a&gt; rather than &lt;code&gt;isc-dhcp-server&lt;/code&gt;.  Little did I
 know that Ubuntu and systemd had other ideas&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;After getting Kea set up, I reboot the box at some point, only to have my wife
 ask me if I&amp;rsquo;m screwing around on the network&amp;hellip;because her laptop didn&amp;rsquo;t get an
@@ -456,8 +455,7 @@ install it with &lt;code&gt;sudo systemctl enable ifup-wait-all-auto.service&lt;
 actually have the &lt;code&gt;network-online.target&lt;/code&gt; references in your &lt;code&gt;systemd&lt;/code&gt; unit
 definitions work properly.&lt;/p&gt;
 
-&lt;p&gt;Ain&amp;rsquo;t progress grand?&lt;/p&gt;
-</description>
+&lt;p&gt;Ain&amp;rsquo;t progress grand?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -535,8 +533,7 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
 &lt;p&gt;So, what are you running on XenServer? :)&lt;/p&gt;
 
 &lt;p&gt;Bitcoin tip address for this post:
-&lt;a href=&#34;bitcoin:1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&#34;&gt;1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;a href=&#34;bitcoin:1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&#34;&gt;1HoAGU848JyFFaJjr7jGsekfr91BZ2Bw9a&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -548,6 +545,8 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
       <description>&lt;p&gt;Google is touting their Google Apps offering for business with a new post on the official Google Blog (&lt;a href=&#34;http://googleblog.blogspot.com/2010/06/take-test-drive-into-cloud.html&#34;&gt;link&lt;/a&gt;). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &amp;ldquo;Going Google&amp;rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.&lt;/p&gt;
 
 &lt;p&gt;A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Bandwidth fail:&lt;/p&gt;
 
@@ -577,8 +576,7 @@ bear with me as I clean up some bits and pieces.&lt;/p&gt;
 
 &lt;p&gt;UPDATE3: K, so they have it all set now. The docs in the sample paragraph just below the video link to the Acme Inc. docs, but Smart Furniture image does now link to an actual Smart Furniture poster. Interestingly, the initial link for the Smart Furniture poster was HTTP, whereas the new link is to same item but over HTTPS, which may indicate differences in bandwidth restrictions between SSL&amp;rsquo;d and non-SSL traffic for Google Docs, or it could just be fluke. Anyhow: Well done to Google for this wrapped up pretty quickly.&lt;/p&gt;
 
-&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;
-</description>
+&lt;p&gt;Bitcoin tip address for this post: 12xP41mYLfNkwbGZPiMNJ2CSmULcNqeTxb&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -666,6 +664,8 @@ the following diagnostic text to your system administrator.
 
 &lt;p&gt;Wow&amp;hellip;that was helpful&amp;hellip;&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;After &lt;em&gt;much&lt;/em&gt; digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt;attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute is not directly editable, but you &lt;em&gt;can&lt;/em&gt; edit or remove the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute, which effectively updates the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute (ref &lt;a href=&#34;http://technet.microsoft.com/en-us/library/aa996228.aspx&#34;&gt;Public Folder Routing&lt;/a&gt; - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute on our PF store, and not the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute.&lt;/p&gt;
 
 &lt;p&gt;For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (&lt;code&gt;CN=Configuration,DC=yourdomain,DC=[yourtld]&lt;/code&gt;). The full path is:&lt;/p&gt;
@@ -676,8 +676,7 @@ the following diagnostic text to your system administrator.
 &lt;p&gt;After updating the &lt;strong&gt;msExchOwningPFTree&lt;/strong&gt; attribute appropriately to a public folders server that was in production resolved the issue.&lt;/p&gt;
 
 &lt;p&gt;Bitcoin tip address for this post:
-&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

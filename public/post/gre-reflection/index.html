@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Considering how GRE traffic might be reflected or redirected for DDoS source obfuscation">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>GRE Reflection? &middot; Hugo&#39;s Blog</title>
 
@@ -243,9 +243,7 @@
 
 </div>
 
-  
-
-<p>Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on <a href="http://krebsonsecurity.com">krebsonsecurity.com</a>.  (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference <a href="http://archive.org">The Internet Archive</a> instead.)</p>
+  <p>Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on <a href="http://krebsonsecurity.com">krebsonsecurity.com</a>.  (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference <a href="http://archive.org">The Internet Archive</a> instead.)</p>
 
 <p>An initial tweet from <a href="https://twitter.com/briankrebs">@briankrebs</a> listed GRE in the attack traffic mix:</p>
 
@@ -264,7 +262,7 @@
 <p>McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.</p>
 </blockquote>
 
-<p>GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  <em>Note that this is an untested theory and still needs to be validated.</em></p>
+<p>GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  *Note that this is an untested theory and still needs to be validated.*</p>
 
 <p>We need to dig a bit into what GRE actually is in order to test that out.  The tl;dr is <a href="#so-how-would-this-be-reflected">below</a>.</p>
 
@@ -363,7 +361,6 @@
 <p>On the plus side, While DDoS targets/victims with complex networks or applications may not be able to drop GRE entirely, simpler targets (e.g. websites) should be able to simply drop any IP protocol 47 (GRE) traffic destined for the site without impact.  Given the traffic volumes we&rsquo;re seeing, that&rsquo;s pretty much completely contingent on having a large scale DDoS scrubbing service in place, but at least the rulesets should be fairly simple provided there aren&rsquo;t actual production GRE tunnels or e.g. PPTP VPNs (<a href="https://www.schneier.com/academic/pptp/faq.html">for shame</a>!) hiding behind the scrubbing service.  If needed, static GRE tunnels should be easier to pin down in rulesets with specific source and destinations IPs than PPTP VPNs that use GRE and have varied source IPs.</p>
 
 <p>P.S. If this hyptothetical flaw in processing of GRE&rsquo;d traffic <em>does</em> end up being a thing, I call dibs on the &ldquo;pick a trendy and somewhat obnoxious name for software flaws&rdquo; rights and dub this <strong>GREflector</strong>!</p>
-
 
   
 <div class="prev-next-post pure-g">

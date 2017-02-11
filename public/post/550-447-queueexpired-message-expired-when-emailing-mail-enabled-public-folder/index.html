@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder &middot; Hugo&#39;s Blog</title>
 
@@ -257,6 +257,8 @@ the following diagnostic text to your system administrator.
 
 <p>Wow&hellip;that was helpful&hellip;</p>
 
+<p></p>
+
 <p>After <em>much</em> digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the <code>msExchOwningPFTreeBL</code>attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the <code>msExchOwningPFTreeBL</code> attribute is not directly editable, but you <em>can</em> edit or remove the <code>msExchOwningPFTree</code> attribute, which effectively updates the <code>msExchOwningPFTreeBL</code> attribute (ref <a href="http://technet.microsoft.com/en-us/library/aa996228.aspx">Public Folder Routing</a> - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the <code>msExchOwningPFTreeBL</code> attribute on our PF store, and not the <code>msExchOwningPFTree</code> attribute.</p>
 
 <p>For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (<code>CN=Configuration,DC=yourdomain,DC=[yourtld]</code>). The full path is:</p>
@@ -268,7 +270,6 @@ the following diagnostic text to your system administrator.
 
 <p>Bitcoin tip address for this post:
 <a href="bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR">16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR</a></p>
-
 
   
 <div class="prev-next-post pure-g">

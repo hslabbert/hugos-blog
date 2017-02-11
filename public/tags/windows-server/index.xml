@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows Server on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/windows-server/</link>
+    <link>http://blog.slabnet.com/tags/windows-server/index.xml</link>
     <description>Recent content in Windows Server on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Wed, 11 Feb 2009 16:24:25 +0000</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/windows-server/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -32,6 +31,8 @@ the following diagnostic text to your system administrator.
 
 &lt;p&gt;Wow&amp;hellip;that was helpful&amp;hellip;&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;p&gt;After &lt;em&gt;much&lt;/em&gt; digging, I found that the problem stemmed from a public folders server that had been retired. It was going to be re-purposed as an SCR target server, but for now was offline. The trouble was that for the Public Folder tree to which the mail-enabled folder belonged was “owned” by this offline server. This “ownership” is found in the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt;attribute of the public folder store in question. This property is accessible through ADSIEDIT. Now, MS articles to do with this state that the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute is not directly editable, but you &lt;em&gt;can&lt;/em&gt; edit or remove the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute, which effectively updates the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute (ref &lt;a href=&#34;http://technet.microsoft.com/en-us/library/aa996228.aspx&#34;&gt;Public Folder Routing&lt;/a&gt; - Technet). I can’t remember if that’s accurate or not, as this happened some time ago, but at this point I only see the &lt;code&gt;msExchOwningPFTreeBL&lt;/code&gt; attribute on our PF store, and not the &lt;code&gt;msExchOwningPFTree&lt;/code&gt; attribute.&lt;/p&gt;
 
 &lt;p&gt;For reference, these attributes are on your PF store, which should be located in the Configuration container in ADSIEDIT (&lt;code&gt;CN=Configuration,DC=yourdomain,DC=[yourtld]&lt;/code&gt;). The full path is:&lt;/p&gt;
@@ -42,8 +43,7 @@ the following diagnostic text to your system administrator.
 &lt;p&gt;After updating the &lt;strong&gt;msExchOwningPFTree&lt;/strong&gt; attribute appropriately to a public folders server that was in production resolved the issue.&lt;/p&gt;
 
 &lt;p&gt;Bitcoin tip address for this post:
-&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;a href=&#34;bitcoin:16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&#34;&gt;16KvZ8hMCNTBhhz9KGZ7MKeW3N1WayaYxR&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Groups on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/groups/</link>
+    <link>http://blog.slabnet.com/tags/groups/index.xml</link>
     <description>Recent content in Groups on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
     <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
     <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <lastBuildDate>Sat, 19 Jan 2008 23:30:35 +0000</lastBuildDate>
     <atom:link href="http://blog.slabnet.com/tags/groups/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -140,9 +139,7 @@ Accessing AD with PowerShell&lt;/a&gt;&lt;/p&gt;
       <pubDate>Sat, 19 Jan 2008 19:03:40 +0000</pubDate>
       <author>hugo@slabnet.com (Hugo Slabbert)</author>
       <guid>http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/</guid>
-      <description>
-
-&lt;p&gt;I recently had to spend &lt;em&gt;hours&lt;/em&gt; figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.&lt;/p&gt;
+      <description>&lt;p&gt;I recently had to spend &lt;em&gt;hours&lt;/em&gt; figuring out how to properly modify Active Directory group memberships using Powershell. Some of the .Net methods have not yet been implemented, so I had to get a bit tricky with it. I could find the various bits of information I needed in various places, so I hope that collecting them here in one place is of some use to others.&lt;/p&gt;
 
 &lt;p&gt;The scenario was that I needed to disable user accounts in a Windows Server 2003 Active Directory environment running with Exchange 2007. We have a fairly customized, hosted Exchange environment, and so disabling a user is not just a simple matter and right-clicking and disabling the account in Active Directory Users and Computers (ADUC); we have a 2-page doc for the process to catch everything from removing group memberships to setting up email forwarding or restrictions, changing dial-in permissions, changing NTFS permissions on profile directories, etc.&lt;/p&gt;
 
@@ -150,25 +147,25 @@ Accessing AD with PowerShell&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Anyway, I had already dabbled in modifying group memberships in our user creation script (still a bit clunky, but it gets the job done) by copying group memberships from a template account. It goes something like this (please note that several of these commands require the Exchange 2007 snap-in for Powershell, and some also the &lt;a href=&#34;http://www.codeplex.com/PowerShellCX&#34;&gt;Powershell Community Extensions&lt;/a&gt;  snap-in):&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-$templaccn = Get-Mailbox | Where-Object { $_.name -match [template account name] }
+&lt;pre&gt;&lt;code&gt;$templaccn = Get-Mailbox | Where-Object { $_.name -match [template account name] }
 $newuser = Get-User [new user name]
 $filterid = ( Get-User $templaccn.name ).identity
 $groups = Get-Group -filter { Members -eq $filterid }
 $groups | Foreach-Object {
-$groupdn = $_.DistinguishedName
-&lt;/code&gt;&lt;code&gt;$fqgroup = [ADSI](&amp;quot;LDAP://$groupdn&amp;quot;)
-&lt;/code&gt;&lt;code&gt;$membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
-&lt;/code&gt;&lt;code&gt;if ( $membercheck.length -ge 1)
-&lt;/code&gt;&lt;code&gt;{
-&lt;/code&gt;&lt;code&gt;Write-Host &amp;quot;User is already a member of&amp;quot; $_.name &amp;quot;&lt;/code&gt;b. No group addition made. &lt;code&gt;n&amp;quot;
-&lt;/code&gt;&lt;code&gt;}
-&lt;/code&gt;&lt;code&gt;else
-&lt;/code&gt;&lt;code&gt;{
-&lt;/code&gt;&lt;code&gt;$fqgroup.member.add(&amp;quot;$newuserdn&amp;quot;)
-&lt;/code&gt;&lt;code&gt;$fqgroup.setinfo()
-&lt;/code&gt;&lt;code&gt;}&lt;/code&gt;
-&lt;code&gt;}&lt;/code&gt;&lt;/p&gt;
+    $groupdn = $_.DistinguishedName
+    $fqgroup = [ADSI](&amp;quot;LDAP://$groupdn&amp;quot;)
+    $membercheck = ($fqgroup.member | Where-Object { $_ -eq $newuser})
+    if ( $membercheck.length -ge 1)
+    {
+        Write-Host &amp;quot;User is already a member of&amp;quot; $_.name &amp;quot;`b. No group addition made. `n&amp;quot;
+    }
+    else
+    {
+        $fqgroup.member.add(&amp;quot;$newuserdn&amp;quot;)
+        $fqgroup.setinfo()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;So here&amp;rsquo;s the run down:&lt;/p&gt;
 
@@ -184,21 +181,21 @@ $groupdn = $_.DistinguishedName
 
 &lt;p&gt;Now, the reason this was tough to do in the first place, and why I ended up later having so much trouble with removing group memberships and making other modifications, is because the &lt;em&gt;$fqgroup&lt;/em&gt; ADSI object does not display any methods! You can read all the properties you want, but for some reason the Powershell design team thought it would be a good idea to hide the methods, even though they are there. If you don&amp;rsquo;t believe me, try this:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$domroot = [adsi]&#39;&#39;&lt;/code&gt;
-`&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$domroot = [adsi]&#39;&#39;
 
-&lt;h2 id=&#34;distinguishedname&#34;&gt;distinguishedName&lt;/h2&gt;
+distinguishedName
+-----------------
+{DC=i-worx,DC=ca}
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;{DC=i-worx,DC=ca}
-`&lt;/p&gt;
+&lt;p&gt;Try just typing &lt;em&gt;$domroot&lt;/em&gt;. It should return something like:&lt;/p&gt;
 
-&lt;p&gt;Try just typing &lt;em&gt;$domroot&lt;/em&gt;. It should return something like:
-&lt;code&gt;
-[PS] C:\&amp;gt;$domroot&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[PS] C:\&amp;gt;$domroot
 
-&lt;h2 id=&#34;distinguishedname-1&#34;&gt;`distinguishedName&lt;/h2&gt;
-
-&lt;p&gt;{DC=test,DC=local}`&lt;/p&gt;
+distinguishedName
+-----------------
+{DC=test,DC=local}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Alright, now try using Get-Member to get some info on this ADSI object: &lt;code&gt;$domroot | Get-Member&lt;/code&gt;&lt;/p&gt;
 

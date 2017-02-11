@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.16" />
+  <meta name="generator" content="Hugo 0.18.1" />
 
   <title>Exchange 2007 &middot; Hugo&#39;s Blog</title>
 
@@ -270,6 +270,7 @@ the following diagnostic text to your system administrator.
 
 <p>Wow&hellip;that was helpful&hellip;</p>
 
+<p></p>
   </p>
 
   
@@ -322,7 +323,7 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the Submission queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on. I noticed some errors coming from the source MSExchange Extensibility, with an event ID of 1050.
+  We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the Submission queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.I noticed some errors coming from the source MSExchange Extensibility, with an event ID of 1050.
   </p>
 
   
@@ -422,7 +423,13 @@ the following diagnostic text to your system administrator.
   </header>
 
   <p>
-  On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely: legacyExchangeDN msExchALObjectVersion msExchMailboxGuid msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here) msExchUserAccountControl Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor.
+  On a recent Exchange 2003 to 2007 upgrade, I ran into a very frustrating issue that significantly delayed our deployment. All new mailboxes that were created on using Exchange 2007 tools (Exchange 2007 Management Console or Powershell) were missing several crucial ADSI attributes, namely:
+ legacyExchangeDN
+ msExchALObjectVersion
+ msExchMailboxGuid
+ msExchMailboxSecurityDescriptor (set to &ldquo;not set&rdquo;, all other accounts have a blank value here)
+ msExchUserAccountControl
+  Of these, the most important seem to be msExchMailboxGuid and msExchMailboxSecurityDescriptor.
   </p>
 
   
