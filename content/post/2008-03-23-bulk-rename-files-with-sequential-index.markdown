@@ -28,10 +28,12 @@ I had a few requirements for how I wanted to go about this:
 
 <!-- more -->I thought that Powershell would be the best tool for the job, but I still struggled a bit. I eventually found the following would do the trick:
 
-`$prefix = "[SomePrefix]"
+```
+$prefix = "[SomePrefix]"
 $files = Get-ChildItem
 $id = 1
-$files | foreach { Rename-Item -Path $_.fullname `` -NewName`` ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }`
+$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+```
 
 Note that everything after the `$files | `is all on one line of code, but it might appear in the post as being spread across multiple lines.
 
@@ -55,7 +57,7 @@ We count the number of items in our directory listing array using `$files.Count`
 
 Let's say that we have 45 files in our directory. `$files.Count `would be an Int32 value of 45. The length property cannot be applied to Int32 values, so we have to convert our value to a string using `$files.Count.ToString()`. In our example of 45 files in our directory, `$files.Count.ToString()` would return a string value of "45". The length property of that value would be the Int32 value 2. This is because the string "45" has two characters in it. If we had between 1 and 9 files (inclusive), the `$files.Count.ToString()` value would be 1 because there is only one character in the numbers 1, 2, 3, 4, 5, 6, 7, 8, and 9 since they are single-digit numbers. If we had between 10 and 99 files in our list, we would have a double-digit number, and hence `$files.Count.ToString()` would have a value of 2. Again, you might want to play around with this if you are unfamiliar with the concept.
 
-So far, then, we have _(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length_, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let's say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.
+So far, then, we have `(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length`, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let's say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.
 
 The `$id` variable is set to the Int32 value of 1. This is converted to a string that reads "1". Since we have 100 files in our list, `$files.Count` will have an Int32 value of 100. In order to count the number of characters in that value, we convert it to a string using `$files.Count.ToString()`, then count the number of characters using `$files.Count.ToString().Length`. This gives us an Int32 value of 3, since there are three characters in the number 100. PadLeft() then pads our `$id` of 1 so that it has three characters in total, as a one with 2 spaces to its left. We're almost there!
 
@@ -67,23 +69,27 @@ Now, as the code stands, we have to first define our `$prefix` variable before u
 
 Here is the function as it sits in my current Powershell profile:
 
-`function Rename-Bulk($prefix)
+```
+function Rename-Bulk($prefix)
 {
-$files = Get-ChildItem
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname ``-NewName`` ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
-}`
+    $files = Get-ChildItem
+    $id = 1
+    $files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}
+```
 
 To define the function in your Powershell session, either paste the code above at the Powershell prompt, or paste it into your Powershell profile to have it available each time you start Powershell (be sure to remove any line breaks; remember that everything after `$files |` is one one line)!
 
 To add the extension I had mentioned to specify a directory other than your current working directory, use the following instead:
 
-`function Rename-Bulk($prefix,$directory=$pwd)
+```
+function Rename-Bulk($prefix,$directory=$pwd)
 {
-$files = Get-ChildItem $directory
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
-}`
+    $files = Get-ChildItem $directory
+    $id = 1
+    $files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}
+```
 
 That will select the current working directory by default if the second parameter is not specified, while still giving you the option to specify an alternate directory.
 

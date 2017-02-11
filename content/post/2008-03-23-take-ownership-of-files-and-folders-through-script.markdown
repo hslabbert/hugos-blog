@@ -20,10 +20,12 @@ With an upgrade to Exchange 2007, we have taken advantage of the Powershell acce
 
 I struggled for some time off and on to try to work around this with a native Powershell way of seizing control of a directory, but I simply could not find what I was looking for. Eventually, I fell back to a simple tool built into Server 2003 already: Takeown.exe. Through a simple line, takeown got me the results I wanted. I built an array of strings for the directories I wanted to take ownership of, generally in a UNC path such as \\servername\users$\[sAMAccountName], then wrapped the takeown line in a Foreach loop:
 
-`Foreach ( $directory in $directories )
+```
+Foreach ( $directory in $directories )
 {
 takeown.exe /A /R /D Y /F $directory
-}`
+}
+```
 
 To learn more about the options for Takeown, simply type Takeown /? at the command line. For reference:
 

@@ -61,7 +61,7 @@ $domroot = [adsi]''
 
 distinguishedName
 -----------------
-{DC=i-worx,DC=ca}
+{DC=test,DC=local}
 ```
 
 Try just typing _$domroot_. It should return something like:
