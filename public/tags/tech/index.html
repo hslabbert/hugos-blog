@@ -1,340 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.18.1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="Tech - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/tags/tech/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>Tech | Hugo&#39;s Blog</title>
 
-  <title>Tech &middot; Hugo&#39;s Blog</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  
-  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/tags/tech/index.xml" />
-  
-
-  
-
-  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
 
 </head>
 
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
-      
-        </li>
-      
-    </ul>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
+</section>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
+<section class="section">
+  <div class="container">
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://blog.slabnet.com/tags/tech/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
-</div>
-
-
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Tech</h1>
-</div>
-
-<div class="content">
-  
     <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/gre-reflection/">GRE Reflection?</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>22 Sep 2016, 20:23</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/gre-reflection/">GRE Reflection?</a></h1>
+      <h2 class="subtitle is-5">September 22, 2016</h2>
+      
+        <div class="tags">
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ddos">DDoS</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/ddos">DDoS</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/gre">GRE</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/gre">GRE</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/reflection">reflection</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/reflection">reflection</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/internet">Internet</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/internet">Internet</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/networking">networking</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/tech">tech</a>
+        <a class="button is-link" href="/tags/tech">tech</a>
     
-  </div>
-  
-  
-
 </div>
 
-  </header>
+      
+      <div class="content">
+        Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix. Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on krebsonsecurity.com. (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference The Internet Archive instead.)
+An initial tweet from @briankrebs listed GRE in the attack traffic mix:
+per the last tweet, they threw it all at my site; SYN Flood, GET Flood, ACK Flood, POST Flood, GRE Protocol Flood]; 665.00 Gbps;143.50 Mpps
+&mdash; briankrebs (@briankrebs) September 21, 2016  &hellip;and Krebs later confirmed more details in KrebsOnSecurity&rsquo;s own article reporting on the attack:
+ Preliminary analysis of the attack traffic suggests that perhaps the biggest chunk of the attack came in the form of traffic designed to look like it was generic routing encapsulation (GRE) data packets, a communication protocol used to establish a direct, point-to-point connection between network nodes.
+ Now, volumetric DDoS attacks will generally use amplification vectors like open DNS resolvers, misconfigured or vulnerable NTP or SNMP servers, SSDP, etc. in order to boost the attack volume. Those amplifiers are also often vulnerable to reflection attacks, where the attacker spoofs the source address in the initial amplification trigger packets so that the amplified replies hit the target rather than the attacker. This can be pulled off because these exploited amplification vectors are stateless and UDP-based, and so a single spoofed packet from the attacker will trigger the amplified reply destined for the target. A TCP-based attack could yield a larger amplification factor (e.g. just think of pulling off an HTTP GET of a GB+ file!), but a TCP 3-way handshake would never complete successfully with a spoofed source address, and even if somehow it could, the attacker would have to keep ACK-ing somehow in order to keep the transfer going. GRE we are told, however, could not have a spoofed source address (also from the same Krebs article):
+ McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.
+ GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one. But is it true that source IPs cannot be spoofed in GRE? *Note that this is an untested theory and still needs to be validated.*
 
-  <p>
-  <p>Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix.  Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on <a href="http://krebsonsecurity.com">krebsonsecurity.com</a>.  (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference <a href="http://archive.org">The Internet Archive</a> instead.)</p>
-
-<p>An initial tweet from <a href="https://twitter.com/briankrebs">@briankrebs</a> listed GRE in the attack traffic mix:</p>
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">per the last tweet, they threw it all at my site; SYN Flood, GET Flood, ACK Flood, POST Flood, GRE Protocol Flood]; 665.00 Gbps;143.50 Mpps</p>&mdash; briankrebs (@briankrebs) <a href="https://twitter.com/briankrebs/status/778402188267778048">September 21, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>&hellip;and Krebs later confirmed more details in KrebsOnSecurity&rsquo;s <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">own article</a> reporting on the attack:</p>
-
-<blockquote>
-<p>Preliminary analysis of the attack traffic suggests that perhaps the biggest chunk of the attack came in the form of traffic designed to look like it was generic routing encapsulation (GRE) data packets, a communication protocol used to establish a direct, point-to-point connection between network nodes.</p>
-</blockquote>
-
-<p>Now, volumetric DDoS attacks will generally use amplification vectors like open DNS resolvers, misconfigured or vulnerable NTP or SNMP servers, SSDP, etc. in order to boost the attack volume.  Those amplifiers are also often vulnerable to reflection attacks, where the attacker spoofs the source address in the initial amplification trigger packets so that the amplified replies hit the target rather than the attacker.  This can be pulled off because these exploited amplification vectors are stateless and UDP-based, and so a single spoofed packet from the attacker will trigger the amplified reply destined for the target.  A TCP-based attack could yield a larger amplification factor (e.g. just think of pulling off an HTTP GET of a GB+ file!), but a TCP 3-way handshake would never complete successfully with a spoofed source address, and even if somehow it could, the attacker would have to keep ACK-ing somehow in order to keep the transfer going.  GRE we are told, however, could not have a spoofed source address (also from <a href="https://web.archive.org/web/20160922021000/http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">the same Krebs article</a>):</p>
-
-<blockquote>
-<p>McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.</p>
-</blockquote>
-
-<p>GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one.  But is it true that source IPs cannot be spoofed in GRE?  *Note that this is an untested theory and still needs to be validated.*</p>
-  </p>
-
-  
-  <footer>
-    <a href="/post/gre-reflection/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/gre-reflection/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
     <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Aug 2016, 22:29</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a></h1>
+      <h2 class="subtitle is-5">August 28, 2016</h2>
+      
+        <div class="tags">
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/tech">Tech</a>&nbsp;&#47;
+        <a class="button is-link" href="/tags/tech">Tech</a>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/golang">golang</a>
+        <a class="button is-link" href="/tags/golang">golang</a>
+    
+</div>
+
+      
+      <div class="content">
+        So&hellip;I&rsquo;ve moved my blog to Hugo. More info to follow, but bear with me as I clean up some bits and pieces.
+        
+      </div>
+    </article>
     
   </div>
-  
-  
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
 
-</div>
-
-  </header>
-
-  <p>
-  So&hellip;I&rsquo;ve moved my blog to Hugo. More info to follow, but bear with me as I clean up some bits and pieces.
-  </p>
-
-  
-</article>
-
-  
-</div>
-
-</div>
-</div>
-<script src="http://blog.slabnet.com/js/ui.js"></script>
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
+  </div>
+</section>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 
-</body>
-</html>

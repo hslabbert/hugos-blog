@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Hugo&#39;s Blog</title>
+    <link>http://blog.slabnet.com/tags/</link>
+    <description>Recent content in Tags on Hugo&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
+    <lastBuildDate>Tue, 25 Mar 2008 05:28:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.slabnet.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.Net</title>
+      <link>http://blog.slabnet.com/tags/.net/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Active Directory</title>
+      <link>http://blog.slabnet.com/tags/active-directory/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/active-directory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Adsi</title>
+      <link>http://blog.slabnet.com/tags/adsi/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/adsi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amplification</title>
+      <link>http://blog.slabnet.com/tags/amplification/</link>
+      <pubDate>Sun, 25 Sep 2016 20:47:02 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/amplification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bcp38</title>
+      <link>http://blog.slabnet.com/tags/bcp38/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/bcp38/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bitcoin</title>
+      <link>http://blog.slabnet.com/tags/bitcoin/</link>
+      <pubDate>Sun, 17 Jan 2016 05:43:46 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/bitcoin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Citrix</title>
+      <link>http://blog.slabnet.com/tags/citrix/</link>
+      <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/citrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Client Apps</title>
+      <link>http://blog.slabnet.com/tags/client-apps/</link>
+      <pubDate>Wed, 13 Aug 2008 06:18:52 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/client-apps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>http://blog.slabnet.com/tags/cloud/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ddos</title>
+      <link>http://blog.slabnet.com/tags/ddos/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/ddos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dns</title>
+      <link>http://blog.slabnet.com/tags/dns/</link>
+      <pubDate>Sat, 12 Jan 2008 18:37:33 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dual Boot</title>
+      <link>http://blog.slabnet.com/tags/dual-boot/</link>
+      <pubDate>Wed, 16 Jan 2008 18:41:02 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/dual-boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exchange 2003</title>
+      <link>http://blog.slabnet.com/tags/exchange-2003/</link>
+      <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/exchange-2003/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exchange 2007</title>
+      <link>http://blog.slabnet.com/tags/exchange-2007/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/exchange-2007/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fail</title>
+      <link>http://blog.slabnet.com/tags/fail/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/fail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>File Management</title>
+      <link>http://blog.slabnet.com/tags/file-management/</link>
+      <pubDate>Thu, 01 May 2008 03:49:34 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/file-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>http://blog.slabnet.com/tags/golang/</link>
+      <pubDate>Sun, 28 Aug 2016 22:29:33 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google</title>
+      <link>http://blog.slabnet.com/tags/google/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gre</title>
+      <link>http://blog.slabnet.com/tags/gre/</link>
+      <pubDate>Thu, 22 Sep 2016 20:23:52 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/gre/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Groups</title>
+      <link>http://blog.slabnet.com/tags/groups/</link>
+      <pubDate>Sat, 19 Jan 2008 23:30:35 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/groups/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grub</title>
+      <link>http://blog.slabnet.com/tags/grub/</link>
+      <pubDate>Wed, 16 Jan 2008 18:41:02 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/grub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Howto</title>
+      <link>http://blog.slabnet.com/tags/howto/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Infosec</title>
+      <link>http://blog.slabnet.com/tags/infosec/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/infosec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Internet</title>
+      <link>http://blog.slabnet.com/tags/internet/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/internet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://blog.slabnet.com/tags/linux/</link>
+      <pubDate>Mon, 12 Sep 2016 21:42:27 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>http://blog.slabnet.com/tags/mysql/</link>
+      <pubDate>Mon, 09 Feb 2009 16:36:55 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Management</title>
+      <link>http://blog.slabnet.com/tags/network-management/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/network-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Solutions</title>
+      <link>http://blog.slabnet.com/tags/network-solutions/</link>
+      <pubDate>Sat, 12 Jan 2008 18:37:33 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/network-solutions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Networking</title>
+      <link>http://blog.slabnet.com/tags/networking/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/networking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>News</title>
+      <link>http://blog.slabnet.com/tags/news/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/news/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nod32</title>
+      <link>http://blog.slabnet.com/tags/nod32/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/nod32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pdf</title>
+      <link>http://blog.slabnet.com/tags/pdf/</link>
+      <pubDate>Wed, 23 Jan 2008 05:56:23 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>http://blog.slabnet.com/tags/php/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Powershell</title>
+      <link>http://blog.slabnet.com/tags/powershell/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reflection</title>
+      <link>http://blog.slabnet.com/tags/reflection/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/reflection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scripting</title>
+      <link>http://blog.slabnet.com/tags/scripting/</link>
+      <pubDate>Wed, 13 Aug 2008 05:35:37 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/scripting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://blog.slabnet.com/tags/security/</link>
+      <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Server 2003</title>
+      <link>http://blog.slabnet.com/tags/server-2003/</link>
+      <pubDate>Wed, 13 Aug 2008 05:51:47 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/server-2003/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssl</title>
+      <link>http://blog.slabnet.com/tags/ssl/</link>
+      <pubDate>Mon, 09 Feb 2009 16:36:55 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/ssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech</title>
+      <link>http://blog.slabnet.com/tags/tech/</link>
+      <pubDate>Thu, 22 Sep 2016 20:23:52 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/tech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Troubleshooting</title>
+      <link>http://blog.slabnet.com/tags/troubleshooting/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:50 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/troubleshooting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://blog.slabnet.com/tags/ubuntu/</link>
+      <pubDate>Mon, 12 Sep 2016 21:42:27 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Urpf</title>
+      <link>http://blog.slabnet.com/tags/urpf/</link>
+      <pubDate>Sun, 25 Sep 2016 20:47:02 -0700</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/urpf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>User Management</title>
+      <link>http://blog.slabnet.com/tags/user-management/</link>
+      <pubDate>Tue, 25 Mar 2008 05:28:20 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/user-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vhd</title>
+      <link>http://blog.slabnet.com/tags/vhd/</link>
+      <pubDate>Wed, 23 Jan 2008 05:13:27 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/vhd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtual Server</title>
+      <link>http://blog.slabnet.com/tags/virtual-server/</link>
+      <pubDate>Wed, 23 Jan 2008 05:13:27 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/virtual-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virtualization</title>
+      <link>http://blog.slabnet.com/tags/virtualization/</link>
+      <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/virtualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vista</title>
+      <link>http://blog.slabnet.com/tags/vista/</link>
+      <pubDate>Sun, 30 Mar 2008 19:12:52 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/vista/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vmware</title>
+      <link>http://blog.slabnet.com/tags/vmware/</link>
+      <pubDate>Mon, 21 Jan 2008 05:48:35 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/vmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>http://blog.slabnet.com/tags/web/</link>
+      <pubDate>Tue, 01 Jun 2010 18:21:39 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Whois</title>
+      <link>http://blog.slabnet.com/tags/whois/</link>
+      <pubDate>Sat, 12 Jan 2008 18:37:33 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/whois/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>http://blog.slabnet.com/tags/windows/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Server</title>
+      <link>http://blog.slabnet.com/tags/windows-server/</link>
+      <pubDate>Wed, 11 Feb 2009 16:24:25 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/windows-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xenserver</title>
+      <link>http://blog.slabnet.com/tags/xenserver/</link>
+      <pubDate>Wed, 14 Jul 2010 18:35:57 +0000</pubDate>
+      
+      <guid>http://blog.slabnet.com/tags/xenserver/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

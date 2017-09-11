@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="Posts - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/post/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>Posts | Hugo&#39;s Blog</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
+
+</head>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</a></h1>
+      <h2 class="subtitle is-5">February 11, 2009</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/active-directory">active directory</a>
+    
+        <a class="button is-link" href="/tags/adsi">adsi</a>
+    
+        <a class="button is-link" href="/tags/exchange-2007">exchange 2007</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        We’ve been working on some major upgrades to our Exchange environment over the last while. During the course of that, we started receiving NDR’s for messages sent to mail-enabled public folders. Initially, these were “MapiExceptionNotAuthorized” messages, which are related to permissions. Those were sorted out without too much trouble, as the NDR is at least somewhat descriptive. But then we started receiving a very generic NDR of #550 4.4.7 QUEUE.Expired; message expired ##.
+&hellip;not really much to go on. Exchange 2007 does give some more “in plain English, please!” information in its NDR’s, but that also wasn’t much help:
+Delivery has failed to these recipients or distribution lists:
+[user display name] Microsoft Exchange has been trying to deliver this message without success and has stopped trying. Please try sending this message again, or provide the following diagnostic text to your system administrator.  Wow&hellip;that was helpful&hellip;
+
+
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/">Workaround for mysqldump SSL error 2026 bug #27669</a></h1>
+      <h2 class="subtitle is-5">February 9, 2009</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/linux">linux</a>
+    
+        <a class="button is-link" href="/tags/mysql">mysql</a>
+    
+        <a class="button is-link" href="/tags/ssl">ssl</a>
+    
+        <a class="button is-link" href="/tags/web">web</a>
+    
+</div>
+
+      
+      <div class="content">
+        I had not previously played aroung much with MySQL replication, but got the chance to do so recently. I&rsquo;m doing some testing with a new mail filter setup composed of amavisd-new, SpamAssassin, and some other SA modules running through Postfix on Debian Etch. The setup uses Maia Mailguard as a web front-end and management system, including per-user settings and quarantines. We&rsquo;re using MySQL for the database backend for Maia for storing quarantines, per-user settings and the like, but wanted to have a dual-MX setup with a secondary MX sitting in a remote site.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/">Windows Media Player 11 Breaks Internet Connectivity</a></h1>
+      <h2 class="subtitle is-5">August 13, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/client-apps">client apps</a>
+    
+        <a class="button is-link" href="/tags/networking">networking</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+</div>
+
+      
+      <div class="content">
+        Alright, so the title for this post seems pretty out there, but I can guarantee you that I have come across this on multiple machines. I&rsquo;m not saying &ldquo;If you install Windows Media Player 11 on your computer, networking will break,&rdquo; I&rsquo;m just saying that if you experience the symptoms outlined below and you&rsquo;re stuck, trying uninstalling WM11 and the WM11 codec; you just might get lucky.
+So, one of the other techs in the office calls me over: He&rsquo;s been beating his head against a wall with a remote user being unable to get internet connectivity on his Windows XP workstation.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/">SSL Errors in Exchange 2003 Public Folder Management</a></h1>
+      <h2 class="subtitle is-5">August 13, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/exchange-2003">Exchange 2003</a>
+    
+        <a class="button is-link" href="/tags/server-2003">server 2003</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        On a recent network audit for a prospective new client, I came across an issue in the Exchange System Manager for their Exchange Server 2003 box. When you tried to browse into any public folder management, ESM presented the following error:
+The SSL certificate server name is incorrect.I checked the certificate, and it was definitely valid with a trusted Root CA. A quick web search pointed me to this Microsoft KB.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/">Accessing Active Directory in PHP using ADLDAP</a></h1>
+      <h2 class="subtitle is-5">August 13, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/active-directory">active directory</a>
+    
+        <a class="button is-link" href="/tags/howto">howto</a>
+    
+        <a class="button is-link" href="/tags/network-management">network management</a>
+    
+        <a class="button is-link" href="/tags/php">php</a>
+    
+        <a class="button is-link" href="/tags/scripting">scripting</a>
+    
+        <a class="button is-link" href="/tags/server-2003">server 2003</a>
+    
+        <a class="button is-link" href="/tags/web">web</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        Lately, our company has started developing user web portals for our clients. The main goal is to provide a central reference point for common links (webmail, helpdesk, remote assistance links &hellip; ), howto documents, and other files and resources. A secondary goal was to also allow user administrators to perform basic user management through a web interface. This would include things like disabling/creating/unlocking user accounts, resetting passwords, and modifying group memberships for access reasons.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/">Exchange 2007: Messages stuck in Submission Queue</a></h1>
+      <h2 class="subtitle is-5">August 13, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/exchange-2007">exchange 2007</a>
+    
+        <a class="button is-link" href="/tags/network-management">network management</a>
+    
+        <a class="button is-link" href="/tags/server-2003">server 2003</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        We recently received reports of message delivery delays in our Exchange organization. We run Exchange 2007, so I checked out the Hub Transport Servers and discovered that messages were piling up in the Submission queues on both of the main hub transports. Restarting the Microsoft Exchange Transport service didn&rsquo;t get things going again, so I turned to the Application Log to try to figure out what was going on.I noticed some errors coming from the source MSExchange Extensibility, with an event ID of 1050.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/gmail-filesystem-for-windows/">Gmail Filesystem for Windows</a></h1>
+      <h2 class="subtitle is-5">May 1, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/file-management">file management</a>
+    
+        <a class="button is-link" href="/tags/howto">howto</a>
+    
+        <a class="button is-link" href="/tags/web">web</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+</div>
+
+      
+      <div class="content">
+        If you&rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the Gmail Drive by bjarke. It&rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/gmail-filesystem-for-windows/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/">Vista Offline Files and SMB Opportunistic Locks</a></h1>
+      <h2 class="subtitle is-5">March 30, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/file-management">file management</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/vista">vista</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+</div>
+
+      
+      <div class="content">
+        One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&rsquo;d. The error message read something to the extent of &ldquo;The process cannot access the file because it is being used by another process&rdquo;.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</a></h1>
+      <h2 class="subtitle is-5">March 25, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/.net">.net</a>
+    
+        <a class="button is-link" href="/tags/active-directory">active directory</a>
+    
+        <a class="button is-link" href="/tags/adsi">adsi</a>
+    
+        <a class="button is-link" href="/tags/howto">howto</a>
+    
+        <a class="button is-link" href="/tags/powershell">powershell</a>
+    
+        <a class="button is-link" href="/tags/scripting">scripting</a>
+    
+        <a class="button is-link" href="/tags/server-2003">server 2003</a>
+    
+        <a class="button is-link" href="/tags/user-management">user management</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        Part I demonstrated how to find aged or inactive accounts, and in Part II we will look at another lingering account type: disabled accounts.
+Like inactive accounts, Directory Searchers also come in handy for disabled accounts. We can also, however, read an Active Directory account&rsquo;s status directly from a hidden attribute on the ADSI object. Let&rsquo;s start with the Directory Searcher method. This entry also draws from Bahram’s Blog. The code:
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</a></h1>
+      <h2 class="subtitle is-5">March 25, 2008</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/.net">.net</a>
+    
+        <a class="button is-link" href="/tags/active-directory">active directory</a>
+    
+        <a class="button is-link" href="/tags/adsi">adsi</a>
+    
+        <a class="button is-link" href="/tags/howto">howto</a>
+    
+        <a class="button is-link" href="/tags/powershell">powershell</a>
+    
+        <a class="button is-link" href="/tags/scripting">scripting</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+        <a class="button is-link" href="/tags/user-management">user management</a>
+    
+        <a class="button is-link" href="/tags/windows">windows</a>
+    
+        <a class="button is-link" href="/tags/windows-server">windows server</a>
+    
+</div>
+
+      
+      <div class="content">
+        We&rsquo;ll start off with Inactive accounts first, and then work on the disabled accounts after that.
+Active Directory in Server 2003 has a nice user/computer attribute called lastLogonTimeStamp that can help us keep track of inactive accounts. If you have ever tried to use that attribute, however, you might have come up with something like this&hellip;
+PoSH&gt; $struserdn = &quot;CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local&quot; PoSH&gt; $adobjuser = [ADSI]&quot;LDAP://$struserdn&quot; PoSH&gt; $adobjuser {CN=Some User,OU=Users,OU=Corp,DC=yourdomain,DC=local}
+PoSH&gt; $adobjuser.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/post/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/3/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
+  </div>
+</section>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+

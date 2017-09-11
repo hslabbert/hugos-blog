@@ -1,247 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.18.1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="Bulk Rename Files with Sequential Index - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/post/bulk-rename-files-with-sequential-index/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>Bulk Rename Files with Sequential Index | Hugo&#39;s Blog</title>
 
-  <title>Bulk Rename Files with Sequential Index &middot; Hugo&#39;s Blog</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-
-  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
 
 </head>
 
-
 <body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
-      
-        </li>
-      
-    </ul>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
+</section>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
+<section class="section">
+  <div class="container">
+    <h1 class="title">Bulk Rename Files with Sequential Index</h1>
+    <h2 class="subtitle is-5">March 23, 2008 by Hugo</h2>
     
-
+      <div class="tags">
     
-
+        <a class="button is-link" href="/tags/.net">.net</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
+        <a class="button is-link" href="/tags/file-management">file management</a>
     
-
+        <a class="button is-link" href="/tags/powershell">powershell</a>
     
-
+        <a class="button is-link" href="/tags/scripting">scripting</a>
     
-
+        <a class="button is-link" href="/tags/windows">windows</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
 </div>
 
-
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Bulk Rename Files with Sequential Index</h1>
-  <h2></h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>23 Mar 2008, 06:31</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/.net">.net</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/file-management">file management</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/powershell">powershell</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/scripting">scripting</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/windows">windows</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  <p>I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named <em>[common name].JPG</em>, then the subsequent files are named <em><a href="2">common name</a>.JPG</em> and so on and so forth.</p>
+    <div class="content">
+      <p>I am pretty sure I&rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&rsquo;t like the convention they have chosen in that the first file is named <em>[common name].JPG</em>, then the subsequent files are named <em><a href="2">common name</a>.JPG</em> and so on and so forth.</p>
 
 <p>I had a few requirements for how I wanted to go about this:</p>
 
@@ -255,10 +108,11 @@
 
 <p><!-- more -->I thought that Powershell would be the best tool for the job, but I still struggled a bit. I eventually found the following would do the trick:</p>
 
-<p><code>$prefix = &quot;[SomePrefix]&quot;
+<pre><code>$prefix = &quot;[SomePrefix]&quot;
 $files = Get-ChildItem
 $id = 1
-$files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><code>( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }</code></p>
+$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+</code></pre>
 
 <p>Note that everything after the <code>$files |</code>is all on one line of code, but it might appear in the post as being spread across multiple lines.</p>
 
@@ -282,7 +136,7 @@ $files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><cod
 
 <p>Let&rsquo;s say that we have 45 files in our directory. <code>$files.Count</code>would be an Int32 value of 45. The length property cannot be applied to Int32 values, so we have to convert our value to a string using <code>$files.Count.ToString()</code>. In our example of 45 files in our directory, <code>$files.Count.ToString()</code> would return a string value of &ldquo;45&rdquo;. The length property of that value would be the Int32 value 2. This is because the string &ldquo;45&rdquo; has two characters in it. If we had between 1 and 9 files (inclusive), the <code>$files.Count.ToString()</code> value would be 1 because there is only one character in the numbers 1, 2, 3, 4, 5, 6, 7, 8, and 9 since they are single-digit numbers. If we had between 10 and 99 files in our list, we would have a double-digit number, and hence <code>$files.Count.ToString()</code> would have a value of 2. Again, you might want to play around with this if you are unfamiliar with the concept.</p>
 
-<p>So far, then, we have <em>(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length</em>, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let&rsquo;s say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.</p>
+<p>So far, then, we have <code>(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length</code>, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let&rsquo;s say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.</p>
 
 <p>The <code>$id</code> variable is set to the Int32 value of 1. This is converted to a string that reads &ldquo;1&rdquo;. Since we have 100 files in our list, <code>$files.Count</code> will have an Int32 value of 100. In order to count the number of characters in that value, we convert it to a string using <code>$files.Count.ToString()</code>, then count the number of characters using <code>$files.Count.ToString().Length</code>. This gives us an Int32 value of 3, since there are three characters in the number 100. PadLeft() then pads our <code>$id</code> of 1 so that it has three characters in total, as a one with 2 spaces to its left. We&rsquo;re almost there!</p>
 
@@ -294,23 +148,25 @@ $files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><cod
 
 <p>Here is the function as it sits in my current Powershell profile:</p>
 
-<p><code>function Rename-Bulk($prefix)
+<pre><code>function Rename-Bulk($prefix)
 {
-$files = Get-ChildItem
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname</code><code>-NewName</code><code>( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
-}</code></p>
+    $files = Get-ChildItem
+    $id = 1
+    $files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}
+</code></pre>
 
 <p>To define the function in your Powershell session, either paste the code above at the Powershell prompt, or paste it into your Powershell profile to have it available each time you start Powershell (be sure to remove any line breaks; remember that everything after <code>$files |</code> is one one line)!</p>
 
 <p>To add the extension I had mentioned to specify a directory other than your current working directory, use the following instead:</p>
 
-<p><code>function Rename-Bulk($prefix,$directory=$pwd)
+<pre><code>function Rename-Bulk($prefix,$directory=$pwd)
 {
-$files = Get-ChildItem $directory
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
-}</code></p>
+    $files = Get-ChildItem $directory
+    $id = 1
+    $files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace ' ','0' ) + $_.extension) }
+}
+</code></pre>
 
 <p>That will select the current working directory by default if the second parameter is not specified, while still giving you the option to specify an alternate directory.</p>
 
@@ -318,69 +174,61 @@ $files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).
 
 <p>Bitcoin tip address for this post: 1M4ydWcEPsUXWrQYN254UrfkAbVGBbpZB8</p>
 
-
-  
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
+    </div>
     
-    <a href="http://blog.slabnet.com/post/take-ownership-of-files-and-folders-through-script/"><i class="fa fa-chevron-left"></i></a>
+        <div class="nav-left">
+    <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.slabnet.com%2fpost%2fbulk-rename-files-with-sequential-index%2f" title="Share on Facebook" target="_blank"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.slabnet.com%2fpost%2fbulk-rename-files-with-sequential-index%2f" title="Share on Google+" target="_blank"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.slabnet.com%2fpost%2fbulk-rename-files-with-sequential-index%2f" title="Share on LinkedIn" target="_blank"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://twitter.com/home?status=Bulk%20Rename%20Files%20with%20Sequential%20Index - http%3a%2f%2fblog.slabnet.com%2fpost%2fbulk-rename-files-with-sequential-index%2f" title="Tweet this" target="_blank"><span class="fa fa-twitter fa-2x"></span></a>
+    <a class="nav-item" href="http://www.reddit.com/submit?url=http%3a%2f%2fblog.slabnet.com%2fpost%2fbulk-rename-files-with-sequential-index%2f&title=Bulk%20Rename%20Files%20with%20Sequential%20Index" title="Share on Reddit" target="_blank"><span class="fa fa-reddit-alien fa-2x" aria-hidden="true"></span></a>
     
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://blog.slabnet.com/post/take-ownership-of-files-and-folders-through-script/">Take ownership of files and folders through script</a>
-    </nav>
+    </div>
     
   </div>
-  <div class="pure-u-2-24">
-    &nbsp;
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'blog-slabnet-com';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</a>
-    </nav>
-    
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
   </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
+</section>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
 
-  
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'blog-slabnet-com';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-</div>
-</div>
-<script src="http://blog.slabnet.com/js/ui.js"></script>
-
-
+<script>hljs.initHighlightingOnLoad();</script>
 
 
 </body>
-</html>
-

@@ -2,244 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Infosec on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/infosec/index.xml</link>
+    <link>http://blog.slabnet.com/tags/infosec/</link>
     <description>Recent content in Infosec on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
-    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
-    <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <atom:link href="http://blog.slabnet.com/tags/infosec/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2017 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
+    <lastBuildDate>Wed, 28 Sep 2016 07:17:17 -0700</lastBuildDate>
+    
+	<atom:link href="http://blog.slabnet.com/tags/infosec/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>What BCP38 Can and Cannot Do</title>
       <link>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</link>
       <pubDate>Wed, 28 Sep 2016 07:17:17 -0700</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</guid>
-      <description>
-
-&lt;p&gt;We&amp;rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet.  Rather than targeting a company or online gaming, one of the largest DDoS attacks ever &lt;a href=&#34;http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/&#34;&gt;targeted an individual&lt;/a&gt;, Brian Krebs, most likely for &lt;a href=&#34;https://krebsonsecurity.com/2016/09/israeli-online-attack-service-vdos-earned-600000-in-two-years/&#34;&gt;his work exposing a so-called &amp;ldquo;booter service&amp;rdquo;&lt;/a&gt;, a DDoS-for-hire outfit called vDOS, which ultimately led to &lt;a href=&#34;https://krebsonsecurity.com/2016/09/alleged-vdos-proprietors-arrested-in-israel/&#34;&gt;the alleged proprietors being arrested&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;a-brief-history-of-dos-volumes&#34;&gt;A brief history of DoS volumes&lt;/h2&gt;
-
-&lt;p&gt;Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.  Attacks weighing in at 600 Gbps are said to have been reported in private, but generally haven&amp;rsquo;t hit public knowledge. In the space of a week, we&amp;rsquo;ve seen attacks reach those levels and &lt;em&gt;way&lt;/em&gt; beyond.  There are reports of &lt;em&gt;much&lt;/em&gt; more frequent attacks against common targets, with volumes far above average.  OVH, an international Internet service and hosting provider, reported attacks of over 1 Tbps just the night before the attack on KrebsOnSecurity:&lt;/p&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/Dominik28111&#34;&gt;@Dominik28111&lt;/a&gt; we got 2 huge multi DDoS: 1156Gbps then 901Gbps &lt;a href=&#34;https://t.co/NyFTr6KLCC&#34;&gt;pic.twitter.com/NyFTr6KLCC&lt;/a&gt;&lt;/p&gt;&amp;mdash; Octave Klaba / Oles (@olesovhcom) &lt;a href=&#34;https://twitter.com/olesovhcom/status/778019962036314112&#34;&gt;September 19, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;This is an unprecedented escalation in attack volumes and frequency, and this state of affairs cannot go on.  The Internet is &lt;em&gt;the&lt;/em&gt; platform for discussion in our era, and it is simply unacceptable, whether you are a security researcher, a political activist, someone with an unpopular opinion, or simply someone running a blog for fun, that your voice on the Internet could be silenced by goons with digital cannons because they don&amp;rsquo;t like what you have to say, or simply for the lulz.&lt;/p&gt;
-
-&lt;p&gt;After getting &lt;a href=&#34;https://krebsonsecurity.com&#34;&gt;krebsonsecurity.com&lt;/a&gt; back online on 2016-09-24, Krebs responded to the recent events with a report and call to action in &lt;a href=&#34;https://krebsonsecurity.com/2016/09/the-democratization-of-censorship/&#34;&gt;The Democritizaton of Censorship&lt;/a&gt;.  In it, he calls for a renewed effort on implementing &lt;a href=&#34;http://blog.slabnet.com/post/clarifying-ddos-related-terms/#bcp38&#34;&gt;BCP38&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Known as BCP38, its use prevents insecure resources on an ISPs network (hacked servers, computers, routers, DVRs, etc.) from being leveraged in such powerful denial-of-service attacks.&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;BCP38 is designed to filter such spoofed traffic, so that it never even traverses the network of an ISP that’s adopted the anti-spoofing measures. However, there are non-trivial economic reasons that many ISPs fail to adopt this best practice. &lt;a href=&#34;http://www.internetsociety.org/deploy360/blog/2014/07/anti-spoofing-bcp-38-and-the-tragedy-of-the-commons/&#34;&gt;This blog post&lt;/a&gt; from the Internet Society does a good job of explaining why many ISPs ultimately decide not to implement BCP38.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;As we face denial of service attacks, it is important for us to be clear on what tools we have in our arsenal to defend against DDoS attacks.&lt;/p&gt;
-
-&lt;h2 id=&#34;no-spoofing-no-benefit-to-bcp38&#34;&gt;No spoofing?  No benefit to BCP38&lt;/h2&gt;
-
-&lt;p&gt;I will be very clear that I am a strong proponent of BCP38.  There are objections from some members the network operator community that need to be addressed and solutions to some valid network use cases that need to be developed, but on the whole we should be working to push spoof-detection and mitigation as a default state rather than throwing our hands up in the air and saying it&amp;rsquo;s too hard or a futile effort.&lt;/p&gt;
-
-&lt;p&gt;That said: BCP38 does &lt;strong&gt;NOT&lt;/strong&gt; defend against direct network attacks that do not use source address spoofing.  Period.&lt;/p&gt;
-
-&lt;p&gt;BCP38&amp;rsquo;s sole function is to drop traffic from invalid (spoofed) source addresses.  Now, spoofing &lt;em&gt;can&lt;/em&gt; be used in direct attacks in order to provide source address obfuscation, but those attacks need to be &amp;ldquo;one and done&amp;rdquo; vectors, e.g. SYN flood attacks or UDP-based attacks that hinge simply on a single packet making its way from the traffic originator (the host we&amp;rsquo;re talking about that&amp;rsquo;s using spoofing) to the target.&lt;/p&gt;
-
-&lt;p&gt;A direct, TCP-based attack that requires a TCP 3-way handshake to complete &lt;em&gt;cannot&lt;/em&gt; use source address spoofing, as the SYN-ACK back from the target will go to a spoofed address and never reach the attacker to complete the TCP session setup.  As the TCP session setup never completes, any direct attack that requires a valid TCP session will not be able to function.  If source address spoofing is not being used, BCP38 has absolutely &lt;strong&gt;zero&lt;/strong&gt; impact on that traffic; it&amp;rsquo;s not spoofed, so BCP38 let&amp;rsquo;s it pass (as it should).&lt;/p&gt;
-
-&lt;p&gt;But, the &lt;a href=&#34;http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/&#34;&gt;post-mortem breakdown&lt;/a&gt; from Krebs indicates that these attacks did not use reflection &amp;amp; amplification:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;But according to Akamai, none of the attack methods employed in Tuesday night’s assault on KrebsOnSecurity relied on amplification or reflection. Rather, many were garbage Web attack methods that require a legitimate connection between the attacking host and the target, including SYN, GET and POST floods.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Note the &amp;ldquo;legitimate connection&amp;rdquo; part there, which I am reading as a valid TCP session.&lt;/p&gt;
-
-&lt;p&gt;Akamai&amp;rsquo;s Martin McKeay also goes on to say that this traffic cannot be spoofed:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic. Nor can junk Web-based DDoS attacks like those mentioned above.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Now, I &lt;a href=&#34;http://blog.slabnet.com/post/gre-reflection/&#34;&gt;took some exception&lt;/a&gt; to the statement that GRE traffic cannot be spoofed, and to be fair you can fake a GET or POST as long as you don&amp;rsquo;t care if the TCP session is invalid and the web server at the other end will reject it, but the point here is that the analysis of the attack describes it as consisting of direct attacks including legitimate, completed TCP sessions, &lt;em&gt;without&lt;/em&gt; spoofing taking place.&lt;/p&gt;
-
-&lt;p&gt;Krebs touches on this again later in the Democritization piece when talking about the IoT devices likely participating in the attack:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Some readers on Twitter have asked why the attackers would have “burned” so many compromised systems with such an overwhelming force against my little site. After all, they reasoned, the attackers showed their hand in this assault, exposing the Internet addresses of a huge number of compromised devices that might otherwise be used for actual money-making cybercriminal activities&amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Again: if they&amp;rsquo;re exposing their IP addresses, that means we&amp;rsquo;re talking about abuse traffic that does &lt;em&gt;not&lt;/em&gt; have a spoofed source, which means whether or not BCP38 is implemented on the networks housing the attack sources has &lt;strong&gt;zero&lt;/strong&gt; bearing on the effectiveness of the attack.&lt;/p&gt;
-
-&lt;p&gt;Krebs does later touch on the possibility of initiatives to require secure-by-default deployments for IoT devices, but that basically amounts to two sentences at the end of the &lt;em&gt;Shaming the Spoofers&lt;/em&gt; section.  In light of these attacks being claimed as direct and unspoofed, efforts to secure end hosts would really be the only effective countermeasure, as source address spoofing mitigation has zero effect on traffic that doesn&amp;rsquo;t spoof its source address.&lt;/p&gt;
-
-&lt;p&gt;I aim to write more about BCP38 in the near future, but I want to state again for emphasis that this post is &lt;em&gt;not&lt;/em&gt; a criticism of BCP38 or any kind of statement that BCP38 adoption is pointless or futile.  On the contrary: I wholeheartedly support any efforts to further BCP38 adoption, push for BCP38 adoption on any networks under my control, and believe it is critical to enabling attribution of abuse traffic and mitigation of reflected (and amplified) DDoS attacks.  But, we should not imagine that even getting full BCP38 coverage of the entire Internet will in any way impact network abuse and DDoS attacks that do not use source address spoofing.&lt;/p&gt;
-</description>
+      <description>We&amp;rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet. Rather than targeting a company or online gaming, one of the largest DDoS attacks ever targeted an individual, Brian Krebs, most likely for his work exposing a so-called &amp;ldquo;booter service&amp;rdquo;, a DDoS-for-hire outfit called vDOS, which ultimately led to the alleged proprietors being arrested.
+A brief history of DoS volumes Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.</description>
     </item>
     
     <item>
       <title>Clarifying DDoS-related terms</title>
       <link>http://blog.slabnet.com/post/clarifying-ddos-related-terms/</link>
       <pubDate>Sun, 25 Sep 2016 20:47:02 -0700</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/clarifying-ddos-related-terms/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;ll be writing a bit more about DDoS attacks and security, and so I thought it would be handy to jot down some commonly used terms in one place.  I&amp;rsquo;ll also look at how some of those terms are interrelated.&lt;/p&gt;
-
-&lt;h2 id=&#34;the-terms&#34;&gt;The terms&lt;/h2&gt;
-
-&lt;h3 id=&#34;spoofing&#34;&gt;Spoofing&lt;/h3&gt;
-
-&lt;p&gt;As relates to TCP/IP, &amp;ldquo;spoofing&amp;rdquo; really just refers to forging some part of IP communications.  You could, for example, spoof a source port to have response data thrown at a listening application that wasn&amp;rsquo;t expecting it, but generally we&amp;rsquo;re talking about forging the source IP address in an IP packet.&lt;/p&gt;
-
-&lt;p&gt;IP spoofing can be used to simply hide your identity in cases where replies back from the target are not necessary in order to complete an attack.&lt;/p&gt;
-
-&lt;p&gt;For example, TCP SYN floods cause resource exhaustion on the target by making it set up many half-open TCP connections.  The attacker does not need to actually ACK replies back from the server in order to exhaust server resources, so spoofing the source IP in the SYN flood packets means (a) the attacker&amp;rsquo;s true IP remains hidden from the target and (b) any replies the target generates to the attack traffic will not reach the attacker, so the attacker can expend relatively fewer resources while making the target expend both more processing and bandwidth resources.&lt;/p&gt;
-
-&lt;p&gt;Similarly, any connectionless attack where garbage, volumetric data is thrown at a target could also use any random source IP address.  For example, a compromised host could be instructed to send random data at a target using a spoofed source IP address in order to not reveal the true IP of the compromised host.  This reduces the risk of the zombied attack host being exposed, and increases the chances that the attacker can use the bot again in future attacks.&lt;/p&gt;
-
-&lt;p&gt;Spoofing can also be used in reflection attacks.&lt;/p&gt;
-
-&lt;h3 id=&#34;reflection&#34;&gt;Reflection&lt;/h3&gt;
-
-&lt;p&gt;A reflection attack uses source address spoofing in order to have the attack bounce of off a &amp;ldquo;reflector&amp;rdquo; of some sort and on to the attack target.  The attacker uses spoofing to forge the source IP address of its traffic to be that of their target.  A request is then sent to the reflector, soliticing a response.  The response traffic, though, is sent not back to the attacker but rather on to the attack target.  This is because the reflector has no way of knowing the source of the traffic aside from the source IP address in the packets it receives, so all it can do is send responses to that IP address.&lt;/p&gt;
-
-&lt;p&gt;The most basic example of this would be sending an ICMP echo request (ping) to some host on the Internet and setting the source IP address to that of the attack target.  The pinged host will then send an ICMP echo reply to the source IP of the packet, which is the attack target.  This isn&amp;rsquo;t really a very efficient method on the attacker&amp;rsquo;s part, though, as they have to use the same amount of resources and bandwidth as the target, if not more.  A 1500-byte echo request sent from the attacker results in a 1500-byte echo reply generated by the reflector and that 1500-byte echo reply being received by the target.  So:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The attacker:
-
-&lt;ul&gt;
-&lt;li&gt;uses 1500 bytes of upload bandwidth&lt;/li&gt;
-&lt;li&gt;has to generate that 1500 byte echo request&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;The reflector:
-
-&lt;ul&gt;
-&lt;li&gt;uses 1500 bytes of download bandwith&lt;/li&gt;
-&lt;li&gt;has to generate a 1500 byte ICMP echo reply&lt;/li&gt;
-&lt;li&gt;uses 1500 bytes of upload bandwidth&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;The target just has to:
-
-&lt;ul&gt;
-&lt;li&gt;receive a 1500-byte echo reply&lt;/li&gt;
-&lt;li&gt;do some very basic processing to realize it has to discard it&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To pack a bigger punch, reflection needs to be paired with amplification.&lt;/p&gt;
-
-&lt;h3 id=&#34;amplification&#34;&gt;Amplification&lt;/h3&gt;
-
-&lt;p&gt;This is where things start to get interesting on the volumetric DDoS front.  We&amp;rsquo;ve spoofed a source IP and sent a request to a server somewhere on the Internet so that the response gets sent to our target instead of back to us.  No how do we tip the scales to get a bigger attack?&lt;/p&gt;
-
-&lt;p&gt;We need two things to pull this off:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;We need to be able to send a single packet to the reflector and have it reply with our attack traffic.&lt;/li&gt;
-&lt;li&gt;We need to hit on some protocol or service that will make the reflector generate a larger amount of traffic to send to the attacker than we sent to the reflector in the first place.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For #1, the idea here is that since we are spoofing our source address, something like TCP won&amp;rsquo;t work.  TCP requires a 3-step handshake between before the connection is open and data can go between client and server.  If we hit step 1 (SYN), but step 2 from the server back to the client (SYN-ACK) doesn&amp;rsquo;t come back to us but rather goes to the target, we can&amp;rsquo;t complete the TCP connection setup and so we can&amp;rsquo;t trigger a big bunch of data.  This is actually good design: it&amp;rsquo;s BAD for a single, small request from the client to be able to trigger a BIG response from the server, and the TCP 3-way handshake sidesteps that issue.  Connectionless protocols like UDP could work, though, as UDP-based protocols are more likely send the actual reply to a client request right from the word &amp;ldquo;go!&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Requirement #2 is pretty obvious, but how do we pull that off?  Well, common targets have been identified that by design violate the best practice suggestion of not returning more than is received on the first request/packet.  A list of some of those:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;NTP&lt;/li&gt;
-&lt;li&gt;CHARGEN&lt;/li&gt;
-&lt;li&gt;DNS, especially with EDNS&lt;/li&gt;
-&lt;li&gt;SSDP&lt;/li&gt;
-&lt;li&gt;SNMP&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now we can single a &lt;em&gt;single&lt;/em&gt; packet to reflector with a spoofed source IP and have that reflector send up to almost &lt;strong&gt;600 times&lt;/strong&gt; that amount of traffic to our target.&lt;/p&gt;
-
-&lt;h3 id=&#34;bcp38&#34;&gt;BCP38&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;BC-whatnow?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;BCP&lt;/em&gt; stands for Best Current Practice, which are documents put forth by the Internet Engineering Task Force (IETF) to, well, describe best current practices ;)&lt;/p&gt;
-
-&lt;p&gt;Basically, rather than documenting how protocols themselves should function, BCPs provide guidelines on recommended configurations and operation of those protocols in real-world scenarios.  For example, &lt;a href=&#34;https://tools.ietf.org/html/bcp46&#34;&gt;BCP46&lt;/a&gt;, &lt;em&gt;Recommended Internet Service Provider Security Services and Procedures&lt;/em&gt;,  describes common security practices that ISPs should implement.  This isn&amp;rsquo;t about which protocols to use, but &lt;em&gt;how&lt;/em&gt; to implement and configure the &lt;em&gt;use&lt;/em&gt; of those protocols.  BCPs also have a regular RFC number, with BCP38 being RFC2827.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://tools.ietf.org/html/bcp38&#34;&gt;BCP38&lt;/a&gt; is titled &lt;em&gt;Network Ingress Filtering: Defeating Denial of Service Attacks which employ IP Source Address Spoofing&lt;/em&gt;.  Recognizing that source address spoofing can facilitate denial of service attacks, the IETF drafted BCP38 to cut source address spoofing off at the knees.&lt;/p&gt;
-
-&lt;p&gt;In a network that has implemented BCP38, when a packet with a spoofed source IP address reaches the ISP&amp;rsquo;s router, the router checks the source IP address of the packet.  If the source address has been legitimately assigned to the customer, then the packet is permitted.  If the source address is not in an address range that has been assigned to the customer, it is discarded/dropped.  The spoofed packet will never get to a DoS target or a reflector, because it is dropped as soon as it enters the ISP&amp;rsquo;s network.&lt;/p&gt;
-
-&lt;h3 id=&#34;unicast-reverse-path-forwarding-urpf&#34;&gt;Unicast Reverse Path Forwarding (uRPF)&lt;/h3&gt;
-
-&lt;p&gt;Usually, configuring a router to accept or drop traffic, especially based on source address rather than destination, is accomplished through access control lists (ACLs), aka firewall filters.  In implementing BCP38, an ACL would be applied on the customer-facing interface of the ISP&amp;rsquo;s router, and would match source addresses of packets received on that interface.  That&amp;hellip;starts to become a pain to manage. Aside from addressing an interface, you also now need to configure and apply an ACL for each customer-facing interface on every single access router in your network.  Sure, you can probably work this into your customer turn-up process and service provisioning, but it&amp;rsquo;s an extra step that either needs to be done manually or have some development and QA time thrown at it.  Couldn&amp;rsquo;t we just have an &amp;ldquo;enable source address spoof filtering&amp;rdquo; checkbox or something?&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;uRPF to the rescue!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Unicast Reverse Path Forwarding checks the source address of packet received on a router interface and then does a route lookup for that source address.  If a route for the source address is found &lt;strong&gt;and&lt;/strong&gt; points &lt;em&gt;out&lt;/em&gt; the interface on which the packet was received, the packet is forwarded.  If &lt;em&gt;not&lt;/em&gt;, the packet is discarded.  We&amp;rsquo;ll get into more details &lt;a href=&#34;#and-bcp38-and-urpf&#34;&gt;below&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;how-do-these-all-go-together&#34;&gt;How do these all go together?&lt;/h2&gt;
-
-&lt;p&gt;Each of the first three terms we covered - spoofing, reflection, and amplification -  builds on the ones before it.  I can &lt;em&gt;spoof&lt;/em&gt; a packet without doing any reflection or amplification.  In order to &lt;em&gt;reflect&lt;/em&gt; traffic, I need to spoof the source IP address in the traffic I send out.  But, I can still &lt;em&gt;reflect&lt;/em&gt; traffic without that using &lt;em&gt;amplification&lt;/em&gt;, as we saw in the original ping example.&lt;/p&gt;
-
-&lt;p&gt;Now: I &lt;em&gt;can&lt;/em&gt; technically use amplification without spoofing and reflection, but that would really just be normal user traffic rather than attack traffic.  We mentioned DNS as a potential reflection vector.  Well, if I send a small DNS request to my DNS server and get a larger response back, technically that&amp;rsquo;s amplification (small request sent; large response triggered).  But, that&amp;rsquo;s not DoS traffic.&lt;/p&gt;
-
-&lt;p&gt;In order to use amplification in a DoS scenario, then, I need a &lt;em&gt;reflector&lt;/em&gt; to amplify the attack traffic for me, and I need to use &lt;em&gt;spoofing&lt;/em&gt; to direct the reflected response to the target rather than having it come back to me.&lt;/p&gt;
-
-&lt;h3 id=&#34;where-would-one-technique-be-used-over-another&#34;&gt;Where would one technique be used over another?&lt;/h3&gt;
-
-&lt;p&gt;If all I care about is throwing traffic directly at a target and obfuscating my source address, I can just use spoofing.  TCP SYN floods would be an example, or cases where random volumetric data is launched at a target (though at least the latter would more commonly leverage reflected and amplified attacks).&lt;/p&gt;
-
-&lt;p&gt;If the attacker has access to services that are vulnerable to amplification, it generally doesn&amp;rsquo;t make too much sense to just use bare spoofing and reflection rather than just tossing more resources at the vector that provides amplification.  That said, an ICMP flood could be an example of a reflected attack that does not leverage amplification.&lt;/p&gt;
-
-&lt;p&gt;Finally, as mentioned above, an amplified attack requires both spoofing (to direct requests at the target rather than the attacker) and reflection (to provide the amplification) as well, and is the staple of large-scale volumetric DDoS attacks.&lt;/p&gt;
-
-&lt;h3 id=&#34;and-bcp38-and-urpf&#34;&gt;And BCP38 and uRPF?&lt;/h3&gt;
-
-&lt;p&gt;BCP38 can&amp;rsquo;t prevent all denial of service attacks from happening, but it does prevent spoofing.  If attackers do not have access to networks that let them spoof source addresses, they are unable to cover their tracks.  If a host in a botnet assumes it can send out spoofed traffic, its attack traffic will not reach the target, and the attack is mitigated.  If the zombied host is able to detect that its spoofed traffic cannot get through, an attack operator &lt;em&gt;may&lt;/em&gt; choose to simply send attack traffic directly to the target without spoofing.  This exposes the zombie host, though, so that abuse from the host can be reported and it can be cleaned up or neutralized so that it cannot be used in future attacks.  Since spoofing is also required for an amplified attack, a network that implements BCP38 cannot be used to launch an amplified reflected attack, which is where the big guns in volumetric DDoS come from.&lt;/p&gt;
-
-&lt;p&gt;Some examples might also help illustrate this.&lt;/p&gt;
-
-&lt;p&gt;Users X and Y are connected to &lt;code&gt;RouterA&lt;/code&gt; on two different networks:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; -------------------------
-| UserX                   |______________
-| 2001:db8:a:1111::100/64 |               \  -----------------------
- -------------------------      ge-1/0/0.0 \| 2001:db8:a:1111::1/64 |
-                                            |-----------------------|
-                                            |        RouterA        |
-                                            |-----------------------|
- -------------------------      ge-2/0/0.0 /| 2001:db8:a:ffff::1/64 |
-| UserY                   |______________ /  -----------------------
-| 2001:db8:a:ffff::100/64 |
- -------------------------
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For our example, let&amp;rsquo;s assume this is a &lt;em&gt;very&lt;/em&gt; simple router and just has these two connected networks and then a default route out another interface, &lt;code&gt;ge-0/0/0.0&lt;/code&gt;, so its routing table looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Network                 Type        Next-Hop            Via Interface
-::/0                    static      2001:db8:aaaa::a    ge-0/0/0.0
-2001:db8:a:1111::1/128  Local       -                   ge-1/0/0.0
-2001:db8:a:1111::/64    Direct      -                   ge-1/0/0.0
-2001:db8:a:ffff::1/128  Local       -                   ge-2/0/0.0
-2001:db8:a:ffff::/64    Direct      -                   ge-2/0/0.0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;UserX thinks he&amp;rsquo;s super 1337 and wants to launch a TCP SYN flood attack against UserY without having his source IP being revealed.  This is simple spoofing without reflection or amplification.  He spoofs the source IP address in his attack packets and sets it to some other random IP; let&amp;rsquo;s say &lt;code&gt;2001:db8:bad:d00d::1337&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;UserX sends the traffic with the spoofed source IP to his ISP gateway address of &lt;code&gt;2001:db8:a:1111::1&lt;/code&gt;, which is on &lt;code&gt;RouterA&lt;/code&gt;.  Now, &lt;code&gt;RouterA&lt;/code&gt; does have uRPF configured on the interface to which UserX is connected, so it does a route lookup on the source address.  For the spoofed attack packets, that would be &lt;code&gt;2001:db8:bad:d00d::1337&lt;/code&gt;.  &lt;code&gt;RouterA&lt;/code&gt; finds that it does &lt;em&gt;not&lt;/em&gt; have a route for that address going out that interface; it doesn&amp;rsquo;t even have a route for that destination &lt;em&gt;at all&lt;/em&gt; aside from its default route.&lt;/p&gt;
-
-&lt;p&gt;Note that this also works in cases where a route for the source address &lt;em&gt;is&lt;/em&gt; found, but on a different interface.  Suppose UserX takes a different tack and decides to use an amplified &lt;a href=&#34;https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/&#34;&gt;NTP reflection attack&lt;/a&gt; against UserY, so he picks &lt;em&gt;UserY&amp;rsquo;s&lt;/em&gt; address as his spoofed source IP.  UserX crafts an NTP monlist query to a vulnerable NTP server that will serve as his reflector and amplify the attack traffic, and sends the packet on its way via his gateway on &lt;code&gt;RouterA&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this case when &lt;code&gt;RouterA&lt;/code&gt; does a route lookup during its uRPF check it &lt;em&gt;will&lt;/em&gt; find a route for the source IP in the packet, &lt;code&gt;2001:db8:a:ffff::100&lt;/code&gt;, because that address lives in UserY&amp;rsquo;s network of &lt;code&gt;2001:db8:a:ffff::/64&lt;/code&gt; that is directly connected on its ge-2/0/0.0 interface.  But, UserX&amp;rsquo;s spoofed packet came in on ge-1/0/0.0, &lt;em&gt;not&lt;/em&gt; on ge-2/0/0.0.  Since the route for the source address in the packet does &lt;em&gt;not&lt;/em&gt; go via the input interface of the packet, &lt;code&gt;RouterA&lt;/code&gt; discards the packet and the attack is neutralized.&lt;/p&gt;
-
-&lt;h2 id=&#34;wrapping-up&#34;&gt;Wrapping Up&lt;/h2&gt;
-
-&lt;p&gt;DDoS attacks are a &lt;em&gt;very&lt;/em&gt; broad subject and there are lots of nuances to deal with.  This post aimed to just start scratching the surface and to provide an introductory reference for some of these terms, and I will be digging into this topic in more detail in future posts.&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;ll be writing a bit more about DDoS attacks and security, and so I thought it would be handy to jot down some commonly used terms in one place. I&amp;rsquo;ll also look at how some of those terms are interrelated.
+The terms Spoofing As relates to TCP/IP, &amp;ldquo;spoofing&amp;rdquo; really just refers to forging some part of IP communications. You could, for example, spoof a source port to have response data thrown at a listening application that wasn&amp;rsquo;t expecting it, but generally we&amp;rsquo;re talking about forging the source IP address in an IP packet.</description>
     </item>
     
   </channel>

@@ -2,31 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pdf on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/pdf/index.xml</link>
+    <link>http://blog.slabnet.com/tags/pdf/</link>
     <description>Recent content in Pdf on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
-    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
-    <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <atom:link href="http://blog.slabnet.com/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2017 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
+    <lastBuildDate>Wed, 23 Jan 2008 05:56:23 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.slabnet.com/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Free PDF Printer</title>
       <link>http://blog.slabnet.com/post/free-pdf-printer/</link>
       <pubDate>Wed, 23 Jan 2008 05:56:23 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/free-pdf-printer/</guid>
-      <description>&lt;p&gt;Every now and then somebody asks me if there is some way around paying Adobe hundreds and hundreds of dollars if they just want to create some PDF&amp;rsquo;s. Answer? Absolutely!&lt;/p&gt;
-
-&lt;p&gt;Two free PDF printers you can use are &lt;a href=&#34;http://www.cutepdf.com/Products/CutePDF/writer.asp&#34;&gt;CutePDF&lt;/a&gt; and &lt;a href=&#34;http://sourceforge.net/projects/pdfcreator/&#34;&gt;PDFCreator&lt;/a&gt;. I have not used the latter, but I use CutePDF myself, have recommended CutePDF to several people, and have not had any problems with it.&lt;/p&gt;
-
-&lt;p&gt;If you are looking for a bit more functionality, such as creating a single PDF from multiple PDF&amp;rsquo;s, rearranging pages or adding/removing pages, converting PDF&amp;rsquo;s to MS Office documents, etc, be sure to check out &lt;a href=&#34;http://www.nuance.com/pdfconverter/professional/&#34;&gt;PDF Converter Pro&lt;/a&gt; from Nuance Software. It has a whole whack of features, and it&amp;rsquo;s only about $100.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m not anti-Adobe or anything, but I just think that there are tonnes of less tech-savvy people out there paying hundreds of dollars for Adobe Acrobat functionality that they will never need.&lt;/p&gt;
-
-&lt;p&gt;Happy printing!&lt;/p&gt;
-</description>
+      <description>Every now and then somebody asks me if there is some way around paying Adobe hundreds and hundreds of dollars if they just want to create some PDF&amp;rsquo;s. Answer? Absolutely!
+Two free PDF printers you can use are CutePDF and PDFCreator. I have not used the latter, but I use CutePDF myself, have recommended CutePDF to several people, and have not had any problems with it.
+If you are looking for a bit more functionality, such as creating a single PDF from multiple PDF&amp;rsquo;s, rearranging pages or adding/removing pages, converting PDF&amp;rsquo;s to MS Office documents, etc, be sure to check out PDF Converter Pro from Nuance Software.</description>
     </item>
     
   </channel>

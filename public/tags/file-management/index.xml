@@ -2,153 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>File Management on Hugo&#39;s Blog</title>
-    <link>http://blog.slabnet.com/tags/file-management/index.xml</link>
+    <link>http://blog.slabnet.com/tags/file-management/</link>
     <description>Recent content in File Management on Hugo&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>hugo@slabnet.com (Hugo Slabbert)</managingEditor>
-    <webMaster>hugo@slabnet.com (Hugo Slabbert)</webMaster>
-    <copyright>&amp;copy; 2016 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
-    <atom:link href="http://blog.slabnet.com/tags/file-management/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2017 Hugo Slabbert. &lt;a href=&#34;http://creativecommons.org/licenses/by/4.0/&#34;&gt;Some rights reserved&lt;/a&gt;. Please attribute properly and link back.</copyright>
+    <lastBuildDate>Thu, 01 May 2008 03:49:34 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.slabnet.com/tags/file-management/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Gmail Filesystem for Windows</title>
       <link>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</link>
       <pubDate>Thu, 01 May 2008 03:49:34 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/gmail-filesystem-for-windows/</guid>
-      <description>&lt;p&gt;If you&amp;rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the &lt;a href=&#34;http://www.viksoe.dk/code/gmail.htm&#34;&gt;Gmail Drive&lt;/a&gt; by  &lt;a href=&#34;http://www.viksoe.dk/code/index.htm&#34;&gt;bjarke&lt;/a&gt;. It&amp;rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;File access seems to work similar to how Windows Explorer interacts with FTP folders. A right-click context menu allows you to create a new folder, but not new files as with a regular Windows disk or share. Files and folders you save in the gmail drive show up as messages with the file/folder as an attachment. The author recommends adding a filter to your gmail account that will automatically archive new Gmail Drive messages (they all start with a subject of &amp;ldquo;&lt;em&gt;GMAILFS&lt;/em&gt;&amp;rdquo;. I also added set the filter to add a label of &lt;strong&gt;GMAILDRIVE&lt;/strong&gt; for easy searching.&lt;/p&gt;
-
-&lt;p&gt;6 gigs of free, easy-access online storage? Bring it on!&lt;/p&gt;
-
-&lt;p&gt;JaS&lt;/p&gt;
-</description>
+      <description>If you&amp;rsquo;re looking for an easy online storage solution for Windows (and have a gmail account kicking around), check out the Gmail Drive by bjarke. It&amp;rsquo;s a free shell extension for Windows that basically adds a new drive to your computer. When you try to access the drive through Windows explorer, you are prompted for your gmail login details (you have the option of saving the details to avoid having to login each time you access the drive).</description>
     </item>
     
     <item>
       <title>Vista Offline Files and SMB Opportunistic Locks</title>
       <link>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</link>
       <pubDate>Sun, 30 Mar 2008 19:12:52 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/</guid>
-      <description>&lt;p&gt;One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&amp;rsquo;d. The error message read something to the extent of &amp;ldquo;&lt;em&gt;The process cannot access the file because it is being used by another process&lt;/em&gt;&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;We tried the usual: checking permissions on the folders being offline&amp;rsquo;d (I know that&amp;rsquo;s probably not a word, but you get what I mean); deleting his local cache of Offline Files; disabling and then re-enabling Offline Files. But we just kept on banging our heads against the same error. At first, just about any web search for the error resulted in either something about Windows Home Server or databases or something of the like.  Eventually, though, we struck gold:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://support.microsoft.com/kb/296264/en-us&#34;&gt;http://support.microsoft.com/kb/296264/en-us&lt;/a&gt;: Configuring opportunistic locking in Windows&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;According to MS, opportunistic locking &amp;ldquo;&lt;em&gt;lets clients lock        files and locally cache information without the risk of another user changing           the file&lt;/em&gt;&amp;rdquo;. Opportunistic Locking is a feature of SMB. It is enabled by default, and is configurable from the client side (i.e. request opportunistic locking or not) and on the server side (i.e. allow opportunistic locking on local files or not).&lt;/p&gt;
-
-&lt;p&gt;Also note: &amp;ldquo;&lt;em&gt;If you disable opportunistic locking, the offline files feature in Windows           Vista fails&lt;/em&gt;&amp;ldquo;&lt;/p&gt;
-
-&lt;p&gt;So, apparently, &amp;ldquo;_The process cannot access the file because it is being used by another process&amp;rdquo; &lt;em&gt;actually means&lt;/em&gt; &amp;ldquo;Opportunistic locking is not enabled on the file server_&amp;ldquo;. Nice&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;Be aware that this setting is changed through the registry, so the regular warnings about messing about in REGEDIT apply (read &lt;a href=&#34;http://bamboo.slabnet.com/~hslabbert/blog/disclaimer/&#34;&gt;Disclaimer&lt;/a&gt;). That stuff is already listed in the KB, so I won&amp;rsquo;t bother to repeat it.&lt;/p&gt;
-
-&lt;p&gt;To enable opportunistic locking on the file server, open REGEDIT to HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters, and change the value of the REG_DWORD
-&lt;strong&gt;EnableOplocks&lt;/strong&gt; from 0 to 1.&lt;/p&gt;
-
-&lt;p&gt;The server does need to be rebooted in order for the registry change to take effect. After rebooting, retry your offline files synchronization. If the opportunistic locking was your problem, you should be good to go!&lt;/p&gt;
-
-&lt;p&gt;UPDATE:&lt;/p&gt;
-
-&lt;p&gt;I must also thank Rainier Day for &lt;a href=&#34;http://blog.rainiernetworks.com/2008/06/25/vista-synchronization-errors/&#34;&gt;his post&lt;/a&gt; on his struggles with Opportunistic Locking. He was hit from the other side: The server-side opslock settings were good, but his Vista clients were configured to &lt;em&gt;not&lt;/em&gt; request opportunistic locks, and this caused the clients to also experience offline files synchronization errors. Thanks Ranier: I noticed that component in the MS KB, but had never actually come across a Vista workstation that was configured out-of-the-box to have OpsLocks disabled!&lt;/p&gt;
-
-&lt;p&gt;Cheers,&lt;/p&gt;
-
-&lt;p&gt;JaS&lt;/p&gt;
-</description>
+      <description>One of our techs recently ran across a problem with a new Windows Vista Business laptop trying to synchronize offline files to a Windows Server 2000 file server. Synchronization would start, but the Sync Center in Vista would show failures for every single file that was attempted to be sync&amp;rsquo;d. The error message read something to the extent of &amp;ldquo;The process cannot access the file because it is being used by another process&amp;rdquo;.</description>
     </item>
     
     <item>
       <title>Bulk Rename Files with Sequential Index</title>
       <link>http://blog.slabnet.com/post/bulk-rename-files-with-sequential-index/</link>
       <pubDate>Sun, 23 Mar 2008 06:31:17 +0000</pubDate>
-      <author>hugo@slabnet.com (Hugo Slabbert)</author>
+      
       <guid>http://blog.slabnet.com/post/bulk-rename-files-with-sequential-index/</guid>
-      <description>&lt;p&gt;I am pretty sure I&amp;rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&amp;rsquo;t like the convention they have chosen in that the first file is named &lt;em&gt;[common name].JPG&lt;/em&gt;, then the subsequent files are named &lt;em&gt;&lt;a href=&#34;2&#34;&gt;common name&lt;/a&gt;.JPG&lt;/em&gt; and so on and so forth.&lt;/p&gt;
-
-&lt;p&gt;I had a few requirements for how I wanted to go about this:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Get rid of the parentheses. If I will be posting those pics online anywhere, I wanted to keep the names as free of special characters as I can.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Number the first file. The Windows Explorer route does not number the first file when doing bulk renames. This is easy enough to do manually, but I just don&amp;rsquo;t want to bother.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Keep a constant number of digits in the index number. I want the renaming process to take into account how many pictures there are and adjust the number of index digits accordingly. If there are fewer than 10 files/images, then only 1 digit is required (e.g. 1, 2, 3, 4&amp;hellip;9). If there are between 10 and 99 files (inclusive), then two digits are required (01, 02, 03&amp;hellip;10, 11, 12&amp;hellip;99). I think you get the idea. Windows definitely doesn&amp;rsquo;t do that.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;!-- more --&gt;I thought that Powershell would be the best tool for the job, but I still struggled a bit. I eventually found the following would do the trick:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$prefix = &amp;quot;[SomePrefix]&amp;quot;
-$files = Get-ChildItem
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname&lt;/code&gt;&lt;code&gt;-NewName&lt;/code&gt;&lt;code&gt;( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace &#39; &#39;,&#39;0&#39; ) + $_.extension) }&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Note that everything after the &lt;code&gt;$files |&lt;/code&gt;is all on one line of code, but it might appear in the post as being spread across multiple lines.&lt;/p&gt;
-
-&lt;p&gt;The Explanation:&lt;/p&gt;
-
-&lt;p&gt;The first line saves the contents of the current directory into an array. &lt;code&gt;$id = 1&lt;/code&gt; just resets our index counter so that the first file will be numbered 1. Now the fun stuff begins!&lt;/p&gt;
-
-&lt;p&gt;We pipe the &lt;code&gt;$files&lt;/code&gt; array into a foreach loop to process through each of the files in the directory. The foreach loop just contains the Rename-Item cmdlet. We select the full path of the item passed through the pipeline, &lt;code&gt;$_.fullname&lt;/code&gt;, as the original item to rename. The -NewName item gets a bit complicated.&lt;/p&gt;
-
-&lt;p&gt;As we will be including a whole bunch of items, we first open with parentheses, &amp;ldquo;(&amp;rdquo;. The new name will start with a string we have to define earlier, &lt;code&gt;$prefix&lt;/code&gt;. If, for instance, your collection of pictures in the working directory is from the slick cabling job you just did on one of your racks, you can set &lt;code&gt;$prefix = &amp;quot;SlickCablingJob&amp;quot;&lt;/code&gt;. This will result in files named something like &lt;code&gt;SlickCablingJob01.jpg&lt;/code&gt;, etc.&lt;/p&gt;
-
-&lt;p&gt;The next portion has a few opening parentheses, and this is because we will be performing a bunch of operations on our &lt;code&gt;$id&lt;/code&gt; variable, which is our index number. We use &lt;code&gt;$id++&lt;/code&gt; because we want to &lt;code&gt;$id&lt;/code&gt; variable to increment each time we pass through the foreach loop and use the variable.&lt;/p&gt;
-
-&lt;p&gt;To set the number of digits, I used the PadLeft() method. The PadLeft() method basically adds spaces to the left side of whatever string you are processing so that the resultant string is of a length that you specify. If, for instance, I have a string of &amp;ldquo;four&amp;rdquo; saved to the variable &lt;code&gt;$string&lt;/code&gt; and used the command $string.PadLeft(10), the resultant string would be &amp;ldquo;four&amp;rdquo; with 6 spaces to its left, for a total of 10 characters in our string.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately, PadLeft() is not a method of the Int32 class, of which our &lt;code&gt;$id&lt;/code&gt; variable is an instance, but it is a method of the String class. So, we first have to convert the &lt;code&gt;$id&lt;/code&gt; variable to a string using &lt;code&gt;$id.ToString()&lt;/code&gt;. I like to keep things clean, so I used &lt;code&gt;($id.ToString()).PadLeft()&lt;/code&gt; to first wrap up the result of &lt;code&gt;$id.ToString()&lt;/code&gt; and then apply the PadLeft() method.&lt;/p&gt;
-
-&lt;p&gt;Now, PadLeft() requires an Int32 parameter to tell it how many places to pad to the left of the string. This is where some of the magic comes in. Remember how we saved the list of files in the directory to the array &lt;code&gt;$files&lt;/code&gt;? Well, that array has a property &lt;code&gt;Count&lt;/code&gt;, which is a count of the number of items in the array, in our case the number of files in the array.&lt;/p&gt;
-
-&lt;p&gt;We count the number of items in our directory listing array using &lt;code&gt;$files.Count&lt;/code&gt;. Since we want to see how many characters are in the highest number in our file list (which is equal to the number of files in the &lt;code&gt;$files&lt;/code&gt; array), we can use the &lt;code&gt;Length&lt;/code&gt; property. The &lt;code&gt;Length&lt;/code&gt; property, when used on Strings, will return the number of characters in the string as an Int32 value. Using our &lt;code&gt;$string&lt;/code&gt; of &amp;ldquo;four&amp;rdquo; from earlier, &lt;code&gt;$string.Length&lt;/code&gt; will be equal to and Int32 value of 4, since there are four characters in the string &amp;ldquo;four&amp;rdquo;. If &lt;code&gt;$string&lt;/code&gt; were &amp;ldquo;one&amp;rdquo;, &lt;code&gt;$string.Length&lt;/code&gt; would be 3, since there are three characters in the string &amp;ldquo;one&amp;rdquo;. This can get confusing, so you might want to try it out with a few different values to get the hang of it.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s say that we have 45 files in our directory. &lt;code&gt;$files.Count&lt;/code&gt;would be an Int32 value of 45. The length property cannot be applied to Int32 values, so we have to convert our value to a string using &lt;code&gt;$files.Count.ToString()&lt;/code&gt;. In our example of 45 files in our directory, &lt;code&gt;$files.Count.ToString()&lt;/code&gt; would return a string value of &amp;ldquo;45&amp;rdquo;. The length property of that value would be the Int32 value 2. This is because the string &amp;ldquo;45&amp;rdquo; has two characters in it. If we had between 1 and 9 files (inclusive), the &lt;code&gt;$files.Count.ToString()&lt;/code&gt; value would be 1 because there is only one character in the numbers 1, 2, 3, 4, 5, 6, 7, 8, and 9 since they are single-digit numbers. If we had between 10 and 99 files in our list, we would have a double-digit number, and hence &lt;code&gt;$files.Count.ToString()&lt;/code&gt; would have a value of 2. Again, you might want to play around with this if you are unfamiliar with the concept.&lt;/p&gt;
-
-&lt;p&gt;So far, then, we have &lt;em&gt;(($id++).ToString()).PadLeft(($Files.Count.ToString()).Length&lt;/em&gt;, which takes the index number, converts it to a string, and then pads it with spaces to its left so that the total of characters is equal to the number of characters in the count of the number of files in the list. It might be best to demonstrate with another example to bring it all together. Let&amp;rsquo;s say that we have one hundred (100) files that we are renaming, and the foreach loop is working through the first file.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code&gt;$id&lt;/code&gt; variable is set to the Int32 value of 1. This is converted to a string that reads &amp;ldquo;1&amp;rdquo;. Since we have 100 files in our list, &lt;code&gt;$files.Count&lt;/code&gt; will have an Int32 value of 100. In order to count the number of characters in that value, we convert it to a string using &lt;code&gt;$files.Count.ToString()&lt;/code&gt;, then count the number of characters using &lt;code&gt;$files.Count.ToString().Length&lt;/code&gt;. This gives us an Int32 value of 3, since there are three characters in the number 100. PadLeft() then pads our &lt;code&gt;$id&lt;/code&gt; of 1 so that it has three characters in total, as a one with 2 spaces to its left. We&amp;rsquo;re almost there!&lt;/p&gt;
-
-&lt;p&gt;The last part of the indexing replaces the spaces from PadLeft() to zeroes, so that the files will show up chronologically in a directory listing. This is done through the &lt;code&gt;-replace &#39; &#39;,&#39;0&#39;&lt;/code&gt; part of the line, which replaces spaces with zeroes. For our example, we would no longer have &amp;ldquo; 1&amp;rdquo; but rather &amp;ldquo;001&amp;rdquo; (insert 007 joke here). Finally, my third requirement is met!&lt;/p&gt;
-
-&lt;p&gt;All that is left to then append the original file extension to the filename. Since we have the original file in the pipeline, we can access its extension using &lt;code&gt;$_.Extension&lt;/code&gt;. And voila! We have our bulk rename tool!&lt;/p&gt;
-
-&lt;p&gt;Now, as the code stands, we have to first define our &lt;code&gt;$prefix&lt;/code&gt; variable before using it, and it only acts on files in the current working directory. I threw this into a function with a parameter of &lt;code&gt;$prefix&lt;/code&gt;, so that I can easily define the prefix and call the function conveniently from within the directory that contains the files I want to rename. You could also specify an additional parameter of &lt;code&gt;$directory&lt;/code&gt; to the function to be able to work on directories other than your current working directory, as long as you change &lt;code&gt;$files = Get-ChildItem $directory&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here is the function as it sits in my current Powershell profile:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;function Rename-Bulk($prefix)
-{
-$files = Get-ChildItem
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname&lt;/code&gt;&lt;code&gt;-NewName&lt;/code&gt;&lt;code&gt;( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace &#39; &#39;,&#39;0&#39; ) + $_.extension) }
-}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;To define the function in your Powershell session, either paste the code above at the Powershell prompt, or paste it into your Powershell profile to have it available each time you start Powershell (be sure to remove any line breaks; remember that everything after &lt;code&gt;$files |&lt;/code&gt; is one one line)!&lt;/p&gt;
-
-&lt;p&gt;To add the extension I had mentioned to specify a directory other than your current working directory, use the following instead:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;function Rename-Bulk($prefix,$directory=$pwd)
-{
-$files = Get-ChildItem $directory
-$id = 1
-$files | foreach { Rename-Item -Path $_.fullname -NewName ( $prefix + ((($id++).tostring()).padleft(($files.count.tostring()).length) -replace &#39; &#39;,&#39;0&#39; ) + $_.extension) }
-}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;That will select the current working directory by default if the second parameter is not specified, while still giving you the option to specify an alternate directory.&lt;/p&gt;
-
-&lt;p&gt;As always, if there is something I&amp;rsquo;ve missed (it&amp;rsquo;s getting late!) or if you have something to add, please let me know.&lt;/p&gt;
-
-&lt;p&gt;Bitcoin tip address for this post: 1M4ydWcEPsUXWrQYN254UrfkAbVGBbpZB8&lt;/p&gt;
-</description>
+      <description>I am pretty sure I&amp;rsquo;m not the only one who wants something more descriptive than DSC1900298.JPG to name my digital photos. And yes, I know that Windows Explorer allows you to rename pictures en masse, but I don&amp;rsquo;t like the convention they have chosen in that the first file is named [common name].JPG, then the subsequent files are named common name.JPG and so on and so forth.
+I had a few requirements for how I wanted to go about this:</description>
     </item>
     
   </channel>

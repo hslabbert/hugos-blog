@@ -1,251 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A look at BCP38 as a countermeasure to DDoS attacks following the KrebsOnSecurity attacks">
-  <meta name="generator" content="Hugo 0.18.1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="What BCP38 Can and Cannot Do - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>What BCP38 Can and Cannot Do | Hugo&#39;s Blog</title>
 
-  <title>What BCP38 Can and Cannot Do &middot; Hugo&#39;s Blog</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-
-  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
 
 </head>
 
-
 <body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
-      
-        </li>
-      
-    </ul>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
+</section>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
+<section class="section">
+  <div class="container">
+    <h1 class="title">What BCP38 Can and Cannot Do</h1>
+    <h2 class="subtitle is-5">September 28, 2016 by Hugo</h2>
     
-
+      <div class="tags">
     
-
+        <a class="button is-link" href="/tags/infosec">infosec</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
+        <a class="button is-link" href="/tags/internet">Internet</a>
     
-
+        <a class="button is-link" href="/tags/ddos">DDoS</a>
     
-
+        <a class="button is-link" href="/tags/bcp38">BCP38</a>
     
-
+        <a class="button is-link" href="/tags/reflection">reflection</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
-    </li>
+        <a class="button is-link" href="/tags/security">security</a>
     
-
+        <a class="button is-link" href="/tags/networking">networking</a>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
 </div>
 
-
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>What BCP38 Can and Cannot Do</h1>
-  <h2>A look at BCP38 as a countermeasure to DDoS attacks following the KrebsOnSecurity attacks</h2>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>28 Sep 2016, 07:17</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/infosec">infosec</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/internet">Internet</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/ddos">DDoS</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/bcp38">BCP38</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/reflection">reflection</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/security">security</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/networking">networking</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  
+    <div class="content">
+      
 
 <p>We&rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet.  Rather than targeting a company or online gaming, one of the largest DDoS attacks ever <a href="http://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos/">targeted an individual</a>, Brian Krebs, most likely for <a href="https://krebsonsecurity.com/2016/09/israeli-online-attack-service-vdos-earned-600000-in-two-years/">his work exposing a so-called &ldquo;booter service&rdquo;</a>, a DDoS-for-hire outfit called vDOS, which ultimately led to <a href="https://krebsonsecurity.com/2016/09/alleged-vdos-proprietors-arrested-in-israel/">the alleged proprietors being arrested</a>.</p>
 
@@ -253,7 +106,7 @@
 
 <p>Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.  Attacks weighing in at 600 Gbps are said to have been reported in private, but generally haven&rsquo;t hit public knowledge. In the space of a week, we&rsquo;ve seen attacks reach those levels and <em>way</em> beyond.  There are reports of <em>much</em> more frequent attacks against common targets, with volumes far above average.  OVH, an international Internet service and hosting provider, reported attacks of over 1 Tbps just the night before the attack on KrebsOnSecurity:</p>
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/Dominik28111">@Dominik28111</a> we got 2 huge multi DDoS: 1156Gbps then 901Gbps <a href="https://t.co/NyFTr6KLCC">pic.twitter.com/NyFTr6KLCC</a></p>&mdash; Octave Klaba / Oles (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/778019962036314112">September 19, 2016</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">we got 2 huge multi DDoS: 1156Gbps then 901Gbps <a href="https://t.co/NyFTr6KLCC">pic.twitter.com/NyFTr6KLCC</a></p>&mdash; Octave Klaba (@olesovhcom) <a href="https://twitter.com/olesovhcom/status/778019962036314112">September 19, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>This is an unprecedented escalation in attack volumes and frequency, and this state of affairs cannot go on.  The Internet is <em>the</em> platform for discussion in our era, and it is simply unacceptable, whether you are a security researcher, a political activist, someone with an unpopular opinion, or simply someone running a blog for fun, that your voice on the Internet could be silenced by goons with digital cannons because they don&rsquo;t like what you have to say, or simply for the lulz.</p>
@@ -308,63 +161,61 @@
 
 <p>I aim to write more about BCP38 in the near future, but I want to state again for emphasis that this post is <em>not</em> a criticism of BCP38 or any kind of statement that BCP38 adoption is pointless or futile.  On the contrary: I wholeheartedly support any efforts to further BCP38 adoption, push for BCP38 adoption on any networks under my control, and believe it is critical to enabling attribution of abuse traffic and mitigation of reflected (and amplified) DDoS attacks.  But, we should not imagine that even getting full BCP38 coverage of the entire Internet will in any way impact network abuse and DDoS attacks that do not use source address spoofing.</p>
 
-
-  
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
+    </div>
     
-    <a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/"><i class="fa fa-chevron-left"></i></a>
+        <div class="nav-left">
+    <a class="nav-item" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.slabnet.com%2fpost%2fwhat-bcp38-can-and-cannot-do%2f" title="Share on Facebook" target="_blank"><span class="fa fa-facebook fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://plus.google.com/share?url=http%3a%2f%2fblog.slabnet.com%2fpost%2fwhat-bcp38-can-and-cannot-do%2f" title="Share on Google+" target="_blank"><span class="fa fa-google-plus fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fblog.slabnet.com%2fpost%2fwhat-bcp38-can-and-cannot-do%2f" title="Share on LinkedIn" target="_blank"><span class="fa fa-linkedin fa-2x" aria-hidden="true"></span></a>
+    <a class="nav-item" href="https://twitter.com/home?status=What%20BCP38%20Can%20and%20Cannot%20Do - http%3a%2f%2fblog.slabnet.com%2fpost%2fwhat-bcp38-can-and-cannot-do%2f" title="Tweet this" target="_blank"><span class="fa fa-twitter fa-2x"></span></a>
+    <a class="nav-item" href="http://www.reddit.com/submit?url=http%3a%2f%2fblog.slabnet.com%2fpost%2fwhat-bcp38-can-and-cannot-do%2f&title=What%20BCP38%20Can%20and%20Cannot%20Do" title="Share on Reddit" target="_blank"><span class="fa fa-reddit-alien fa-2x" aria-hidden="true"></span></a>
     
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/">Clarifying DDoS-related terms</a>
-    </nav>
+    </div>
     
   </div>
-  <div class="pure-u-2-24">
-    &nbsp;
+</section>
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+    <script type="text/javascript">
+      var disqus_shortname = 'blog-slabnet-com';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
   </div>
-  <div class="pure-u-10-24">
-    
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
   </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-  </div>
-</div>
+</section>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
 
-  
-<div id="disqus_thread"></div>
-<script type="text/javascript">
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'blog-slabnet-com';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-</div>
-</div>
-<script src="http://blog.slabnet.com/js/ui.js"></script>
-
-
+<script>hljs.initHighlightingOnLoad();</script>
 
 
 </body>
-</html>
-

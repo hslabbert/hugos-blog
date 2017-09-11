@@ -1,12 +1,11 @@
 baseurl = "http://blog.slabnet.com/"
 languageCode = "en-us"
 title = "Hugo's Blog"
-copyright = "&copy; 2016 Hugo Slabbert. <a href=\"http://creativecommons.org/licenses/by/4.0/\">Some rights reserved</a>. Please attribute properly and link back."
+copyright = "&copy; 2017 Hugo Slabbert. <a href=\"http://creativecommons.org/licenses/by/4.0/\">Some rights reserved</a>. Please attribute properly and link back."
 
-theme = "blackburn"
+theme = "hucore"
 
-paginate = 10
-paginatePath = "page"
+disqusShortname = "blog-slabnet-com"
 
 [taxonomies]
     # Optional. Use if you want tags and lists.
@@ -14,9 +13,12 @@ paginatePath = "page"
     tag = "tags"
     topic = "topics"
 
-[author]
-    name = "Hugo Slabbert"
-    email = "hugo@slabnet.com"
+#[author]
+#    name = "Hugo Slabbert"
+#    email = "hugo@slabnet.com"
+
+[indexes]
+  tags = "tags"
 
 [[menu.main]]
     name = "Home"
@@ -51,6 +53,7 @@ paginatePath = "page"
     brand = "Hugo's Blog"
     description = "Mostly tech...mostly"
     subtitle = "Mostly tech...mostly"
+    author = "Hugo"
 
     # Sidebar position
     # false, true, "left", "right"
@@ -58,9 +61,41 @@ paginatePath = "page"
 
     # Select a syntax highight.
     # Check the static/css/highlight directory for options.
-    highlight = "default"
+    #highlight = "default"
 
+    twitter_username = "hugoslabbert"
     disqus = "blog-slabnet-com"
+    disqus_shortname = "blog-slabnet-com"
+    sharingicons = true
+    keywords = ["tech", "networking"]
+
+[params.highlight]
+style = "solarized-dark"
+languages = ["bash", "go", "dockerfile", "python", "powershell"]
+
+[[params.social]]
+url = "https://github.com/hslabbert"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "https://gitlab.com/hslabbert"
+fa_icon = "fa-gitlab"
+
+[[params.social]]
+url = "https://twitter.com/hugoslabbert"
+fa_icon = "fa-twitter"
+
+[[params.social]]
+url = "https://linkedin.com/in/hugoslabbert"
+fa_icon = "fa-linkedin-square"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"
+
+[[params.socialshare]]
+url = "https://linkedin.com/in/hslabbert"
+fa_icon = "fa-linkedin-square"
 
 [social]
     # Link your social networking accouns to the side menu

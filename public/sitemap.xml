@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/</loc>
@@ -172,7 +173,7 @@
   </url>
   
   <url>
-    <loc>http://blog.slabnet.com/tags/index.net/</loc>
+    <loc>http://blog.slabnet.com/tags/.net/</loc>
     <lastmod>2008-03-25T05:28:20+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -204,11 +205,6 @@
   <url>
     <loc>http://blog.slabnet.com/tags/bitcoin/</loc>
     <lastmod>2016-01-17T05:43:46+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.slabnet.com/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -357,12 +353,6 @@
   </url>
   
   <url>
-    <loc>http://blog.slabnet.com/categories/news/</loc>
-    <lastmod>2016-08-28T22:29:33-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.slabnet.com/tags/news/</loc>
     <lastmod>2010-06-01T18:21:39+00:00</lastmod>
     <priority>0</priority>
@@ -430,6 +420,7 @@
   
   <url>
     <loc>http://blog.slabnet.com/tags/</loc>
+    <lastmod>2008-03-25T05:28:20+00:00</lastmod>
     <priority>0</priority>
   </url>
   

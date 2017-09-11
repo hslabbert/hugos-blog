@@ -1,274 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.18.1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="Xenserver - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/tags/xenserver/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>Xenserver | Hugo&#39;s Blog</title>
 
-  <title>Xenserver &middot; Hugo&#39;s Blog</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  
-  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/tags/xenserver/index.xml" />
-  
-
-  
-
-  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
 
 </head>
 
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
-      
-        </li>
-      
-    </ul>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
+</section>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
+<section class="section">
+  <div class="container">
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://blog.slabnet.com/tags/xenserver/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
-</div>
-
-
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
-  </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Xenserver</h1>
-</div>
-
-<div class="content">
-  
     <article>
-  <header>
-    <h2><a href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/">What do you run on XenServer?</a></h2>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/">What do you run on XenServer?</a></h1>
+      <h2 class="subtitle is-5">July 14, 2010</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/citrix">citrix</a>
+    
+        <a class="button is-link" href="/tags/virtualization">virtualization</a>
+    
+        <a class="button is-link" href="/tags/xenserver">xenserver</a>
+    
+</div>
 
-    <div class="post-meta">
+      
+      <div class="content">
+        @XenServerArmy asked in this tweet what applications/services people are running on their XenServer deployments. So, here&rsquo;s a quick list for i-worx:
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>14 Jul 2010, 18:35</time>
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
   </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/citrix">citrix</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/virtualization">virtualization</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="http://blog.slabnet.com/tags/xenserver">xenserver</a>
-    
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+        </div>
+      </div>
+    </nav>
   </div>
-  
-  
+</section>
 
-</div>
-
-  </header>
-
-  <p>
-  <p><a href="http://twitter.com/XenServerArmy">@XenServerArmy</a> asked in <a href="http://twitter.com/XenServerArmy/status/18477320394">this tweet</a> what applications/services people are running on their XenServer deployments. So, here&rsquo;s a quick list for <a href="http://www.i-worx.ca/">i-worx</a>:</p>
-  </p>
-
-  
-  <footer>
-    <a href="/post/what-do-you-run-on-xenserver/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-</div>
-
-</div>
-</div>
-<script src="http://blog.slabnet.com/js/ui.js"></script>
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
+  </div>
+</section>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 
-</body>
-</html>

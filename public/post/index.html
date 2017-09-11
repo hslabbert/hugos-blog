@@ -1,343 +1,441 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-us">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mostly tech...mostly">
-  <meta name="generator" content="Hugo 0.18.1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="tech, networking" name="keywords">
+<meta content="Hugo" name="author">
+<meta property="og:title" content="Posts - Hugo&#39;s Blog">
+<meta property="og:url" content="http://blog.slabnet.com/post/">
+<meta property="og:description" content="Mostly tech...mostly">
+<meta property="og:type" content="website" />
+<title>Posts | Hugo&#39;s Blog</title>
 
-  <title>Posts &middot; Hugo&#39;s Blog</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<link rel="stylesheet" href="http://blog.slabnet.com//css/style.css">
+<link rel="shortcut icon" href="http://blog.slabnet.com//wave.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-  <!--<![endif]-->
-
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="/css/side-menu.css">
-  <!--<![endif]-->
-
-  <link rel="stylesheet" href="/css/blackburn.css">
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-
-  
-  
-  <link rel="alternate" type="application/rss+xml" title="Hugo&#39;s Blog" href="http://blog.slabnet.com/post/index.xml" />
-  
-
-  
-
-  <link rel="shortcut icon" href="http://blog.slabnet.com/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/solarized-dark.min.css">
 
 </head>
 
-
-<body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="/">Hugo's Blog</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/"><i class='fa fa-home fa-fw'></i>Home</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/tags/"><i class='fa fa-list fa-fw'></i>Tags</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/about/"><i class='fa fa-user fa-fw'></i>About</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="/disclaimer">Disclaimer</a>
-      
-        </li>
-      
-    </ul>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://blog.slabnet.com/"><h1 class="title is-4">Hugo&#39;s Blog</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://gitlab.com/hslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-gitlab"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://linkedin.com/in/hugoslabbert" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin-square"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml" target="_blank">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
+</section>
 
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
+<section class="section">
+  <div class="container">
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="http://blog.slabnet.com/post/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/">What BCP38 Can and Cannot Do</a></h1>
+      <h2 class="subtitle is-5">September 28, 2016</h2>
+      
+        <div class="tags">
     
-
+        <a class="button is-link" href="/tags/infosec">infosec</a>
     
-
+        <a class="button is-link" href="/tags/internet">Internet</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://twitter.com/hugoslabbert" target="_blank"><i class="fa fa-twitter-square fa-fw"></i>Twitter</a>
-    </li>
+        <a class="button is-link" href="/tags/ddos">DDoS</a>
     
-
+        <a class="button is-link" href="/tags/bcp38">BCP38</a>
     
-
+        <a class="button is-link" href="/tags/reflection">reflection</a>
     
-
+        <a class="button is-link" href="/tags/security">security</a>
     
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://plus.google.com/+HugoSlabbert-B178313E" target="_blank"><i class="fa fa-google-plus-square fa-fw"></i>Google+</a>
-    </li>
+        <a class="button is-link" href="/tags/networking">networking</a>
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://linkedin.com/in/hugoslabbert" target="_blank"><i class="fa fa-linkedin-square fa-fw"></i>LinkedIn</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://reddit.com/user/BitterOleNetworkOp" target="_blank"><i class="fa fa-reddit-square fa-fw"></i>Reddit</a>
-    </li>
-    
-
-    
-
-    
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/hslabbert" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-  </ul>
 </div>
 
+      
+      <div class="content">
+        We&rsquo;re coming through what is seeming like a tipping point in the history of DDoS on the Internet. Rather than targeting a company or online gaming, one of the largest DDoS attacks ever targeted an individual, Brian Krebs, most likely for his work exposing a so-called &ldquo;booter service&rdquo;, a DDoS-for-hire outfit called vDOS, which ultimately led to the alleged proprietors being arrested.
+A brief history of DoS volumes Public information about DDoS attack volumes are generally sparse outside of news releases and blog posts of DDoS mitigation companies, but even as late as last year, attacks of around 400 Gbps were exceptional events and pretty much the biggest the Internet had seen.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/">Clarifying DDoS-related terms</a></h1>
+      <h2 class="subtitle is-5">September 25, 2016</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/ddos">DDoS</a>
+    
+        <a class="button is-link" href="/tags/reflection">reflection</a>
+    
+        <a class="button is-link" href="/tags/internet">Internet</a>
+    
+        <a class="button is-link" href="/tags/amplification">amplification</a>
+    
+        <a class="button is-link" href="/tags/bcp38">bcp38</a>
+    
+        <a class="button is-link" href="/tags/urpf">urpf</a>
+    
+        <a class="button is-link" href="/tags/networking">networking</a>
+    
+        <a class="button is-link" href="/tags/security">security</a>
+    
+        <a class="button is-link" href="/tags/infosec">infosec</a>
+    
+</div>
 
-  <div>
-  <div class="small-print">
-    <small>&copy; 2016 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</small>
+      
+      <div class="content">
+        I&rsquo;ll be writing a bit more about DDoS attacks and security, and so I thought it would be handy to jot down some commonly used terms in one place. I&rsquo;ll also look at how some of those terms are interrelated.
+The terms Spoofing As relates to TCP/IP, &ldquo;spoofing&rdquo; really just refers to forging some part of IP communications. You could, for example, spoof a source port to have response data thrown at a listening application that wasn&rsquo;t expecting it, but generally we&rsquo;re talking about forging the source IP address in an IP packet.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/gre-reflection/">GRE Reflection?</a></h1>
+      <h2 class="subtitle is-5">September 22, 2016</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/ddos">DDoS</a>
+    
+        <a class="button is-link" href="/tags/gre">GRE</a>
+    
+        <a class="button is-link" href="/tags/reflection">reflection</a>
+    
+        <a class="button is-link" href="/tags/internet">Internet</a>
+    
+        <a class="button is-link" href="/tags/networking">networking</a>
+    
+        <a class="button is-link" href="/tags/tech">tech</a>
+    
+</div>
+
+      
+      <div class="content">
+        Recently, we&rsquo;re seeing an uptick in GRE traffic as part of a DDoS mix. Most prominently, GRE featured as the biggest volume contributor in the record 600+ Gbps attack on krebsonsecurity.com. (Note that the site is currently offline as it&rsquo;s finding a new home, so any links to krebsonsecurity.com will reference The Internet Archive instead.)
+An initial tweet from @briankrebs listed GRE in the attack traffic mix:
+per the last tweet, they threw it all at my site; SYN Flood, GET Flood, ACK Flood, POST Flood, GRE Protocol Flood]; 665.00 Gbps;143.50 Mpps
+&mdash; briankrebs (@briankrebs) September 21, 2016  &hellip;and Krebs later confirmed more details in KrebsOnSecurity&rsquo;s own article reporting on the attack:
+ Preliminary analysis of the attack traffic suggests that perhaps the biggest chunk of the attack came in the form of traffic designed to look like it was generic routing encapsulation (GRE) data packets, a communication protocol used to establish a direct, point-to-point connection between network nodes.
+ Now, volumetric DDoS attacks will generally use amplification vectors like open DNS resolvers, misconfigured or vulnerable NTP or SNMP servers, SSDP, etc. in order to boost the attack volume. Those amplifiers are also often vulnerable to reflection attacks, where the attacker spoofs the source address in the initial amplification trigger packets so that the amplified replies hit the target rather than the attacker. This can be pulled off because these exploited amplification vectors are stateless and UDP-based, and so a single spoofed packet from the attacker will trigger the amplified reply destined for the target. A TCP-based attack could yield a larger amplification factor (e.g. just think of pulling off an HTTP GET of a GB+ file!), but a TCP 3-way handshake would never complete successfully with a spoofed source address, and even if somehow it could, the attacker would have to keep ACK-ing somehow in order to keep the transfer going. GRE we are told, however, could not have a spoofed source address (also from the same Krebs article):
+ McKeay explained that the source of GRE traffic can’t be spoofed or faked the same way DDoS attackers can spoof DNS traffic.
+ GRE is not known to have an amplification vector, and I haven&rsquo;t been able to think of one. But is it true that source IPs cannot be spoofed in GRE? *Note that this is an untested theory and still needs to be validated.*
+
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/gre-reflection/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/">Ubuntu Xenial and systemd network online target</a></h1>
+      <h2 class="subtitle is-5">September 12, 2016</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/linux">linux</a>
+    
+        <a class="button is-link" href="/tags/networking">networking</a>
+    
+        <a class="button is-link" href="/tags/ubuntu">ubuntu</a>
+    
+</div>
+
+      
+      <div class="content">
+        So, I&rsquo;m bringing a little Chromebox back into use on our home network to do some basic network services: dhcp, dns, and probably actually using it as a router (long story; tl;dr TekSavvy says they&rsquo;ll give you a /56 but then the VDSL modem they sell you can&rsquo;t do DHCPv6-PD properly).
+Anyway&hellip;
+I slapped Ubuntu 16.04 Xenial server on it and started plugging away at a couple of things. I opted to use ISC&rsquo;s newer Kea DHCP server rather than isc-dhcp-server. Little did I know that Ubuntu and systemd had other ideas&hellip;
+
+
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a></h1>
+      <h2 class="subtitle is-5">August 28, 2016</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/tech">Tech</a>
+    
+        <a class="button is-link" href="/tags/golang">golang</a>
+    
+</div>
+
+      
+      <div class="content">
+        So&hellip;I&rsquo;ve moved my blog to Hugo. More info to follow, but bear with me as I clean up some bits and pieces.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/btc-tips/">BTC tips</a></h1>
+      <h2 class="subtitle is-5">January 17, 2016</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/bitcoin">bitcoin</a>
+    
+</div>
+
+      
+      <div class="content">
+        This blog hasn&rsquo;t been updated in a bit, but I&rsquo;m experimenting with bitcoin tips. If you like an article or found it useful, please feel free to send me &ldquo;thank you&rdquo; tip via bitcoin through the BTC address at the bottom of the article. This is also a rudimentary &ldquo;voting system&rdquo; to let me know which content has been most beneficial to people.
+I&rsquo;ll be adding BTC tip addresses to articles in fits and starts for existing articles as I get to them.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/btc-tips/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/">What do you run on XenServer?</a></h1>
+      <h2 class="subtitle is-5">July 14, 2010</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/citrix">citrix</a>
+    
+        <a class="button is-link" href="/tags/virtualization">virtualization</a>
+    
+        <a class="button is-link" href="/tags/xenserver">xenserver</a>
+    
+</div>
+
+      
+      <div class="content">
+        @XenServerArmy asked in this tweet what applications/services people are running on their XenServer deployments. So, here&rsquo;s a quick list for i-worx:
+
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/gone-google-marketing-fail/">&#34;Gone Google&#34; Marketing Fail...</a></h1>
+      <h2 class="subtitle is-5">June 1, 2010</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/cloud">cloud</a>
+    
+        <a class="button is-link" href="/tags/fail">fail</a>
+    
+        <a class="button is-link" href="/tags/google">google</a>
+    
+        <a class="button is-link" href="/tags/news">news</a>
+    
+        <a class="button is-link" href="/tags/web">web</a>
+    
+</div>
+
+      
+      <div class="content">
+        Google is touting their Google Apps offering for business with a new post on the official Google Blog (link). The post presents a link to a gonegoogle.com site, which runs you through a calculator of how much cash you can save by &ldquo;Going Google&rdquo;. The calculator seems to be based on industry averages for things like uptime, storage costs, remote access, etc., and presents a nice little summary poster at the end. An example is given from guest poster smartfurniture.com.
+A nice little surprise comes up, though, when you click on the link to view the sample poster for Smart Furniture.
+
+
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/gone-google-marketing-fail/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/wordpress-theme-updated/">Wordpress Theme Updated</a></h1>
+      <h2 class="subtitle is-5">April 15, 2010</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/news">news</a>
+    
+        <a class="button is-link" href="/tags/web">web</a>
+    
+</div>
+
+      
+      <div class="content">
+        In case it isn&rsquo;t obvious: I switched up the theme for the site. I was never really too fond of the light-green touch of the previous theme and the code styling especially bugged me, but it was a fairly clean and so I just kind of stuck with it.
+Anyhow; comments &amp; feedback appreciated.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h1 class="title"><a href="http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/">Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</a></h1>
+      <h2 class="subtitle is-5">February 11, 2009</h2>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/howto">howto</a>
+    
+        <a class="button is-link" href="/tags/linux">linux</a>
+    
+        <a class="button is-link" href="/tags/nod32">nod32</a>
+    
+        <a class="button is-link" href="/tags/troubleshooting">troubleshooting</a>
+    
+</div>
+
+      
+      <div class="content">
+        As part of some mail filter testing, I needed to install ESET Mail Security onto a Debian 4.0 Etch VPS running on Virtuozzo. As a side-note, I found that the install package for ESET’s Gateway Filter, Mail Security, and File Server Security for Linux is all the exact same package; the functionality is basically just controlled/activated by means of licensing the appropriate component.
+Anyway, the download comes as an installation script called esets.
+        
+        ...<a class="button is-link" href="http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
   </div>
-  <div class="small-print">
-    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/2/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
   </div>
-</div>
+</section>
 
-</div>
-
-
-  <div id="main">
-
-
-<div class="header">
-  <h1>Posts</h1>
-</div>
-<div class="content">
-  
-  <h2>2016</h2>
-  <ul>
-  
-    <li><time>28 Sep 2016, 07:17</time> - <a href="http://blog.slabnet.com/post/what-bcp38-can-and-cannot-do/">What BCP38 Can and Cannot Do</a></li>
-
-  
-    <li><time>25 Sep 2016, 20:47</time> - <a href="http://blog.slabnet.com/post/clarifying-ddos-related-terms/">Clarifying DDoS-related terms</a></li>
-
-  
-    <li><time>22 Sep 2016, 20:23</time> - <a href="http://blog.slabnet.com/post/gre-reflection/">GRE Reflection?</a></li>
-
-  
-    <li><time>12 Sep 2016, 21:42</time> - <a href="http://blog.slabnet.com/post/ubuntu-xenial-and-systemd-network-online-target/">Ubuntu Xenial and systemd network online target</a></li>
-
-  
-    <li><time>28 Aug 2016, 22:29</time> - <a href="http://blog.slabnet.com/post/moving-to-hugo/">Moving to Hugo</a></li>
-
-  
-    <li><time>17 Jan 2016, 05:43</time> - <a href="http://blog.slabnet.com/post/btc-tips/">BTC tips</a></li>
-
-  
-  </ul>
-  
-  <h2>2010</h2>
-  <ul>
-  
-    <li><time>14 Jul 2010, 18:35</time> - <a href="http://blog.slabnet.com/post/what-do-you-run-on-xenserver/">What do you run on XenServer?</a></li>
-
-  
-    <li><time>01 Jun 2010, 18:21</time> - <a href="http://blog.slabnet.com/post/gone-google-marketing-fail/">&#34;Gone Google&#34; Marketing Fail...</a></li>
-
-  
-    <li><time>15 Apr 2010, 05:48</time> - <a href="http://blog.slabnet.com/post/wordpress-theme-updated/">Wordpress Theme Updated</a></li>
-
-  
-  </ul>
-  
-  <h2>2009</h2>
-  <ul>
-  
-    <li><time>11 Feb 2009, 16:24</time> - <a href="http://blog.slabnet.com/post/cannot-install-eset-security-on-debian-40-etch-virtuozzo-vps/">Cannot install ESET Security on Debian 4.0 Etch Virtuozzo VPS</a></li>
-
-  
-    <li><time>11 Feb 2009, 16:24</time> - <a href="http://blog.slabnet.com/post/550-447-queueexpired-message-expired-when-emailing-mail-enabled-public-folder/">“550 4.4.7 QUEUE.Expired; message expired” when emailing mail-enabled Public folder</a></li>
-
-  
-    <li><time>09 Feb 2009, 16:36</time> - <a href="http://blog.slabnet.com/post/workaround-for-mysqldump-ssl-error-2026-bug-27669/">Workaround for mysqldump SSL error 2026 bug #27669</a></li>
-
-  
-  </ul>
-  
-  <h2>2008</h2>
-  <ul>
-  
-    <li><time>13 Aug 2008, 06:18</time> - <a href="http://blog.slabnet.com/post/windows-media-player-11-breaks-internet-connectivity/">Windows Media Player 11 Breaks Internet Connectivity</a></li>
-
-  
-    <li><time>13 Aug 2008, 05:51</time> - <a href="http://blog.slabnet.com/post/ssl-errors-in-exchange-2003-public-folder-management/">SSL Errors in Exchange 2003 Public Folder Management</a></li>
-
-  
-    <li><time>13 Aug 2008, 05:35</time> - <a href="http://blog.slabnet.com/post/accessing-active-directory-in-php-using-adldap/">Accessing Active Directory in PHP using ADLDAP</a></li>
-
-  
-    <li><time>13 Aug 2008, 04:32</time> - <a href="http://blog.slabnet.com/post/exchange-2007-messages-stuck-in-submission-queue/">Exchange 2007: Messages stuck in Submission Queue</a></li>
-
-  
-    <li><time>01 May 2008, 03:49</time> - <a href="http://blog.slabnet.com/post/gmail-filesystem-for-windows/">Gmail Filesystem for Windows</a></li>
-
-  
-    <li><time>30 Mar 2008, 19:12</time> - <a href="http://blog.slabnet.com/post/vista-offline-files-and-smb-opportunistic-locks/">Vista Offline Files and SMB Opportunistic Locks</a></li>
-
-  
-    <li><time>25 Mar 2008, 05:28</time> - <a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part2/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part II</a></li>
-
-  
-    <li><time>25 Mar 2008, 05:28</time> - <a href="http://blog.slabnet.com/post/find-disabled-and-inactive-user-and-computer-accounts-using-powershell-part1/">Find Disabled and Inactive User and Computer Accounts using Powershell - Part I</a></li>
-
-  
-    <li><time>23 Mar 2008, 06:31</time> - <a href="http://blog.slabnet.com/post/bulk-rename-files-with-sequential-index/">Bulk Rename Files with Sequential Index</a></li>
-
-  
-    <li><time>23 Mar 2008, 04:41</time> - <a href="http://blog.slabnet.com/post/take-ownership-of-files-and-folders-through-script/">Take ownership of files and folders through script</a></li>
-
-  
-    <li><time>23 Mar 2008, 04:03</time> - <a href="http://blog.slabnet.com/post/dell-broadcom-server-2003-sp2-snp-and-toe/">Dell, Broadcom, Server 2003 SP2 SNP and TOE</a></li>
-
-  
-    <li><time>23 Jan 2008, 05:56</time> - <a href="http://blog.slabnet.com/post/free-pdf-printer/">Free PDF Printer</a></li>
-
-  
-    <li><time>23 Jan 2008, 05:46</time> - <a href="http://blog.slabnet.com/post/exchange-2007-mailbox-guid/">Exchange 2007 Mailbox GUID </a></li>
-
-  
-    <li><time>23 Jan 2008, 05:13</time> - <a href="http://blog.slabnet.com/post/resize-vhd-files/">Resize VHD Files</a></li>
-
-  
-    <li><time>21 Jan 2008, 05:48</time> - <a href="http://blog.slabnet.com/post/reliable-free-p2v-solution/">Reliable, Free P2V Solution</a></li>
-
-  
-    <li><time>19 Jan 2008, 23:30</time> - <a href="http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-2/">Modifying Group Memberships with Powershell, Part II</a></li>
-
-  
-    <li><time>19 Jan 2008, 19:03</time> - <a href="http://blog.slabnet.com/post/modifying-group-memberships-with-powershell-part-1/">Modifying Group Memberships with Powershell, Part I</a></li>
-
-  
-    <li><time>16 Jan 2008, 18:41</time> - <a href="http://blog.slabnet.com/post/ultimate-guide-to-linux-boot-problems/">Ultimate Guide to Linux Boot Problems</a></li>
-
-  
-    <li><time>12 Jan 2008, 18:37</time> - <a href="http://blog.slabnet.com/post/update-on-network-solutions-frontrunning/">Update on Network Solutions Front-running</a></li>
-
-  
-    <li><time>09 Jan 2008, 18:24</time> - <a href="http://blog.slabnet.com/post/network-solutions-domain-frontrunning/">Network Solutions Domain Frontrunning</a></li>
-
-  
-  </ul>
-  
-</div>
-
-</div>
-</div>
-<script src="http://blog.slabnet.com/js/ui.js"></script>
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; 2017 Hugo Slabbert. <a href="http://creativecommons.org/licenses/by/4.0/">Some rights reserved</a>. Please attribute properly and link back.</p>
+  </div>
+</section>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
 
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/bash.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
 
-</body>
-</html>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/powershell.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
 
